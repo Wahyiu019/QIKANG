@@ -1,0 +1,1 @@
+const fs = require('fs'); const content = fs.readFileSync('src/components/ChatWindow.tsx', 'utf8'); console.log(content.length);
