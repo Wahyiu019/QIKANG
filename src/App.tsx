@@ -23,7 +23,7 @@ export default function App() {
     setActiveChat('ai_assistant');
     
     const greetings: Record<string, string> = {
-      '客户洞察专家': '您好！我是您的**客户洞察专家**。我已经准备好为您深度分析客户背景、剖析关键决策人图谱并提供拜访建言。请告诉我要跟进哪个客户，或者输入“分析某省烟草”开始。',
+      '客户洞察专家': '您好！我是您的**客户洞察专家**。我已经准备好为您深度分析客户背景、剖析关键决策人图谱并提供拜访建言。请告诉我要跟进哪个客户，或者输入“分析云南烟草”开始。',
       '营销方案专家': '您好！我是您的**营销方案专家**。我已加载最新标品方案与差异化控标级输出逻辑，可为您智能提炼产品亮点、生成竞品对比或定制营销文案。请问您需要针对哪个客户项目生成方案？',
       '标书撰写专家': '您好！我是您的**标书撰写专家**。我可以全流程协助您进行招投标素材解析、策略生成、风险对冲与标书自动化智能装配质检。您可以上传招标文件或直接说明您的投标项目需求。',
       '企康业务合规专家': '您好！我是您的**企康业务合规专家**。我可以从隐私合规、国密法、金融级等保及行业政策等方面，对您的业务材料进行严密的合规漏洞审计并提示隐藏风险点。请问有哪些条款或材料需要我为您把关？'
@@ -66,7 +66,7 @@ export default function App() {
         id: 'sys-1',
         sender: 'system',
         type: 'text',
-        content: '已创建“某省烟草集团 - AI助手”',
+        content: '已创建“云南烟草集团 - AI助手”',
         timestamp: new Date()
       },
       {
@@ -82,7 +82,7 @@ export default function App() {
         id: 'sys-1',
         sender: 'system',
         type: 'text',
-        content: '已创建“某省烟草健康管理推荐方案筹备组”',
+        content: '已创建“云南烟草健康管理推荐方案筹备组”',
         timestamp: new Date()
       },
       {
@@ -123,7 +123,7 @@ export default function App() {
               id: Date.now().toString(),
               sender: 'bot',
               type: 'text',
-              content: '这是某省烟草集团项目的招投标交流群，请大家在群里交流招投标事项。',
+              content: '这是云南烟草集团项目的招投标交流群，请大家在群里交流招投标事项。',
               timestamp: new Date(Date.now() - 2000)
             };
             const initialMsg2: Message = {
@@ -140,7 +140,7 @@ export default function App() {
               content: '好的，已为您生成招投标任务计划：',
               timestamp: new Date(),
               data: {
-                title: '招标助手 - 某省烟草投标材料筹备',
+                title: '招标助手 - 云南烟草投标材料筹备',
                 deadline: '2026-04-15',
                 remindersEnabled: true,
                 schedule: [

@@ -37,8 +37,8 @@ const INITIAL_MESSAGE: Message = {
 
 const SCENARIOS = [
   { label: "🔍 领商机", prompt: "我可以领取的商机" },
-  { label: "💡 定策略", prompt: "为某省烟草制定产品匹配与机会评估方案" },
-  { label: "🤝 做准备", prompt: "请给我一份某省烟草的全面的背景报告" },
+  { label: "💡 定策略", prompt: "为云南烟草制定产品匹配与机会评估方案" },
+  { label: "🤝 做准备", prompt: "请给我一份云南烟草的全面的背景报告" },
   { label: "🎙️ 去拜访", prompt: "开会" },
   { label: "📑 招投标", prompt: "投标" },
   { label: "🛡️ 合规检查", prompt: "请帮我完成标书合规性检查" },
@@ -48,12 +48,12 @@ const SCENARIOS = [
 
 const commercialContent = `
   <div class="font-sans text-gray-800">
-    <h1 class="text-2xl font-bold text-center mb-6 text-gray-900 border-b-2 border-amber-600 pb-2">某省烟草健康管理服务项目 - 商务标书</h1>
+    <h1 class="text-2xl font-bold text-center mb-6 text-gray-900 border-b-2 border-amber-600 pb-2">云南烟草健康管理服务项目 - 商务标书</h1>
     
     <div class="mb-8">
       <h2 class="text-lg font-bold text-amber-700 mb-3 flex items-center"><span class="w-1.5 h-4 bg-amber-600 mr-2 inline-block"></span>一、 投标函</h2>
-      <p class="mb-2 leading-relaxed text-sm">致：<strong>某省烟草控股股份有限公司</strong></p>
-      <p class="mb-2 leading-relaxed text-sm indent-8">根据贵方关于“某省烟草健康管理服务项目”的招标公告，我方（平安健康医疗科技有限公司）经认真研究招标文件后，决定参加该项目的投标。我方承诺：</p>
+      <p class="mb-2 leading-relaxed text-sm">致：<strong>云南烟草控股股份有限公司</strong></p>
+      <p class="mb-2 leading-relaxed text-sm indent-8">根据贵方关于“云南烟草健康管理服务项目”的招标公告，我方（平安健康医疗科技有限公司）经认真研究招标文件后，决定参加该项目的投标。我方承诺：</p>
       <ul class="list-disc pl-10 mb-4 text-sm space-y-1 text-gray-700">
         <li>提供满足招标文件要求的全套健康管理服务。</li>
         <li>严格遵守企康规范及贵方的各项管理规定。</li>
@@ -161,12 +161,12 @@ const commercialContent = `
 
 const technicalContent = `
   <div class="font-sans text-gray-800">
-    <h1 class="text-2xl font-bold text-center mb-6 text-gray-900 border-b-2 border-orange-600 pb-2">某省烟草健康管理服务项目 - 技术标书</h1>
+    <h1 class="text-2xl font-bold text-center mb-6 text-gray-900 border-b-2 border-orange-600 pb-2">云南烟草健康管理服务项目 - 技术标书</h1>
     
     <div class="mb-8">
       <h2 class="text-lg font-bold text-orange-700 mb-3 flex items-center"><span class="w-1.5 h-4 bg-orange-600 mr-2 inline-block"></span>一、 项目理解与需求分析</h2>
       <div class="bg-orange-50 p-4 rounded-lg border border-orange-100 text-sm text-gray-700 leading-relaxed">
-        <p class="mb-2">某省烟草集团作为中国白酒行业的领军企业，员工数量庞大，工作场景复杂。当前面临的主要健康管理痛点包括：</p>
+        <p class="mb-2">云南烟草集团作为中国白酒行业的领军企业，员工数量庞大，工作场景复杂。当前面临的主要健康管理痛点包括：</p>
         <ul class="list-disc pl-6 space-y-1">
           <li>生产一线员工职业健康风险较高，需针对性预防。</li>
           <li>高管及核心骨干工作压力大，缺乏系统性健康干预与专属医疗资源。</li>
@@ -181,7 +181,7 @@ const technicalContent = `
       <div class="space-y-4">
         <div class="border border-gray-200 rounded-lg p-4">
           <h3 class="font-bold text-gray-900 mb-2">1. 专属医疗网络与绿通服务</h3>
-          <p class="text-sm text-gray-600 mb-2">整合全国百强三甲医院资源，为某省烟草高管及核心骨干提供：</p>
+          <p class="text-sm text-gray-600 mb-2">整合全国百强三甲医院资源，为云南烟草高管及核心骨干提供：</p>
           <ul class="list-disc pl-6 text-sm text-gray-600">
             <li>专家门诊预约（承诺3个工作日内）</li>
             <li>住院及手术安排（承诺5个工作日内）</li>
@@ -479,11 +479,11 @@ function AiChatWindow({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const QUICK_SKILLS = [
-    { title: "客户信息调研", prompt: "生成某省烟草集团的客户画像。人员约8000+人，高层员工：800人，核心员工6000人，在职人员平均35岁占比68%，男性员工4500+人，内勤员工：7000人，预算在600~800w左右" },
+    { title: "客户信息调研", prompt: "生成云南烟草集团的客户画像。人员约8000+人，高层员工：800人，核心员工6000人，在职人员平均35岁占比68%，男性员工4500+人，内勤员工：7000人，预算在600~800w左右" },
     { title: "合规分析", prompt: "#合规分析#" },
     { title: "关键决策人分析", prompt: "#关键决策人分析#" },
     { title: "历史合作分析", prompt: "#历史合作分析#" },
-    { title: "拜访建议话术", prompt: "我要去拜访某烟草企业，拜访对象包括分管总、HRD和项目经办人" },
+    { title: "拜访建议话术", prompt: "帮我把分管总、HRD和经办人可能关心的问题准备好" },
     { title: "招标文件解读", prompt: "帮我解读这份招标文件，看看重点关注什么" },
     { title: "招投标问答", prompt: "关于招投标内容我想提几个问题" },
     { title: "生成目录模板", prompt: "根据项目信息生成标书目录模板" },
@@ -492,7 +492,7 @@ function AiChatWindow({
     
     { title: "材料审查", prompt: "#材料审查#" },
     {
-      title: "三段式营销材料",
+      title: "拜访材料生成",
       prompt: "我要去拜访云南烟草，帮我准备拜访材料",
     },
     { title: "标准产品推荐", prompt: "#标准产品推荐#" },
@@ -524,7 +524,7 @@ function AiChatWindow({
       content =
         "您好！我是客户洞察专家。我已就位，接下来将协助您进行目标客户全景信息调研、关键决策人背景分析以及过往合作历史深度挖掘。";
       setInputValue(
-        "作为集团高管，企康办安排我下周陪养老险北分去见某省烟草张总，帮我生成一个5分钟的开场话术备用。",
+        "作为集团高管，企康办安排我下周陪养老险北分去见云南烟草张总，帮我生成一个5分钟的开场话术备用。",
       );
     } else if (expert.name === "营销方案专家") {
       content =
@@ -1203,10 +1203,10 @@ function AiChatWindow({
 
     if (
       text.includes(
-        "作为集团高管，企康办安排我下周陪养老险北分去见某省烟草张总",
+        "作为集团高管，企康办安排我下周陪养老险北分去见云南烟草张总",
       ) ||
-      text === "帮我做一个某省烟草全景分析" ||
-      text === "#某省烟草全景分析#"
+      text === "帮我做一个云南烟草全景分析" ||
+      text === "#云南烟草全景分析#"
     ) {
       const newUserMsg = {
         id: Date.now().toString() + "_user",
@@ -1218,30 +1218,30 @@ function AiChatWindow({
       setMessages((prev) => [...prev, newUserMsg]);
       const reasoningMsgId = Date.now().toString();
       const allTexts = [
-        "我先调研某省烟草集团基本情况，需要理解这家公司的全貌",
-        "首先要拿到某省烟草的基本面数据",
+        "我先调研云南烟草集团基本情况，需要理解这家公司的全貌",
+        "首先要拿到云南烟草的基本面数据",
         "查工商信息：注册资本/法人/经营范围/股权穿透，然后是股权结构分析",
         "接下来我需要了解公司的战略方向",
-        "联网搜索某省烟草最新战略规划，重点关注年度报告和公开战略发布",
+        "联网搜索云南烟草最新战略规划，重点关注年度报告和公开战略发布",
         "搜索高管公开言论，验证我从战略中推断的关注点是否正确，还需要了解业务规划的落地情况",
         "搜索业务规划，看战略是否有对应的业务动作支撑",
         '整合所有信息 ，按"基本面-股权-战略-高管-业务"的逻辑组织',
-        "现在调研一下某省烟草高管的关系链，包括决策人基本信息、工作履历和跟平安相关的信息",
+        "现在调研一下云南烟草高管的关系链，包括决策人基本信息、工作履历和跟平安相关的信息",
         "必须搜现任+前两任核心高管",
-        "查平安与某省烟草高管的合作交集",
+        "查平安与云南烟草高管的合作交集",
         "搜索公开言论/决策风格信息源，标注决策风格",
         "搜索内部材料、新闻稿",
         "分析张总标签：技术派/全球化/务实/关注效率",
-        "现在分析某省烟草集团与平安的历史合作情况，总结合作关系，挖掘潜在合作机会",
-        '先宽泛搜索"某省烟草+平安"不加年份限制',
-        '同时搜招标网"某省烟草+平安养老+年金"、"某省烟草+平安产险+中标"，找到线索后时间锚定深挖',
-        "同时调研平安某省烟草技术合作信息",
+        "现在分析云南烟草集团与平安的历史合作情况，总结合作关系，挖掘潜在合作机会",
+        '先宽泛搜索"云南烟草+平安"不加年份限制',
+        '同时搜招标网"云南烟草+平安养老+年金"、"云南烟草+平安产险+中标"，找到线索后时间锚定深挖',
+        "同时调研平安云南烟草技术合作信息",
         "多方信息源交叉验证，先搜再断言",
         "基于已有合作推导潜在合作机会（如已有采购，可延伸年金/企康）",
-        "开始分析某省烟草作为信息技术行业的企康需求特点和机会",
-        "搜索某省烟草当前痛点：员工健康管理分散/体检标准不统一/缺乏数字化平台",
+        "开始分析云南烟草作为信息技术行业的企康需求特点和机会",
+        "搜索云南烟草当前痛点：员工健康管理分散/体检标准不统一/缺乏数字化平台",
         '企康切入角度：用"数字化健康管理"而非"保险"语言切入（张总技术背景，对数字化方案更敏感）',
-        "提供话术三段：破冰（某省烟草AI战略+员工健康数字化）、痛点共鸣（7.2万人分散管理难）、方案切入（平安某省烟草数字化方案合作）",
+        "提供话术三段：破冰（云南烟草AI战略+员工健康数字化）、痛点共鸣（7.2万人分散管理难）、方案切入（平安云南烟草数字化方案合作）",
         "检查：我是否有遗漏项",
         "根据5分钟的时间长度要求组织内容",
       ];
@@ -1288,7 +1288,7 @@ function AiChatWindow({
             id: Date.now().toString() + "_report",
             sender: "bot",
             type: "lenovo_panoramic_analysis",
-            content: "某省烟草调研报告html和拜访建议话术html已生成。",
+            content: "云南烟草调研报告html和拜访建议话术html已生成。",
             timestamp: new Date(),
           };
           setMessages((prev) => [...prev, reportMsg]);
@@ -1424,7 +1424,7 @@ function AiChatWindow({
         sender: "bot",
         type: "reasoning",
         content:
-          "营销方案专家调用以下技能：三段式营销材料、标准产品推荐、明星方案匹配、案例亮点提炼、竞品多维对标",
+          "营销方案专家调用以下技能：拜访材料生成、标准产品推荐、明星方案匹配、案例亮点提炼、竞品多维对标",
         timestamp: new Date(),
         data: {
           title: "营销方案专家思考与执行中..",
@@ -1492,7 +1492,7 @@ function AiChatWindow({
         }
       }, 1000);
       return;
-    } else if (text === "某省烟草企康对标传统体检机构，技术标的优势怎么写？") {
+    } else if (text === "云南烟草企康对标传统体检机构，技术标的优势怎么写？") {
       const newUserMsg = {
         id: Date.now().toString() + "_user",
         sender: "user",
@@ -1512,7 +1512,7 @@ function AiChatWindow({
           steps: [
             { id: "1", text: "解析投标场景与竞品画像", status: "loading" },
             { id: "2", text: "扫描对手的“技术盲区”与痛点", status: "pending" },
-            { id: "3", text: "匹配某省烟草企康的核心技术壁垒", status: "pending" },
+            { id: "3", text: "匹配云南烟草企康的核心技术壁垒", status: "pending" },
             { id: "4", text: "推演技术标“控标”策略", status: "pending" },
             { id: "5", text: "生成标书标准化输出框架", status: "pending" },
           ],
@@ -1553,7 +1553,7 @@ function AiChatWindow({
             id: Date.now().toString() + "_report",
             sender: "bot",
             type: "lenovo_tech_bid_advantage",
-            content: "为您生成某省烟草企康技术标优势方案：",
+            content: "为您生成云南烟草企康技术标优势方案：",
             timestamp: new Date(),
           };
           setMessages((prev) => [...prev, reportMsg]);
@@ -1672,7 +1672,7 @@ function AiChatWindow({
         id: Date.now().toString() + "_bot",
         sender: "bot",
         type: "text",
-        content: "在生成拜访材料前，需要先跟您确认以下信息：\n1、拜访对象及内部身份：您拜访的对接人是什么职务？（如HR负责人/分管副总/总经理）\n2、当前关系基础：是首次接触，还是已有其他业务合作（如年金、财产险等）？\n3、拜访目标：本次希望达成的核心目标是什么？（如：建立初步信任 /了解对方需求/ 方案邀约）\n4、多机构情况：该烟草企业下辖多少个地市/县级分支机构？覆盖哪些区域？\n5、预算池情况：预算池的大致规模或人均预算范围是多少？\n6、历史赔付信息：目前已知的赔付情况大致如何？（如：赔付率偏高/偏低/完全末知）\n请您逐项补充，我来为您定制精准的拜访材料。",
+        content: "好的，根据标品营销方案生成流程，我需要先收集客户信息。请提供以下客户基本信息：\n\n---\n\n**必填项：**\n\n① **客户名称** (全称)：\n② **行业** (金融/能源/通讯/烟草/科技/邮政/制造/交通运输等)：\n③ **人员规模** (在职员工总数)：\n④ **地域** (省/市)：\n⑤ **预算** (年，如\"3000万\")：\n\n**选填项 (让方案更精准)：**\n\n- 组织结构：高层___人 / 核心员工___人 / 基层员工___人\n- 人员结构：离退休比例___ / 在职人员比例___，平均年龄___，年龄高峰区间___\n- 性别结构：男___人 / 女___人\n- 工种结构：内勤___人 / 外勤___人\n- 既往健康痛点：\n- 补充说明：",
         timestamp: new Date(),
       };
       setIsTyping(true);
@@ -1711,7 +1711,7 @@ function AiChatWindow({
         id: reasoningMsgId,
         sender: "bot",
         type: "reasoning",
-        content: "营销方案专家调用以下技能：三段式营销材料、标准产品推荐、明星方案匹配、案例亮点提炼、竞品多维对标",
+        content: "营销方案专家调用以下技能：拜访材料生成、标准产品推荐、明星方案匹配、案例亮点提炼、竞品多维对标",
         timestamp: new Date(),
         data: {
           title: "营销方案专家思考与执行中..",
@@ -1750,7 +1750,7 @@ function AiChatWindow({
             id: Date.now().toString() + "_report",
             sender: "bot",
             type: "lenovo_new_marketing_plan",
-            content: "为您生成某省烟草集团首次拜访ppt。",
+            content: "为您生成云南烟草集团首次拜访ppt。",
             timestamp: new Date(),
             data: { isFamilyDoctor: true },
           };
@@ -3038,7 +3038,7 @@ function AiChatWindow({
         setIsTyping(false);
       }, 4500);
       return;
-    } else if (text === "我要去拜访某烟草企业，拜访对象包括分管总、HRD和项目经办人") {
+    } else if (text === "帮我把分管总、HRD和经办人可能关心的问题准备好") {
       if (onStageChange) onStageChange("做准备");
       const newUserMsg: Message = {
         id: Date.now().toString() + "_user",
@@ -3094,7 +3094,7 @@ function AiChatWindow({
           sender: "bot",
           type: "text",
           content:
-            "这是某省烟草集团项目的招投标交流群，请大家在群里交流招投标事项。",
+            "这是云南烟草集团项目的招投标交流群，请大家在群里交流招投标事项。",
           timestamp: new Date(),
         };
         if (setGlobalMessages) {
@@ -3139,7 +3139,7 @@ function AiChatWindow({
       text.includes("投标") ||
       (text.includes("标书") &&
         !text.includes("合规性检查") &&
-        !text.includes("商务标书_某省烟草项目_v1.0.pdf")) ||
+        !text.includes("商务标书_云南烟草项目_v1.0.pdf")) ||
       text.includes("倒排时间") ||
       text.includes("招投标") ||
       text.includes("招标助手")
@@ -3150,7 +3150,7 @@ function AiChatWindow({
         sender: "bot",
         type: "text",
         content:
-          "好的，已为您调用**招标助手（bid）**技能。请上传某省烟草投标的筹备材料，我将为您进行自动化分析与处理。",
+          "好的，已为您调用**招标助手（bid）**技能。请上传云南烟草投标的筹备材料，我将为您进行自动化分析与处理。",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, msg]);
@@ -3889,7 +3889,7 @@ function AiChatWindow({
           content: "会议纪要已同步至CRM系统，并为您生成了纪要卡片。",
           timestamp: new Date(),
           data: {
-            title: "某省烟草集团 - 客户拜访会议",
+            title: "云南烟草集团 - 客户拜访会议",
             date: "2026-04-24 14:00",
             attendees: isCEO
               ? ["刘明广 (HRD)", "客户经理-李经理"]
@@ -3922,7 +3922,7 @@ function AiChatWindow({
                     deadline: "2026-05-11",
                   },
                   {
-                    task: "形成某省烟草全球化外派员工紧急救援方案指引",
+                    task: "形成云南烟草全球化外派员工紧急救援方案指引",
                     assignee: "梁华耀",
                     deadline: "2026-05-12",
                   },
@@ -3946,7 +3946,7 @@ function AiChatWindow({
                 ],
             cloudDocs: [
               {
-                name: "某省烟草集团 - 首次客户拜访会议纪要 - 20260424",
+                name: "云南烟草集团 - 首次客户拜访会议纪要 - 20260424",
                 url: "#",
               },
             ],
@@ -3989,7 +3989,7 @@ function AiChatWindow({
 
     if (awaitingSurveyClient) {
       setAwaitingSurveyClient(false);
-      if (text.includes("某省烟草")) {
+      if (text.includes("云南烟草")) {
         const reasoningMsgId = Date.now().toString();
         const reasoningMsg: Message = {
           id: reasoningMsgId,
@@ -4021,7 +4021,7 @@ function AiChatWindow({
             id: (Date.now() + 1).toString(),
             sender: "bot",
             type: "survey_report",
-            content: `某省烟草基本情况最新调研报告：`,
+            content: `云南烟草基本情况最新调研报告：`,
             timestamp: new Date(),
           };
           setMessages((prev) => [...prev, reportMsg]);
@@ -4113,8 +4113,8 @@ function AiChatWindow({
             leads: [
               {
                 id: 1,
-                title: "某省烟草集团企业健康管理项目",
-                company: "某省烟草集团",
+                title: "云南烟草集团企业健康管理项目",
+                company: "云南烟草集团",
                 location: "北京",
                 budget: "600万",
                 score: 98,
@@ -4303,7 +4303,7 @@ function AiChatWindow({
                   text
                     .replace("认领", "")
                     .replace("帮我认领指定商机", "")
-                    .trim() || "某省烟草集团企业健康管理项目",
+                    .trim() || "云南烟草集团企业健康管理项目",
               },
               { label: "认领时间", value: new Date().toLocaleString() },
               { label: "状态", value: "已认领 -> 进入跟进流程" },
@@ -4329,7 +4329,7 @@ function AiChatWindow({
       }, 2000);
       return;
     } else if (
-      text.includes("生成某省烟草集团的客户画像") ||
+      text.includes("生成云南烟草集团的客户画像") ||
       text.includes("#客户信息调研#") ||
       text.includes("基本情况调研")
     ) {
@@ -4420,7 +4420,7 @@ function AiChatWindow({
           id: (Date.now() + 1).toString(),
           sender: "bot",
           type: "customer_portrait_card",
-          content: "为您生成某省烟草集团概览画像",
+          content: "为您生成云南烟草集团概览画像",
           timestamp: new Date(),
         };
         setMessages((prev) => [...prev, reportMsg]);
@@ -4495,7 +4495,7 @@ function AiChatWindow({
           id: (Date.now() + 1).toString(),
           sender: "bot",
           type: "decision_makers_report",
-          content: `【某省烟草】关键决策人分析报告`,
+          content: `【云南烟草】关键决策人分析报告`,
           timestamp: new Date(),
         };
         setMessages((prev) => [...prev, reportMsg]);
@@ -4509,7 +4509,7 @@ function AiChatWindow({
       text.includes("背景报告") ||
       text.includes("查档案") ||
       text.includes("情报侦察兵") ||
-      text.includes("请给我一份某省烟草的全面的背景报告")
+      text.includes("请给我一份云南烟草的全面的背景报告")
     ) {
       if (onStageChange) onStageChange("看档案");
       const reasoningMsgId = Date.now().toString();
@@ -4605,11 +4605,11 @@ function AiChatWindow({
             "客户洞察专家自动深入调研客户背景，并为您生成了一份详细的结构化情报报告：",
           timestamp: new Date(),
           data: {
-            title: "某省烟草集团 - 全面背景报告",
+            title: "云南烟草集团 - 全面背景报告",
             overview:
-              "某省烟草集团是某省烟草集团在中国的核心运营主体，主要从事个人电脑、智能设备、基础设施及相关IT服务的研发、生产与销售。作为全球领先的科技企业，某省烟草不仅在PC市场占据全球第一的份额，近年来也在积极向智能化、云服务和企业级解决方案转型。",
+              "云南烟草集团是云南烟草集团在中国的核心运营主体，主要从事个人电脑、智能设备、基础设施及相关IT服务的研发、生产与销售。作为全球领先的科技企业，云南烟草不仅在PC市场占据全球第一的份额，近年来也在积极向智能化、云服务和企业级解决方案转型。",
             metrics: [
-              { label: "客户名称", value: "某省烟草" },
+              { label: "客户名称", value: "云南烟草" },
               { label: "注册资本", value: "25000 万港币" },
               { label: "成立日期", value: "1992-12-24" },
               { label: "企业类型", value: "外商投资企业" },
@@ -4619,19 +4619,19 @@ function AiChatWindow({
               {
                 name: "张总",
                 title: "董事长兼CEO",
-                background: "某省烟草集团核心掌舵人，推动某省烟草全球化和智能化转型。",
+                background: "云南烟草集团核心掌舵人，推动云南烟草全球化和智能化转型。",
               },
               {
                 name: "刘军",
                 title: "执行副总裁",
-                background: "某省烟草中国区总裁，负责中国区业务及“日出东方”战略。",
+                background: "云南烟草中国区总裁，负责中国区业务及“日出东方”战略。",
               },
             ],
             details: [
               {
                 label: "行业与竞争格局",
                 value:
-                  "ICT设备和IT服务行业竞争激烈。某省烟草在PC端面临惠普、戴尔的竞争，智能设备端和基础设施端面临华为、浪潮等国内巨头的挤压。某省烟草通过“端-边-云-网-智”新IT架构构筑竞争护城河。",
+                  "ICT设备和IT服务行业竞争激烈。云南烟草在PC端面临惠普、戴尔的竞争，智能设备端和基础设施端面临华为、浪潮等国内巨头的挤压。云南烟草通过“端-边-云-网-智”新IT架构构筑竞争护城河。",
               },
               {
                 label: "业务结构分析",
@@ -4676,11 +4676,11 @@ function AiChatWindow({
               {
                 label: "结论与建议",
                 value:
-                  "某省烟草（北京）对员工健康福利提升有刚性预算且诉求明确。建议以“定制化、数字化员工健康管理中台”为切入点，打通体检、医疗、保险闭环，优先主推“高管及研发骨干专属检后管理+绿通”。",
+                  "云南烟草（北京）对员工健康福利提升有刚性预算且诉求明确。建议以“定制化、数字化员工健康管理中台”为切入点，打通体检、医疗、保险闭环，优先主推“高管及研发骨干专属检后管理+绿通”。",
               },
             ],
             ownership: [
-              { name: "某省烟草集团（Tobacco Group）", percentage: 100 },
+              { name: "云南烟草集团（Tobacco Group）", percentage: 100 },
             ],
           },
         };
@@ -4689,8 +4689,8 @@ function AiChatWindow({
       }, 4500);
       return;
     } else if (
-      text.includes("与某省烟草历史合作") ||
-      text.includes("与某省烟草合作历史") ||
+      text.includes("与云南烟草历史合作") ||
+      text.includes("与云南烟草合作历史") ||
       text.includes("历史合作分析")
     ) {
       if (onStageChange) onStageChange("定制策略");
@@ -4753,7 +4753,7 @@ function AiChatWindow({
           id: (Date.now() + 1).toString(),
           sender: "bot",
           type: "history_cooperation_report",
-          content: "【某省烟草】历史合作与产品覆盖深度分析报告",
+          content: "【云南烟草】历史合作与产品覆盖深度分析报告",
           timestamp: new Date(),
         };
         setMessages((prev) => [...prev, reportMsg]);
@@ -4766,7 +4766,7 @@ function AiChatWindow({
       text.includes("产品适配") ||
       text.includes("定策略") ||
       text.includes("定制策略") ||
-      text.includes("为某省烟草制定产品匹配与机会评估方案")
+      text.includes("为云南烟草制定产品匹配与机会评估方案")
     ) {
       if (onStageChange) onStageChange("定制策略");
       const reasoningMsgId = Date.now().toString();
@@ -4873,11 +4873,11 @@ function AiChatWindow({
             "为您生成了一份全面的策略建议报告，包含行业趋势、痛点洞察与产品适配评分：",
           timestamp: new Date(),
           data: {
-            title: "某省烟草集团 - 策略建议报告",
+            title: "云南烟草集团 - 策略建议报告",
             swot: {
               strengths: ["已有合作基础", "专属服务团队"],
               weaknesses: ["互联网大厂经验需加强", "针对高管专属资源有待验证"],
-              opportunities: ["某省烟草AI PC战略升级", "企业健康管理市场增长"],
+              opportunities: ["云南烟草AI PC战略升级", "企业健康管理市场增长"],
               threats: ["其他大平台抢占服务", "预算可能受行业影响"],
             },
             industryTrends: [
@@ -4906,9 +4906,9 @@ function AiChatWindow({
             products: [
               {
                 name: "企业医务室管理与名医上门",
-                reason: "匹配某省烟草大规模产线及办公园区",
+                reason: "匹配云南烟草大规模产线及办公园区",
                 matchScore: 98,
-                pitch: `【痛点切入】“咱们某省烟草各园区的研发和产线员工规模庞大，日常面临的小毛小病或突发不适，往往因为工作繁忙顾不上就医，导致亚健康和慢病积压。”
+                pitch: `【痛点切入】“咱们云南烟草各园区的研发和产线员工规模庞大，日常面临的小毛小病或突发不适，往往因为工作繁忙顾不上就医，导致亚健康和慢病积压。”
 【方案价值】“平安企康可提供定制化的『企业医务室管理』，辅以『名医上门』和『治疗/护理上门』服务。让员工在园区内就能获得基础诊疗和开药服务。不仅如此，我们还可以安排三甲医院专家定期到企坐诊，真正做到小病不出园区，大幅提升员工满意度和出勤效率。”
 【差异化优势】“依托北大国际医疗中心等超3000人专家网络，结合平安的驻场运营体系，我们的企业医务室不是药柜，而是有医生、有设备、能慢病管理的微型医院。”`,
               },
@@ -4922,9 +4922,9 @@ function AiChatWindow({
               },
               {
                 name: "全球急难救援与高端海外就医",
-                reason: "契合某省烟草全球化战略与驻外人员保障",
+                reason: "契合云南烟草全球化战略与驻外人员保障",
                 matchScore: 94,
-                pitch: `【痛点切入】“随着某省烟草全球化业务深化，大量高管出海、跨国驻派，面临异国他乡突发疾病无法及时就医的风险，这类群体是公司最宝贵的资产。”
+                pitch: `【痛点切入】“随着云南烟草全球化业务深化，大量高管出海、跨国驻派，面临异国他乡突发疾病无法及时就医的风险，这类群体是公司最宝贵的资产。”
 【方案价值】“我们可以提供覆盖公务、旅行、留学的『全地域、全场景全球急难救援（Anywhere/Anytime）』服务，包含医疗事故、交通意外的秒级响应和直升机救援。对于长期海外驻派高管，我们支持『高端海外就医』，提供体检、二诊、医疗翻译陪诊一条龙服务。”
 【差异化优势】“7x24全天候双语响应，无论在全球哪个角落，只要员工有需要，平安企康的百项标准救援服务能够实现‘一救到底’。”`,
               },
@@ -4965,7 +4965,7 @@ function AiChatWindow({
       text.includes("投标") ||
       (text.includes("标书") &&
         !text.includes("合规性检查") &&
-        !text.includes("商务标书_某省烟草项目_v1.0.pdf")) ||
+        !text.includes("商务标书_云南烟草项目_v1.0.pdf")) ||
       text.includes("倒排时间") ||
       text.includes("招投标") ||
       text.includes("招标助手")
@@ -4981,7 +4981,7 @@ function AiChatWindow({
         data: {
           steps: [
             {
-              text: "生成【内部】某省烟草集团 - 招投标交流群...",
+              text: "生成【内部】云南烟草集团 - 招投标交流群...",
               status: "loading",
             },
           ],
@@ -4999,7 +4999,7 @@ function AiChatWindow({
                   data: {
                     steps: [
                       {
-                        text: "生成【内部】某省烟草集团 - 招投标交流群...",
+                        text: "生成【内部】云南烟草集团 - 招投标交流群...",
                         status: "done",
                       },
                       { text: "邀请相关负责人进入群聊...", status: "loading" },
@@ -5020,7 +5020,7 @@ function AiChatWindow({
                   data: {
                     steps: [
                       {
-                        text: "生成【内部】某省烟草集团 - 招投标交流群...",
+                        text: "生成【内部】云南烟草集团 - 招投标交流群...",
                         status: "done",
                       },
                       { text: "邀请相关负责人进入群聊...", status: "done" },
@@ -5036,7 +5036,7 @@ function AiChatWindow({
           sender: "bot",
           type: "text",
           content:
-            "已为您生成“【内部】某省烟草集团 - 招投标交流群”，并已将相关负责人（李经理、肖姣、梁华耀、梁镇宁）拉入群聊。请点击下方按钮进入群聊进行招投标事项交流。",
+            "已为您生成“【内部】云南烟草集团 - 招投标交流群”，并已将相关负责人（李经理、肖姣、梁华耀、梁镇宁）拉入群聊。请点击下方按钮进入群聊进行招投标事项交流。",
           timestamp: new Date(),
           data: {
             isBidGroupLink: true,
@@ -5101,10 +5101,10 @@ function AiChatWindow({
           sender: "bot",
           type: "prep_card",
           content:
-            "已为您创建“某省烟草健康管理推荐方案筹备组”，并拉入了相关负责人。",
+            "已为您创建“云南烟草健康管理推荐方案筹备组”，并拉入了相关负责人。",
           timestamp: new Date(),
           data: {
-            title: "某省烟草健康管理推荐方案筹备组",
+            title: "云南烟草健康管理推荐方案筹备组",
             members: [
               {
                 name: "肖姣",
@@ -5191,7 +5191,7 @@ function AiChatWindow({
 
         const fullTranscription = `李经理：客户您好，关于大健康产业的合作，我们初步考虑从高管健康保障切入...
 客户：这个方向不错，我们确实需要更专业的医疗资源对接...
-李经理：好的，我们会针对某省烟草的需求定制专属方案，包括绿色通道和数字化管理...`;
+李经理：好的，我们会针对云南烟草的需求定制专属方案，包括绿色通道和数字化管理...`;
         let currentText = "";
         let index = 0;
 
@@ -5234,7 +5234,7 @@ function AiChatWindow({
       return;
     } else if (
       (text.startsWith("[附件]") && awaitingComplianceUpload) ||
-      text.includes("商务标书_某省烟草项目_v1.0.pdf")
+      text.includes("商务标书_云南烟草项目_v1.0.pdf")
     ) {
       setAwaitingComplianceUpload(false);
       const reasoningMsgId = Date.now().toString();
@@ -5415,7 +5415,7 @@ function AiChatWindow({
           content: "已为您开启客户动态监控，并为您准备了最新的服务建议：",
           timestamp: new Date(),
           data: {
-            title: "某省烟草集团 - 动态监控",
+            title: "云南烟草集团 - 动态监控",
             customerInquiries: [
               {
                 question: "黑金计划的理赔时效是多久？",
@@ -5426,12 +5426,12 @@ function AiChatWindow({
             ],
             news: [
               {
-                title: "某省烟草集团加大医疗健康投资",
+                title: "云南烟草集团加大医疗健康投资",
                 date: "2026-03-25",
                 source: "新华网",
               },
               {
-                title: "某省烟草高管团队调整",
+                title: "云南烟草高管团队调整",
                 date: "2026-03-20",
                 source: "财经网",
               },
@@ -5741,7 +5741,7 @@ function AiChatWindow({
                 "关键决策人分析",
                 "历史合作分析"],
               prompts: {
-                客户信息调研: "生成某省烟草集团的客户画像。人员约8000+人，高层员工：800人，核心员工6000人，在职人员平均35岁占比68%，男性员工4500+人，内勤员工：7000人，预算在600~800w左右",
+                客户信息调研: "生成云南烟草集团的客户画像。人员约8000+人，高层员工：800人，核心员工6000人，在职人员平均35岁占比68%，男性员工4500+人，内勤员工：7000人，预算在600~800w左右",
                 关键决策人分析: "#关键决策人分析#",
                 历史合作分析: "#历史合作分析#",
               },
@@ -5750,15 +5750,15 @@ function AiChatWindow({
               name: "营销方案专家",
               img: "https://api.dicebear.com/9.x/avataaars/svg?seed=Marketing&backgroundColor=f97316&eyes=happy&mouth=smile&accessories=sunglasses&clothing=blazerAndSweater",
               desc: "定制专业产品组合",
-              skills: ["三段式营销材料", "标准产品推荐", "明星方案匹配", "案例亮点提炼", "竞品多维对标", "拜访建议话术"],
+              skills: ["拜访材料生成", "标准产品推荐", "明星方案匹配", "案例亮点提炼", "竞品多维对标", "拜访建议话术"],
               prompts: {
-                三段式营销材料:
+                拜访材料生成:
                   "我要去拜访云南烟草，帮我准备拜访材料",
                 标准产品推荐: "#标准产品推荐#",
                 明星方案匹配: "#明星方案匹配#",
                 案例亮点提炼: "#案例亮点提炼#",
                 竞品多维对标: "#竞品多维对标#",
-                拜访建议话术: "我要去拜访某烟草企业，拜访对象包括分管总、HRD和项目经办人",
+                拜访建议话术: "帮我把分管总、HRD和经办人可能关心的问题准备好",
               },
             },
             {
@@ -6001,11 +6001,11 @@ function GroupChatWindow({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const QUICK_SKILLS = [
-    { title: "客户信息调研", prompt: "生成某省烟草集团的客户画像。人员约8000+人，高层员工：800人，核心员工6000人，在职人员平均35岁占比68%，男性员工4500+人，内勤员工：7000人，预算在600~800w左右" },
+    { title: "客户信息调研", prompt: "生成云南烟草集团的客户画像。人员约8000+人，高层员工：800人，核心员工6000人，在职人员平均35岁占比68%，男性员工4500+人，内勤员工：7000人，预算在600~800w左右" },
     { title: "合规分析", prompt: "#合规分析#" },
     { title: "关键决策人分析", prompt: "#关键决策人分析#" },
     { title: "历史合作分析", prompt: "#历史合作分析#" },
-    { title: "拜访建议话术", prompt: "我要去拜访某烟草企业，拜访对象包括分管总、HRD和项目经办人" },
+    { title: "拜访建议话术", prompt: "帮我把分管总、HRD和经办人可能关心的问题准备好" },
     { title: "招标文件解读", prompt: "帮我解读这份招标文件，看看重点关注什么" },
     { title: "招投标问答", prompt: "关于招投标内容我想提几个问题" },
     { title: "生成目录模板", prompt: "根据项目信息生成标书目录模板" },
@@ -6014,7 +6014,7 @@ function GroupChatWindow({
     
     { title: "材料审查", prompt: "#材料审查#" },
     {
-      title: "三段式营销材料",
+      title: "拜访材料生成",
       prompt: "我要去拜访云南烟草，帮我准备拜访材料",
     },
     { title: "标准产品推荐", prompt: "#标准产品推荐#" },
@@ -6087,13 +6087,13 @@ function GroupChatWindow({
   }, []);
 
   const chatNames: Record<string, string> = {
-    maotai: "某省烟草集团 - AI助手",
-    maotai_bid: "【内部】某省烟草集团 - 招投标交流群",
+    maotai: "云南烟草集团 - AI助手",
+    maotai_bid: "【内部】云南烟草集团 - 招投标交流群",
     huadong: "华东医疗集团 - 项目筹备组",
     suzhou: "苏州高新科技 - 交流群",
     nanjing: "南京精密制造 - 投标工作组",
     hangzhou: "杭州数字科技 - 市场分析组",
-    maotai_prep: "某省烟草健康管理推荐方案筹备组",
+    maotai_prep: "云南烟草健康管理推荐方案筹备组",
     xiaojiao: "肖姣 (产品经理)",
     lianghuayao: "梁华耀 (服务团队)",
     linpeixin: "李经理 (客户经理)",
@@ -6347,7 +6347,7 @@ function GroupChatWindow({
       sender: "bot",
       type: "text",
       content:
-        "🎉 某省烟草集团项目招投标各项任务已全部完成！祝愿本次招投标取得圆满成功！",
+        "🎉 云南烟草集团项目招投标各项任务已全部完成！祝愿本次招投标取得圆满成功！",
     });
 
     setTimeout(() => {
@@ -6938,7 +6938,7 @@ function GroupChatWindow({
         id: Date.now().toString(),
         sender: "bot",
         type: "text",
-        content: "在生成拜访材料前，需要先跟您确认以下信息：\n1、拜访对象及内部身份：您拜访的对接人是什么职务？（如HR负责人/分管副总/总经理）\n2、当前关系基础：是首次接触，还是已有其他业务合作（如年金、财产险等）？\n3、拜访目标：本次希望达成的核心目标是什么？（如：建立初步信任 /了解对方需求/ 方案邀约）\n4、多机构情况：该烟草企业下辖多少个地市/县级分支机构？覆盖哪些区域？\n5、预算池情况：预算池的大致规模或人均预算范围是多少？\n6、历史赔付信息：目前已知的赔付情况大致如何？（如：赔付率偏高/偏低/完全末知）\n请您逐项补充，我来为您定制精准的拜访材料。",
+        content: "好的，根据标品营销方案生成流程，我需要先收集客户信息。请提供以下客户基本信息：\n\n---\n\n**必填项：**\n\n① **客户名称** (全称)：\n② **行业** (金融/能源/通讯/烟草/科技/邮政/制造/交通运输等)：\n③ **人员规模** (在职员工总数)：\n④ **地域** (省/市)：\n⑤ **预算** (年，如\"3000万\")：\n\n**选填项 (让方案更精准)：**\n\n- 组织结构：高层___人 / 核心员工___人 / 基层员工___人\n- 人员结构：离退休比例___ / 在职人员比例___，平均年龄___，年龄高峰区间___\n- 性别结构：男___人 / 女___人\n- 工种结构：内勤___人 / 外勤___人\n- 既往健康痛点：\n- 补充说明：",
         timestamp: new Date(),
       };
       
@@ -6975,7 +6975,7 @@ function GroupChatWindow({
         id: reasoningMsgId,
         sender: "bot",
         type: "reasoning",
-        content: "营销方案专家调用以下技能：三段式营销材料、标准产品推荐、明星方案匹配、案例亮点提炼、竞品多维对标",
+        content: "营销方案专家调用以下技能：拜访材料生成、标准产品推荐、明星方案匹配、案例亮点提炼、竞品多维对标",
         timestamp: new Date(),
         data: {
           title: "营销方案专家思考与执行中..",
@@ -7015,7 +7015,7 @@ function GroupChatWindow({
             sender: "bot",
             type: "lenovo_new_marketing_plan",
             content:
-              "为您生成某省烟草集团专属家庭医生补充营销方案PPT和营销话术html。",
+              "为您生成云南烟草集团专属家庭医生补充营销方案PPT和营销话术html。",
             timestamp: new Date(),
             data: { isFamilyDoctor: true },
           };
@@ -7744,7 +7744,7 @@ function GroupChatWindow({
         setIsTyping(false);
       }, 4500);
       return;
-    } else if (text === "我要去拜访某烟草企业，拜访对象包括分管总、HRD和项目经办人") {
+    } else if (text === "帮我把分管总、HRD和经办人可能关心的问题准备好") {
       if (onStageChange) onStageChange("做准备");
       const newUserMsg: Message = {
         id: Date.now().toString() + "_user",
@@ -7800,7 +7800,7 @@ function GroupChatWindow({
           sender: "bot",
           type: "text",
           content:
-            "这是某省烟草集团项目的招投标交流群，请大家在群里交流招投标事项。",
+            "这是云南烟草集团项目的招投标交流群，请大家在群里交流招投标事项。",
           timestamp: new Date(Date.now() - 2000),
         };
         const initialMsg2: Message = {
@@ -7823,7 +7823,7 @@ function GroupChatWindow({
           content: "好的，已为您生成招投标任务计划：",
           timestamp: new Date(),
           data: {
-            title: "招标助手 - 某省烟草投标材料筹备",
+            title: "招标助手 - 云南烟草投标材料筹备",
             deadline: "2026-04-15",
             remindersEnabled: true,
             schedule: [
@@ -7916,8 +7916,8 @@ function GroupChatWindow({
           leads: [
             {
               id: "1",
-              title: "某省烟草集团企业健康管理项目",
-              company: "某省烟草集团",
+              title: "云南烟草集团企业健康管理项目",
+              company: "云南烟草集团",
               industry: "白酒制造",
               budget: "500万+",
               location: "贵州省仁怀市",
@@ -8047,7 +8047,7 @@ function GroupChatWindow({
               label: "商机名称",
               value:
                 text.replace("认领", "").trim() ||
-                "某省烟草集团企业健康管理项目",
+                "云南烟草集团企业健康管理项目",
             },
             { label: "认领时间", value: new Date().toLocaleString() },
             { label: "状态", value: "已认领 -> 进入跟进流程" },
@@ -8074,7 +8074,7 @@ function GroupChatWindow({
     ) {
       if (onStageChange) onStageChange("看档案");
       const reasoningMsgId = Date.now().toString();
-      const skillName = text.includes("某省烟草基本情况调研")
+      const skillName = text.includes("云南烟草基本情况调研")
         ? "客户信息调研"
         : "情报侦察兵";
       const reasoningMsg: Message = {
@@ -8105,7 +8105,7 @@ function GroupChatWindow({
                         status: "done",
                       },
                       {
-                        text: "正在调取某省烟草集团全量工商信息...",
+                        text: "正在调取云南烟草集团全量工商信息...",
                         status: "loading",
                       },
                     ],
@@ -8129,7 +8129,7 @@ function GroupChatWindow({
                         status: "done",
                       },
                       {
-                        text: "正在调取某省烟草集团全量工商信息...",
+                        text: "正在调取云南烟草集团全量工商信息...",
                         status: "done",
                       },
                       {
@@ -8157,7 +8157,7 @@ function GroupChatWindow({
                         status: "done",
                       },
                       {
-                        text: "正在调取某省烟草集团全量工商信息...",
+                        text: "正在调取云南烟草集团全量工商信息...",
                         status: "done",
                       },
                       {
@@ -8169,7 +8169,7 @@ function GroupChatWindow({
                         status: "done",
                       },
                       {
-                        text: `【${skillName}】已为您生成某省烟草集团全面背景报告。`,
+                        text: `【${skillName}】已为您生成云南烟草集团全面背景报告。`,
                         status: "done",
                       },
                     ],
@@ -8190,21 +8190,21 @@ function GroupChatWindow({
           };
           setMessages((prev) => [...prev, askNameMsg]);
         } else {
-          const isSurvey = text.includes("某省烟草基本情况调研");
+          const isSurvey = text.includes("云南烟草基本情况调研");
           const reportMsg: Message = {
             id: (Date.now() + 1).toString(),
             sender: "bot",
             type: isSurvey ? "survey_report" : "report_card",
             content: isSurvey
-              ? `某省烟草基本情况最新调研报告：`
+              ? `云南烟草基本情况最新调研报告：`
               : "客户洞察专家自动深入调研客户背景，并为您生成了一份详细的结构化情报报告：",
             timestamp: new Date(),
             ...(!isSurvey && {
               data: {
-                title: "情报侦察兵 - 某省烟草集团背景报告",
+                title: "情报侦察兵 - 云南烟草集团背景报告",
                 overviewTitle: "公司概况",
                 overview:
-                  "某省烟草集团是某省烟草集团在中国的核心运营主体，主要从事个人电脑、智能设备、基础设施及相关IT服务的研发、生产与销售。作为全球领先的科技企业，某省烟草不仅在PC市场占据全球第一的份额，近年来也在积极向智能化、云服务和企业级解决方案转型。",
+                  "云南烟草集团是云南烟草集团在中国的核心运营主体，主要从事个人电脑、智能设备、基础设施及相关IT服务的研发、生产与销售。作为全球领先的科技企业，云南烟草不仅在PC市场占据全球第一的份额，近年来也在积极向智能化、云服务和企业级解决方案转型。",
                 metrics: [
                   { label: "注册资本", value: "25000 万港币" },
                   { label: "员工规模", value: "7.0 万+" },
@@ -8218,7 +8218,7 @@ function GroupChatWindow({
                   {
                     label: "行业与竞争格局",
                     value:
-                      "ICT设备和IT服务行业竞争激烈。某省烟草在PC端面临惠普、戴尔的竞争，智能设备端和基础设施端面临华为、浪潮等国内巨头的挤压。某省烟草通过“端-边-云-网-智”新IT架构构筑竞争护城河。",
+                      "ICT设备和IT服务行业竞争激烈。云南烟草在PC端面临惠普、戴尔的竞争，智能设备端和基础设施端面临华为、浪潮等国内巨头的挤压。云南烟草通过“端-边-云-网-智”新IT架构构筑竞争护城河。",
                   },
                   {
                     label: "业务结构分析",

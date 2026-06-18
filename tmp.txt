@@ -1,0 +1,303 @@
+export function LenovoNewMarketingPlanCard({
+  data,
+  onDownload,
+}: {
+  data?: any;
+  onDownload?: () => void;
+}) {
+  return (
+    <div className="w-full max-w-5xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-4 font-['Microsoft_YaHei',_'sans-serif'] text-gray-800">
+      <div className="bg-gradient-to-r from-orange-600 to-orange-500 px-6 py-5 flex justify-between items-center text-white">
+        <div className="flex flex-col">
+          <div className="flex items-center text-lg font-bold mb-1">
+            <svg
+              className="w-5 h-5 mr-3 text-white/90"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+            平安企康 · 企业健康保障服务
+          </div>
+          <div className="text-white/80 text-sm ml-8">
+            某省烟草专卖局（公司） | 首次拜访材料
+          </div>
+        </div>
+        <div className="text-right text-sm text-white/80 leading-relaxed">
+          <div>平安产险·企康服务团队</div>
+          <div>2026年6月</div>
+        </div>
+      </div>
+
+      <div className="p-4 flex flex-col md:flex-row gap-4">
+        {/* Column 1 */}
+        <div className="flex-[1.2] bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col overflow-hidden">
+          <div className="bg-[#1e3a5f] text-white px-4 py-3 font-bold flex items-center text-sm">
+            <span className="mr-2 text-base">🏆</span> 哪些大客户在做
+          </div>
+          <div className="p-4 space-y-6 text-sm">
+            <div>
+              <div className="flex items-center font-bold text-[#1e3a5f] mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#1e3a5f] mr-2"></div>
+                同类型央国企
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <div className="font-bold text-gray-800 mb-1 leading-relaxed">央企千万级委托单 <span className="font-normal text-gray-500">—— 平安产险江门中支产养联合，中标央企客户千万级企康业务，运用"三张地图"战略精准破局</span></div>
+                  <div className="inline-flex items-center bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded border border-green-200 mt-1">✅ 已中标</div>
+                </div>
+                <div>
+                  <div className="font-bold text-gray-800 mb-1 leading-relaxed">五矿盐湖有限公司 <span className="font-normal text-gray-500">—— 平安产险青海分公司</span></div>
+                  <div className="text-gray-500 mb-1 leading-relaxed">拜访对接，企康项目涵盖健康体检、健康评估、健康干预、医疗服务一站式方案</div>
+                  <div className="inline-flex items-center bg-yellow-50 text-yellow-700 text-xs px-2 py-0.5 rounded border border-yellow-200">⭐ 推进中</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center font-bold text-[#1e3a5f] mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#1e3a5f] mr-2"></div>
+                省级多机构客户
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <div className="font-bold text-gray-800 mb-1 leading-relaxed">海南省烟草商业系统 <span className="font-normal text-gray-500">—— 2025-2027年补充医疗保险项目，平安产险中标</span></div>
+                  <div className="flex gap-2 mt-1">
+                    <span className="bg-[#f0f4fc] text-[#4f73b6] text-xs px-2 py-0.5 rounded">管理费率 1.00%</span>
+                    <span className="text-[#37b275] font-bold text-xs flex items-center">2300元/人/年</span>
+                  </div>
+                </div>
+                <div>
+                  <div className="font-bold text-gray-800 mb-1 leading-relaxed">贵州省烟草公司 <span className="font-normal text-gray-500">—— 2025-2028年补充医疗保险采购，平安产险中标（得分85.36，远超竞品69.53）</span></div>
+                  <div className="flex gap-2 mt-1">
+                    <span className="bg-[#f0f4fc] text-[#4f73b6] text-xs px-2 py-0.5 rounded">管理费率 2%</span>
+                  </div>
+                </div>
+                <div>
+                  <div className="font-bold text-gray-800 mb-1 leading-relaxed">重庆市烟草公司 <span className="font-normal text-gray-500">—— 2026-2027年职工补充医疗保障，平安产险中标</span></div>
+                  <div className="flex gap-2 mt-1">
+                    <span className="bg-[#f0f4fc] text-[#4f73b6] text-xs px-2 py-0.5 rounded">管理费率 1.70%</span>
+                  </div>
+                </div>
+                <div>
+                  <div className="font-bold text-gray-800 mb-1 leading-relaxed">遵义市烟草公司 <span className="font-normal text-gray-500">—— 2025年补充医疗保险，平安养老险中标</span></div>
+                  <div className="flex gap-2 mt-1">
+                    <span className="bg-[#f0f4fc] text-[#4f73b6] text-xs px-2 py-0.5 rounded">管理费率 2.77%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center font-bold text-[#1e3a5f] mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#1e3a5f] mr-2"></div>
+                长期合作标杆
+              </div>
+              <div className="">
+                <div className="font-bold text-gray-800 mb-1 leading-relaxed">金华烟草 · 全国标杆 <span className="font-normal text-gray-500">—— 平安产险总部戴新媛总带队，联合浙江分公司及多地中支机构赴金华烟草开展企康服务专项交流。双方围绕企业健康险服务提质升级、深化长期合作深度沟通。金华烟草被定位为<strong className="text-gray-900 border-b border-gray-900">可复制、可推广</strong>的企康服务标杆样本，推动全国企康业务精细化、标准化升级。</span></div>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  <span className="bg-amber-50 text-amber-700 text-[10px] px-2 py-0.5 rounded font-medium">总部级标杆</span>
+                  <span className="bg-green-50 text-green-700 text-[10px] px-2 py-0.5 rounded font-medium">产养协同</span>
+                  <span className="bg-orange-50 text-orange-700 text-[10px] px-2 py-0.5 rounded font-medium">长期合作</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Column 2 */}
+        <div className="flex-1 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col overflow-hidden">
+          <div className="bg-orange-500 text-white px-4 py-3 font-bold flex items-center text-sm">
+            <span className="mr-2 text-base">📦</span> 平安标准产品
+          </div>
+          <div className="p-4 space-y-6 text-sm">
+            <div>
+              <div className="flex items-center font-bold text-orange-500 mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mr-2"></div>
+                分层补充医疗
+              </div>
+              <div className="text-gray-600 space-y-1.5">
+                <p>提供<strong className="text-gray-900">多层次、可定制</strong>的补充医疗保障方案：</p>
+                <ul className="list-disc pl-5 space-y-1 text-gray-700 py-1">
+                  <li>基础层：门急诊/住院费用补充报销</li>
+                  <li>增强层：重大疾病定额给付</li>
+                  <li>高端层：特需医疗/海外就医</li>
+                </ul>
+                <p className="font-bold text-[#4f73b6] pt-1">支持按岗位/职级/工龄分层设计</p>
+                <div className="flex gap-2 pt-1">
+                  <span className="bg-orange-50 text-orange-500 text-[10px] px-2 py-0.5 rounded border border-orange-200 font-medium">灵活定制</span>
+                  <span className="bg-[#f0f4fc] text-[#4f73b6] text-[10px] px-2 py-0.5 rounded border border-[#d2def2] font-medium">全员覆盖</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center font-bold text-orange-500 mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mr-2"></div>
+                委托基金管理
+              </div>
+              <div className="text-gray-600 space-y-1.5">
+                <p className="font-bold text-gray-800">15年+运营经验 · 管理基金超千亿</p>
+                <ul className="list-disc pl-5 space-y-1 text-gray-700 py-1">
+                  <li>专户管理、专款专用，接受审计监督</li>
+                  <li>按企业制定的报销规则精准支付</li>
+                  <li>覆盖门急诊、住院、体检、高额医疗补助、急难津贴等</li>
+                  <li>年度结余可滚存使用，<strong className="text-[#4f73b6]">预算池灵活高效</strong></li>
+                </ul>
+                <div className="bg-[#f0f4fc] text-[#4f73b6] p-2 rounded text-xs font-bold w-fit mt-1">
+                  行业管理费率参考：1%~3.75%
+                </div>
+                <div className="flex gap-2 pt-2">
+                  <span className="bg-orange-50 text-orange-500 text-[10px] px-2 py-0.5 rounded border border-orange-200 font-medium">资金安全</span>
+                  <span className="bg-amber-50 text-amber-600 text-[10px] px-2 py-0.5 rounded border border-amber-200 font-medium">数据沉淀</span>
+                  <span className="bg-orange-50 text-orange-600 text-[10px] px-2 py-0.5 rounded border border-orange-200 font-medium">灵活滚存</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center font-bold text-orange-500 mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mr-2"></div>
+                体检 / 慢病 / 就医协助
+              </div>
+              <div className="text-gray-600 space-y-3">
+                <p className="text-gray-800 font-bold">"四到"服务体系 —— 到线·到院·到企·到家</p>
+                <div className="space-y-2">
+                  <div className="flex items-start"><span className="mr-2">🏥</span><span><strong className="text-gray-800">体检管理：</strong>定制套餐 + 报告解读 + 异常追踪</span></div>
+                  <div className="flex items-start"><span className="mr-2">💊</span><span><strong className="text-gray-800">慢病管理：</strong>专属保健医生 + 用药指导 + 健康干预</span></div>
+                  <div className="flex items-start"><span className="mr-2">🚑</span><span><strong className="text-gray-800">就医协助：</strong>全国百强三甲绿色通道 + 挂号转诊</span></div>
+                  <div className="flex items-start"><span className="mr-2">🏢</span><span><strong className="text-gray-800">到企服务：</strong>驻场医务室 + 健康讲座 + 急救培训</span></div>
+                  <div className="flex items-start"><span className="mr-2">📱</span><span><strong className="text-gray-800">到线服务：</strong>7×24小时在线问诊 + 健康档案</span></div>
+                </div>
+                <div className="flex gap-2 pt-1">
+                  <span className="bg-[#f0f4fc] text-[#4f73b6] text-[10px] px-2 py-0.5 rounded font-bold">5万+医生</span>
+                  <span className="bg-orange-50 text-orange-500 text-[10px] px-2 py-0.5 rounded font-bold">5100+医院</span>
+                  <span className="bg-amber-50 text-amber-600 text-[10px] px-2 py-0.5 rounded font-bold">24万+药店</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Column 3 */}
+        <div className="flex-1 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col overflow-hidden">
+          <div className="bg-[#d86f44] text-white px-4 py-3 font-bold flex items-center text-sm">
+            <span className="mr-2 text-base">💎</span> 明星方案价值
+          </div>
+          <div className="p-4 flex flex-col h-full">
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="bg-gray-50 border border-gray-100 p-4 rounded-lg text-center flex flex-col items-center shadow-sm">
+                <div className="text-2xl mb-2">📋</div>
+                <div className="font-bold text-gray-800 text-sm mb-1">政策合规</div>
+                <div className="text-xs text-gray-500 leading-relaxed">严格遵循国资委、银保监监管要求<br/>合规目录全覆盖，审计零风险</div>
+              </div>
+              <div className="bg-gray-50 border border-gray-100 p-4 rounded-lg text-center flex flex-col items-center shadow-sm">
+                <div className="text-2xl mb-2">❤️</div>
+                <div className="font-bold text-gray-800 text-sm mb-1">员工关怀</div>
+                <div className="text-xs text-gray-500 leading-relaxed">全周期健康管理闭环<br/>体检→慢病→就医→康复</div>
+              </div>
+              <div className="bg-gray-50 border border-gray-100 p-4 rounded-lg text-center flex flex-col items-center shadow-sm">
+                <div className="text-2xl mb-2">🌿</div>
+                <div className="font-bold text-gray-800 text-sm mb-1">ESG / 健康企业</div>
+                <div className="text-xs text-gray-500 leading-relaxed">助力"健康中国2030"战略<br/>提升企业ESG评级与社会形象</div>
+              </div>
+              <div className="bg-gray-50 border border-gray-100 p-4 rounded-lg text-center flex flex-col items-center shadow-sm">
+                <div className="text-2xl mb-2">🏅</div>
+                <div className="font-bold text-gray-800 text-sm mb-1">企业文化与荣誉</div>
+                <div className="text-xs text-gray-500 leading-relaxed">平安集团世界500强<br/>企康服务4500+企业客户</div>
+              </div>
+            </div>
+
+            <div className="bg-[#fff9eb] border border-[#fce4a6] rounded-xl p-5 mt-auto relative overflow-hidden">
+              <div className="absolute -right-4 -top-4 text-6xl opacity-10">🎯</div>
+              <div className="font-bold text-[#b88c3a] mb-3 flex items-center text-sm">
+                <span className="mr-2">🎯</span> 为什么选择平安企康
+              </div>
+              <div className="text-sm text-gray-700 space-y-3 leading-relaxed relative z-10">
+                <p><strong className="text-[#d86f44]">综合金融+医疗健康</strong>双轮驱动，区别于单一保险公司的碎片化服务。</p>
+                <p>平安集团战略级业务，<strong className="text-gray-900 border-b border-[#fce4a6]">4500+</strong>企业客户信赖选择，B端业务同比增长<strong className="text-gray-900">40.6%</strong>。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      {/* Table Section */}
+      <div className="bg-white px-6 py-5 border-t border-gray-100">
+        <div className="font-bold text-gray-800 text-base mb-4 flex items-center">
+          <span className="mr-2">💡</span> 烟草企业健康保障行业特征与话术推荐
+        </div>
+        <div className="overflow-x-auto rounded-lg border border-[#e2e8f0]">
+          <table className="w-full text-sm text-left border-collapse">
+            <thead className="bg-[#fce4a6]/50 text-[#b88c3a] font-bold">
+              <tr>
+                <th className="px-4 py-3 border-b border-[#e2e8f0]">行业特征</th>
+                <th className="px-4 py-3 border-b border-[#e2e8f0]">对应的企康需求</th>
+                <th className="px-4 py-3 border-b border-[#e2e8f0]">推荐话术</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-700">
+              <tr>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0]">员工规模大（数千~数万人）</td>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0]">需要可覆盖全国、统一标准、集中管理的健康服务体系</td>
+                <td className="px-5 py-4 border-b border-[#e2e8f0] bg-[#fff9eb]/50 text-gray-800 leading-relaxed text-xs" rowSpan={4}>
+                  “贵司员工平均年龄45+，八成有慢病管理需求，63%希望设立企业医务室——平安的‘医健安心’四大体系1066项服务可以精准匹配。我们可以从企业医务室+慢病管理切入，配合线上家庭医生7×24h守护，让员工‘小病不出门、慢病有人管、大病有通道’，同时通过健康直付降低HR管理成本。”
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0] bg-gray-50/50">平均年龄偏高（45岁+）</td>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0] bg-gray-50/50">慢病管理、退休人员健康保障、中老年专属健康服务</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0]">退休员工比例高</td>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0]">退休人员健康管理延续、企业医务室需求强烈</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0] bg-gray-50/50">一线员工轮班制</td>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0] bg-gray-50/50">7×24小时在线问诊、远程医疗服务</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0]">国企福利体系完善</td>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0]">补充医疗、健康委托管理、年金等综合福利方案</td>
+                <td className="px-5 py-4 border-b border-[#e2e8f0] bg-[#fff9eb]/50 text-gray-800 leading-relaxed text-xs" rowSpan={3}>
+                  “烟草行业员工平均年龄偏高、退休比例大，这是行业共性挑战。平安已为多家烟草央企提供超10年的全周期健康管理服务，从企业医务室到慢病管理、从补充医疗到年金受托，形成了成熟的‘防筛管治’一体化方案。我们某烟草客户委托年缴费超1亿元，员工满意度99%，真正实现了‘员工满意、企业减负、合规无忧’。”
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0] bg-gray-50/50">员工互联网化程度偏低</td>
+                <td className="px-4 py-3 border-b border-r border-[#e2e8f0] bg-gray-50/50">需要线下+线上融合的宣导与使用指导</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 border-r border-[#e2e8f0]">职业病风险（烟草生产相关）</td>
+                <td className="px-4 py-3 border-r border-[#e2e8f0]">尘肺、呼吸道等职业病防范、定期体检、健康监测</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className="bg-white border-t border-gray-100 px-6 py-4 flex justify-between items-center download-exclude">
+        <div className="flex flex-col">
+          <span className="font-bold text-gray-800 text-sm mb-0.5">平安产险 · 企康服务团队</span>
+          <span className="text-xs text-gray-500">覆盖全省各地市，县级区域属地化服务</span>
+        </div>
+        {onDownload ? (
+          <button
+            onClick={onDownload}
+            className="flex items-center text-sm text-white bg-[#d36437] hover:bg-[#bd582f] px-6 py-2.5 rounded-lg shadow-sm transition-colors font-bold cursor-pointer"
+          >
+            期待与您携手 共建健康职场
+          </button>
+        ) : (
+          <div className="flex items-center text-sm text-white bg-[#d36437] px-6 py-2.5 rounded-lg shadow-sm font-bold opacity-90">
+            期待与您携手 共建健康职场
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

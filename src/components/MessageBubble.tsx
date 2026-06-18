@@ -1,7 +1,7 @@
 import { ProjectManagementCard } from './ProjectManagementCard';
 import React, { useState, useRef, useEffect } from "react";
 import { Message } from "../types";
-import { Bot, User, CheckCircle2, CheckCircle, ChevronLeft, ChevronRight, Target, Building2, MapPin, DollarSign, Loader2, Users, FileText, Presentation, Mic, Download, FileCheck, Calendar, BellRing, MessageSquare, X, Search, TrendingUp, Briefcase, Award, Layers, Cpu, ShieldCheck, PieChart, BarChart3, History, HelpCircle, FileBarChart, Handshake, HeartPulse, LineChart, Lightbulb, Map, UserCircle, MessageCircle, AlertCircle, Diamond, Compass, ListChecks, ShieldAlert, FileSearch, XCircle, Paperclip, AlertTriangle, Info, Circle } from "lucide-react";
+import { Bot, Check, User, CheckCircle2, CheckCircle, ChevronLeft, ChevronRight, Target, Building2, MapPin, DollarSign, Loader2, Users, FileText, Presentation, Mic, Download, FileCheck, Calendar, BellRing, MessageSquare, X, Search, TrendingUp, Briefcase, Award, Layers, Cpu, ShieldCheck, PieChart, BarChart3, History, HelpCircle, FileBarChart, Handshake, HeartPulse, LineChart, Lightbulb, Map, UserCircle, MessageCircle, AlertCircle, Diamond, Compass, ListChecks, ShieldAlert, FileSearch, XCircle, Paperclip, AlertTriangle, Info, Circle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export function HistoryCooperationReportCard({
@@ -20,7 +20,7 @@ export function HistoryCooperationReportCard({
       <div className="bg-gradient-to-r from-orange-600 to-amber-600 px-4 py-3 flex justify-between items-center">
         <div className="flex items-center text-white font-bold">
           <History size={18} className="mr-2" />
-          【某省烟草】历史合作与产品覆盖深度分析报告
+          【云南烟草】历史合作与产品覆盖深度分析报告
         </div>
         <div className="text-white/80 text-sm">大数据分析平台</div>
       </div>
@@ -128,7 +128,7 @@ export function HistoryCooperationReportCard({
                     />
                     <span>
                       <strong>合作呈严重“偏科”态势：</strong>{" "}
-                      平安高度依赖某省烟草的设备与硬件支持，但在反向输出上（如健康管理、企康产品）尚未破局。
+                      平安高度依赖云南烟草的设备与硬件支持，但在反向输出上（如健康管理、企康产品）尚未破局。
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -138,7 +138,7 @@ export function HistoryCooperationReportCard({
                     />
                     <span>
                       <strong>核心痛点与机会：</strong>{" "}
-                      某省烟草作为科技巨头，高管及研发人员压力巨大，急需顶峰级的企业健康管理解决方案。
+                      云南烟草作为科技巨头，高管及研发人员压力巨大，急需顶峰级的企业健康管理解决方案。
                     </span>
                   </li>
                 </ul>
@@ -257,7 +257,7 @@ export function HistoryCooperationReportCard({
                     中国企年金史上的“0001号单”
                   </h5>
                   <p className="text-[11px] text-gray-600">
-                    某省烟草成为平安养老险企年金首单客户，建立跨时代信任基石。
+                    云南烟草成为平安养老险企年金首单客户，建立跨时代信任基石。
                   </p>
                 </div>
               </div>
@@ -276,7 +276,7 @@ export function HistoryCooperationReportCard({
                     核心网络与PC规模更替
                   </h5>
                   <p className="text-[11px] text-gray-600">
-                    伴随平安金控架构确立，大量引入某省烟草服务器群组及终端设备升级。
+                    伴随平安金控架构确立，大量引入云南烟草服务器群组及终端设备升级。
                   </p>
                 </div>
               </div>
@@ -383,7 +383,7 @@ export function HistoryCooperationReportCard({
               </h5>
               <div className="bg-white p-3 rounded-lg border border-amber-100 text-[11px]">
                 <p className="text-amber-800 italic font-medium leading-relaxed">
-                  “杨总您好，平安这些年大量采购某省烟草顶级的AI算力设施，深知先进技术背后是研发团队极致的脑力燃烧，健康压力空前。今天平安拿出最强企康干预体系在H厂、T厂已成功防患。作为回馈某省烟草2006年给平安史诗级企年金0001号单的心意，平安同样想交还某省烟草一份极致的0001号健康绿通特单，为某省烟草中枢常青提供最强医疗算力兜底！”
+                  “杨总您好，平安这些年大量采购云南烟草顶级的AI算力设施，深知先进技术背后是研发团队极致的脑力燃烧，健康压力空前。今天平安拿出最强企康干预体系在H厂、T厂已成功防患。作为回馈云南烟草2006年给平安史诗级企年金0001号单的心意，平安同样想交还云南烟草一份极致的0001号健康绿通特单，为云南烟草中枢常青提供最强医疗算力兜底！”
                 </p>
               </div>
             </div>
@@ -415,7 +415,7 @@ export function HistoryCooperationReportCard({
                       客户核心需求匹配
                     </td>
                     <td className="px-4 py-3 text-gray-700 leading-relaxed">
-                      某省烟草作为硬件科技巨头，高管与核心开发人员（如AIPC研发线）工作强度极大，面临亚健康、颈椎/心血管隐患与高压心理问题。极具对
+                      云南烟草作为硬件科技巨头，高管与核心开发人员（如AIPC研发线）工作强度极大，面临亚健康、颈椎/心血管隐患与高压心理问题。极具对
                       <span className="font-bold text-orange-700">
                         高品质、稀缺医疗通道
                       </span>
@@ -436,7 +436,7 @@ export function HistoryCooperationReportCard({
                         <li>
                           <span className="text-amber-500 mr-1">•</span>
                           <strong>全员覆盖点：</strong>
-                          向某省烟草总部或各大研发基地植入“企康职场理疗站”，打通体检后数据追踪盲区。
+                          向云南烟草总部或各大研发基地植入“企康职场理疗站”，打通体检后数据追踪盲区。
                         </li>
                         <li>
                           <span className="text-amber-500 mr-1">•</span>
@@ -513,9 +513,9 @@ export function VisitPitchReportCard({
 }) {
   const [activeRole, setActiveRole] = useState<'vp' | 'hrd' | 'handler'>('vp');
   return (
-    <div className="w-full max-w-4xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-3 font-sans">
+    <div className="w-full max-w-4xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-3 font-['Microsoft_YaHei',_'sans-serif']">
       {/* Header */}
-      <div className="bg-[#2A4B7C] px-6 py-6 text-center text-white flex flex-col items-center">
+      <div className="bg-orange-600 px-6 py-6 text-center text-white flex flex-col items-center">
         <h2 className="text-2xl font-bold mb-2 tracking-wide">高层拜访提纲</h2>
         <div className="text-white/80 text-sm">
           烟草企业 (分管总 / HRD / 经办人) | 生成时间: 2026/6/13
@@ -543,26 +543,26 @@ export function VisitPitchReportCard({
             onClick={() => setActiveRole('hrd')}
             className={`px-4 py-3 text-sm font-bold whitespace-nowrap transition-colors relative ${
               activeRole === 'hrd'
-                ? 'text-purple-600 bg-purple-50/50'
+                ? 'text-amber-600 bg-amber-50/50'
                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
             }`}
           >
             人力资源部门 (HRD)
             {activeRole === 'hrd' && (
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-500 shadow-[0_0_8px_rgba(147,51,234,0.5)]"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-500 shadow-[0_0_8px_rgba(147,51,234,0.5)]"></div>
             )}
           </button>
           <button
             onClick={() => setActiveRole('handler')}
             className={`px-4 py-3 text-sm font-bold whitespace-nowrap transition-colors relative ${
               activeRole === 'handler'
-                ? 'text-blue-600 bg-blue-50/50'
+                ? 'text-orange-600 bg-orange-50/50'
                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
             }`}
           >
             业务经办人
             {activeRole === 'handler' && (
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500 shadow-[0_0_8px_rgba(37,99,235,0.5)]"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-500 shadow-[0_0_8px_rgba(37,99,235,0.5)]"></div>
             )}
           </button>
         </div>
@@ -584,7 +584,7 @@ export function VisitPitchReportCard({
 
         {/* 一、拜访概况 */}
         <div>
-          <h3 className="text-base font-bold text-[#2A4B7C] border-l-[3px] border-[#2A4B7C] pl-3 mb-4 flex items-center">
+          <h3 className="text-base font-bold text-orange-700 border-l-[3px] border-orange-600 pl-3 mb-4 flex items-center">
             一、拜访概况
           </h3>
           <div className="border border-gray-200 rounded-lg overflow-hidden bg-white text-sm">
@@ -614,7 +614,7 @@ export function VisitPitchReportCard({
           </h3>
           
           <div className="space-y-4">
-            <div className="border border-purple-100 rounded-lg p-4 bg-white shadow-sm">
+            <div className="border border-amber-100 rounded-lg p-4 bg-white shadow-sm">
               <h4 className="font-bold text-gray-800 mb-2">方向1：从烟草行业健康管理政策趋势切入</h4>
               <div className="bg-[#F8F9FA] p-3 text-gray-700 text-sm leading-relaxed mb-3 border-l-[3px] border-gray-300">
                 X总/X部长/X老师您好，我是平安企康的[姓名]。今天拜访主要是想跟您交流一下烟草行业在员工健康管理方面的一些新趋势。我们注意到，近两年国家卫健委和国资委对央企国企员工健康管理提出了更高要求，很多兄弟单位都在积极布局。平安作为服务了多家大型央企健康保障的机构，积累了一些经验，想跟您做个分享。
@@ -624,7 +624,7 @@ export function VisitPitchReportCard({
               </div>
             </div>
 
-            <div className="border border-purple-100 rounded-lg p-4 bg-white shadow-sm">
+            <div className="border border-amber-100 rounded-lg p-4 bg-white shadow-sm">
               <h4 className="font-bold text-gray-800 mb-2">方向2：从烟草企业员工健康痛点切入</h4>
               <div className="bg-[#F8F9FA] p-3 text-gray-700 text-sm leading-relaxed mb-3 border-l-[3px] border-gray-300">
                 X总，我们之前服务了多家大型烟草企业，发现一个共性现象——烟草行业员工平均年龄普遍在40岁以上，慢病率、职业病风险较高。很多单位在补充医疗和健康管理上投入不小，但员工获得感不强。平安近期在探索一种新的服务模式，把补充医疗和主动健康管理结合起来，效果不错。想听听您这边目前是怎么考虑的？
@@ -638,7 +638,7 @@ export function VisitPitchReportCard({
 
         {/* 三、核心沟通要点 */}
         <div>
-          <h3 className="text-base font-bold text-[#2A4B7C] border-l-[3px] border-[#2A4B7C] pl-3 mb-4 flex items-center">
+          <h3 className="text-base font-bold text-orange-700 border-l-[3px] border-orange-600 pl-3 mb-4 flex items-center">
             三、核心沟通要点 (洞察 Insight)
           </h3>
 
@@ -646,82 +646,103 @@ export function VisitPitchReportCard({
             
             {activeRole === 'vp' && (
               <div className="space-y-6">
-                {/* 重点1 */}
-            <div className="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
-              <div className="bg-gray-50 border-b border-gray-100 px-4 py-3 font-bold text-gray-800 flex items-center">
-                重点1：【分管总关注】同行怎么做？ ——烟草行业标杆案例
+              <div className="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                <div className="bg-gray-50 border-b border-gray-100 px-4 py-3 font-bold text-gray-800 flex flex-wrap gap-2 items-center">
+                  <span className="bg-orange-100 text-orange-800 px-2 py-0.5 rounded text-xs">重点话术</span> 
+                分管总常见异议处理
               </div>
               <div className="p-4 space-y-4">
-                <div>
-                  <div className="text-xs text-gray-500 mb-1 flex items-center"><span className="mr-1">💬</span> 话术示范</div>
-                  <div className="bg-[#F8F9FB] p-3 text-sm text-gray-700 leading-relaxed border-l-2 border-blue-300">
-                    X总，向您汇报一下同行的情况。我们服务的一家大型烟草企业，员工2.5万人、15家分公司遍布全省，年委托缴费超1亿元。平安为其打造了防筛管治一体化健康管理体系...方案获得客户高度认可，企业医务室作为新年礼物正式启用。<br/><br/>
-                    另一家烟草企业（央企二级单位，7000人），合作超10年，原委托规模400万，通过优化方案新增体检服务后，年缴委托规模提升至1000万。<br/><br/>
-                    这两家案例说明，烟草行业做企康补充医疗是大势所趋，同行已经在走，而且效果显著。
-                  </div>
+                
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景一：客户问"做企康对我们有什么政策上的好处？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"这个问题问到了关键点上。平安企康方案对烟草企业的政策帮助，主要体现在三个层面：<br/>
+                    第一层：税优红利——直接省钱<br/>
+                    根据国家政策，企业为员工支付的补充医疗保险费，在不超过工资总额5%标准内的部分，准予在计算企业所得税应纳税所得额时税前扣除。<br/>
+                    举个例子：贵司年工资总额10亿，5%就是5000万——这笔钱如果直接发福利要交25%企业所得税，但通过企康的健康委托管理方案，这5000万可以全额税前列支，直接节省企业所得税1250万。<br/>
+                    第二层：合规保障——不怕审计<br/>
+                    2020年银保监会发布了《关于进一步规范健康保障委托管理业务有关事项的通知》，2024年保险业新'国十条'进一步明确——平安的企康方案完全符合监管要求，已通过审计署审查。烟草作为央企，合规是底线，平安的方案让您放心做、不怕查。<br/>
+                    第三层：国企改革——加分项<br/>
+                    国家持续鼓励企业建立多层次医疗保障体系，从2002年'可以做'→2009年'支持做'→2020年'规范做'，政策一直在加码。烟草企业推进员工健康管理，既符合国企改革方向，也是ESG评价的重要加分项。"
+                  </p>
                 </div>
                 
-                <div className="text-sm">
-                  <div className="flex items-center text-green-700 font-bold mb-1"><span className="mr-1">📊</span> 数据/案例支撑</div>
-                  <p className="text-gray-600 text-xs pl-5">
-                    案例数据：- 案例A：2.5万人烟草企业，年委托缴费超1亿元，年消耗7500万，院外健康服务消耗1500万 - 案例B：7000人烟草企业，合作超10年... 合作模式：年金+保险+委托管理+健康服务全覆盖
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景二：客户问"5%的税优政策具体怎么用？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"这个5%的税优政策，具体操作路径是这样的：<br/>
+                    ① 政策依据：《关于企业补充医疗保险有关问题的通知》（2002年）明确企业可在基本医保基础上建立补充医疗保险；2009年进一步明确5%以内税前扣除。<br/>
+                    ② 落地方式：通过平安的健康保障委托管理方案，将补充医疗保险费纳入委托管理账户。这笔费用计入福利费科目，在5%限额内直接税前列支。<br/>
+                    ③ 使用范围：委托账户里的钱可以用于——员工门诊/住院报销、健康体检、购药直付、中医理疗、企业医务室运营等，覆盖医健安心四大维度1066项服务。<br/>
+                    ④ 平安的优势：平安已服务超6.7万家企业客户，覆盖超50%的央国企，相关业务通过审计署审查——这意味着方案成熟、路径清晰、审计无忧。"
                   </p>
                 </div>
                 
-                <div className="text-sm">
-                  <div className="flex items-center text-blue-700 font-bold mb-1"><span className="mr-1">🔄</span> 可能追问及应对</div>
-                  <p className="text-gray-600 text-xs pl-5">
-                    <strong className="text-gray-700">追问：你们服务的烟草企业具体是哪家？</strong> 应对：按合规要求我们不便透露具体名称，但可以理解为省级烟草公司和地市级烟草公司两个层级都有成熟案例...<br/>
-                    <strong className="text-gray-700">追问：你们的方案跟其他保险公司有什么不一样？</strong> 应对：平安的优势在于综合金融+医疗健康生态...我们有自营的平安健康互联网医院、线下体检中心、三甲医院合作网络...
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景三：客户问"和以前买保险比，做企康在政策上有什么不同？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"这个问题非常专业。传统保险和企康在政策层面有本质区别：<br/>
+                    对比维度 | 传统保险 | 平安企康（健康委托管理）<br/>
+                    政策定位 | 商业保险，风险转移 | 员工福利，健康管理<br/>
+                    税优方式 | 保费列支有限制 | 5%工资总额税前扣除，空间更大<br/>
+                    资金使用 | 赔付给个人，用完即止 | 集体+个人双账户，灵活调配<br/>
+                    合规依据 | 保险法 | 银保监办发〔2020〕13号+国十条<br/>
+                    审计风险 | 保费列支可能被认定为福利费超标 | 明确纳入福利费管理，合规路径清晰<br/>
+                    核心差异一句话：保险是'花钱买保障'，企康是'用政策红利做员工健康投资'——同样的预算，企康方案在合规性和税优空间上都更优。"
                   </p>
                 </div>
-              </div>
-            </div>
-
-            {/* 重点2 */}
-            <div className="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
-              <div className="bg-gray-50 border-b border-gray-100 px-4 py-3 font-bold text-gray-800 flex items-center">
-                重点2：【分管总关注】税优力度有多大？
-              </div>
-              <div className="p-4 space-y-4">
-                <div>
-                  <div className="text-xs text-gray-500 mb-1 flex items-center"><span className="mr-1">💬</span> 话术示范</div>
-                  <div className="bg-[#F8F9FB] p-3 text-sm text-gray-700 leading-relaxed border-l-2 border-blue-300">
-                    X总，关于税优这块，我给您算一笔账：<br/>
-                    根据《企业所得税法实施条例》第35条，企业为员工支付的补充医疗保险费，在不超过职工工资总额5%标准内的部分，准予税前扣除。<br/>
-                    以一家5000人的烟草企业为例... 按25%企业所得税率算，可节税约937.5万/年。<br/>
-                    所以无论从企业还是员工角度，税优力度都是实实在在的。
-                  </div>
-                </div>
-                <div className="text-sm">
-                  <div className="flex items-center text-green-700 font-bold mb-1"><span className="mr-1">📊</span> 数据/案例支撑</div>
-                  <p className="text-gray-600 text-xs pl-5">
-                    税优测算：- 企业端：补充医疗费不超过工资总额5%可税前扣除 - 5000人企业：工资总额7.5亿*5%=3750万额度，节税约937.5万/年...
+                
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景四：客户问"这对我们央企的合规审计有什么帮助？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"烟草作为央企，合规审计是头等大事。平安企康方案在这方面有三大保障：<br/>
+                    ① 政策有据可依<br/>
+                    2020年银保监会13号文专门规范了健康保障委托管理业务，平安的方案完全按此框架设计。2024年新'国十条'进一步明确事业单位可使用财政资金购买相关商业健康保险——政策越来越清晰。<br/>
+                    ② 实践已验证<br/>
+                    平安已服务超50%的央国企，相关业务通过审计署审查。这意味着平安的方案经得起最严格的审计检查。<br/>
+                    ③ 资金管理透明<br/>
+                    企康采用集体+个人双账户管理模式，每笔支出可追溯、可审计。资金流向清晰，完全符合央企'三重一大'决策要求。<br/>
+                    总结：选择平安企康，不是'打擦边球'，而是在政策框架内合规地用好用足福利政策。"
                   </p>
                 </div>
-              </div>
-            </div>
-
-            {/* 重点3 */}
-            <div className="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
-              <div className="bg-gray-50 border-b border-gray-100 px-4 py-3 font-bold text-gray-800 flex items-center">
-                重点3：【分管总关注】是否合规？
-              </div>
-              <div className="p-4 space-y-4">
-                 <div>
-                  <div className="text-xs text-gray-500 mb-1 flex items-center"><span className="mr-1">💬</span> 话术示范</div>
-                  <div className="bg-[#F8F9FB] p-3 text-sm text-gray-700 leading-relaxed border-l-2 border-blue-300">
-                    X总，合规是我们方案设计的底线。<br/>
-                    第一，政策依据清晰。补充医疗保险的税前扣除有《企业所得税法实施条例》第35条作为依据...<br/>
-                    第二，资金管理合规。委托管理资金实行专户管理、专款专用...<br/>
-                    第三，审计可追溯。我们提供完整的合规材料包...每笔支出清晰可追溯...<br/>
-                    第四，平安作为头部金融机构，自身受到严格的金融监管...我们在烟草行业已有10年以上服务经验，从未出现合规问题。
-                  </div>
+                
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景五：客户问"这对我们烟草行业有什么特别的政策意义？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"烟草行业有几个特殊背景，让企康的政策价值更加突出：<br/>
+                    ① 国企改革三年行动<br/>
+                    国资委要求央企加强员工关怀、完善福利体系。企康方案直接响应这一要求，是国企改革的落地抓手。<br/>
+                    ② ESG评价<br/>
+                    烟草企业的ESG评级中，'员工健康与安全'是核心指标。平安企康的'防筛管治'体系，能显著提升ESG得分，对融资评级、品牌形象都有帮助。<br/>
+                    ③ 退休人员社会化管理<br/>
+                    烟草企业退休比例高，退休人员健康管理是刚需。企康方案可以延续退休员工健康服务，解决'人走了、关怀不能断'的难题。<br/>
+                    ④ 税优空间充分利用<br/>
+                    烟草企业工资总额大，5%的税优空间非常可观。用好这个政策，相当于用政策红利反哺员工健康，一举两得。"
+                  </p>
                 </div>
+                
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景六：客户问"政策未来会不会变？现在做会不会有风险？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"从政策演进脉络看，国家对企业健康管理的态度是持续加码的：<br/>
+                    2002年：'可以做'——首次明确鼓励建立补充医保<br/>
+                    2009年：'支持做'——明确5%税前扣除<br/>
+                    2020年：'规范做'——银保监会13号文规范健康委托管理<br/>
+                    2024年：'深化做'——新国十条明确财政资金可购买健康保险<br/>
+                    政策方向非常清晰：国家在推动企业从'基本保障'走向'多层次健康保障'。企康是医保控费趋严、个人支付压力加大的大背景下，国家鼓励的方向。<br/>
+                    平安作为综合金融集团，40年深耕医疗健康领域，对政策走向有深度把握。选择平安，就是选了一个懂政策、守合规、能落地的长期伙伴。"
+                  </p>
+                </div>
+                
+                <div className="bg-green-50/50 p-3 rounded border border-green-100">
+                  <p className="text-sm font-bold text-green-800 mb-1">💡 一句话总结</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    "平安企康帮烟草企业用好5%税优政策红利，合规落地员工健康管理，既省税、又合规、更得人心——是央企国企改革背景下的最优解。"
+                  </p>
+                </div>
+
               </div>
             </div>
-
-
               </div>
             )}
 
@@ -751,20 +772,88 @@ export function VisitPitchReportCard({
               <div className="space-y-6">
               <div className="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
                 <div className="bg-gray-50 border-b border-gray-100 px-4 py-3 font-bold text-gray-800 flex flex-wrap gap-2 items-center">
-                  <span className="bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-xs">经办人关注</span> 
-                重点6：是否符合企业管理规范？ | 重点7：理赔怎么跑？
+                  <span className="bg-orange-100 text-orange-800 px-2 py-0.5 rounded text-xs">重点话术</span> 
+                经办人常见异议处理
               </div>
               <div className="p-4 space-y-4">
-                <p className="text-sm text-gray-700">
-                  <strong className="text-gray-800">关于管理规范：</strong>"第一，方案设计有据可依。第二，采购流程合规。第三，落地执行有标准。第四，数据安全有保障。简单说：政策有依据、采购有配合、执行有标准、数据有保障。"
-                </p>
-                <p className="text-sm text-gray-700">
-                  <strong className="text-gray-800">关于理赔流程：</strong>"我们采用的是线上为主、线下为辅的理赔模式【线上理赔】...【线下理赔】...【健康管理服务】...我们还会提供后台管理系统，方便您做数据汇报。"
-                </p>
+                
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景一：客户问"平安和原来的供应商比有什么不一样？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"这个问题问得很关键。简单说，平安和其他供应商最大的区别在于三个字——'体系化'。
+                    传统供应商通常只做单一环节——要么只做体检、要么只做保险理赔、要么只做医务室。但平安提供的是<strong>'健康委托管理+会员制健康管理+保险'的组合方案，覆盖医、健、安、心</strong>四大维度33个子类1066项服务。
+                    打个比方：别的供应商是给员工开一个'药店'，平安是给企业建一座'健康大厦'——从体检筛查、慢病管理、在线问诊、就医绿通、企业医务室到心理健康，全链条打通。"
+                  </p>
+                </div>
+                
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景二：客户问"平安的服务网络能覆盖我们全国的分公司吗？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"这正是平安的核心优势之一。平安已服务超50%的大中型央国企和外企，服务网络遍布全国，累计服务超8万家企业客户、3100万名员工。
+                    具体来说：<br/>
+                    医疗网络：以北大国际医疗集团为核心，覆盖国内4000家医院、1300+海外权威机构<br/>
+                    专家资源：合作国内外名医、院士、国医大师近3000名<br/>
+                    服务能力：7×24小时专属家庭医生团队支持<br/>
+                    像贵司这样全省15家分公司、员工遍布各地的烟草企业，平安可以做到统一标准、集中管理、全国覆盖，这是区域性供应商做不到的。"
+                  </p>
+                </div>
+                
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景三：客户问"平安的价格是不是比别的贵？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"从单点价格看，平安可能不是最便宜的。但从综合性价比看，平安是最优选择。
+                    原因有三：<br/>
+                    ① 一揽子解决：体检+医务室+慢病管理+就医绿通+心理健康，全部在一个平台解决，省去多头对接的管理成本<br/>
+                    ② 规模效应：平安服务3100万员工，采购和服务成本被摊薄，同样的预算在平安能买到更丰富的服务<br/>
+                    ③ 税优合规：平安的健康委托管理方案完全合规，福利费可纳入税前列支，财务上更划算<br/>
+                    举个实际案例：某烟草央企二级单位，原委托规模400万，升级到平安方案后增加到1000万，但新增了600万的体检服务，员工满意度大幅提升——不是多花钱，是把钱花在了刀刃上。"
+                  </p>
+                </div>
+                
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景四：客户问"你们的企业医务室和外面第三方医务室有什么区别？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"区别很大。第三方医务室通常只是租个场地、派个护士，服务很有限。
+                    平安的企业医务室是<strong>'防筛管治'一体化体系的线下枢纽</strong>：<br/>
+                    线上联动：员工在医务室检查的数据，直接同步到家庭医生端，7×24h在线跟进<br/>
+                    资源打通：医务室解决不了的，直接通过平安绿通转诊到三甲医院，不用员工自己跑<br/>
+                    慢病管理：不只是看病开药，而是建立健康档案，对高血压、糖尿病等慢病进行持续跟踪<br/>
+                    健康活动：定期安排名医进企讲座、中医理疗、AED培训等<br/>
+                    简单说：别人的医务室是一个点，平安的医务室是一张网的入口。"
+                  </p>
+                </div>
+                
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景五：客户问"平安在烟草行业有什么经验？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"平安在烟草行业已经有非常成熟的合作案例：<br/>
+                    案例一：某大型烟草企业（2.5万人），平安已持续服务超10年，合作覆盖年金+保险+委托+服务，委托年缴费超1亿元。我们为它量身定制了'8+4'企康方案，建设了企业医务室，员工满意度99%。<br/>
+                    案例二：某烟草央企二级单位（3850人在职+3150人退休），合作超10年，委托规模从400万提升至1000万，新增体检服务600万，现合作涵盖企补+委托+年金+团养。<br/>
+                    烟草行业员工平均年龄偏大、退休比例高、慢病率高——这些特征平安非常熟悉，方案设计就是围绕这些痛点来的。"
+                  </p>
+                </div>
+                
+                <div className="bg-orange-50/50 p-3 rounded border border-orange-100">
+                  <p className="text-sm font-bold text-orange-800 mb-1">场景六：客户问"你们怎么帮我们解决员工年龄大、不会用手机的问题？"</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>话术：</strong>"这个问题我们在烟草客户中已经遇到过并解决了。
+                    我们为某烟草总公司专门定制了<strong>'适老化'宣导方案</strong>：<br/>
+                    ① 线下为主：邀请贵州本地名医、主治级别中医师进企面对面问诊，员工不用通过手机也能享受服务<br/>
+                    ② 手把手教学：健康直付使用流程，安排专人一对一指导，直到学会为止<br/>
+                    ③ 场景化体验：结合中医肩颈活动、项目体验等，寓教于乐<br/>
+                    最终效果：宣导覆盖率95%，激活率98%，员工满意度99%。员工反馈'学会了用APP享受健康服务，中医专家问诊体验极佳'。"
+                  </p>
+                </div>
+                
+                <div className="bg-green-50/50 p-3 rounded border border-green-100">
+                  <p className="text-sm font-bold text-green-800 mb-1">💡 一句话总结平安差异化优势</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    "平安不是卖单一产品的供应商，而是为企业搭建'医健安心'全生命周期健康管理体系的战略合作伙伴。40年行业积淀、4000家医院网络、3100万员工服务经验、1066项服务覆盖——这些数字背后，是任何单一供应商都无法复制的体系化能力。"
+                  </p>
+                </div>
+
               </div>
             </div>
-
-
               </div>
             )}          </div>
         </div>
@@ -815,19 +904,19 @@ export function VisitPitchReportCard({
                  <tr className="hover:bg-orange-50/50">
                    <td className="px-3 py-3 text-center">1</td>
                    <td className="px-4 py-3">贵单位目前在员工健康管理方面，最关注的是哪些方面？有没有什么痛点或想改善的地方？</td>
-                   <td className="px-3 py-3 text-center text-blue-600 font-medium">试探</td>
+                   <td className="px-3 py-3 text-center text-orange-600 font-medium">试探</td>
                    <td className="px-4 py-3">了解对方现状和需求，为后续方案设计收集信息</td>
                  </tr>
                  <tr className="hover:bg-orange-50/50">
                    <td className="px-3 py-3 text-center">2</td>
                    <td className="px-4 py-3">目前贵单位的补充医疗保障是怎么做的？是自管还是委托第三方？员工满意度如何？</td>
-                   <td className="px-3 py-3 text-center text-purple-600 font-medium">深入</td>
+                   <td className="px-3 py-3 text-center text-amber-600 font-medium">深入</td>
                    <td className="px-4 py-3">了解现有保障模式，找到优化空间</td>
                  </tr>
                  <tr className="hover:bg-orange-50/50">
                    <td className="px-3 py-3 text-center">3</td>
                    <td className="px-4 py-3">如果引入新的健康管理模式，您最看重的是哪几个方面？成本控制、员工体验、还是合规保障？</td>
-                   <td className="px-3 py-3 text-center text-blue-600 font-medium">试探</td>
+                   <td className="px-3 py-3 text-center text-orange-600 font-medium">试探</td>
                    <td className="px-4 py-3">了解对方决策优先级，调整后续沟通重点</td>
                  </tr>
                  <tr className="hover:bg-orange-50/50">
@@ -843,7 +932,7 @@ export function VisitPitchReportCard({
 
         {/* 六、收尾与下一步 */}
         <div>
-          <h3 className="text-base font-bold text-[#2A4B7C] border-l-[3px] border-[#2A4B7C] pl-3 mb-4 flex items-center">
+          <h3 className="text-base font-bold text-orange-700 border-l-[3px] border-orange-600 pl-3 mb-4 flex items-center">
             六、收尾与下一步
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -860,11 +949,11 @@ export function VisitPitchReportCard({
                   您看这样安排可以吗？另外，如果方便的话，能否加个微信，后续沟通更方便？
                 </div>
              </div>
-             <div className="border border-blue-200 rounded-lg p-4 bg-[#F0F9FF] shadow-sm">
-                <h4 className="font-bold text-blue-800 flex items-center mb-3">
-                  <span className="bg-blue-600 text-white p-0.5 rounded mr-2">🔄</span> 未达成预期结果
+             <div className="border border-orange-200 rounded-lg p-4 bg-[#F0F9FF] shadow-sm">
+                <h4 className="font-bold text-orange-800 flex items-center mb-3">
+                  <span className="bg-orange-600 text-white p-0.5 rounded mr-2">🔄</span> 未达成预期结果
                 </h4>
-                <div className="text-sm text-gray-700 leading-relaxed border-l-2 border-blue-400 pl-3">
+                <div className="text-sm text-gray-700 leading-relaxed border-l-2 border-orange-400 pl-3">
                   非常感谢您今天的宝贵时间。虽然今天只是初步交流，但我收获很大，对贵单位的需求有了更清晰的了解。<br/><br/>
                   我回去后会整理一份行业案例资料和初步思路，发给您参考。如果您后续有任何需要，随时联系我。<br/><br/>
                   另外，我们近期会举办一场央企国企健康管理专题沙龙，会邀请几家烟草行业的同行交流，如果您感兴趣，我可以给您发邀请函。
@@ -1197,7 +1286,7 @@ export function BiddingDocumentAnalysisCard({
               </h4>
               <p className="text-xs text-gray-700 leading-relaxed">
                 <strong className="text-amber-800">项目名称：</strong>
-                某省烟草公司2024-2027年补充医疗保险服务项目（二次）
+                云南烟草公司2024-2027年补充医疗保险服务项目（二次）
                 <br />
                 <strong className="text-amber-800">招标编号：</strong>
                 YNYC-2024-001
@@ -1438,7 +1527,7 @@ export function BidGenerationCard({
       <div className="bg-gradient-to-r from-orange-600 to-amber-500 px-5 py-4 flex justify-between items-center">
         <div className="flex items-center text-white font-bold text-lg">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg>
-          某省烟草公司补充医疗投标书（初稿）
+          云南烟草公司补充医疗投标书（初稿）
         </div>
         <span className="text-white text-xs px-3 py-1 bg-white/20 rounded-full border border-white/30">
           已智能组装 100%
@@ -2505,7 +2594,7 @@ export function LenovoPanoramicCard({
           </div>
           <div>
             <h3 className="text-xl font-bold tracking-wide text-orange-950">
-              某省烟草集团全景客户画像 (Tobacco Group)
+              云南烟草集团全景客户画像 (Tobacco Group)
             </h3>
             <p className="text-xs text-orange-850/80 mt-1 opacity-90 tracking-wider">
               最后更新时间: 2026-05-26 | 数据密级: 内部核心机密
@@ -2632,7 +2721,7 @@ export function LenovoPanoramicCard({
             <div className="bg-white border text-sm box-border border-gray-200 rounded-lg overflow-hidden shadow-sm">
               <div className="bg-orange-500/5 border-b border-orange-500/10 px-4 py-2.5 font-bold text-orange-950">
                 <span className="text-orange-600 mr-2">█</span>
-                某省烟草分层员工画像与健康痛点洞察
+                云南烟草分层员工画像与健康痛点洞察
               </div>
               <div className="divide-y divide-gray-100">
                 <div className="p-4 grid grid-cols-1 gap-4 hover:bg-gray-50 transition-colors">
@@ -2821,7 +2910,7 @@ export function LenovoPanoramicCard({
               </div>
 
               <button className="w-full mt-4 bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/25 text-orange-850 hover:bg-orange-500/20 text-xs font-bold py-2 rounded shadow-sm transition-all">
-                生成《某省烟草企康专项拓展报告》
+                生成《云南烟草企康专项拓展报告》
               </button>
             </div>
           </div>
@@ -2836,10 +2925,10 @@ export function LenovoPanoramicCard({
           <div className="p-4 space-y-3">
             <div>
               <h5 className="font-bold text-orange-900 text-xs mb-1">
-                【破冰阶段：某省烟草AI战略+员工健康数字化】
+                【破冰阶段：云南烟草AI战略+员工健康数字化】
               </h5>
               <p className="text-xs text-gray-700 bg-gray-50 p-2 rounded">
-                杨总您好，今天非常荣幸来拜访您。我们一直高度关注某省烟草今年全面推进的“全栈AI”战略，深知某省烟草正在打造新一代的核心竞争力。同样，平安也正在通过数字化重塑服务。今天我们来，不仅是代表保险服务，更是希望在这个“智能化转型”的契机上，探讨如何用数字化的手段，为某省烟草的宝贵人才资产搭建起坚实的健康底座。
+                杨总您好，今天非常荣幸来拜访您。我们一直高度关注云南烟草今年全面推进的“全栈AI”战略，深知云南烟草正在打造新一代的核心竞争力。同样，平安也正在通过数字化重塑服务。今天我们来，不仅是代表保险服务，更是希望在这个“智能化转型”的契机上，探讨如何用数字化的手段，为云南烟草的宝贵人才资产搭建起坚实的健康底座。
               </p>
             </div>
             <div>
@@ -2847,15 +2936,15 @@ export function LenovoPanoramicCard({
                 【痛点共鸣阶段：7.2万人分散管理难】
               </h5>
               <p className="text-xs text-gray-700 bg-gray-50 p-2 rounded">
-                某省烟草在全球有几万名员工，特别是咱们大量的研发骨干和产线员工。我们调研发现，目前这种规模的人群，如果只靠传统的单次体检，数据是分散的，缺乏统一的标准和持续的健康追踪预警系统。平时有点小毛病，大家工作一忙就忽视了，长此以往对公司整体的生产力是隐形的巨大损害。
+                云南烟草在全球有几万名员工，特别是咱们大量的研发骨干和产线员工。我们调研发现，目前这种规模的人群，如果只靠传统的单次体检，数据是分散的，缺乏统一的标准和持续的健康追踪预警系统。平时有点小毛病，大家工作一忙就忽视了，长此以往对公司整体的生产力是隐形的巨大损害。
               </p>
             </div>
             <div>
               <h5 className="font-bold text-orange-900 text-xs mb-1">
-                【方案切入阶段：平安某省烟草数字化方案合作】
+                【方案切入阶段：平安云南烟草数字化方案合作】
               </h5>
               <p className="text-xs text-gray-700 bg-gray-50 p-2 rounded">
-                所以，我们今天带来的是平安企康全新的“数字化企业健康管理方案”。它不仅能打通全链条数据，还能在某省烟草各大园区直接建立配备医疗专家的“企业医务室”，将线下问诊与线上24小时绿通无缝结合。这种服务不仅极具科技感，而且真正落到了实处，非常契合某省烟草一直倡导的“务实与高效”文化。
+                所以，我们今天带来的是平安企康全新的“数字化企业健康管理方案”。它不仅能打通全链条数据，还能在云南烟草各大园区直接建立配备医疗专家的“企业医务室”，将线下问诊与线上24小时绿通无缝结合。这种服务不仅极具科技感，而且真正落到了实处，非常契合云南烟草一直倡导的“务实与高效”文化。
               </p>
             </div>
           </div>
@@ -2904,7 +2993,7 @@ export function StandardProductPlanCard({
       <div className="bg-gradient-to-r from-orange-700 to-orange-500 px-5 py-4 flex justify-between items-center">
         <div className="flex items-center text-white font-bold text-lg">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><line x1="3" x2="21" y1="9" y2="9" /><line x1="9" x2="9" y1="21" y2="9" /></svg>
-          某省烟草集团专门营销方案
+          云南烟草集团专门营销方案
         </div>
         <span className="text-orange-100 text-xs px-3 py-1 bg-orange-800/30 rounded-full border border-orange-400/30">
           机密 / 客户专属方案
@@ -3056,7 +3145,7 @@ export function LenovoTechBidAdvantageCard({
           </div>
           <div>
             <h3 className="text-2xl font-black tracking-wide text-orange-950">
-              某省烟草企康技术标核心优势与响应架构
+              云南烟草企康技术标核心优势与响应架构
             </h3>
             <p className="text-sm text-orange-800/80 mt-1.5 tracking-widest font-medium">
               对标传统体检机构 ｜ 差异化控标级输出方案
@@ -3165,7 +3254,7 @@ export function LenovoTechBidAdvantageCard({
             <div className="p-5">
               <p className="text-xs text-orange-850 border-l-2 border-orange-300 pl-3 bg-orange-500/5 py-1.5 rounded-r">
                 💡
-                这是展示某省烟草“软硬一体”等底层基建实力的最佳位置，构建技术壁垒。
+                这是展示云南烟草“软硬一体”等底层基建实力的最佳位置，构建技术壁垒。
               </p>
               <div className="space-y-3 mt-3">
                 <div className="flex bg-white border border-orange-500/10 p-3 rounded-lg">
@@ -3221,7 +3310,7 @@ export function LenovoTechBidAdvantageCard({
                       3.1 终端/硬件侧：
                     </span>
                     <span className="text-gray-600">
-                      某省烟草智能穿戴、体检一体机边缘接入。
+                      云南烟草智能穿戴、体检一体机边缘接入。
                     </span>
                   </li>
                   <li className="text-sm">
@@ -3307,7 +3396,7 @@ export function LenovoTechBidAdvantageCard({
               <div className="bg-white/60 backdrop-blur-sm border border-orange-550/20 p-4 rounded-xl mb-6 shadow-sm">
                 <p className="text-sm text-orange-955 font-bold leading-relaxed mb-2">
                   ⭐
-                  这是目前央国企招标的“安全基盘”部分，传统医疗机构极难独立完成。也是某省烟草企康拉开与竞品差距的最关键护城河。
+                  这是目前央国企招标的“安全基盘”部分，传统医疗机构极难独立完成。也是云南烟草企康拉开与竞品差距的最关键护城河。
                 </p>
                 <div className="grid md:grid-cols-1 gap-4 mt-4">
                   <div className="bg-white p-4 rounded-lg shadow-sm border border-amber-500/10">
@@ -3346,10 +3435,10 @@ export function LenovoTechBidAdvantageCard({
                           d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                         />
                       </svg>
-                      某省烟草信创生态集成优势
+                      云南烟草信创生态集成优势
                     </div>
                     <p className="text-xs text-gray-600 leading-relaxed">
-                      着重强调某省烟草作为中国IT龙头在国家级整机、服务器国产化替代中的原生整合能力，直接抛出千万级/亿级信创替换全链路标杆成功案例。
+                      着重强调云南烟草作为中国IT龙头在国家级整机、服务器国产化替代中的原生整合能力，直接抛出千万级/亿级信创替换全链路标杆成功案例。
                     </p>
                   </div>
                 </div>
@@ -3373,7 +3462,7 @@ export function LenovoTechBidAdvantageCard({
                   </div>
                   <div className="flex flex-col items-center bg-gradient-to-b from-orange-500/5 to-amber-500/5 px-6 py-4 rounded-xl border-2 border-orange-500/30 w-full text-center shadow-sm relative">
                     <span className="font-bold text-orange-900 text-lg mb-1">
-                      某省烟草企康 (软硬一体)
+                      云南烟草企康 (软硬一体)
                     </span>
                     <span className="text-orange-700 font-medium bg-white px-3 py-1 rounded-full text-xs mt-2 shadow-sm border border-orange-500/10">
                       全栈信创闭环 / 原厂服务器调优
@@ -3467,7 +3556,7 @@ export function LenovoTechBidAdvantageCard({
                       ⭐ 绝对加分项
                     </span>
                     <span className="text-orange-850 font-medium">
-                      某省烟草星罗密布的全国县乡级线下强实体IT服务网点极速覆盖能力。
+                      云南烟草星罗密布的全国县乡级线下强实体IT服务网点极速覆盖能力。
                     </span>
                   </div>
                 </div>
@@ -4661,7 +4750,7 @@ function SurveyReportCard({
       <div className="bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-3 flex justify-between items-center">
         <div className="flex items-center text-white font-bold">
           <Building2 size={18} className="mr-2" />
-          某省烟草基本情况最新调研报告
+          云南烟草基本情况最新调研报告
         </div>
         <div className="text-white/80 text-sm">情报侦察兵</div>
       </div>
@@ -4729,7 +4818,7 @@ function SurveyReportCard({
                     <tr className="hover:bg-orange-50/20 transition-colors">
                       <td className="px-4 py-2.5 font-bold text-gray-900 flex items-center">
                         <span className="w-2.5 h-2.5 rounded-full bg-orange-500 mr-2"></span>
-                        某省烟草控股 (3396.HK)
+                        云南烟草控股 (3396.HK)
                       </td>
                       <td className="px-4 py-2.5 text-orange-600 font-bold">
                         30.56%
@@ -4917,7 +5006,7 @@ function SurveyReportCard({
                   <ShieldCheck size={14} className="mr-1" /> 高管决策链机制
                 </div>
                 <p className="text-[11px] text-gray-600 leading-relaxed">
-                  最高顶层战略拍板为 <strong>LEC（某省烟草执行委员会）</strong>
+                  最高顶层战略拍板为 <strong>LEC（云南烟草执行委员会）</strong>
                   ，张总为主帅；中国区业务刘军统率；HR郑孝明对员工大健康福利、体检采购具有核心发起与建议权。
                 </p>
               </div>
@@ -4929,7 +5018,7 @@ function SurveyReportCard({
           <div className="space-y-4">
             <h4 className="text-sm font-bold text-gray-900 flex items-center border-b pb-2">
               <Cpu size={16} className="text-orange-500 mr-2" />
-              某省烟草集团三大最新战略规划
+              云南烟草集团三大最新战略规划
             </h4>
 
             <div className="space-y-3">
@@ -4984,7 +5073,7 @@ function SurveyReportCard({
           <div className="space-y-4">
             <h4 className="text-sm font-bold text-gray-900 flex items-center border-b pb-2">
               <Briefcase size={16} className="text-orange-500 mr-2" />
-              某省烟草集团三大最新业务规划行动
+              云南烟草集团三大最新业务规划行动
             </h4>
 
             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
@@ -4996,7 +5085,7 @@ function SurveyReportCard({
                   AI内嵌智能终端
                 </div>
                 <p className="text-[11px] text-gray-500 leading-relaxed">
-                  加速生产端侧推理和专属小助理（某省烟草小天）嵌入式PC，启动智能重塑，推动PC业界新一类爆发增长。
+                  加速生产端侧推理和专属小助理（云南烟草小天）嵌入式PC，启动智能重塑，推动PC业界新一类爆发增长。
                 </p>
               </div>
 
@@ -5030,7 +5119,7 @@ function SurveyReportCard({
                 📌 AI 关键结论
               </span>
               <span>
-                某省烟草当前在全栈混合 AI
+                云南烟草当前在全栈混合 AI
                 底层加码巨大、其员工大多具有极高强度和极高学历特征。对自身健康（Well-being）、诊疗效率要求很高，是高端体检及综合企康一揽子服务采购的高优超级商机（超级买手）。
               </span>
             </div>
@@ -5085,12 +5174,12 @@ function DecisionMakersReportCard({
       title: "董事长兼CEO",
       role: "👑 顶层战略决策",
       timeline: [
-        { year: "1989", desc: "加入某省烟草集团，从基层销售做起。" },
+        { year: "1989", desc: "加入云南烟草集团，从基层销售做起。" },
         {
           year: "1994",
-          desc: "出任某省烟草微机事业部总经理，战功显赫，带领某省烟草PC取得中国市场占有率第一。",
+          desc: "出任云南烟草微机事业部总经理，战功显赫，带领云南烟草PC取得中国市场占有率第一。",
         },
-        { year: "2001", desc: "担任某省烟草集团总裁兼CEO。" },
+        { year: "2001", desc: "担任云南烟草集团总裁兼CEO。" },
         {
           year: "2005",
           desc: "主导完成震惊全球业界的“蛇吞象”——收购IBM PC业务，拉开史诗般国际化征程。",
@@ -5106,14 +5195,14 @@ function DecisionMakersReportCard({
       title: "执行副总裁兼中国区总裁",
       role: "🚀 中国区业务拍板",
       timeline: [
-        { year: "1993", desc: "清华大学自动控制系毕业后加入某省烟草。" },
+        { year: "1993", desc: "清华大学自动控制系毕业后加入云南烟草。" },
         {
           year: "2000-2015",
           desc: "历任研发、企划、全球供应链系统总负责人及移动业务集团总裁。",
         },
         {
           year: "2017至今",
-          desc: "荣耀重回某省烟草并担任执行副总裁兼中国区总裁，主导落地“日出东方”战略，狠抓新客生态。",
+          desc: "荣耀重回云南烟草并担任执行副总裁兼中国区总裁，主导落地“日出东方”战略，狠抓新客生态。",
         },
       ],
     },
@@ -5128,13 +5217,13 @@ function DecisionMakersReportCard({
         },
         {
           year: "近期",
-          desc: "加入某省烟草主导全球组织大融合。极其关注核心高压奋斗科技团队的高水准健康与福祉。",
+          desc: "加入云南烟草主导全球组织大融合。极其关注核心高压奋斗科技团队的高水准健康与福祉。",
         },
       ],
     },
     {
       name: "贺志强",
-      title: "高级副总裁兼某省烟草创投集团总裁",
+      title: "高级副总裁兼云南烟草创投集团总裁",
       role: "🌱 新客/智慧生态推荐发起人",
       timeline: [
         {
@@ -5143,11 +5232,11 @@ function DecisionMakersReportCard({
         },
         {
           year: "1999-2016",
-          desc: "长期任某省烟草集团全球首席技术官(CTO)及某省烟草研究院院长。",
+          desc: "长期任云南烟草集团全球首席技术官(CTO)及云南烟草研究院院长。",
         },
         {
           year: "2016至今",
-          desc: "出任某省烟草创投集团总裁，负责内部孵化培育，重仓投资物联网、混合AI及硬核智慧医疗领域。",
+          desc: "出任云南烟草创投集团总裁，负责内部孵化培育，重仓投资物联网、混合AI及硬核智慧医疗领域。",
         },
       ],
     },
@@ -5176,7 +5265,7 @@ function DecisionMakersReportCard({
       <div className="bg-gradient-to-r from-amber-600 to-amber-500 px-4 py-3 flex justify-between items-center">
         <div className="flex items-center text-white font-bold">
           <Users size={18} className="mr-2" />
-          【某省烟草】关键决策人分析报告
+          【云南烟草】关键决策人分析报告
         </div>
         <div className="text-white/80 text-sm">利益相关者图谱</div>
       </div>
@@ -5222,7 +5311,7 @@ function DecisionMakersReportCard({
             {/* Left selector sidebar */}
             <div className="col-span-1 border-r border-gray-100 pr-2 space-y-1">
               <span className="text-[10px] font-bold text-gray-400 block mb-2 uppercase tracking-wide">
-                某省烟草高层 (点击切换)
+                云南烟草高层 (点击切换)
               </span>
               {executives.map((exec, idx) => (
                 <button
@@ -5430,10 +5519,10 @@ function DecisionMakersReportCard({
                     高层共振铺垫 - 终结枪
                   </div>
                   <div className="text-xs font-bold text-gray-900 mb-1.5">
-                    张总 / 某省烟草帅印
+                    张总 / 云南烟草帅印
                   </div>
                   <p className="text-[10px] text-gray-650 text-gray-600 leading-relaxed">
-                    打历史牌：强调平安与某省烟草长达18年、被载入产业史册的
+                    打历史牌：强调平安与云南烟草长达18年、被载入产业史册的
                     <strong>“0001号大额企业年金”超级合作典故</strong>
                     。促成平安管理高层与其直面会见，将企康上升至两司全面战合新章。
                   </p>
@@ -6445,8 +6534,8 @@ export function LenovoNewMarketingPlanCard({
   onDownload?: () => void;
 }) {
   return (
-    <div className="w-full max-w-5xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-4 font-sans text-gray-800">
-      <div className="bg-gradient-to-r from-[#21436e] to-[#30598f] px-6 py-5 flex justify-between items-center text-white">
+    <div className="w-full max-w-5xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-4 font-['Microsoft_YaHei',_'sans-serif'] text-gray-800">
+      <div className="bg-gradient-to-r from-orange-600 to-orange-500 px-6 py-5 flex justify-between items-center text-white">
         <div className="flex flex-col">
           <div className="flex items-center text-lg font-bold mb-1">
             <svg
@@ -6463,7 +6552,7 @@ export function LenovoNewMarketingPlanCard({
             平安企康 · 企业健康保障服务
           </div>
           <div className="text-white/80 text-sm ml-8">
-            某省烟草专卖局（公司） | 首次拜访材料
+            云南烟草专卖局（公司） | 首次拜访材料
           </div>
         </div>
         <div className="text-right text-sm text-white/80 leading-relaxed">
@@ -6472,16 +6561,69 @@ export function LenovoNewMarketingPlanCard({
         </div>
       </div>
 
-      <div className="p-4 flex flex-col md:flex-row gap-4">
+      
+      <div className="px-4 pt-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="bg-amber-500 text-white px-4 py-2 flex items-center font-bold text-sm">
+            <span className="mr-2 text-base">💡</span> 烟草行业特征及企康需求
+          </div>
+          <div className="p-4">
+            <div className="overflow-x-auto rounded-lg border border-[#e2e8f0]">
+                <table className="w-full text-xs text-left border-collapse leading-tight">
+                  <thead className="bg-[#fce4a6]/50 text-[#b88c3a] font-bold">
+                    <tr>
+                      <th className="px-4 py-2 border-b border-[#e2e8f0]">行业特征</th>
+                      <th className="px-4 py-2 border-b border-[#e2e8f0]">对应的企康需求</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-gray-700">
+                    <tr>
+                      <td className="px-4 py-2 border-b border-r border-[#e2e8f0]">员工规模大(数千~数万人)</td>
+                      <td className="px-4 py-2 border-b border-[#e2e8f0]">需覆盖全国、统一标准的健康体系</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 border-b border-r border-[#e2e8f0] bg-gray-50/50">平均年龄偏高</td>
+                      <td className="px-4 py-2 border-b border-[#e2e8f0] bg-gray-50/50">慢病管理、中老年专属服务</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 border-b border-r border-[#e2e8f0]">退休员工比例高</td>
+                      <td className="px-4 py-2 border-b border-[#e2e8f0]">退休人员健康管理延续、医务室需求</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 border-b border-r border-[#e2e8f0] bg-gray-50/50">一线员工轮班制</td>
+                      <td className="px-4 py-2 border-b border-[#e2e8f0] bg-gray-50/50">7×24小时在线问诊、远程医疗</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 border-b border-r border-[#e2e8f0]">国企福利体系完善</td>
+                      <td className="px-4 py-2 border-b border-[#e2e8f0]">补充医疗、健康委托等综合福利</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 border-b border-r border-[#e2e8f0] bg-gray-50/50">网络化接受度偏低</td>
+                      <td className="px-4 py-2 border-b border-[#e2e8f0] bg-gray-50/50">需要线下+线上融合指导</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 border-r border-[#e2e8f0]">职业病风险</td>
+                      <td className="px-4 py-2 border-[#e2e8f0]">尘肺/呼吸道职业病防范、定期体检</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-4 pt-1 flex flex-col md:flex-row gap-4">
         {/* Column 1 */}
         <div className="flex-[1.2] bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col overflow-hidden">
-          <div className="bg-[#1e3a5f] text-white px-4 py-3 font-bold flex items-center text-sm">
+          <div className="bg-amber-500 text-white px-4 py-3 font-bold flex items-center text-sm">
             <span className="mr-2 text-base">🏆</span> 哪些大客户在做
           </div>
           <div className="p-4 space-y-6 text-sm">
+
+
             <div>
-              <div className="flex items-center font-bold text-[#1e3a5f] mb-3 border-b border-gray-100 pb-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#1e3a5f] mr-2"></div>
+              <div className="flex items-center font-bold text-amber-600 mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-amber-500 mr-2"></div>
                 同类型央国企
               </div>
               <div className="space-y-4">
@@ -6498,48 +6640,38 @@ export function LenovoNewMarketingPlanCard({
             </div>
 
             <div>
-              <div className="flex items-center font-bold text-[#1e3a5f] mb-3 border-b border-gray-100 pb-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#1e3a5f] mr-2"></div>
+              <div className="flex items-center font-bold text-amber-600 mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-amber-500 mr-2"></div>
                 省级多机构客户
               </div>
               <div className="space-y-4">
                 <div>
                   <div className="font-bold text-gray-800 mb-1 leading-relaxed">海南省烟草商业系统 <span className="font-normal text-gray-500">—— 2025-2027年补充医疗保险项目，平安产险中标</span></div>
                   <div className="flex gap-2 mt-1">
-                    <span className="bg-[#f0f4fc] text-[#4f73b6] text-xs px-2 py-0.5 rounded">管理费率 1.00%</span>
                     <span className="text-[#37b275] font-bold text-xs flex items-center">2300元/人/年</span>
                   </div>
                 </div>
                 <div>
                   <div className="font-bold text-gray-800 mb-1 leading-relaxed">贵州省烟草公司 <span className="font-normal text-gray-500">—— 2025-2028年补充医疗保险采购，平安产险中标（得分85.36，远超竞品69.53）</span></div>
-                  <div className="flex gap-2 mt-1">
-                    <span className="bg-[#f0f4fc] text-[#4f73b6] text-xs px-2 py-0.5 rounded">管理费率 2%</span>
-                  </div>
                 </div>
                 <div>
                   <div className="font-bold text-gray-800 mb-1 leading-relaxed">重庆市烟草公司 <span className="font-normal text-gray-500">—— 2026-2027年职工补充医疗保障，平安产险中标</span></div>
-                  <div className="flex gap-2 mt-1">
-                    <span className="bg-[#f0f4fc] text-[#4f73b6] text-xs px-2 py-0.5 rounded">管理费率 1.70%</span>
-                  </div>
                 </div>
                 <div>
                   <div className="font-bold text-gray-800 mb-1 leading-relaxed">遵义市烟草公司 <span className="font-normal text-gray-500">—— 2025年补充医疗保险，平安养老险中标</span></div>
-                  <div className="flex gap-2 mt-1">
-                    <span className="bg-[#f0f4fc] text-[#4f73b6] text-xs px-2 py-0.5 rounded">管理费率 2.77%</span>
-                  </div>
                 </div>
               </div>
             </div>
 
             <div>
-              <div className="flex items-center font-bold text-[#1e3a5f] mb-3 border-b border-gray-100 pb-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#1e3a5f] mr-2"></div>
+              <div className="flex items-center font-bold text-amber-600 mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-amber-500 mr-2"></div>
                 长期合作标杆
               </div>
               <div className="">
                 <div className="font-bold text-gray-800 mb-1 leading-relaxed">金华烟草 · 全国标杆 <span className="font-normal text-gray-500">—— 平安产险总部戴新媛总带队，联合浙江分公司及多地中支机构赴金华烟草开展企康服务专项交流。双方围绕企业健康险服务提质升级、深化长期合作深度沟通。金华烟草被定位为<strong className="text-gray-900 border-b border-gray-900">可复制、可推广</strong>的企康服务标杆样本，推动全国企康业务精细化、标准化升级。</span></div>
                 <div className="flex flex-wrap gap-2 mt-2">
-                  <span className="bg-purple-50 text-purple-700 text-[10px] px-2 py-0.5 rounded font-medium">总部级标杆</span>
+                  <span className="bg-amber-50 text-amber-700 text-[10px] px-2 py-0.5 rounded font-medium">总部级标杆</span>
                   <span className="bg-green-50 text-green-700 text-[10px] px-2 py-0.5 rounded font-medium">产养协同</span>
                   <span className="bg-orange-50 text-orange-700 text-[10px] px-2 py-0.5 rounded font-medium">长期合作</span>
                 </div>
@@ -6550,13 +6682,13 @@ export function LenovoNewMarketingPlanCard({
 
         {/* Column 2 */}
         <div className="flex-1 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col overflow-hidden">
-          <div className="bg-[#3eb376] text-white px-4 py-3 font-bold flex items-center text-sm">
+          <div className="bg-orange-500 text-white px-4 py-3 font-bold flex items-center text-sm">
             <span className="mr-2 text-base">📦</span> 平安标准产品
           </div>
           <div className="p-4 space-y-6 text-sm">
             <div>
-              <div className="flex items-center font-bold text-[#3eb376] mb-3 border-b border-gray-100 pb-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#3eb376] mr-2"></div>
+              <div className="flex items-center font-bold text-orange-500 mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mr-2"></div>
                 分层补充医疗
               </div>
               <div className="text-gray-600 space-y-1.5">
@@ -6568,15 +6700,15 @@ export function LenovoNewMarketingPlanCard({
                 </ul>
                 <p className="font-bold text-[#4f73b6] pt-1">支持按岗位/职级/工龄分层设计</p>
                 <div className="flex gap-2 pt-1">
-                  <span className="bg-[#ebf7f1] text-[#3eb376] text-[10px] px-2 py-0.5 rounded border border-[#bce8cf] font-medium">灵活定制</span>
+                  <span className="bg-orange-50 text-orange-500 text-[10px] px-2 py-0.5 rounded border border-orange-200 font-medium">灵活定制</span>
                   <span className="bg-[#f0f4fc] text-[#4f73b6] text-[10px] px-2 py-0.5 rounded border border-[#d2def2] font-medium">全员覆盖</span>
                 </div>
               </div>
             </div>
 
             <div>
-              <div className="flex items-center font-bold text-[#3eb376] mb-3 border-b border-gray-100 pb-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#3eb376] mr-2"></div>
+              <div className="flex items-center font-bold text-orange-500 mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mr-2"></div>
                 委托基金管理
               </div>
               <div className="text-gray-600 space-y-1.5">
@@ -6587,20 +6719,17 @@ export function LenovoNewMarketingPlanCard({
                   <li>覆盖门急诊、住院、体检、高额医疗补助、急难津贴等</li>
                   <li>年度结余可滚存使用，<strong className="text-[#4f73b6]">预算池灵活高效</strong></li>
                 </ul>
-                <div className="bg-[#f0f4fc] text-[#4f73b6] p-2 rounded text-xs font-bold w-fit mt-1">
-                  行业管理费率参考：1%~3.75%
-                </div>
                 <div className="flex gap-2 pt-2">
-                  <span className="bg-[#ebf7f1] text-[#3eb376] text-[10px] px-2 py-0.5 rounded border border-[#bce8cf] font-medium">资金安全</span>
-                  <span className="bg-purple-50 text-purple-600 text-[10px] px-2 py-0.5 rounded border border-purple-200 font-medium">数据沉淀</span>
+                  <span className="bg-orange-50 text-orange-500 text-[10px] px-2 py-0.5 rounded border border-orange-200 font-medium">资金安全</span>
+                  <span className="bg-amber-50 text-amber-600 text-[10px] px-2 py-0.5 rounded border border-amber-200 font-medium">数据沉淀</span>
                   <span className="bg-orange-50 text-orange-600 text-[10px] px-2 py-0.5 rounded border border-orange-200 font-medium">灵活滚存</span>
                 </div>
               </div>
             </div>
 
             <div>
-              <div className="flex items-center font-bold text-[#3eb376] mb-3 border-b border-gray-100 pb-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#3eb376] mr-2"></div>
+              <div className="flex items-center font-bold text-orange-500 mb-3 border-b border-gray-100 pb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mr-2"></div>
                 体检 / 慢病 / 就医协助
               </div>
               <div className="text-gray-600 space-y-3">
@@ -6614,8 +6743,8 @@ export function LenovoNewMarketingPlanCard({
                 </div>
                 <div className="flex gap-2 pt-1">
                   <span className="bg-[#f0f4fc] text-[#4f73b6] text-[10px] px-2 py-0.5 rounded font-bold">5万+医生</span>
-                  <span className="bg-[#ebf7f1] text-[#3eb376] text-[10px] px-2 py-0.5 rounded font-bold">5100+医院</span>
-                  <span className="bg-purple-50 text-purple-600 text-[10px] px-2 py-0.5 rounded font-bold">24万+药店</span>
+                  <span className="bg-orange-50 text-orange-500 text-[10px] px-2 py-0.5 rounded font-bold">5100+医院</span>
+                  <span className="bg-amber-50 text-amber-600 text-[10px] px-2 py-0.5 rounded font-bold">24万+药店</span>
                 </div>
               </div>
             </div>
@@ -6692,7 +6821,7 @@ export function CustomerPortraitCard() {
     <div className="w-full max-w-4xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-4 font-sans text-gray-800 animate-in fade-in slide-in-from-bottom-2 duration-500">
       <div className="bg-gradient-to-r from-blue-600 to-indigo-500 px-5 py-4 flex justify-between items-center">
         <div className="flex items-center text-white font-bold text-lg">
-          某省烟草集团 - 客户画像概览
+          云南烟草集团 - 客户画像概览
         </div>
         <span className="text-white text-xs px-3 py-1 bg-white/20 rounded-full border border-white/30">
           智能洞察
@@ -6899,8 +7028,8 @@ export function DocInterpretationCard() {
   }, []);
 
   return (
-    <div className="w-full max-w-5xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-4 font-sans text-gray-800 animate-in fade-in slide-in-from-bottom-2 duration-500">
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-5 py-3 flex justify-between items-center">
+    <div className="w-full max-w-5xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-4 font-['Microsoft_YaHei',_'sans-serif'] text-gray-800 animate-in fade-in slide-in-from-bottom-2 duration-500">
+      <div className="bg-gradient-to-r from-orange-600 to-orange-800 px-5 py-3 flex justify-between items-center">
         <div className="flex items-center text-white font-bold text-base">
           <FileText className="mr-2 h-5 w-5 opacity-80" />
           某烟草企业补充医疗保障管理办法 - AI 解析
@@ -6957,79 +7086,79 @@ export function DocInterpretationCard() {
 
         {/* Right: AI Parsed Results */}
         <div className="p-5 bg-[#F4F7FC]">
-          <div className="font-bold text-center text-sm text-blue-900 mb-4 flex items-center justify-center">
-            <span className="bg-blue-600 text-white p-1 rounded mr-2"><CheckCircle size={14} /></span> 
+          <div className="font-bold text-center text-sm text-orange-900 mb-4 flex items-center justify-center">
+            <span className="bg-orange-600 text-white p-1 rounded mr-2"><CheckCircle size={14} /></span> 
             AI 结构化解析结果
           </div>
           
           <div className="w-full space-y-2">
-            <div className="grid grid-cols-12 gap-2 bg-blue-100/50 p-2 rounded text-xs font-bold text-blue-900 border border-blue-200">
+            <div className="grid grid-cols-12 gap-2 bg-orange-100/50 p-2 rounded text-xs font-bold text-orange-900 border border-orange-200">
               <div className="col-span-4 text-center">字段名称</div>
               <div className="col-span-8">解析结果</div>
             </div>
 
             <div className="space-y-1.5 h-[340px] overflow-y-auto custom-scrollbar relative">
               {step >= 2 && (
-                <motion.div initial={{opacity:0, x:10}} animate={{opacity:1, x:0}} className="grid grid-cols-12 gap-2 bg-white p-2.5 rounded text-xs border border-blue-100 shadow-sm relative overflow-hidden group">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-400"></div>
+                <motion.div initial={{opacity:0, x:10}} animate={{opacity:1, x:0}} className="grid grid-cols-12 gap-2 bg-white p-2.5 rounded text-xs border border-orange-100 shadow-sm relative overflow-hidden group">
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-orange-400"></div>
                   <div className="col-span-4 text-gray-500 font-bold flex items-center justify-center">保障人群</div>
-                  <div className="col-span-8 text-blue-800 font-bold flex items-center">在职员工、退休人员、特殊困难职工</div>
+                  <div className="col-span-8 text-orange-800 font-bold flex items-center">在职员工、退休人员、特殊困难职工</div>
                 </motion.div>
               )}
               
               {step >= 4 && (
-                <motion.div initial={{opacity:0, x:10}} animate={{opacity:1, x:0}} className="grid grid-cols-12 gap-2 bg-white p-2.5 rounded text-xs border border-blue-100 shadow-sm relative overflow-hidden group">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500"></div>
+                <motion.div initial={{opacity:0, x:10}} animate={{opacity:1, x:0}} className="grid grid-cols-12 gap-2 bg-white p-2.5 rounded text-xs border border-orange-100 shadow-sm relative overflow-hidden group">
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-orange-500"></div>
                   <div className="col-span-4 text-gray-500 font-bold flex items-center justify-center">报销范围</div>
-                  <div className="col-span-8 text-blue-800 font-bold flex items-center leading-relaxed">门急诊医疗、住院医疗、药店购药、大病救助</div>
+                  <div className="col-span-8 text-orange-800 font-bold flex items-center leading-relaxed">门急诊医疗、住院医疗、药店购药、大病救助</div>
                 </motion.div>
               )}
 
               {step >= 6 && (
-                 <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-blue-50 shadow-sm">
+                 <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-orange-50 shadow-sm">
                    <div className="col-span-4 text-gray-500 font-medium flex items-center justify-center">支付口径</div>
                    <div className="col-span-8 text-gray-800 flex items-center">医保后个人自付、符合规定的目录外自费</div>
                  </motion.div>
               )}
               
               {step >= 8 && (
-                <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-blue-50 shadow-sm">
+                <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-orange-50 shadow-sm">
                   <div className="col-span-4 text-gray-500 font-medium flex items-center justify-center">年度限额</div>
                   <div className="col-span-8 text-gray-800 flex items-center">个人年度最高补偿10万元</div>
                 </motion.div>
               )}
 
               {step >= 10 && (
-                <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-blue-50 shadow-sm">
+                <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-orange-50 shadow-sm">
                   <div className="col-span-4 text-gray-500 font-medium flex items-center justify-center">大病限额</div>
                   <div className="col-span-8 text-gray-800 flex items-center">大病救助年度最高补偿30万元</div>
                 </motion.div>
               )}
 
               {step >= 12 && (
-                <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-blue-50 shadow-sm">
+                <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-orange-50 shadow-sm">
                   <div className="col-span-4 text-gray-500 font-medium flex items-center justify-center">基金模式</div>
                   <div className="col-span-8 text-gray-800 flex items-center">企业统筹基金</div>
                 </motion.div>
               )}
 
               {step >= 14 && (
-                <motion.div initial={{opacity:0, x:10}} animate={{opacity:1, x:0}} className="grid grid-cols-12 gap-2 bg-white p-2.5 rounded text-xs border border-blue-100 shadow-sm relative overflow-hidden group">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-600"></div>
+                <motion.div initial={{opacity:0, x:10}} animate={{opacity:1, x:0}} className="grid grid-cols-12 gap-2 bg-white p-2.5 rounded text-xs border border-orange-100 shadow-sm relative overflow-hidden group">
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-orange-600"></div>
                   <div className="col-span-4 text-gray-500 font-bold flex items-center justify-center">账户规则</div>
-                  <div className="col-span-8 text-blue-800 font-bold flex items-center">公共账户（基金池模式）</div>
+                  <div className="col-span-8 text-orange-800 font-bold flex items-center">公共账户（基金池模式）</div>
                 </motion.div>
               )}
 
               {step >= 16 && (
-                <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-blue-50 shadow-sm">
+                <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-orange-50 shadow-sm">
                   <div className="col-span-4 text-gray-500 font-medium flex items-center justify-center">支付方式</div>
                   <div className="col-span-8 text-gray-800 flex items-center">基金池统一支付</div>
                 </motion.div>
               )}
 
               {step >= 18 && (
-                <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-blue-50 shadow-sm">
+                <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="grid grid-cols-12 gap-2 bg-white p-2 rounded text-xs border border-orange-50 shadow-sm">
                   <div className="col-span-4 text-gray-500 font-medium flex items-center justify-center">结余规则</div>
                   <div className="col-span-8 text-gray-800 flex items-center">结转至下一年度使用</div>
                 </motion.div>
@@ -7093,8 +7222,8 @@ export function DocInterpretationCard() {
 
 export function DocRiskOpportunityCard({ onConsultation }: { onConsultation?: () => void }) {
   return (
-    <div className="w-full max-w-5xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-4 font-sans text-gray-800 animate-in fade-in slide-in-from-bottom-2 duration-500">
-      <div className="bg-gradient-to-r from-gray-800 to-gray-700 px-5 py-3 flex justify-between items-center">
+    <div className="w-full max-w-5xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-4 font-['Microsoft_YaHei',_'sans-serif'] text-gray-800 animate-in fade-in slide-in-from-bottom-2 duration-500">
+      <div className="bg-gradient-to-r from-orange-600 to-orange-500 px-5 py-3 flex justify-between items-center">
         <div className="flex items-center text-white font-bold text-base">
           <Target className="mr-2 h-5 w-5 opacity-80" />
           AI 风险与机会识别卡
@@ -7217,7 +7346,7 @@ export function DocRiskOpportunityCard({ onConsultation }: { onConsultation?: ()
              </div>
              <div>
                <div className="text-xs text-gray-500 mb-1">合作可行性</div>
-               <div className="text-sm font-bold text-blue-600">高</div>
+               <div className="text-sm font-bold text-orange-600">高</div>
              </div>
            </div>
            <div>
@@ -7233,7 +7362,7 @@ export function DocRiskOpportunityCard({ onConsultation }: { onConsultation?: ()
         <div className="flex justify-center border-t border-gray-100 pt-4">
           <button
             onClick={onConsultation}
-            className="flex items-center text-sm text-white bg-blue-600 hover:bg-blue-700 px-6 py-2.5 rounded-lg shadow-sm font-bold transition-colors"
+            className="flex items-center text-sm text-white bg-orange-600 hover:bg-orange-700 px-6 py-2.5 rounded-lg shadow-sm font-bold transition-colors"
           >
             <span className="mr-2">🩺</span>
             发起专家会诊
@@ -7258,8 +7387,8 @@ export function ExpertConsultationCard({ onGeneratePlan }: { onGeneratePlan?: ()
   }, []);
 
   return (
-    <div className="w-full max-w-5xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-4 font-sans text-gray-800 animate-in fade-in slide-in-from-bottom-2 duration-500">
-      <div className="bg-gradient-to-r from-blue-700 to-indigo-800 px-5 py-3 flex justify-between items-center text-white">
+    <div className="w-full max-w-5xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-4 font-['Microsoft_YaHei',_'sans-serif'] text-gray-800 animate-in fade-in slide-in-from-bottom-2 duration-500">
+      <div className="bg-gradient-to-r from-orange-700 to-indigo-800 px-5 py-3 flex justify-between items-center text-white">
         <div className="flex items-center font-bold text-base">
           <Users className="mr-2 h-5 w-5 opacity-80" />
           专家会诊
@@ -7270,12 +7399,12 @@ export function ExpertConsultationCard({ onGeneratePlan }: { onGeneratePlan?: ()
       <div className="p-5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           {/* 核保专家 */}
-          <div className="border border-blue-100 rounded-lg overflow-hidden bg-blue-50/30 flex flex-col h-full">
-            <div className="bg-blue-100/50 px-4 py-3 flex items-center border-b border-blue-100">
+          <div className="border border-orange-100 rounded-lg overflow-hidden bg-orange-50/30 flex flex-col h-full">
+            <div className="bg-orange-100/50 px-4 py-3 flex items-center border-b border-orange-100">
               <span className="text-2xl mr-2">👨‍⚕️</span>
               <div>
-                <div className="font-bold text-blue-900 text-sm">核保专家</div>
-                <div className="text-xs text-blue-600 mt-0.5">
+                <div className="font-bold text-orange-900 text-sm">核保专家</div>
+                <div className="text-xs text-orange-600 mt-0.5">
                   {phase === 'thinking' ? (
                     <motion.span initial={{opacity:0}} animate={{opacity:1}} transition={{repeat:Infinity, duration:1.5}}>正在将管理办法条款映射为保险责任...</motion.span>
                   ) : (
@@ -7306,9 +7435,9 @@ export function ExpertConsultationCard({ onGeneratePlan }: { onGeneratePlan?: ()
                   </ul>
                 </div>
                 {/* 输出意见 */}
-                <div className="bg-blue-50 border border-blue-100 rounded p-2.5 flex-1">
-                  <div className="font-bold text-blue-800 mb-1 flex items-center"><span className="mr-1">💡</span> 建议采用“标准责任+定制扩展责任”模式</div>
-                  <ul className="list-disc pl-5 space-y-1 text-blue-700">
+                <div className="bg-orange-50 border border-orange-100 rounded p-2.5 flex-1">
+                  <div className="font-bold text-orange-800 mb-1 flex items-center"><span className="mr-1">💡</span> 建议采用“标准责任+定制扩展责任”模式</div>
+                  <ul className="list-disc pl-5 space-y-1 text-orange-700">
                     <li>标准门诊及住院责任直接匹配</li>
                     <li>目录外责任需专项测算</li>
                     <li>建议引入年度赔付上限控制机制</li>
@@ -7382,12 +7511,12 @@ export function ExpertConsultationCard({ onGeneratePlan }: { onGeneratePlan?: ()
           </div>
 
           {/* 运营专家 */}
-          <div className="border border-purple-100 rounded-lg overflow-hidden bg-purple-50/30 flex flex-col h-full">
-            <div className="bg-purple-100/50 px-4 py-3 flex items-center border-b border-purple-100">
+          <div className="border border-amber-100 rounded-lg overflow-hidden bg-amber-50/30 flex flex-col h-full">
+            <div className="bg-amber-100/50 px-4 py-3 flex items-center border-b border-amber-100">
               <span className="text-2xl mr-2">👨‍💼</span>
               <div>
-                <div className="font-bold text-purple-900 text-sm">运营专家</div>
-                <div className="text-xs text-purple-600 mt-0.5">
+                <div className="font-bold text-amber-900 text-sm">运营专家</div>
+                <div className="text-xs text-amber-600 mt-0.5">
                    {phase === 'thinking' ? (
                      <motion.span initial={{opacity:0}} animate={{opacity:1}} transition={{repeat:Infinity, duration:1.5, delay:0.4}}>正在评估多机构落地方案...</motion.span>
                    ) : (
@@ -7418,9 +7547,9 @@ export function ExpertConsultationCard({ onGeneratePlan }: { onGeneratePlan?: ()
                   </ul>
                 </div>
                 {/* 输出意见 */}
-                 <div className="bg-purple-50 border border-purple-100 rounded p-2.5 flex-1">
-                  <div className="font-bold text-purple-800 mb-1 flex items-center"><span className="mr-1">💡</span> 建议采用“统一平台+分级运营”模式</div>
-                  <ul className="list-disc pl-5 space-y-1 text-purple-700">
+                 <div className="bg-amber-50 border border-amber-100 rounded p-2.5 flex-1">
+                  <div className="font-bold text-amber-800 mb-1 flex items-center"><span className="mr-1">💡</span> 建议采用“统一平台+分级运营”模式</div>
+                  <ul className="list-disc pl-5 space-y-1 text-amber-700">
                     <li>总部统一管理基金账户</li>
                     <li>分支机构统一服务标准</li>
                     <li>建立多机构运营看板与预警机制</li>
@@ -7442,7 +7571,7 @@ export function ExpertConsultationCard({ onGeneratePlan }: { onGeneratePlan?: ()
         {phase === 'done' && (
           <motion.div initial={{opacity:0, scale:0.95}} animate={{opacity:1, scale:1}} transition={{delay: 0.4}} className="border-t border-gray-100 pt-5">
             <div className="font-bold text-gray-800 text-sm mb-4">AI会诊结论</div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="bg-gray-50 rounded p-3 text-center border border-gray-200">
                 <div className="text-xs text-gray-500 mb-1">项目匹配度</div>
                 <div className="text-sm font-bold text-gray-800"><span className="text-green-500">🟢</span> 高匹配（85%）</div>
@@ -7451,24 +7580,16 @@ export function ExpertConsultationCard({ onGeneratePlan }: { onGeneratePlan?: ()
                 <div className="text-xs text-gray-500 mb-1">风险等级</div>
                 <div className="text-sm font-bold text-gray-800"><span className="text-yellow-500">🟡</span> 中低风险</div>
               </div>
-              <div className="col-span-2 bg-gray-50 rounded p-3 text-center border border-gray-200">
-                <div className="text-xs text-gray-500 mb-1">重点关注事项</div>
-                <div className="text-xs font-bold text-gray-800 flex justify-center space-x-3 mt-1">
-                   <span>年度给付限额规则</span>
-                   <span>目录外费用责任边界</span>
-                   <span>公共基金池超支机制</span>
-                </div>
-              </div>
             </div>
             
-            <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg flex items-center justify-between mt-4">
-               <div className="text-blue-900 text-sm font-bold">
+            <div className="bg-orange-50 border border-orange-200 p-4 rounded-lg flex items-center justify-between mt-4">
+               <div className="text-orange-900 text-sm font-bold">
                  🤖 AI已完成核保、理赔、运营三方联合评估，确认项目具备方案设计条件，建议进入产品匹配与方案生成阶段。
                </div>
                {onGeneratePlan && (
                  <button 
                    onClick={onGeneratePlan}
-                   className="flex items-center text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg shadow-sm font-bold transition-colors ml-4 whitespace-nowrap"
+                   className="flex items-center text-sm text-white bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg shadow-sm font-bold transition-colors ml-4 whitespace-nowrap"
                  >
                    <span className="mr-1">🚀</span> 发起方案生成
                  </button>
@@ -7496,14 +7617,14 @@ export function ProductMatchAssessmentCard() {
   }, []);
 
   return (
-    <div className="w-full max-w-5xl animate-in fade-in slide-in-from-bottom-2 duration-500 font-sans mt-2">
+    <div className="w-full max-w-5xl animate-in fade-in slide-in-from-bottom-2 duration-500 font-['Microsoft_YaHei',_'sans-serif'] mt-2">
       {phase !== 'initial' && (
         <div className="bg-white border border-gray-200 rounded-xl overflow-visible shadow-sm text-gray-800 relative">
           {/* Header */}
           <div className="bg-gradient-to-r from-orange-600 to-amber-500 px-5 py-3 rounded-t-xl flex justify-between items-center text-white relative">
             <div className="flex items-center font-bold text-base">
               <Target className="mr-2 h-5 w-5 opacity-90" />
-              产品匹配评估
+              标品匹配评估
             </div>
             {phase === 'summary' && (
               <div className="text-xs font-medium animate-pulse opacity-90 bg-white/20 px-3 py-1 rounded-full">
@@ -7530,7 +7651,7 @@ export function ProductMatchAssessmentCard() {
                 
                 {/* Left col - Chart */}
                 <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 bg-orange-50/50 rounded-xl border border-orange-100">
-                  <div className="text-gray-700 font-bold mb-6">产品覆盖率评估</div>
+                  <div className="text-gray-700 font-bold mb-6">标品覆盖率评估</div>
                   
                   <div className="relative w-40 h-40 flex items-center justify-center mb-6">
                     {/* SVG Circle */}
@@ -7569,18 +7690,18 @@ export function ProductMatchAssessmentCard() {
 
                 {/* Right col - Details & Conclusion */}
                 <div className="lg:col-span-8 flex flex-col">
-                  {/* AI待确认事项清单 */}
+                  {/* 待专项确认事项清单 */}
                   <div className="mb-4">
                      <div className="text-gray-800 font-bold mb-3 flex items-center">
-                        <ListChecks className="w-4 h-4 mr-2 text-gray-500" /> AI待确认事项清单
+                        <ListChecks className="w-4 h-4 mr-2 text-gray-500" /> 待专项确认事项清单
                      </div>
                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <div className="border border-blue-100 bg-blue-50/30 rounded-lg p-3">
-                           <div className="font-bold text-blue-900 text-sm mb-2 flex justify-between items-center">
+                        <div className="border border-orange-100 bg-orange-50/30 rounded-lg p-3">
+                           <div className="font-bold text-orange-900 text-sm mb-2 flex justify-between items-center">
                              <span>👨‍⚕️ 核保确认</span>
-                             <span className="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">2项</span>
+                             <span className="bg-orange-100 text-orange-700 text-xs px-2 py-0.5 rounded-full">2项</span>
                            </div>
-                           <ul className="space-y-1.5 text-xs text-blue-800">
+                           <ul className="space-y-1.5 text-xs text-orange-800">
                               <li className="flex items-start"><span className="mr-1.5 text-orange-400">🔸</span> <span className="leading-tight">目录外自费费用责任边界</span></li>
                               <li className="flex items-start"><span className="mr-1.5 text-orange-400">🔸</span> <span className="leading-tight">特殊困难职工保障责任定义</span></li>
                            </ul>
@@ -7595,26 +7716,26 @@ export function ProductMatchAssessmentCard() {
                               <li className="flex items-start"><span className="mr-1.5 text-orange-400">🔸</span> <span className="leading-tight">药店购药责任历史赔付情况</span></li>
                            </ul>
                         </div>
-                        <div className="border border-purple-100 bg-purple-50/30 rounded-lg p-3">
-                           <div className="font-bold text-purple-900 text-sm mb-2 flex justify-between items-center">
+                        <div className="border border-amber-100 bg-amber-50/30 rounded-lg p-3">
+                           <div className="font-bold text-amber-900 text-sm mb-2 flex justify-between items-center">
                              <span>👨‍💼 运营确认</span>
-                             <span className="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded-full">1项</span>
+                             <span className="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-full">1项</span>
                            </div>
-                           <ul className="space-y-1.5 text-xs text-purple-800">
+                           <ul className="space-y-1.5 text-xs text-amber-800">
                               <li className="flex items-start"><span className="mr-1.5 text-orange-400">🔸</span> <span className="leading-tight">多机构统一运营与额度配置规则</span></li>
                            </ul>
                         </div>
                      </div>
                   </div>
 
-                  {/* AI评估结论 */}
+                  {/* 评估建议 */}
                   <motion.div initial={{opacity:0, scale:0.95}} animate={{opacity:(phase === 'done' || phase === 'highlight') ? 1 : 0, scale:1}} className="bg-gray-50 border border-gray-200 rounded-lg p-4 flex-1">
-                     <div className="font-bold text-gray-800 mb-3">AI评估结论</div>
+                     <div className="font-bold text-gray-800 mb-3">评估建议</div>
                      <div className="space-y-2.5 text-sm">
-                        <div className="flex items-start"><span className="mr-2">🟢</span> <span className="text-gray-700">当前制度与平安标准产品体系高度匹配</span></div>
-                        <div className="flex items-start"><span className="mr-2">📊</span> <span className="text-gray-700">标准产品覆盖率：<strong>78%</strong></span></div>
-                        <div className="flex items-start"><span className="mr-2">⚠️</span> <span className="text-gray-700">剩余22%主要集中于责任边界及运营规则确认</span></div>
-                        <div className="flex items-start"><span className="mr-2">🚀</span> <span className="text-blue-700 font-medium">建议优先采用标准产品方案进行设计，特殊责任通过专家会诊进一步确认</span></div>
+                        <div className="flex items-start"><span className="mr-2">🟢</span> <span className="text-gray-700">项目整体匹配度较高，建议优先采用标准产品方案快速响应客户需求</span></div>
+                        <div className="flex items-start"><span className="mr-2">📊</span> <span className="text-gray-700">78%的保障责任可直接映射至现有产品体系，无需额外定制开发</span></div>
+                        <div className="flex items-start"><span className="mr-2">⚠️</span> <span className="text-gray-700">目录外费用、基金池管理等特殊规则建议进入专项确认流程</span></div>
+                        <div className="flex items-start"><span className="mr-2">🚀</span> <span className="text-orange-700 font-medium">推荐立即启动方案生成，边界责任同步开展专家复核</span></div>
                      </div>
                   </motion.div>
 
@@ -7656,7 +7777,7 @@ export function ProductMatchAssessmentCard() {
 
 import React from 'react';
 import { Target, Loader2, Bot, Info, ShieldAlert, BarChart3, FileText, Circle } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+
 
 export function QuoteAuthCenterCard() {
   const [phase, setPhase] = React.useState('matching'); // matching -> checking -> evaluating -> done
@@ -7848,307 +7969,344 @@ export function QuoteAuthCenterCard() {
 
 
 export function BidDocInterpretationCard() {
-  const [phase, setPhase] = useState('extracting'); // 'extracting' | 'validating'
-  const [extractionProgress, setExtractionProgress] = useState(25);
-  const [activeTab, setActiveTab] = useState('extracting');
-
-  useEffect(() => {
-    const t0 = setTimeout(() => setExtractionProgress(75), 1000);
-    const t1 = setTimeout(() => setExtractionProgress(100), 2000);
-    const t2 = setTimeout(() => {
-      setPhase('validating');
-      setActiveTab('validating');
-    }, 3000);
-    return () => {
-      clearTimeout(t0);
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
-  }, []);
-
   return (
-    <div className="w-full max-w-5xl animate-in fade-in slide-in-from-bottom-2 duration-500 font-sans mt-2">
-      <div className="bg-orange-50/50 border border-orange-200 rounded-xl overflow-hidden shadow-sm text-gray-800">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-5 py-3 flex justify-between items-center text-white">
-          <div className="flex items-center font-bold text-base">
-            <FileText className="mr-2 h-5 w-5 opacity-90" />
-            招标文件解读
-          </div>
-          {phase === 'extracting' ? (
-            <div className="text-xs font-medium animate-pulse opacity-90 bg-white/20 px-3 py-1 rounded-full flex items-center">
-              <Loader2 className="h-3 w-3 mr-1 animate-spin" /> 智能解读中...
-            </div>
-          ) : (
-            <div className="text-xs font-medium opacity-90 px-3 py-1 rounded-full bg-white/20">
-              分析完成
-            </div>
-          )}
-        </div>
-
-        <div className="p-5 grid grid-cols-1 lg:grid-cols-4 gap-5">
-          {/* Left: Document Thumbnail */}
-          <div className="lg:col-span-1 border border-gray-200 rounded-xl p-4 bg-gray-50 flex flex-col">
-            <div className="flex-1 flex flex-col items-center justify-center py-6 bg-white border border-gray-100 rounded-lg shadow-sm mb-4">
-              <div className="text-4xl mb-2">📄</div>
-              <div className="text-xs text-gray-500 font-medium">132页 PDF</div>
-            </div>
-            <div className="text-sm font-bold text-gray-800 leading-tight mb-4 text-center">
-              某烟草公司补充医疗保障服务采购项目招标文件
-            </div>
-            <div className="space-y-2 mt-auto">
-              <div className="text-xs text-gray-500 flex justify-between">
-                <span>文件状态</span>
-                <span className="text-green-600 font-medium flex items-center"><CheckCircle2 className="w-3 h-3 mr-1" /> 上传成功</span>
-              </div>
-              <div className="text-xs text-gray-500 flex justify-between">
-                <span>解析状态</span>
-                <span className="text-blue-600 font-medium flex items-center">📑 已识别132页</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Middle: Core Process Steps */}
-          <div className="lg:col-span-1 border border-gray-200 rounded-xl p-4 bg-white relative">
-            <div className="font-bold text-gray-800 mb-4 pb-2 border-b border-gray-100">AI解读进度</div>
-            <div className="space-y-4">
-              {/* Step 1 */}
-              <div 
-                className={`flex items-start cursor-pointer group p-2 -ml-2 rounded-lg transition-colors ${activeTab === 'extracting' ? 'bg-orange-50' : 'hover:bg-gray-50'}`}
-                onClick={() => setActiveTab('extracting')}
-              >
-                <div className="mt-0.5 mr-3 text-orange-600">
-                  {phase === 'extracting' ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
-                </div>
-                <div>
-                  <div className={`font-bold text-sm ${activeTab === 'extracting' ? 'text-orange-700' : 'text-gray-800 group-hover:text-orange-600'}`}>招标要求提取</div>
-                </div>
-              </div>
-
-              {/* Step 2 */}
-              <div 
-                className={`flex items-start cursor-pointer group p-2 -ml-2 rounded-lg transition-colors ${activeTab === 'validating' ? 'bg-orange-50' : 'hover:bg-gray-50'}`}
-                onClick={() => setActiveTab('validating')}
-              >
-                <div className={`mt-0.5 mr-3 ${phase === 'validating' ? 'text-orange-600' : 'text-gray-300'}`}>
-                   {phase === 'validating' ? <CheckCircle2 className="w-4 h-4" /> : <Circle className="w-4 h-4" />}
-                </div>
-                <div>
-                  <div className={`font-bold text-sm ${activeTab === 'validating' ? 'text-orange-700' : (phase === 'validating' ? 'text-gray-800 group-hover:text-orange-600' : 'text-gray-500 group-hover:text-orange-400')}`}>方案一致性校验</div>
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div 
-                className={`flex items-start cursor-pointer group p-2 -ml-2 rounded-lg transition-colors ${activeTab === 'matching' ? 'bg-orange-50' : 'hover:bg-gray-50'}`}
-                onClick={() => setActiveTab('matching')}
-              >
-                <div className="mt-0.5 mr-3 text-gray-300">
-                  <Circle className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className={`font-medium text-sm ${activeTab === 'matching' ? 'text-orange-700 font-bold' : 'text-gray-500 group-hover:text-orange-400'}`}>能力匹配分析</div>
-                </div>
-              </div>
-
-              {/* Step 4 */}
-              <div 
-                className={`flex items-start cursor-pointer group p-2 -ml-2 rounded-lg transition-colors ${activeTab === 'generating' ? 'bg-orange-50' : 'hover:bg-gray-50'}`}
-                onClick={() => setActiveTab('generating')}
-              >
-                <div className="mt-0.5 mr-3 text-gray-300">
-                  <Circle className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className={`font-medium text-sm ${activeTab === 'generating' ? 'text-orange-700 font-bold' : 'text-gray-500 group-hover:text-orange-400'}`}>材料清单生成</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: AI Status / Detail Card */}
-          <div className="lg:col-span-2 border border-gray-200 rounded-xl p-5 bg-gradient-to-b from-orange-50/50 to-white flex flex-col relative overflow-hidden">
-             <div className="font-bold text-gray-800 mb-4 flex items-center relative z-10">
-               <Bot className="w-4 h-4 mr-2 text-orange-600" />
-               详细内容
-             </div>
-
-             <div className="flex-1 relative z-10">
-               <AnimatePresence mode="wait">
-                 {activeTab === 'extracting' && (
-                   <motion.div
-                     key="extracting"
-                     initial={{ opacity: 0, x: 10 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     exit={{ opacity: 0, x: -10 }}
-                     transition={{ duration: 0.2 }}
-                     className="flex flex-col h-full"
-                   >
-                     <div className="font-bold text-orange-900 mb-3 flex items-center">
-                       <FileText className="w-4 h-4 mr-2" /> 招标要求提取
-                     </div>
-                     
-                     <div className="mb-4">
-                       <div className="text-xs text-gray-500 mb-2">已识别内容</div>
-                       <div className="grid grid-cols-2 gap-2">
-                         <div className="bg-white border border-orange-100 p-2 rounded text-xs font-medium text-orange-800 flex items-center shadow-sm">
-                           <CheckCircle2 className="w-3 h-3 mr-1 text-orange-500" /> 采购项目名称
-                         </div>
-                         <div className="bg-white border border-orange-100 p-2 rounded text-xs font-medium text-orange-800 flex items-center shadow-sm">
-                           <CheckCircle2 className="w-3 h-3 mr-1 text-orange-500" /> 服务范围
-                         </div>
-                         <div className="bg-white border border-orange-100 p-2 rounded text-xs font-medium text-orange-800 flex items-center shadow-sm">
-                           <CheckCircle2 className="w-3 h-3 mr-1 text-orange-500" /> 资格条件
-                         </div>
-                         <div className="bg-white border border-orange-100 p-2 rounded text-xs font-medium text-orange-800 flex items-center shadow-sm">
-                           <CheckCircle2 className="w-3 h-3 mr-1 text-orange-500" /> 评分标准
-                         </div>
-                         <div className="bg-white border border-orange-100 p-2 rounded text-xs font-medium text-orange-800 flex items-center shadow-sm">
-                           <CheckCircle2 className="w-3 h-3 mr-1 text-orange-500" /> 商务要求
-                         </div>
-                       </div>
-                     </div>
-
-                     <div className="mb-4">
-                       <div className="flex justify-between text-xs mb-1">
-                         <span className="font-medium text-gray-600">解析进度</span>
-                         <span className="font-bold text-orange-700">{extractionProgress}%</span>
-                       </div>
-                       <div className="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
-                         <div className="bg-orange-600 h-1.5 rounded-full transition-all duration-300" style={{ width: `${extractionProgress}%` }}></div>
-                       </div>
-                     </div>
-
-                     <div className="bg-orange-50 rounded-lg p-3 text-xs text-orange-800 border border-orange-100 mt-auto">
-                       <strong>AI提示：</strong>
-                       {extractionProgress < 100 
-                         ? " AI正在解读招标文件，提取采购需求、评分规则、资格条件及商务条款，并自动构建投标分析框架。"
-                         : " 已完成招标要求提取，正在进入方案一致性校验阶段。"}
-                     </div>
-                   </motion.div>
-                 )}
-
-                 {activeTab === 'validating' && (
-                   <motion.div
-                     key="validating"
-                     initial={{ opacity: 0, x: 10 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     exit={{ opacity: 0, x: -10 }}
-                     transition={{ duration: 0.2 }}
-                     className="flex flex-col h-full"
-                   >
-                     <div className="font-bold text-gray-800 mb-3 flex items-center">
-                       <Target className="w-4 h-4 mr-2" /> 方案一致性校验
-                     </div>
-
-                     <div className="bg-white border border-gray-100 rounded-lg p-4 shadow-sm mb-4">
-                       <div className="flex justify-between items-end border-b border-gray-100 pb-3 mb-3">
-                         <div>
-                           <div className="text-xs text-gray-500">方案匹配度</div>
-                           <div className="text-3xl font-black text-green-600 mt-1">92<span className="text-lg text-green-500 ml-0.5">%</span></div>
-                         </div>
-                         <div className="text-right">
-                           <div className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded inline-block font-medium mb-1">高度匹配</div>
-                         </div>
-                       </div>
-
-                       <div className="space-y-2">
-                         <div className="flex justify-between items-center text-sm">
-                           <div className="flex items-center"><span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span> <span className="text-gray-600">已覆盖要求</span></div>
-                           <div className="font-bold text-gray-800">18项</div>
-                         </div>
-                         <div className="flex justify-between items-center text-sm">
-                           <div className="flex items-center"><span className="w-2 h-2 rounded-full bg-yellow-400 mr-2"></span> <span className="text-gray-600">部分覆盖</span></div>
-                           <div className="font-bold text-gray-800">4项</div>
-                         </div>
-                         <div className="flex justify-between items-center text-sm">
-                           <div className="flex items-center"><span className="w-2 h-2 rounded-full bg-red-500 mr-2"></span> <span className="text-gray-600">未覆盖</span></div>
-                           <div className="font-bold text-gray-800">1项</div>
-                         </div>
-                       </div>
-                     </div>
-
-                     <div className="bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs mt-auto">
-                       <strong>AI建议：</strong>
-                       未覆盖项主要是“专属客户服务驻点人员分配方案”，建议补充人员驻场排班表以达到100%匹配。
-                     </div>
-                   </motion.div>
-                 )}
-                 
-                 {activeTab === 'matching' && (
-                   <motion.div
-                     key="matching"
-                     initial={{ opacity: 0, x: 10 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     exit={{ opacity: 0, x: -10 }}
-                     transition={{ duration: 0.2 }}
-                     className="flex flex-col h-full"
-                   >
-                     <div className="font-bold text-gray-800 mb-3 flex items-center">
-                       <Award className="w-4 h-4 mr-2" /> 能力匹配分析
-                     </div>
-
-                     <div className="bg-white border border-gray-100 rounded-lg p-4 shadow-sm mb-4 space-y-3">
-                       <div className="flex justify-between items-center pb-2 border-b border-gray-100">
-                          <span className="text-sm font-medium text-gray-700">企业资质库</span>
-                          <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-100">已匹配</span>
-                       </div>
-                       <div className="flex justify-between items-center pb-2 border-b border-gray-100">
-                          <span className="text-sm font-medium text-gray-700">同类项目经验</span>
-                          <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-100">匹配到 3 个案例</span>
-                       </div>
-                       <div className="flex justify-between items-center">
-                          <span className="text-sm font-medium text-gray-700">服务网络覆盖</span>
-                          <span className="text-xs text-yellow-600 bg-yellow-50 px-2 py-0.5 rounded border border-yellow-100">部分覆盖</span>
-                       </div>
-                     </div>
-
-                     <div className="bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs mt-auto">
-                       <strong>AI建议：</strong>
-                       建议在同类项目经验中重点展示“某集团”的员工福利项目相关案例材料。
-                     </div>
-                   </motion.div>
-                 )}
-                 
-                 {activeTab === 'generating' && (
-                   <motion.div
-                     key="generating"
-                     initial={{ opacity: 0, x: 10 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     exit={{ opacity: 0, x: -10 }}
-                     transition={{ duration: 0.2 }}
-                     className="flex flex-col h-full"
-                   >
-                     <div className="font-bold text-gray-800 mb-3 flex items-center">
-                       <FileText className="w-4 h-4 mr-2" /> 材料清单生成
-                     </div>
-
-                     <div className="bg-white border border-gray-100 rounded-lg p-4 shadow-sm mb-4 space-y-3">
-                       <div className="flex items-center text-sm text-gray-700">
-                          <CheckCircle2 className="w-4 h-4 text-green-500 mr-2" /> 投标文件商务册
-                       </div>
-                       <div className="flex items-center text-sm text-gray-700">
-                          <CheckCircle2 className="w-4 h-4 text-green-500 mr-2" /> 投标文件技术册
-                       </div>
-                       <div className="flex items-center text-sm text-gray-400">
-                          <Circle className="w-4 h-4 mr-2" /> 述标PPT (需进一步生成)
-                       </div>
-                     </div>
-
-                     <div className="bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs mt-auto">
-                       <strong>AI提示：</strong>
-                       已为您梳理完整的投标所需材料框架。您可以通过调用【述标材料生成】技能来完成最后一步。
-                     </div>
-                   </motion.div>
-                 )}
-               </AnimatePresence>
-             </div>
+    <div className="w-full max-w-5xl bg-[#f8faf7] border border-gray-200 rounded-2xl overflow-hidden shadow-sm mt-4 font-['Microsoft_YaHei',_'sans-serif'] text-[#263238] animate-in fade-in slide-in-from-bottom-2 p-6 md:p-12 relative">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row gap-8 items-end mb-8">
+        <div className="flex-1">
+          <h1 className="text-4xl md:text-[44px] font-extrabold text-[#004a3f] leading-tight mb-4 m-0 border-none">
+            烟草企康投标分析
+          </h1>
+          <div className="text-[#34454a] text-lg md:text-[20px] leading-relaxed font-medium">
+            云南省烟草公司曲靖市公司2025-2027年企业健康委托管理及补充医疗保险服务项目
           </div>
         </div>
+        <div className="w-full md:w-[300px] bg-gradient-to-b from-white to-[#fff8f3] border border-[#f3c6aa] rounded-2xl p-[18px] shadow-[0_14px_34px_rgba(0,74,63,0.08)] shrink-0">
+          <div className="text-[#f26a21] font-extrabold text-[16px] mb-2">销售第一性原理</div>
+          <div className="text-[#004a3f] font-extrabold text-[28px] mb-2">先定节点</div>
+          <div className="text-[#34454a] text-[15px] font-medium leading-relaxed">24小时内确认时间、主体、预算、评分、废标项</div>
+        </div>
+      </div>
+
+      {/* Badges */}
+      <div className="flex flex-wrap gap-[14px] mb-[34px]">
+        <div className="px-[17px] py-[9px] rounded-full border border-[#dce7e1] bg-white text-[#004a3f] font-bold text-[16px]">
+          主投：平安产险云南分公司
+        </div>
+        <div className="px-[17px] py-[9px] rounded-full border border-[#f3c6aa] bg-[#fff8f3] text-[#b64a12] font-bold text-[16px]">
+          履约：曲靖中心支公司
+        </div>
+        <div className="px-[17px] py-[9px] rounded-full border border-[#dce7e1] bg-white text-[#004a3f] font-bold text-[16px]">
+          输出：销售投标作战版
+        </div>
+      </div>
+
+      {/* Summary Strip */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[14px] mb-[26px]">
+        <div className="border border-[#f3c6aa] bg-white rounded-2xl p-[18px] pb-[16px]">
+          <strong className="block text-[#004a3f] text-[16px] font-extrabold mb-1.5">项目形态</strong>
+          <span className="text-[#667085] text-[15px] leading-[1.45] font-medium">健康委托管理 + 补充医疗 + 门诊购药 + 就医协助</span>
+        </div>
+        <div className="border border-[#f3c6aa] bg-white rounded-2xl p-[18px] pb-[16px]">
+          <strong className="block text-[#004a3f] text-[16px] font-extrabold mb-1.5">主体打法</strong>
+          <span className="text-[#667085] text-[15px] leading-[1.45] font-medium">云南分公司主投，曲靖中心支公司属地履约</span>
+        </div>
+        <div className="border border-[#f3c6aa] bg-white rounded-2xl p-[18px] pb-[16px]">
+          <strong className="block text-[#004a3f] text-[16px] font-extrabold mb-1.5">关键风险</strong>
+          <span className="text-[#667085] text-[15px] leading-[1.45] font-medium">主体资质、联合体限制、健康数据合规、保证金</span>
+        </div>
+        <div className="border border-[#f3c6aa] bg-white rounded-2xl p-[18px] pb-[16px]">
+          <strong className="block text-[#004a3f] text-[16px] font-extrabold mb-1.5">竞争重点</strong>
+          <span className="text-[#667085] text-[15px] leading-[1.45] font-medium">健康委托经验、直付服务、退休人员服务、管理费率</span>
+        </div>
+      </div>
+
+      {/* Section 1 */}
+      <div className="bg-white border border-[#f3c6aa] rounded-2xl p-[24px] shadow-[0_8px_20px_rgba(0,74,63,0.04)] mt-[26px] relative">
+        <div className="flex flex-wrap items-center gap-[16px] mb-[22px]">
+          <div className="w-[44px] h-[44px] bg-[#f26a21] text-white rounded-[10px] flex items-center justify-center font-extrabold text-[24px] shrink-0">1</div>
+          <h2 className="text-[#004a3f] text-[26px] font-extrabold m-0 tracking-tight">投标关键节点</h2>
+          <div className="md:ml-auto text-[#b64a12] bg-[#fff2e8] border border-[#f3c6aa] rounded-full px-[14px] py-[7px] font-extrabold text-[14px] whitespace-nowrap">第一动作：当天转群</div>
+        </div>
+        <div className="relative pt-3 pb-1 px-1.5 hidden md:block">
+          <div className="absolute left-[68px] right-[68px] top-[71px] h-[4px] bg-[#f26a21] rounded-full"></div>
+          <div className="grid grid-cols-7 gap-0 relative">
+            {[
+              { name: '公告发布', date: '2025.04.18' },
+              { name: '文件获取', date: '04.18-04.25\n17:00' },
+              { name: '答疑截止', date: '04.28\n17:00' },
+              { name: '澄清发布', date: '04.30' },
+              { name: '保证金截止', date: '05.08\n16:00' },
+              { name: '投标/开标', date: '05.09\n09:30' },
+              { name: '服务启动', date: '06.01' },
+            ].map((step, idx) => (
+              <div key={idx} className="text-center relative min-h-[132px]">
+                <div className="text-[#34454a] font-extrabold text-[16px] mb-[24px]">{step.name}</div>
+                <div className="w-[24px] h-[24px] mx-auto mb-[16px] border-[4px] border-[#f26a21] bg-white rounded-full relative z-10"></div>
+                <div className="text-[#42535a] text-[16px] font-medium whitespace-pre-line leading-[1.35]">{step.date}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Mobile timeline */}
+        <div className="md:hidden space-y-[16px]">
+          {[
+            { name: '公告发布', date: '2025.04.18' },
+            { name: '文件获取', date: '04.18-04.25 17:00' },
+            { name: '答疑截止', date: '04.28 17:00' },
+            { name: '澄清发布', date: '04.30' },
+            { name: '保证金截止', date: '05.08 16:00' },
+            { name: '投标/开标', date: '05.09 09:30' },
+            { name: '服务启动', date: '06.01' },
+          ].map((step, idx) => (
+            <div key={idx} className="grid grid-cols-[110px_32px_1fr] items-center text-left">
+               <div className="text-[#34454a] font-extrabold text-[16px]">{step.name}</div>
+               <div className="w-[24px] h-[24px] border-[4px] border-[#f26a21] bg-white rounded-full"></div>
+               <div className="text-[#42535a] text-[16px] font-medium">{step.date}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-[6px] mx-auto max-w-[690px] text-center border border-[#f3c6aa] rounded-full bg-[#fff2e8] text-[#f26a21] py-[10px] px-[18px] font-extrabold text-[18px] md:text-[20px]">
+          销售第一动作：当天拉群、转发节点、确认能否投。
+        </div>
+      </div>
+
+      {/* Section 2 */}
+      <div className="bg-white border border-[#dce7e1] rounded-2xl p-[24px] shadow-[0_8px_20px_rgba(0,74,63,0.04)] mt-[26px] relative">
+        <div className="flex items-center gap-[16px] mb-[22px]">
+          <div className="w-[44px] h-[44px] bg-[#f26a21] text-white rounded-[10px] flex items-center justify-center font-extrabold text-[24px] shrink-0">2</div>
+          <h2 className="text-[#004a3f] text-[26px] font-extrabold m-0 tracking-tight">项目关键信息</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[16px]">
+          <div className="border border-[#f3c6aa] bg-[#f6fbf8] rounded-xl p-[18px] min-h-[145px]">
+            <div className="text-[#004a3f] font-extrabold text-[19px] mb-[10px]">项目类型</div>
+            <p className="text-[#3d4d52] font-medium text-[17px] leading-[1.55] m-0">健康委托管理 + 补充医疗 + 门诊购药 + 就医协助。</p>
+          </div>
+          <div className="border border-[#f3c6aa] bg-[#f6fbf8] rounded-xl p-[18px] min-h-[145px]">
+            <div className="text-[#004a3f] font-extrabold text-[19px] mb-[10px]">服务对象</div>
+            <p className="text-[#3d4d52] font-medium text-[17px] leading-[1.55] m-0">在岗员工、内部退养、退休人员；家属是否纳入待确认。</p>
+          </div>
+          <div className="border border-[#f3c6aa] bg-[#f6fbf8] rounded-xl p-[18px] min-h-[145px]">
+            <div className="text-[#004a3f] font-extrabold text-[19px] mb-[10px]">服务期限</div>
+            <p className="text-[#3d4d52] font-medium text-[17px] leading-[1.55] m-0">三年，合同一年一签，年度评价合格后续签。</p>
+          </div>
+          <div className="border border-[#f3c6aa] bg-[#fff8f3] rounded-xl p-[18px] min-h-[145px]">
+            <div className="text-[#f26a21] font-extrabold text-[19px] mb-[10px]">预算口径</div>
+            <p className="text-[#3d4d52] font-medium text-[17px] leading-[1.55] m-0">总预算XXX万元；人均限价XXX元/年；管理费率XXX%。</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 3 */}
+      <div className="bg-white border border-[#f3c6aa] rounded-2xl p-[24px] shadow-[0_8px_20px_rgba(0,74,63,0.04)] mt-[26px] relative">
+        <div className="flex flex-wrap items-center gap-[16px] mb-[22px]">
+          <div className="w-[44px] h-[44px] bg-[#f26a21] text-white rounded-[10px] flex items-center justify-center font-extrabold text-[24px] shrink-0">3</div>
+          <h2 className="text-[#004a3f] text-[26px] font-extrabold m-0 tracking-tight">主投主体与分工</h2>
+          <div className="md:ml-auto text-[#b64a12] bg-[#fff2e8] border border-[#f3c6aa] rounded-full px-[14px] py-[7px] font-extrabold text-[14px] whitespace-nowrap">颗粒度到分支机构</div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-[45%_1fr] gap-[28px] items-start">
+          <div className="w-full shrink-0">
+            <div className="border-[2px] border-[#f26a21] bg-[#fff8f3] rounded-[14px] p-[18px] px-[22px] mb-[18px]">
+              <div className="text-[#f26a21] font-extrabold text-[16px] mb-[6px]">主投主体</div>
+              <div className="text-[#263238] font-extrabold text-[20px] leading-[1.35]">中国平安财产保险股份有限公司云南分公司</div>
+            </div>
+            <div className="border-[2px] border-[#9bd8c4] bg-[#eaf6f1] rounded-[14px] p-[18px] px-[22px]">
+              <div className="text-[#004a3f] font-extrabold text-[16px] mb-[6px]">属地履约</div>
+              <div className="text-[#263238] font-extrabold text-[20px] leading-[1.35]">中国平安财产保险股份有限公司曲靖中心支公司</div>
+            </div>
+          </div>
+          <div className="w-full">
+            <ul className="m-0 p-0 text-[#3d4d52] font-medium text-[17px] leading-[1.5]">
+              <li className="relative pl-[18px] pb-[10px]"><div className="absolute left-0 top-[0.66em] w-[7px] h-[7px] rounded-full bg-[#f26a21]"></div>云南分公司负责省级授权、合同签署、开票出单、核保协调、集团健康资源统筹。</li>
+              <li className="relative pl-[18px] pb-[10px]"><div className="absolute left-0 top-[0.66em] w-[7px] h-[7px] rounded-full bg-[#f26a21]"></div>曲靖中心支公司负责员工宣导、材料收集、理赔协助、线下服务、日常客户沟通。</li>
+              <li className="relative pl-[18px] pb-[10px]"><div className="absolute left-0 top-[0.66em] w-[7px] h-[7px] rounded-full bg-[#f26a21]"></div>若招标要求健康险/养老险主体，切换平安健康险或平安养老险主投。</li>
+              <li className="relative pl-[18px] pb-[10px]"><div className="absolute left-0 top-[0.66em] w-[7px] h-[7px] rounded-full bg-[#f26a21]"></div>不接受联合体时，协同资源写为集团服务支持，避免违规分包。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 4 */}
+      <div className="bg-white border border-[#f3c6aa] rounded-2xl p-[24px] shadow-[0_8px_20px_rgba(0,74,63,0.04)] mt-[26px] relative">
+        <div className="flex flex-wrap items-center gap-[16px] mb-[22px]">
+          <div className="w-[44px] h-[44px] bg-[#f26a21] text-white rounded-[10px] flex items-center justify-center font-extrabold text-[24px] shrink-0">4</div>
+          <h2 className="text-[#004a3f] text-[26px] font-extrabold m-0 tracking-tight">竞对门槛识别</h2>
+          <div className="md:ml-auto text-[#b64a12] bg-[#fff2e8] border border-[#f3c6aa] rounded-full px-[14px] py-[7px] font-extrabold text-[14px] whitespace-nowrap">重点前置，不再埋在后面</div>
+        </div>
+        <div className="overflow-x-auto rounded-[10px] border-[2px] border-[#f26a21] bg-gradient-to-b from-[#fff8f3] to-white">
+          <table className="w-full text-left border-collapse min-w-[700px]">
+            <thead className="bg-[#f26a21] text-white">
+              <tr>
+                <th className="py-[13px] px-[16px] font-extrabold text-[17px] w-[22%] border-b border-[#f26a21]">门槛</th>
+                <th className="py-[13px] px-[16px] font-extrabold text-[17px] w-[34%] border-b border-[#f26a21]">竞对优势</th>
+                <th className="py-[13px] px-[16px] font-extrabold text-[17px] border-b border-[#f26a21]">平安打法</th>
+              </tr>
+            </thead>
+            <tbody className="text-[16px]">
+              <tr className="bg-white border-b border-[#dce7e1]">
+                <td className="py-[13px] px-[16px] text-[#34454a] font-bold border-r border-[#dce7e1]">
+                  健康委托经验 
+                  <span className="inline-block mt-1 xl:mt-0 xl:ml-2 px-[10px] py-[3px] bg-[#fff2e8] border border-[#f3c6aa] text-[#b64a12] rounded-full text-[13px] font-extrabold whitespace-nowrap">平安需补强</span>
+                </td>
+                <td className="py-[13px] px-[16px] text-[#34454a] font-medium border-r border-[#dce7e1] leading-[1.5]">泰康、国寿养老、太平养老、人保健康常用补医/委托管理案例抢分。</td>
+                <td className="py-[13px] px-[16px] text-[#34454a] font-medium leading-[1.5]">调取平安体系央国企补医、健康委托、员工福利项目案例，优先放烟草或制造业相近案例。</td>
+              </tr>
+              <tr className="bg-[#fffaf6] border-b border-[#dce7e1]">
+                <td className="py-[13px] px-[16px] text-[#34454a] font-bold border-r border-[#dce7e1]">
+                  线上直付服务 
+                  <span className="inline-block mt-1 xl:mt-0 xl:ml-2 px-[10px] py-[3px] bg-[#fff2e8] border border-[#f3c6aa] text-[#b64a12] rounded-full text-[13px] font-extrabold whitespace-nowrap">评分敏感</span>
+                </td>
+                <td className="py-[13px] px-[16px] text-[#34454a] font-medium border-r border-[#dce7e1] leading-[1.5]">互联网医疗、TPA平台、原服务商更容易证明直付链路。</td>
+                <td className="py-[13px] px-[16px] text-[#34454a] font-medium leading-[1.5]">突出平安线上医院、药房网络、服务专员、线上理赔入口，写清直付范围和操作路径。</td>
+              </tr>
+              <tr className="bg-white border-b border-[#dce7e1]">
+                <td className="py-[13px] px-[16px] text-[#34454a] font-bold border-r border-[#dce7e1]">
+                  退休人员服务 
+                  <span className="inline-block mt-1 xl:mt-0 xl:ml-2 px-[10px] py-[3px] bg-[#fff2e8] border border-[#f3c6aa] text-[#b64a12] rounded-full text-[13px] font-extrabold whitespace-nowrap">烟草高频</span>
+                </td>
+                <td className="py-[13px] px-[16px] text-[#34454a] font-medium border-r border-[#dce7e1] leading-[1.5]">本地医疗机构和原供应商熟悉退休员工线下服务习惯。</td>
+                <td className="py-[13px] px-[16px] text-[#34454a] font-medium leading-[1.5]">写慢病随访、用药提醒、异地就医、线下材料协助和服务热线。</td>
+              </tr>
+              <tr className="bg-[#fffaf6]">
+                <td className="py-[13px] px-[16px] text-[#34454a] font-bold border-r border-[#dce7e1]">
+                  价格与管理费率 
+                  <span className="inline-block mt-1 xl:mt-0 xl:ml-2 px-[10px] py-[3px] bg-[#fff2e8] border border-[#f3c6aa] text-[#b64a12] rounded-full text-[13px] font-extrabold whitespace-nowrap">不宜硬卷</span>
+                </td>
+                <td className="py-[13px] px-[16px] text-[#34454a] font-medium border-r border-[#dce7e1] leading-[1.5]">激进低价供应商可能用低管理费率抢价格分。</td>
+                <td className="py-[13px] px-[16px] text-[#34454a] font-medium leading-[1.5]">不卷低价，强调审计安全、赔付稳定、服务质量、年度复盘和可持续履约。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Section 5 */}
+      <div className="bg-white border border-[#f3c6aa] rounded-2xl p-[24px] shadow-[0_8px_20px_rgba(0,74,63,0.04)] mt-[26px] relative">
+        <div className="flex items-center gap-[16px] mb-[22px]">
+          <div className="w-[44px] h-[44px] bg-[#f26a21] text-white rounded-[10px] flex items-center justify-center font-extrabold text-[24px] shrink-0">5</div>
+          <h2 className="text-[#004a3f] text-[26px] font-extrabold m-0 tracking-tight">服务内容要求</h2>
+        </div>
+        <div className="overflow-x-auto rounded-[10px] border border-[#dce7e1] bg-white">
+          <table className="w-full text-left border-collapse min-w-[700px]">
+            <tbody className="text-[16px]">
+              <tr className="border-b border-[#dce7e1]">
+                <td className="py-[13px] px-[16px] font-extrabold text-[#004a3f] bg-white border-r border-[#dce7e1] w-[18%]">健康委托管理</td>
+                <td className="py-[13px] px-[16px] font-medium text-[#34454a] bg-white border-r border-[#dce7e1] w-[32%] leading-[1.5]">资金管理、赔付流程、月报、审计配合。</td>
+                <td className="py-[13px] px-[16px] font-extrabold text-[#004a3f] bg-white border-r border-[#dce7e1] w-[18%]">补充医疗</td>
+                <td className="py-[13px] px-[16px] font-medium text-[#34454a] bg-white w-[32%] leading-[1.5]">住院、门诊、重疾、既往症、退休人员服务。</td>
+              </tr>
+              <tr className="border-b border-[#dce7e1]">
+                <td className="py-[13px] px-[16px] font-extrabold text-[#004a3f] bg-[#fbfffd] border-r border-[#dce7e1]">门诊购药</td>
+                <td className="py-[13px] px-[16px] font-medium text-[#34454a] bg-[#fbfffd] border-r border-[#dce7e1] leading-[1.5]">药店网络、线上问诊、处方流转、慢病药配送。</td>
+                <td className="py-[13px] px-[16px] font-extrabold text-[#004a3f] bg-[#fbfffd] border-r border-[#dce7e1]">直付服务</td>
+                <td className="py-[13px] px-[16px] font-medium text-[#34454a] bg-[#fbfffd] leading-[1.5]">线上医院、线上直付、线下直付。</td>
+              </tr>
+              <tr>
+                <td className="py-[13px] px-[16px] font-extrabold text-[#004a3f] bg-white border-r border-[#dce7e1]">健康管理</td>
+                <td className="py-[13px] px-[16px] font-medium text-[#34454a] bg-white border-r border-[#dce7e1] leading-[1.5]">体检解读、慢病随访、心理咨询、健康讲座。</td>
+                <td className="py-[13px] px-[16px] font-extrabold text-[#004a3f] bg-white border-r border-[#dce7e1]">就医协助</td>
+                <td className="py-[13px] px-[16px] font-medium text-[#34454a] bg-white leading-[1.5]">专家门诊、住院协助、重疾绿通、异地就医。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Section 6 */}
+      <div className="bg-white border border-[#dce7e1] rounded-2xl p-[24px] shadow-[0_8px_20px_rgba(0,74,63,0.04)] mt-[26px] relative">
+        <div className="flex items-center gap-[16px] mb-[22px]">
+          <div className="w-[44px] h-[44px] bg-[#f26a21] text-white rounded-[10px] flex items-center justify-center font-extrabold text-[24px] shrink-0">6</div>
+          <h2 className="text-[#004a3f] text-[26px] font-extrabold m-0 tracking-tight">资格与经营要求</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-[14px]">
+          {[
+            '经营保险业务许可证，业务范围含健康保险或短期健康保障。',
+            '项目所在地设有分支机构或服务机构。',
+            '未列入烟草行业不良供应商名单。',
+            '信用中国、裁判文书、行贿记录提前自查。',
+            '同负责人或控股管理关系单位不得同时投标。'
+          ].map((req, idx) => (
+             <div key={idx} className="border border-[#f3c6aa] bg-[#fcfefd] rounded-[14px] p-[18px] flex flex-col min-h-[165px]">
+                <div className="w-[34px] h-[34px] mx-auto mb-[14px] flex items-center justify-center border-2 border-[#f26a21] text-[#f26a21] font-extrabold rounded-full shrink-0">
+                  {idx + 1}
+                </div>
+                <p className="text-[#3d4d52] text-[15px] font-medium leading-[1.48] text-center m-0">{req}</p>
+             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Section 7 */}
+      <div className="bg-white border border-[#f3c6aa] rounded-2xl p-[24px] shadow-[0_8px_20px_rgba(0,74,63,0.04)] mt-[26px] relative">
+        <div className="flex items-center gap-[16px] mb-[22px]">
+          <div className="w-[44px] h-[44px] bg-[#f26a21] text-white rounded-[10px] flex items-center justify-center font-extrabold text-[24px] shrink-0">7</div>
+          <h2 className="text-[#004a3f] text-[26px] font-extrabold m-0 tracking-tight">评分拆解与拿分点</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-[14px]">
+          {[
+            { title: '价格', score: '20-30分', points: '控制人均价、管理费率、含税口径，避免报价表前后不一致。', bar: '82%', highlight: true },
+            { title: '服务方案', score: '20-25分', points: '突出直付、慢病、退休人员、就医协助。', bar: '72%' },
+            { title: '理赔时效', score: '10-15分', points: '小额快赔T+1，复杂案件T+5审核，重大案件绿色通道。', bar: '68%' },
+            { title: '类似业绩', score: '8-15分', points: '烟草、央国企、制造业、补医/企康案例优先。', bar: '70%' },
+            { title: '团队承诺', score: '5-10分', points: '省分统筹 + 曲靖属地项目组，明确人员与响应时限。', bar: '64%' },
+          ].map((item, idx) => (
+            <div key={idx} className={`border border-[#f3c6aa] rounded-[14px] p-[18px] min-h-[190px] ${item.highlight ? 'bg-[#fff8f3]' : 'bg-[#fcfefd]'}`}>
+              <div className={`font-extrabold text-[19px] mb-[4px] ${item.highlight ? 'text-[#f26a21]' : 'text-[#004a3f]'}`}>{item.title}</div>
+              <div className="text-[#263238] font-bold text-[17px] mb-[18px]">{item.score}</div>
+              <div className="h-[13px] w-full bg-[#d6ddd9] rounded-full overflow-hidden mb-[18px]">
+                <div className="h-full bg-[#f26a21] rounded-full" style={{ width: item.bar }}></div>
+              </div>
+              <p className="text-[#3d4d52] font-medium text-[15px] leading-[1.45] m-0">{item.points}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Section 8 */}
+      <div className="bg-white border border-[#dce7e1] rounded-2xl p-[24px] shadow-[0_8px_20px_rgba(0,74,63,0.04)] mt-[26px] relative">
+        <div className="flex items-center gap-[16px] mb-[22px]">
+          <div className="w-[44px] h-[44px] bg-[#f26a21] text-white rounded-[10px] flex items-center justify-center font-extrabold text-[24px] shrink-0">8</div>
+          <h2 className="text-[#004a3f] text-[26px] font-extrabold m-0 tracking-tight">首日行动与废标风险</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px]">
+          <div className="border border-[#9bd8c4] bg-[#eaf6f1] rounded-[14px] p-[22px] min-h-[300px]">
+            <h3 className="text-[#004a3f] text-[21px] font-extrabold mb-[14px] mt-0">首日行动（务必完成）</h3>
+            <ol className="list-decimal pl-[26px] m-0 text-[#34454a] font-medium text-[16px] leading-[1.68] marker:text-[#004a3f] marker:font-bold">
+              <li className="pl-1 mb-[5px]">下载文件并完成报名CA准备。</li>
+              <li className="pl-1 mb-[5px]">建立投标群，明确分工与节点。</li>
+              <li className="pl-1 mb-[5px]">锁定时间表，标记关键截止时间。</li>
+              <li className="pl-1 mb-[5px]">确认主体资质与业务范围。</li>
+              <li className="pl-1 mb-[5px]">拉齐服务人数、预算、管理费率参数。</li>
+              <li className="pl-1 mb-[5px]">梳理答疑清单，提前提交重要问题。</li>
+              <li className="pl-1 mb-[5px]">启动报价测算与责任方案设计。</li>
+              <li className="pl-1">调取类似业绩、资质、授权材料。</li>
+            </ol>
+          </div>
+          <div className="border border-[#f3c6aa] bg-[#fff8f3] rounded-[14px] p-[22px] min-h-[300px]">
+            <h3 className="text-[#f26a21] text-[21px] font-extrabold mb-[14px] mt-0">废标风险（重点防控）</h3>
+            <ol className="list-decimal pl-[26px] m-0 text-[#34454a] font-medium text-[16px] leading-[1.68] marker:text-[#f26a21] marker:font-bold">
+              <li className="pl-1 mb-[5px]">主体不符或业务范围不满足。</li>
+              <li className="pl-1 mb-[5px]">保证金金额、账户、主体、到账时间错误。</li>
+              <li className="pl-1 mb-[5px]">报价超限：人均价或管理费率超预算。</li>
+              <li className="pl-1 mb-[5px]">责任负偏离：核心责任漏项。</li>
+              <li className="pl-1 mb-[5px]">联合体表述违规或协同资源写法不当。</li>
+              <li className="pl-1 mb-[5px]">业绩不相似：财险/车险替代企康业绩。</li>
+              <li className="pl-1 mb-[5px]">授权缺失：总公司授权、负责人授权。</li>
+              <li className="pl-1 mb-[5px]">健康数据合规缺失：授权、脱敏、保密未说明。</li>
+              <li className="pl-1">上传逾期：电子标未在截止前完成上传。</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="mt-[34px] md:mx-[28px] bg-[#f26a21] rounded-[18px] text-white py-[22px] px-[28px] text-center text-[18px] md:text-[22px] font-extrabold shadow-sm tracking-wide">
+        AI结论：先保节点和主体，再谈方案。24小时内钉死时间、资质、预算、评分、废标项。
       </div>
     </div>
   );
 }
+
 
 export function QualPerfMatchCard() {
   const [phase, setPhase] = useState('matching_qual'); 
@@ -8162,7 +8320,7 @@ export function QualPerfMatchCard() {
   }, []);
 
   return (
-    <div className="w-full max-w-5xl animate-in fade-in slide-in-from-bottom-2 duration-500 font-sans mt-2">
+    <div className="w-full max-w-5xl animate-in fade-in slide-in-from-bottom-2 duration-500 font-['Microsoft_YaHei',_'sans-serif'] mt-2">
       <div className="bg-orange-50/50 border border-orange-200 rounded-xl overflow-hidden shadow-sm text-gray-800">
         {/* Header */}
         <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-5 py-3 flex justify-between items-center text-white">
@@ -8197,159 +8355,169 @@ export function QualPerfMatchCard() {
 
           {phase === 'done' && (
             <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="space-y-6">
-              <div className="flex flex-row justify-between items-start space-x-6">
+              
+              {/* Top Overview */}
+              <div className="flex flex-col md:flex-row gap-5 items-stretch">
                 
-                {/* Center Top: Ring Chart */}
-                <div className="flex-1 flex flex-col items-center">
-                  <div className="text-sm font-bold text-gray-500 mb-2">综合匹配度</div>
-                  <div className="relative w-32 h-32 flex items-center justify-center mb-2">
-                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                       <circle cx="50" cy="50" r="40" stroke="#fef08a" strokeWidth="12" fill="none" />
-                       <circle cx="50" cy="50" r="40" stroke="#22c55e" strokeWidth="12" fill="none" strokeDasharray="251.2" strokeDashoffset="35.168" className="transition-all duration-1000" strokeLinecap="round" />
-                    </svg>
-                    <div className="absolute text-3xl font-black text-gray-800">86<span className="text-lg text-gray-500">%</span></div>
+                {/* Left: Overall Match */}
+                <div className="md:w-1/3 bg-white border border-green-100 rounded-xl p-5 flex flex-col items-center justify-center shadow-sm relative overflow-hidden">
+                   <div className="absolute top-0 right-0 p-2 text-xs text-gray-400 font-medium">（演示）</div>
+                   <div className="text-sm font-bold text-gray-600 mb-4">综合匹配度</div>
+                   <div className="relative w-32 h-32 flex items-center justify-center mb-4">
+                     <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" stroke="#f1f5f9" strokeWidth="10" fill="none" />
+                        <circle cx="50" cy="50" r="40" stroke="#22c55e" strokeWidth="10" fill="none" strokeDasharray="251.2" strokeDashoffset="35.168" className="transition-all duration-1000" strokeLinecap="round" />
+                     </svg>
+                     <div className="absolute flex flex-col items-center">
+                        <span className="text-3xl font-black text-gray-800">86%</span>
+                     </div>
+                   </div>
+                </div>
+
+                {/* Right: Summary Breakdown */}
+                <div className="md:w-2/3 flex flex-col justify-center space-y-4">
+                  <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center justify-between">
+                     <div className="flex items-center text-green-800 font-bold">
+                        <span className="text-xl mr-3">🟢</span> 满足项
+                     </div>
+                     <div className="text-green-700 font-black text-xl">18<span className="text-sm font-medium ml-1 text-green-600">项</span></div>
                   </div>
-                  <div className="flex items-center space-x-4 text-xs font-medium text-gray-600">
-                     <div className="flex items-center"><span className="w-2 h-2 rounded-full bg-green-500 mr-1.5"></span>已满足：86%</div>
-                     <div className="flex items-center"><span className="w-2 h-2 rounded-full bg-yellow-400 mr-1.5"></span>待补充：14%</div>
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 flex items-center justify-between">
+                     <div className="flex items-center text-yellow-800 font-bold">
+                        <span className="text-xl mr-3">🟡</span> 偏离项
+                     </div>
+                     <div className="text-yellow-700 font-black text-xl">4<span className="text-sm font-medium ml-1 text-yellow-600">项</span></div>
                   </div>
-                  <div className="mt-3 text-xs text-orange-800 bg-orange-50 px-3 py-1.5 rounded-lg text-center max-w-sm">
-                     AI结论：当前项目具备投标条件，核心能力已覆盖招标要求，部分证明材料需补充完善。
+                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center justify-between">
+                     <div className="flex items-center text-red-800 font-bold">
+                        <span className="text-xl mr-3">🔴</span> 风险项
+                     </div>
+                     <div className="text-red-700 font-black text-xl">2<span className="text-sm font-medium ml-1 text-red-600">项</span></div>
                   </div>
                 </div>
 
-                {/* Right Top: Fixed Risk Warning */}
-                <div className="w-64 shrink-0 bg-red-50 border border-red-100 rounded-xl p-4">
-                  <div className="font-bold text-red-800 text-sm mb-3 flex items-center">
-                    <ShieldAlert className="w-4 h-4 mr-1.5" /> 投标风险预警
-                  </div>
-                  <div className="space-y-2 text-xs">
-                    <div className="flex items-start"><span className="text-red-500 mr-1.5 mt-0.5">🔴</span><span className="text-red-700 font-medium">额外责任承诺条款待确认</span></div>
-                    <div className="flex items-start"><span className="text-red-500 mr-1.5 mt-0.5">🔴</span><span className="text-red-700 font-medium">服务响应时效口径待确认</span></div>
-                  </div>
-                </div>
               </div>
 
-               {/* Middle: 2 Columns */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {/* Three Dimensions Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                  
-                 {/* Left: Covered */}
-                 <div className="border border-gray-200 bg-white rounded-xl p-4">
-                    <div className="font-bold text-green-700 mb-4 flex items-center border-b border-gray-100 pb-2">
-                       <CheckCircle2 className="w-4 h-4 mr-2" /> 已覆盖能力
+                 {/* 1. 满足项 */}
+                 <div className="border border-green-200 bg-white rounded-xl overflow-hidden flex flex-col">
+                    <div className="bg-green-50 px-4 py-3 border-b border-green-100">
+                       <div className="font-bold text-green-800 text-base mb-1">🟢 满足项（18项）</div>
+                       <div className="text-xs text-green-700">已满足招标要求，可直接响应</div>
                     </div>
-                    <div className="space-y-4 text-sm">
+                    <div className="p-4 space-y-4 text-sm flex-1">
                        <div>
-                         <div className="font-bold text-gray-800 mb-1">企业资质</div>
-                         <ul className="list-disc list-inside text-gray-600 text-xs space-y-0.5">
-                            <li>行业准入资质齐全</li>
-                            <li>招标资格要求满足</li>
+                         <div className="font-bold text-gray-800 mb-2">企业资质（4项）</div>
+                         <ul className="space-y-1.5 text-gray-600 text-xs">
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 营业执照</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 行业准入资质</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 医疗服务相关资质</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 招标资格要求</li>
                          </ul>
                        </div>
                        <div>
-                         <div className="font-bold text-gray-800 mb-1">服务网络</div>
-                         <ul className="list-disc list-inside text-gray-600 text-xs space-y-0.5">
-                            <li>全国服务网络覆盖</li>
-                            <li>支持多机构统一服务</li>
+                         <div className="font-bold text-gray-800 mb-2">服务网络（4项）</div>
+                         <ul className="space-y-1.5 text-gray-600 text-xs">
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 全国服务网络覆盖</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 多机构服务能力</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 线上服务平台</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 异地服务支持</li>
                          </ul>
                        </div>
                        <div>
-                         <div className="font-bold text-gray-800 mb-1">同类项目经验</div>
-                         <ul className="list-disc list-inside text-gray-600 text-xs space-y-0.5">
-                            <li>已具备央国企项目实施经验</li>
-                            <li>已具备大型员工福利项目案例</li>
+                         <div className="font-bold text-gray-800 mb-2">项目经验（5项）</div>
+                         <ul className="space-y-1.5 text-gray-600 text-xs">
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 央国企项目经验</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 大型员工福利项目经验</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 补充医疗项目经验</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 健康管理项目经验</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 多机构统筹项目经验</li>
                          </ul>
                        </div>
                        <div>
-                         <div className="font-bold text-gray-800 mb-1">产品能力</div>
-                         <ul className="list-disc list-inside text-gray-600 text-xs space-y-0.5">
-                            <li>补充医疗保障服务</li>
-                            <li>健康管理服务体系</li>
-                            <li>医疗资源协同能力</li>
+                         <div className="font-bold text-gray-800 mb-2">产品能力（5项）</div>
+                         <ul className="space-y-1.5 text-gray-600 text-xs">
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 补充医疗保障</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 健康管理服务</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 就医协助服务</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 慢病管理服务</li>
+                            <li className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 mr-2 shrink-0"/> 医疗资源协同能力</li>
                          </ul>
                        </div>
+                    </div>
+                    <div className="bg-green-50 px-4 py-2 border-t border-green-100 text-green-800 font-bold text-sm text-right">
+                       合计：18项
                     </div>
                  </div>
 
-                 {/* Right: To Supply */}
-                 <div className="border border-yellow-200 bg-yellow-50/30 rounded-xl p-4">
-                    <div className="font-bold text-yellow-700 mb-4 flex items-center border-b border-yellow-100 pb-2">
-                       <Info className="w-4 h-4 mr-2" /> 待完善内容
+                 {/* 2. 偏离项 */}
+                 <div className="border border-yellow-200 bg-white rounded-xl overflow-hidden flex flex-col">
+                    <div className="bg-yellow-50 px-4 py-3 border-b border-yellow-100">
+                       <div className="font-bold text-yellow-800 text-base mb-1">🟡 偏离项（4项）</div>
+                       <div className="text-xs text-yellow-700">存在差异，可补充完善</div>
                     </div>
-                    <div className="space-y-4 text-sm">
+                    <div className="p-4 space-y-4 text-sm flex-1">
                        <div>
-                         <div className="font-bold text-gray-800 mb-1">服务案例证明</div>
-                         <ul className="list-disc list-inside text-gray-600 text-xs space-y-0.5">
-                            <li>需补充同类型客户案例材料</li>
-                            <li>需补充项目实施成果证明</li>
+                         <ul className="space-y-3 text-gray-600 text-xs">
+                            <li className="flex items-start"><CheckCircle2 className="w-3.5 h-3.5 text-yellow-500 mr-2 shrink-0 mt-0.5"/> <span className="leading-tight">烟草行业专项案例证明</span></li>
+                            <li className="flex items-start"><CheckCircle2 className="w-3.5 h-3.5 text-yellow-500 mr-2 shrink-0 mt-0.5"/> <span className="leading-tight">分支机构服务承诺文件</span></li>
+                            <li className="flex items-start"><CheckCircle2 className="w-3.5 h-3.5 text-yellow-500 mr-2 shrink-0 mt-0.5"/> <span className="leading-tight">项目实施成果证明</span></li>
+                            <li className="flex items-start"><CheckCircle2 className="w-3.5 h-3.5 text-yellow-500 mr-2 shrink-0 mt-0.5"/> <span className="leading-tight">服务团队配置说明</span></li>
                          </ul>
                        </div>
-                       <div>
-                         <div className="font-bold text-gray-800 mb-1">分支机构服务承诺</div>
-                         <ul className="list-disc list-inside text-gray-600 text-xs space-y-0.5">
-                            <li>需补充分支机构服务说明</li>
-                            <li>需明确本地化服务保障机制</li>
-                         </ul>
-                       </div>
-                       <div>
-                         <div className="font-bold text-gray-800 mb-1">投标支撑材料</div>
-                         <ul className="list-disc list-inside text-gray-600 text-xs space-y-0.5">
-                            <li>需生成对应证明文件</li>
-                            <li>需完成材料归档校验</li>
-                         </ul>
-                       </div>
+                    </div>
+                    <div className="bg-yellow-50 px-4 py-2 border-t border-yellow-100 text-yellow-800 font-bold text-sm text-right">
+                       合计：4项
                     </div>
                  </div>
+
+                 {/* 3. 风险项 */}
+                 <div className="border border-red-200 bg-white rounded-xl overflow-hidden flex flex-col">
+                    <div className="bg-red-50 px-4 py-3 border-b border-red-100">
+                       <div className="font-bold text-red-800 text-base mb-1">🔴 风险项（2项）</div>
+                       <div className="text-xs text-red-700">需专项确认</div>
+                    </div>
+                    <div className="p-4 space-y-4 text-sm flex-1">
+                       <div>
+                         <ul className="space-y-3 text-gray-600 text-xs">
+                            <li className="flex items-start"><AlertCircle className="w-3.5 h-3.5 text-red-500 mr-2 shrink-0 mt-0.5"/> <span className="leading-tight">额外责任承诺条款</span></li>
+                            <li className="flex items-start"><AlertCircle className="w-3.5 h-3.5 text-red-500 mr-2 shrink-0 mt-0.5"/> <span className="leading-tight">服务响应时效口径</span></li>
+                         </ul>
+                       </div>
+                    </div>
+                    <div className="bg-red-50 px-4 py-2 border-t border-red-100 text-red-800 font-bold text-sm text-right">
+                       合计：2项
+                    </div>
+                 </div>
+
               </div>
 
               {/* Bottom AI Suggestion Card */}
-              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-                 <div className="font-bold text-gray-800 mb-4 flex items-center">
-                    <Bot className="w-5 h-5 mr-2 text-orange-600" /> AI响应建议
+              <div className="bg-orange-50 border border-orange-200 rounded-xl p-5">
+                 <div className="font-bold text-orange-900 mb-4 flex items-center">
+                    <Bot className="w-5 h-5 mr-2 text-orange-600" /> AI评估建议
                  </div>
                  
-                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-                    <div className="bg-white border border-gray-100 rounded-lg p-3 shadow-sm">
-                       <div className="text-xs font-bold text-gray-500 mb-2">当前状态</div>
-                       <div className="text-sm font-medium text-green-700 flex items-center">
-                          <CheckCircle2 className="w-4 h-4 mr-1.5" /> 核心能力满足投标要求
-                       </div>
-                    </div>
-                    <div className="bg-white border border-gray-100 rounded-lg p-3 shadow-sm">
-                       <div className="text-xs font-bold text-gray-500 mb-2">补强建议</div>
-                       <ul className="list-disc list-inside text-xs text-gray-600 space-y-1">
-                          <li>优先补充同类项目成功案例</li>
-                          <li>补充分支机构服务承诺文件</li>
-                          <li>提前准备服务团队配置说明</li>
-                       </ul>
-                    </div>
-                    <div className="bg-white border border-red-100 rounded-lg p-3 shadow-sm">
-                       <div className="text-xs font-bold text-gray-500 mb-2">风险提示</div>
-                       <ul className="list-none text-xs text-red-600 space-y-1">
-                          <li className="flex items-start"><span className="mr-1">⚠️</span> 招标文件涉及额外责任要求</li>
-                          <li className="flex items-start"><span className="mr-1">⚠️</span> 服务响应时效定义需确认</li>
-                       </ul>
-                    </div>
+                 <div className="space-y-3 text-sm">
+                    <div className="flex items-start"><span className="mr-2">🟢</span> <span className="text-orange-900 font-medium leading-relaxed">已满足18项核心要求，具备投标基础条件</span></div>
+                    <div className="flex items-start"><span className="mr-2">🟡</span> <span className="text-orange-900 font-medium leading-relaxed">4项偏离项均可通过补充材料解决</span></div>
+                    <div className="flex items-start"><span className="mr-2">🔴</span> <span className="text-orange-900 font-medium leading-relaxed">2项风险项建议发起专项复核</span></div>
+                    <div className="flex items-start"><span className="mr-2">🚀</span> <span className="text-orange-700 font-bold leading-relaxed">建议进入投标材料生成阶段</span></div>
                  </div>
 
-                 <div className="border-t border-gray-200 pt-4 flex flex-col items-center">
-                    <div className="text-xs font-bold text-gray-500 mb-3">推荐动作</div>
-                    <div className="flex space-x-4">
-                       <button className="px-5 py-2.5 bg-orange-600 hover:bg-orange-700 transition-colors rounded-lg text-white font-medium text-sm flex items-center shadow-sm">
-                          <ShieldAlert className="w-4 h-4 mr-2" /> 发起核保复核
+                 <div className="border-t border-orange-200/50 mt-4 pt-4 flex flex-col items-center">
+                    <div className="flex flex-wrap justify-center gap-3">
+                       <button className="px-5 py-2.5 bg-orange-600 hover:bg-orange-700 transition-colors rounded-lg text-white font-medium text-sm flex items-center shadow-[0_0_15px_rgba(37,99,235,0.3)]">
+                          <Target className="w-4 h-4 mr-2" /> 发起专项复核
                        </button>
-                       <button className="px-5 py-2.5 bg-white border border-gray-300 hover:bg-gray-50 transition-colors rounded-lg text-gray-700 font-medium text-sm flex items-center shadow-sm">
-                          <Target className="w-4 h-4 mr-2" /> 发起运营复核
+                       <button className="px-5 py-2.5 bg-white border border-orange-200 hover:bg-orange-50 transition-colors rounded-lg text-orange-700 font-medium text-sm flex items-center shadow-sm">
+                          <FileText className="w-4 h-4 mr-2" /> 投标材料生成
                        </button>
                     </div>
                  </div>
               </div>
-              <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} transition={{delay:0.2}} className="mt-5 p-4 bg-orange-50 border border-orange-100 rounded-xl text-orange-800 text-sm flex items-start shadow-sm font-medium">
-                <Bot className="w-5 h-5 mr-2 text-orange-600 shrink-0" />
-                <span>最终显示：AI已完成186项招标要求与企业能力库的自动匹配，整体匹配度<strong>86%</strong>，建议补充服务案例证明后进入投标</span>
-              </motion.div>
-
-
             </motion.div>
           )}
 

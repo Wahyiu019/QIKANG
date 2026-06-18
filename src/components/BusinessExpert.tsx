@@ -11,7 +11,7 @@ const EXPERT_MAPPINGS = [
   {
     expert: '营销方案专家',
     img: 'https://api.dicebear.com/9.x/avataaars/svg?seed=Marketing&backgroundColor=f97316&eyes=happy&mouth=smile&accessories=sunglasses&clothing=blazerAndSweater',
-    skills: ['三段式营销材料', '标准产品推荐', '明星方案匹配', '案例亮点提炼', '竞品多维对标'],
+    skills: ['拜访材料生成', '标准产品推荐', '明星方案匹配', '案例亮点提炼', '竞品多维对标'],
     desc: '生成高度匹配客户痛点的标准解决方案，并输出硬核竞品对比与案例优势。'
   },
   {
