@@ -495,7 +495,7 @@ function AiChatWindow({
       title: "拜访材料生成",
       prompt: "我要去拜访云南烟草，帮我准备拜访材料",
     },
-    { title: "标准产品推荐", prompt: "#标准产品推荐#" },
+    { title: "标准产品推荐", prompt: `我要给【XXX客户名称】写一个标品营销方案，预算大概是【XXX预算（范围）】` },
     { title: "明星方案匹配", prompt: "#明星方案匹配#" },
     { title: "案例亮点提炼", prompt: "#案例亮点提炼#" },
     { title: "竞品多维对标", prompt: "#竞品多维对标#" },
@@ -2198,6 +2198,478 @@ function AiChatWindow({
       return;
     }
 
+    if (text.includes("写一个标品营销方案") || text.includes("我要给")) {
+      const matchName = text.match(/我要给【?(.*?)】?写/);
+      const matchBudget = text.match(/预算大概是【?(.*?)】?/);
+      let customerNameStr = "未知客户";
+      if (matchName && matchName[1] && !matchName[1].includes("XXX")) customerNameStr = matchName[1];
+      else if (text.includes("云天化")) customerNameStr = "云天化";
+      
+      let budgetStr = "未知预算";
+      if (matchBudget && matchBudget[1] && !matchBudget[1].includes("XXX")) budgetStr = matchBudget[1];
+
+      const newUserMsg: Message = {
+        id: Date.now().toString() + "_user",
+        sender: "user",
+        type: "text",
+        content: text,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在搜索客户基本信息...",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_basic_form",
+            sender: "bot",
+            type: "basic_info_card_form",
+            content: "基本信息表单",
+            timestamp: new Date(),
+            data: {
+              customerName: customerNameStr,
+              budget: budgetStr
+            }
+          },
+        ]);
+        setIsTyping(false);
+      }, 1000);
+      return;
+    } else if (text.startsWith("[用户确认]")) {
+      const newUserMsg: Message = {
+        id: Date.now().toString() + "_user",
+        sender: "user",
+        type: "text",
+        content: text,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在生成标品套餐选项...",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_pkg",
+            sender: "bot",
+            type: "package_option_card",
+            content: "套餐选项",
+            timestamp: new Date(),
+            data: {
+              packages: [
+                {
+                  id: "p1",
+                  name: "基础健康保障版",
+                  price: "年度总预算估算：55万元",
+                  features: [
+                    "覆盖全员的基础健康档案建立",
+                    "7×24小时在线全科医生问诊",
+                    "三甲医院重疾绿通协调服务",
+                    "基础心理健康测评与干预"
+                  ]
+                },
+                {
+                  id: "p2",
+                  name: "标准全面升级版",
+                  price: "年度总预算估算：80万元",
+                  features: [
+                    "包含基础版的所有服务",
+                    "员工年度深度体检套餐",
+                    "特定慢病管理与购药折扣",
+                    "核心骨干绿色就医通道保障"
+                  ]
+                },
+                {
+                  id: "p3",
+                  name: "全场景黑金尊享版",
+                  price: "年度总预算估算：120万元",
+                  features: [
+                    "包含标准版的所有服务",
+                    "高管尊享线下全程陪诊与绿通",
+                    "MDT多学科顶尖专家会诊支持",
+                    "定制化驻场企业医务室运营",
+                    "全员EAP心理援助计划深度干预"
+                  ]
+                }
+              ]
+            }
+          }
+        ]);
+        setIsTyping(false);
+      }, 1500);
+      return;
+    } else if (text.startsWith("[已选择套餐]")) {
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const botResMsg: Message = { id: Date.now().toString()+"_supp", sender: "bot", type: "supplementary_info_form_card", content: "补充信息卡片", timestamp: new Date(), data: {} };
+      setMessages(prev => [...prev, botResMsg]);
+      return;
+    } else if (text.startsWith("[忽略补充信息]")) {
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const botResMsg: Message = { id: Date.now().toString()+"_ask_ppt", sender: "bot", type: "text", content: "是否直接为您生成标品营销方案大纲和PPT？", timestamp: new Date() };
+      setMessages(prev => [...prev, botResMsg]);
+      return;
+    } else if (text.startsWith("[已提交补充信息]")) {
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
+      setMessages((prev) => [...prev, newUserMsg]);
+      
+      const reasoningMsgId = Date.now().toString() + "_reasoning";
+      const reasoningMsg: Message = {
+        id: reasoningMsgId, sender: "bot", type: "reasoning", content: "正在结合补充信息为您推荐更精准的套餐...", timestamp: new Date()
+      };
+      setMessages(prev => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_pkg_refined",
+            sender: "bot",
+            type: "package_option_card",
+            content: "套餐选项",
+            timestamp: new Date(),
+            data: {
+              packages: [
+                {
+                  id: "p1_refined",
+                  name: "高管尊享精准版",
+                  price: "年度总预算估算：85万元",
+                  features: [
+                     "定向颈椎/腰椎等职业病康复特训",
+                     "高管专属绿色就医通道保障",
+                     "7×24小时在线全科医生问诊"
+                  ]
+                },
+                {
+                  id: "p2_refined",
+                  name: "全场景黑金尊享加强版",
+                  price: "年度总预算估算：150万元",
+                  features: [
+                    "包含高管专属版的所有服务",
+                    "心理压力大定向EAP深度干预",
+                    "MDT多学科顶尖专家会诊支持",
+                    "定制化驻场企业医务室全程运营"
+                  ]
+                }
+              ]
+            }
+          }
+        ]);
+        setIsTyping(false);
+      }, 1500);
+      return;
+    } else if (text.startsWith("[已提交基本信息]")) {
+      const newUserMsg: Message = {
+        id: Date.now().toString() + "_user",
+        sender: "user",
+        type: "text",
+        content: text,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在匹配标准套餐选项...",
+        timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "提取基本信息...", status: "complete" },
+            { id: "2", text: "生成询问与补充信息...", status: "loading" },
+            { id: "3", text: "匹配标准套餐选项...", status: "pending" },
+          ],
+        },
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any, i: number) =>
+                      i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_inq",
+            sender: "bot",
+            type: "inquiry_card",
+            content: "询问卡片",
+            timestamp: new Date(),
+            data: {
+              question: "针对高管的【专属医疗网络与绿通服务】，您倾向于哪种服务配置？",
+              options: [
+                "A. 标准重疾绿通（含挂号、住院协调）",
+                "B. 高管尊享绿通（含全程陪诊、国内顶尖专家会诊）",
+                "C. 跨境医疗直通车（含海外专家二诊）"
+              ]
+            }
+          }
+        ]);
+      }, 1500);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any) => ({ ...s, status: "complete" })),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_sup",
+            sender: "bot",
+            type: "supplementary_info_card",
+            content: "已捕获并记录您的补充需求：",
+            timestamp: new Date(),
+            data: {
+              text: "系统已自动记录需求细节并完善产品匹配模型。",
+              supplementary: [
+                "已选择：高管尊享绿通服务",
+                "附加要求：需确保当地三甲医院100%覆盖",
+                "附加要求：心理EAP服务需覆盖全体一线员工"
+              ]
+            }
+          },
+          {
+            id: Date.now().toString() + "_pkg",
+            sender: "bot",
+            type: "package_option_card",
+            content: "套餐选项",
+            timestamp: new Date(),
+            data: {
+              packages: [
+                {
+                  name: "基础健康保障版",
+                  price: "年度总预算估算：550万元",
+                  features: [
+                    "覆盖全员的基础健康档案建立",
+                    "7×24小时在线全科医生问诊",
+                    "三甲医院重疾绿通协调服务",
+                    "基础心理健康测评与干预"
+                  ]
+                },
+                {
+                  name: "全场景黑金尊享版（推荐）",
+                  price: "年度总预算估算：780万元",
+                  features: [
+                    "包含基础版的所有服务",
+                    "高管尊享线下全程陪诊与绿通",
+                    "MDT多学科顶尖专家会诊支持",
+                    "定制化驻场企业医务室运营",
+                    "全员EAP心理援助计划深度干预"
+                  ]
+                }
+              ]
+            }
+          }
+        ]);
+        setIsTyping(false);
+      }, 3000);
+      return;
+    } else if (awaitingStProductInfo && text.startsWith("[附件]")) {
+      setAwaitingStProductInfo(false);
+      const newUserMsg = {
+        id: Date.now().toString() + "_user",
+        sender: "user",
+        type: "text",
+        content: text,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在解析附件内容并设计交互卡片...",
+        timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "提取基本信息...", status: "loading" },
+            { id: "2", text: "生成询问与补充信息...", status: "pending" },
+            { id: "3", text: "匹配标准套餐选项...", status: "pending" },
+          ],
+        },
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s, i) =>
+                      i === 0 ? { ...s, status: "complete" } : i === 1 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_basic",
+            sender: "bot",
+            type: "basic_info_card",
+            content: "基本信息已提取",
+            timestamp: new Date(),
+            data: {
+              customerName: "云南烟草集团",
+              employeeCount: "8000+ 人",
+              budget: "600-800 万元",
+              requirement: "员工补充医疗保障、健康管理中台及高管健康绿通服务"
+            }
+          },
+          {
+            id: Date.now().toString() + "_inq",
+            sender: "bot",
+            type: "inquiry_card",
+            content: "询问卡片",
+            timestamp: new Date(),
+            data: {
+              question: "针对高管的【专属医疗网络与绿通服务】，您倾向于哪种服务配置？",
+              options: [
+                "A. 标准重疾绿通（含挂号、住院协调）",
+                "B. 高管尊享绿通（含全程陪诊、国内顶尖专家会诊）",
+                "C. 跨境医疗直通车（含海外专家二诊）"
+              ]
+            }
+          }
+        ]);
+      }, 1500);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s, i) =>
+                      i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_sup",
+            sender: "bot",
+            type: "supplementary_info_card",
+            content: "已捕获并记录您的补充需求：",
+            timestamp: new Date(),
+            data: {
+              text: "系统已自动记录需求细节并完善产品匹配模型。",
+              supplementary: [
+                "已选择：高管尊享绿通服务",
+                "附加要求：需确保当地三甲医院100%覆盖",
+                "附加要求：心理EAP服务需覆盖全体一线员工"
+              ]
+            }
+          }
+        ]);
+      }, 3000);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s) => ({ ...s, status: "complete" })),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_pkg",
+            sender: "bot",
+            type: "package_option_card",
+            content: "套餐选项",
+            timestamp: new Date(),
+            data: {
+              packages: [
+                {
+                  name: "基础健康保障版",
+                  price: "年度总预算估算：550万元",
+                  features: [
+                    "覆盖全员的基础健康档案建立",
+                    "7×24小时在线全科医生问诊",
+                    "三甲医院重疾绿通协调服务",
+                    "基础心理健康测评与干预"
+                  ]
+                },
+                {
+                  name: "全场景黑金尊享版（推荐）",
+                  price: "年度总预算估算：780万元",
+                  features: [
+                    "包含基础版的所有服务",
+                    "高管尊享线下全程陪诊与绿通",
+                    "MDT多学科顶尖专家会诊支持",
+                    "定制化驻场企业医务室运营",
+                    "全员EAP心理援助计划深度干预"
+                  ]
+                }
+              ]
+            }
+          }
+        ]);
+        setIsTyping(false);
+      }, 4500);
+      return;
+    }
+
     if (text === "#材料审查#") {
       const newUserMsg: Message = {
         id: Date.now().toString() + "_user",
@@ -3684,6 +4156,478 @@ function AiChatWindow({
             timestamp: new Date(),
             data: {},
           },
+        ]);
+        setIsTyping(false);
+      }, 4500);
+      return;
+    }
+
+    if (text.includes("写一个标品营销方案") || text.includes("我要给")) {
+      const matchName = text.match(/我要给【?(.*?)】?写/);
+      const matchBudget = text.match(/预算大概是【?(.*?)】?/);
+      let customerNameStr = "未知客户";
+      if (matchName && matchName[1] && !matchName[1].includes("XXX")) customerNameStr = matchName[1];
+      else if (text.includes("云天化")) customerNameStr = "云天化";
+      
+      let budgetStr = "未知预算";
+      if (matchBudget && matchBudget[1] && !matchBudget[1].includes("XXX")) budgetStr = matchBudget[1];
+
+      const newUserMsg: Message = {
+        id: Date.now().toString() + "_user",
+        sender: "user",
+        type: "text",
+        content: text,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在搜索客户基本信息...",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_basic_form",
+            sender: "bot",
+            type: "basic_info_card_form",
+            content: "基本信息表单",
+            timestamp: new Date(),
+            data: {
+              customerName: customerNameStr,
+              budget: budgetStr
+            }
+          },
+        ]);
+        setIsTyping(false);
+      }, 1000);
+      return;
+    } else if (text.startsWith("[用户确认]")) {
+      const newUserMsg: Message = {
+        id: Date.now().toString() + "_user",
+        sender: "user",
+        type: "text",
+        content: text,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在生成标品套餐选项...",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_pkg",
+            sender: "bot",
+            type: "package_option_card",
+            content: "套餐选项",
+            timestamp: new Date(),
+            data: {
+              packages: [
+                {
+                  id: "p1",
+                  name: "基础健康保障版",
+                  price: "年度总预算估算：55万元",
+                  features: [
+                    "覆盖全员的基础健康档案建立",
+                    "7×24小时在线全科医生问诊",
+                    "三甲医院重疾绿通协调服务",
+                    "基础心理健康测评与干预"
+                  ]
+                },
+                {
+                  id: "p2",
+                  name: "标准全面升级版",
+                  price: "年度总预算估算：80万元",
+                  features: [
+                    "包含基础版的所有服务",
+                    "员工年度深度体检套餐",
+                    "特定慢病管理与购药折扣",
+                    "核心骨干绿色就医通道保障"
+                  ]
+                },
+                {
+                  id: "p3",
+                  name: "全场景黑金尊享版",
+                  price: "年度总预算估算：120万元",
+                  features: [
+                    "包含标准版的所有服务",
+                    "高管尊享线下全程陪诊与绿通",
+                    "MDT多学科顶尖专家会诊支持",
+                    "定制化驻场企业医务室运营",
+                    "全员EAP心理援助计划深度干预"
+                  ]
+                }
+              ]
+            }
+          }
+        ]);
+        setIsTyping(false);
+      }, 1500);
+      return;
+    } else if (text.startsWith("[已选择套餐]")) {
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const botResMsg: Message = { id: Date.now().toString()+"_supp", sender: "bot", type: "supplementary_info_form_card", content: "补充信息卡片", timestamp: new Date(), data: {} };
+      setMessages(prev => [...prev, botResMsg]);
+      return;
+    } else if (text.startsWith("[忽略补充信息]")) {
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const botResMsg: Message = { id: Date.now().toString()+"_ask_ppt", sender: "bot", type: "text", content: "是否直接为您生成标品营销方案大纲和PPT？", timestamp: new Date() };
+      setMessages(prev => [...prev, botResMsg]);
+      return;
+    } else if (text.startsWith("[已提交补充信息]")) {
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
+      setMessages((prev) => [...prev, newUserMsg]);
+      
+      const reasoningMsgId = Date.now().toString() + "_reasoning";
+      const reasoningMsg: Message = {
+        id: reasoningMsgId, sender: "bot", type: "reasoning", content: "正在结合补充信息为您推荐更精准的套餐...", timestamp: new Date()
+      };
+      setMessages(prev => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_pkg_refined",
+            sender: "bot",
+            type: "package_option_card",
+            content: "套餐选项",
+            timestamp: new Date(),
+            data: {
+              packages: [
+                {
+                  id: "p1_refined",
+                  name: "高管尊享精准版",
+                  price: "年度总预算估算：85万元",
+                  features: [
+                     "定向颈椎/腰椎等职业病康复特训",
+                     "高管专属绿色就医通道保障",
+                     "7×24小时在线全科医生问诊"
+                  ]
+                },
+                {
+                  id: "p2_refined",
+                  name: "全场景黑金尊享加强版",
+                  price: "年度总预算估算：150万元",
+                  features: [
+                    "包含高管专属版的所有服务",
+                    "心理压力大定向EAP深度干预",
+                    "MDT多学科顶尖专家会诊支持",
+                    "定制化驻场企业医务室全程运营"
+                  ]
+                }
+              ]
+            }
+          }
+        ]);
+        setIsTyping(false);
+      }, 1500);
+      return;
+    } else if (text.startsWith("[已提交基本信息]")) {
+      const newUserMsg: Message = {
+        id: Date.now().toString() + "_user",
+        sender: "user",
+        type: "text",
+        content: text,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在匹配标准套餐选项...",
+        timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "提取基本信息...", status: "complete" },
+            { id: "2", text: "生成询问与补充信息...", status: "loading" },
+            { id: "3", text: "匹配标准套餐选项...", status: "pending" },
+          ],
+        },
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any, i: number) =>
+                      i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_inq",
+            sender: "bot",
+            type: "inquiry_card",
+            content: "询问卡片",
+            timestamp: new Date(),
+            data: {
+              question: "针对高管的【专属医疗网络与绿通服务】，您倾向于哪种服务配置？",
+              options: [
+                "A. 标准重疾绿通（含挂号、住院协调）",
+                "B. 高管尊享绿通（含全程陪诊、国内顶尖专家会诊）",
+                "C. 跨境医疗直通车（含海外专家二诊）"
+              ]
+            }
+          }
+        ]);
+      }, 1500);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any) => ({ ...s, status: "complete" })),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_sup",
+            sender: "bot",
+            type: "supplementary_info_card",
+            content: "已捕获并记录您的补充需求：",
+            timestamp: new Date(),
+            data: {
+              text: "系统已自动记录需求细节并完善产品匹配模型。",
+              supplementary: [
+                "已选择：高管尊享绿通服务",
+                "附加要求：需确保当地三甲医院100%覆盖",
+                "附加要求：心理EAP服务需覆盖全体一线员工"
+              ]
+            }
+          },
+          {
+            id: Date.now().toString() + "_pkg",
+            sender: "bot",
+            type: "package_option_card",
+            content: "套餐选项",
+            timestamp: new Date(),
+            data: {
+              packages: [
+                {
+                  name: "基础健康保障版",
+                  price: "年度总预算估算：550万元",
+                  features: [
+                    "覆盖全员的基础健康档案建立",
+                    "7×24小时在线全科医生问诊",
+                    "三甲医院重疾绿通协调服务",
+                    "基础心理健康测评与干预"
+                  ]
+                },
+                {
+                  name: "全场景黑金尊享版（推荐）",
+                  price: "年度总预算估算：780万元",
+                  features: [
+                    "包含基础版的所有服务",
+                    "高管尊享线下全程陪诊与绿通",
+                    "MDT多学科顶尖专家会诊支持",
+                    "定制化驻场企业医务室运营",
+                    "全员EAP心理援助计划深度干预"
+                  ]
+                }
+              ]
+            }
+          }
+        ]);
+        setIsTyping(false);
+      }, 3000);
+      return;
+    } else if (awaitingStProductInfo && text.startsWith("[附件]")) {
+      setAwaitingStProductInfo(false);
+      const newUserMsg = {
+        id: Date.now().toString() + "_user",
+        sender: "user",
+        type: "text",
+        content: text,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在解析附件内容并设计交互卡片...",
+        timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "提取基本信息...", status: "loading" },
+            { id: "2", text: "生成询问与补充信息...", status: "pending" },
+            { id: "3", text: "匹配标准套餐选项...", status: "pending" },
+          ],
+        },
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s, i) =>
+                      i === 0 ? { ...s, status: "complete" } : i === 1 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_basic",
+            sender: "bot",
+            type: "basic_info_card",
+            content: "基本信息已提取",
+            timestamp: new Date(),
+            data: {
+              customerName: "云南烟草集团",
+              employeeCount: "8000+ 人",
+              budget: "600-800 万元",
+              requirement: "员工补充医疗保障、健康管理中台及高管健康绿通服务"
+            }
+          },
+          {
+            id: Date.now().toString() + "_inq",
+            sender: "bot",
+            type: "inquiry_card",
+            content: "询问卡片",
+            timestamp: new Date(),
+            data: {
+              question: "针对高管的【专属医疗网络与绿通服务】，您倾向于哪种服务配置？",
+              options: [
+                "A. 标准重疾绿通（含挂号、住院协调）",
+                "B. 高管尊享绿通（含全程陪诊、国内顶尖专家会诊）",
+                "C. 跨境医疗直通车（含海外专家二诊）"
+              ]
+            }
+          }
+        ]);
+      }, 1500);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s, i) =>
+                      i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_sup",
+            sender: "bot",
+            type: "supplementary_info_card",
+            content: "已捕获并记录您的补充需求：",
+            timestamp: new Date(),
+            data: {
+              text: "系统已自动记录需求细节并完善产品匹配模型。",
+              supplementary: [
+                "已选择：高管尊享绿通服务",
+                "附加要求：需确保当地三甲医院100%覆盖",
+                "附加要求：心理EAP服务需覆盖全体一线员工"
+              ]
+            }
+          }
+        ]);
+      }, 3000);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s) => ({ ...s, status: "complete" })),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_pkg",
+            sender: "bot",
+            type: "package_option_card",
+            content: "套餐选项",
+            timestamp: new Date(),
+            data: {
+              packages: [
+                {
+                  name: "基础健康保障版",
+                  price: "年度总预算估算：550万元",
+                  features: [
+                    "覆盖全员的基础健康档案建立",
+                    "7×24小时在线全科医生问诊",
+                    "三甲医院重疾绿通协调服务",
+                    "基础心理健康测评与干预"
+                  ]
+                },
+                {
+                  name: "全场景黑金尊享版（推荐）",
+                  price: "年度总预算估算：780万元",
+                  features: [
+                    "包含基础版的所有服务",
+                    "高管尊享线下全程陪诊与绿通",
+                    "MDT多学科顶尖专家会诊支持",
+                    "定制化驻场企业医务室运营",
+                    "全员EAP心理援助计划深度干预"
+                  ]
+                }
+              ]
+            }
+          }
         ]);
         setIsTyping(false);
       }, 4500);
@@ -5754,7 +6698,7 @@ function AiChatWindow({
               prompts: {
                 拜访材料生成:
                   "我要去拜访云南烟草，帮我准备拜访材料",
-                标准产品推荐: "#标准产品推荐#",
+                标准产品推荐: `我要给【XXX客户名称】写一个标品营销方案，预算大概是【XXX预算（范围）】`,
                 明星方案匹配: "#明星方案匹配#",
                 案例亮点提炼: "#案例亮点提炼#",
                 竞品多维对标: "#竞品多维对标#",
@@ -6017,7 +6961,7 @@ function GroupChatWindow({
       title: "拜访材料生成",
       prompt: "我要去拜访云南烟草，帮我准备拜访材料",
     },
-    { title: "标准产品推荐", prompt: "#标准产品推荐#" },
+    { title: "标准产品推荐", prompt: `我要给【XXX客户名称】写一个标品营销方案，预算大概是【XXX预算（范围）】` },
     { title: "明星方案匹配", prompt: "#明星方案匹配#" },
     { title: "案例亮点提炼", prompt: "#案例亮点提炼#" },
     { title: "竞品多维对标", prompt: "#竞品多维对标#" },
