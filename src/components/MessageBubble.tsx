@@ -1,7 +1,7 @@
 import { ProjectManagementCard } from './ProjectManagementCard';
 import React, { useState, useRef, useEffect } from "react";
 import { Message } from "../types";
-import { Bot, Check, User, CheckCircle2, CheckCircle, ChevronLeft, ChevronRight, Target, Building2, MapPin, DollarSign, Loader2, Users, FileText, Presentation, Mic, Download, FileCheck, Calendar, BellRing, MessageSquare, X, Search, TrendingUp, Briefcase, Award, Layers, Cpu, ShieldCheck, PieChart, BarChart3, History, HelpCircle, FileBarChart, Handshake, HeartPulse, LineChart, Lightbulb, Map, UserCircle, MessageCircle, AlertCircle, Diamond, Compass, ListChecks, ShieldAlert, FileSearch, XCircle, Paperclip, AlertTriangle, Info, Circle } from "lucide-react";
+import { Bot, Check, User, CheckCircle2, CheckCircle, ChevronLeft, ChevronRight, ChevronDown, Target, Building2, MapPin, DollarSign, Loader2, Users, FileText, Presentation, Mic, Download, FileCheck, Calendar, BellRing, MessageSquare, X, Search, TrendingUp, Briefcase, Award, Layers, Cpu, ShieldCheck, PieChart, BarChart3, History, HelpCircle, FileBarChart, Handshake, HeartPulse, LineChart, Lightbulb, Map, UserCircle, MessageCircle, AlertCircle, Diamond, Compass, ListChecks, ShieldAlert, FileSearch, XCircle, Paperclip, AlertTriangle, Info, Circle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export function HistoryCooperationReportCard({
@@ -2544,7 +2544,7 @@ export const MessageBubble: React.FC<{
           </div>
         )}
         {isBot && message.type === "supplementary_info_form_card" && (
-          <SupplementaryInfoFormCard onSend={onAction} />
+          <SupplementaryInfoFormCard data={message.data} onSend={onAction} />
         )}
         {isBot && message.type === "package_option_card" && (
           <PackageOptionCard data={message.data} onSend={onAction} />
@@ -8687,23 +8687,28 @@ function PackageOptionCard({ data, onSend }: { data?: any, onSend?: (text: strin
   )
 }
 
-function SupplementaryInfoFormCard({ onSend }: { onSend?: (text: string) => void }) {
+function SupplementaryInfoFormCard({ onSend, data }: { onSend?: (text: string) => void, data?: any }) {
   const [formData, setFormData] = React.useState({
-    painPoints: "",
-    highLevelCount: "",
-    coreCount: "",
-    baseCount: "",
-    retireeRatio: "",
-    activeRatio: "",
-    avgAge: "",
-    maxAgeGroup: "",
-    maleCount: "",
-    femaleCount: "",
-    indoorCount: "",
-    outdoorCount: "",
+    painPoints: [] as string[],
+    orgStructure: `高层员工${data?.highLevelCount ?? 'XX'}人，核心员工${data?.coreCount ?? 'XX'}人，基层员工${data?.baseCount ?? 'XX'}人`,
+    personnelStructure: `离退休人员占比${data?.retireeRatio ?? 'XX'}；在职人员占比${data?.activeRatio ?? 'XX'}，平均年龄${data?.avgAge ?? 'XX'}岁，占最高比例年龄段${data?.maxAgeGroup ?? 'XX'}岁`,
+    genderStructure: `男性${data?.maleCount ?? 'XX'}人，女性${data?.femaleCount ?? 'XX'}人`,
+    jobStructure: `内勤${data?.indoorCount ?? 'XX'}人，外勤${data?.outdoorCount ?? 'XX'}人`,
     notes: "",
   });
   const [submitted, setSubmitted] = React.useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleIgnore = () => {
     setSubmitted(true);
@@ -8714,6 +8719,16 @@ function SupplementaryInfoFormCard({ onSend }: { onSend?: (text: string) => void
     setSubmitted(true);
     if(onSend) onSend("[已提交补充信息] 根据补充信息重新推荐标品套餐");
   }
+
+  const togglePainPoint = (val: string) => {
+    if (submitted) return;
+    setFormData(prev => ({
+      ...prev,
+      painPoints: prev.painPoints.includes(val) ? prev.painPoints.filter(p => p !== val) : [...prev.painPoints, val]
+    }));
+  };
+
+  const painPointOptions = ["常见心血管疾病", "颈椎/腰椎等职业病", "心理压力大/焦虑", "癌症发病率偏高"];
 
   return (
     <div className="mt-2 w-full max-w-3xl bg-white border border-orange-200 rounded-xl p-6 shadow-sm overflow-hidden">
@@ -8731,98 +8746,91 @@ function SupplementaryInfoFormCard({ onSend }: { onSend?: (text: string) => void
          {/* 既往健康痛点 */}
          <div>
             <h4 className="flex items-center text-sm font-bold text-gray-800 mb-3 border-l-4 border-orange-500 pl-2">既往健康痛点</h4>
-            <select className="w-full border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-orange-500 focus:border-orange-500"
-                    value={formData.painPoints} onChange={e=>setFormData({...formData, painPoints: e.target.value})} disabled={submitted}>
-               <option value="">请选择（如未明确可暂不选）</option>
-               <option value="常见心血管疾病">常见心血管疾病</option>
-               <option value="颈椎/腰椎等职业病">颈椎/腰椎等职业病</option>
-               <option value="心理压力大/焦虑">心理压力大/焦虑</option>
-               <option value="癌症发病率偏高">癌症发病率偏高</option>
-            </select>
+            <div className="relative" ref={dropdownRef}>
+              <div 
+                className={`w-full border rounded-md py-2 px-3 text-sm flex items-center justify-between transition-colors ${submitted ? 'bg-gray-50 border-gray-200 text-gray-500 cursor-not-allowed' : 'bg-white border-gray-300 text-gray-900 cursor-pointer hover:border-orange-400 focus-within:ring-1 focus-within:ring-orange-500 focus-within:border-orange-500'}`}
+                onClick={() => !submitted && setIsDropdownOpen(!isDropdownOpen)}
+              >
+                <div className="flex flex-wrap gap-1">
+                  {formData.painPoints.length === 0 ? (
+                    <span className="text-gray-400">请选择（可多选），如未明确可暂不选</span>
+                  ) : (
+                    formData.painPoints.map(p => (
+                      <span key={p} className="inline-flex items-center bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs">
+                        {p}
+                        {!submitted && (
+                          <span 
+                            className="ml-1 cursor-pointer hover:bg-orange-200 rounded-full p-0.5 flex items-center justify-center"
+                            onClick={(e) => { e.stopPropagation(); togglePainPoint(p); }}
+                          >
+                            <X className="w-3 h-3" />
+                          </span>
+                        )}
+                      </span>
+                    ))
+                  )}
+                </div>
+                <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+              </div>
+              
+              <AnimatePresence>
+                {isDropdownOpen && !submitted && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg overflow-hidden"
+                  >
+                    <div className="max-h-60 overflow-y-auto py-1">
+                      {painPointOptions.map(option => (
+                        <label 
+                          key={option} 
+                          className={`flex items-center px-4 py-2.5 cursor-pointer transition-colors hover:bg-orange-50 ${formData.painPoints.includes(option) ? 'bg-orange-50/50' : ''}`}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <input 
+                            type="checkbox" 
+                            className="rounded text-orange-500 focus:ring-orange-500 w-4 h-4 border-gray-300 mr-3" 
+                            checked={formData.painPoints.includes(option)} 
+                            onChange={() => togglePainPoint(option)} 
+                          />
+                          <span className="text-sm text-gray-700">{option}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
          </div>
 
          {/* 组织结构 */}
          <div>
             <h4 className="flex items-center text-sm font-bold text-gray-800 mb-3 border-l-4 border-orange-500 pl-2">组织结构</h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-               <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">高层员工人数</label>
-                  <input type="text" className="w-full border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-orange-500" disabled={submitted}
-                         value={formData.highLevelCount} onChange={e=>setFormData({...formData, highLevelCount:e.target.value})} />
-               </div>
-               <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">核心员工人数</label>
-                  <input type="text" className="w-full border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-orange-500" disabled={submitted}
-                         value={formData.coreCount} onChange={e=>setFormData({...formData, coreCount:e.target.value})} />
-               </div>
-               <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">基层员工人数</label>
-                  <input type="text" className="w-full border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-orange-500" disabled={submitted}
-                         value={formData.baseCount} onChange={e=>setFormData({...formData, baseCount:e.target.value})} />
-               </div>
-            </div>
+            <textarea className="w-full border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-orange-500 min-h-[60px]" disabled={submitted}
+                      value={formData.orgStructure} onChange={e=>setFormData({...formData, orgStructure:e.target.value})}></textarea>
          </div>
 
          {/* 人员结构 */}
          <div>
             <h4 className="flex items-center text-sm font-bold text-gray-800 mb-3 border-l-4 border-orange-500 pl-2">人员结构</h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-               <div>
-                  <label className="block text-[11px] font-medium text-gray-600 mb-1">离退休人员占比</label>
-                  <input type="text" className="w-full border border-gray-300 rounded-md py-1.5 px-2 text-sm focus:ring-orange-500" disabled={submitted}
-                         value={formData.retireeRatio} onChange={e=>setFormData({...formData, retireeRatio:e.target.value})} />
-               </div>
-               <div>
-                  <label className="block text-[11px] font-medium text-gray-600 mb-1">在职人员占比</label>
-                  <input type="text" className="w-full border border-gray-300 rounded-md py-1.5 px-2 text-sm focus:ring-orange-500" disabled={submitted}
-                         value={formData.activeRatio} onChange={e=>setFormData({...formData, activeRatio:e.target.value})} />
-               </div>
-               <div>
-                  <label className="block text-[11px] font-medium text-gray-600 mb-1">在职人员平均年龄</label>
-                  <input type="text" className="w-full border border-gray-300 rounded-md py-1.5 px-2 text-sm focus:ring-orange-500" disabled={submitted}
-                         value={formData.avgAge} onChange={e=>setFormData({...formData, avgAge:e.target.value})} />
-               </div>
-               <div>
-                  <label className="block text-[11px] font-medium text-gray-600 mb-1">占最高比例年龄段</label>
-                  <input type="text" className="w-full border border-gray-300 rounded-md py-1.5 px-2 text-sm focus:ring-orange-500" disabled={submitted}
-                         value={formData.maxAgeGroup} onChange={e=>setFormData({...formData, maxAgeGroup:e.target.value})} />
-               </div>
-            </div>
+            <textarea className="w-full border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-orange-500 min-h-[60px]" disabled={submitted}
+                      value={formData.personnelStructure} onChange={e=>setFormData({...formData, personnelStructure:e.target.value})}></textarea>
          </div>
 
          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* 性别结构 */}
             <div>
                <h4 className="flex items-center text-sm font-bold text-gray-800 mb-3 border-l-4 border-orange-500 pl-2">性别结构</h4>
-               <div className="grid grid-cols-2 gap-3">
-                  <div>
-                     <label className="block text-xs font-medium text-gray-600 mb-1">男性人数</label>
-                     <input type="text" className="w-full border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-orange-500" disabled={submitted}
-                            value={formData.maleCount} onChange={e=>setFormData({...formData, maleCount:e.target.value})} />
-                  </div>
-                  <div>
-                     <label className="block text-xs font-medium text-gray-600 mb-1">女性人数</label>
-                     <input type="text" className="w-full border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-orange-500" disabled={submitted}
-                            value={formData.femaleCount} onChange={e=>setFormData({...formData, femaleCount:e.target.value})} />
-                  </div>
-               </div>
+               <textarea className="w-full border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-orange-500 min-h-[60px]" disabled={submitted}
+                         value={formData.genderStructure} onChange={e=>setFormData({...formData, genderStructure:e.target.value})}></textarea>
             </div>
 
             {/* 工种结构 */}
             <div>
                <h4 className="flex items-center text-sm font-bold text-gray-800 mb-3 border-l-4 border-orange-500 pl-2">工种结构</h4>
-               <div className="grid grid-cols-2 gap-3">
-                  <div>
-                     <label className="block text-xs font-medium text-gray-600 mb-1">内勤人数</label>
-                     <input type="text" className="w-full border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-orange-500" disabled={submitted}
-                            value={formData.indoorCount} onChange={e=>setFormData({...formData, indoorCount:e.target.value})} />
-                  </div>
-                  <div>
-                     <label className="block text-xs font-medium text-gray-600 mb-1">外勤人数</label>
-                     <input type="text" className="w-full border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-orange-500" disabled={submitted}
-                            value={formData.outdoorCount} onChange={e=>setFormData({...formData, outdoorCount:e.target.value})} />
-                  </div>
-               </div>
+               <textarea className="w-full border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-orange-500 min-h-[60px]" disabled={submitted}
+                         value={formData.jobStructure} onChange={e=>setFormData({...formData, jobStructure:e.target.value})}></textarea>
             </div>
          </div>
 
@@ -8836,7 +8844,7 @@ function SupplementaryInfoFormCard({ onSend }: { onSend?: (text: string) => void
 
       <div className="pt-4 flex items-center justify-end gap-3 border-t border-gray-100 mt-5">
          <button className={`px-5 py-2 rounded-md font-medium text-sm transition-colors ${submitted ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`} onClick={handleIgnore} disabled={submitted}>忽略</button>
-         <button className={`px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-colors ${submitted ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-orange-500 text-white hover:bg-orange-600'}`} onClick={handleSubmit} disabled={submitted}>{submitted ? "已提交信息" : "提交"}</button>
+         <button className={`px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-colors ${submitted ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-orange-500 text-white hover:bg-orange-600'}`} onClick={handleSubmit} disabled={submitted}>{`${submitted ? "已提交信息" : "提交"}`}</button>
       </div>
 
     </div>
