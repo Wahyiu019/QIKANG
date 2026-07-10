@@ -2276,20 +2276,13 @@ function AiChatWindow({
             data: {
               packages: [
                 {
-                  id: "p1",
-                  name: "基础健康保障版",
-                  price: "年度总预算估算：55万元",
-                  features: [
-                    "覆盖全员的基础健康档案建立",
-                    "7×24小时在线全科医生问诊",
-                    "三甲医院重疾绿通协调服务",
-                    "基础心理健康测评与干预"
-                  ]
-                },
-                {
-                  id: "p2",
-                  name: "标准全面升级版",
-                  price: "年度总预算估算：80万元",
+                  id: "pkg1",
+                  name: "总价20.9万 · 预算内优选方案",
+                  products: [
+                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
+                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
+                    { name: "平安健康优选套餐", target: "基层员工", price: "600元", unit: "人/年" }
+                  ],
                   features: [
                     "包含基础版的所有服务",
                     "员工年度深度体检套餐",
@@ -2298,15 +2291,17 @@ function AiChatWindow({
                   ]
                 },
                 {
-                  id: "p3",
-                  name: "全场景黑金尊享版",
-                  price: "年度总预算估算：120万元",
+                  id: "pkg2",
+                  name: "总价21.5万 · 品质升级方案",
+                  products: [
+                    { name: "细胞焕活（好医优享版）", target: "高层员工", price: "6,200元", unit: "人/年" },
+                    { name: "平安健康悦享套餐", target: "核心员工", price: "1,770元", unit: "人/年" },
+                    { name: "平安健康优选套餐", target: "基层员工", price: "600元", unit: "人/年" }
+                  ],
                   features: [
-                    "包含标准版的所有服务",
-                    "高管尊享线下全程陪诊与绿通",
-                    "MDT多学科顶尖专家会诊支持",
-                    "定制化驻场企业医务室运营",
-                    "全员EAP心理援助计划深度干预"
+                    "更全面的重疾与慢病管理",
+                    "专属健康管家全程跟进",
+                    "三甲医院顶尖专家门诊预约"
                   ]
                 }
               ]
@@ -2334,10 +2329,50 @@ function AiChatWindow({
       
       const reasoningMsgId = Date.now().toString() + "_reasoning";
       const reasoningMsg: Message = {
-        id: reasoningMsgId, sender: "bot", type: "reasoning", content: "正在结合补充信息为您推荐更精准的套餐...", timestamp: new Date()
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在结合补充信息为您推荐更精准的套餐...",
+        timestamp: new Date(),
+        data: {
+          title: "执行过程",
+          steps: [
+            { text: "思考过程", status: "loading" },
+            { text: "使用 Skill：标准产品推荐", status: "pending" },
+            { text: "生成套餐选项", status: "pending" }
+          ]
+        }
       };
       setMessages(prev => [...prev, reasoningMsg]);
       setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) => prev.map(m => m.id === reasoningMsgId ? {
+          ...m,
+          data: {
+            ...m.data,
+            steps: [
+              { text: "思考过程", status: "done", details: "正在分析补充信息内容并提取关键要素" },
+              { text: "使用 Skill：标准产品推荐", status: "loading" },
+              { text: "生成套餐选项", status: "pending" }
+            ]
+          }
+        } : m));
+      }, 800);
+
+      setTimeout(() => {
+        setMessages((prev) => prev.map(m => m.id === reasoningMsgId ? {
+          ...m,
+          data: {
+            ...m.data,
+            steps: [
+              { text: "思考过程", status: "done", details: "正在分析补充信息内容并提取关键要素" },
+              { text: "使用 Skill：标准产品推荐", status: "done" },
+              { text: "生成套餐选项", status: "done" }
+            ]
+          }
+        } : m));
+      }, 1600);
 
       setTimeout(() => {
         setMessages((prev) => [
@@ -2354,6 +2389,11 @@ function AiChatWindow({
                   id: "p1_refined",
                   name: "高管尊享精准版",
                   price: "年度总预算估算：85万元",
+                  products: [
+                    { name: "高管专属就医绿通", target: "高层员工", price: "2,000元", unit: "人/年" },
+                    { name: "职业病康复特训", target: "核心员工", price: "1,500元", unit: "人/年" },
+                    { name: "在线全科医生问诊", target: "基层员工", price: "200元", unit: "人/年" }
+                  ],
                   features: [
                      "定向颈椎/腰椎等职业病康复特训",
                      "高管专属绿色就医通道保障",
@@ -2364,6 +2404,11 @@ function AiChatWindow({
                   id: "p2_refined",
                   name: "全场景黑金尊享加强版",
                   price: "年度总预算估算：150万元",
+                  products: [
+                    { name: "顶尖专家会诊", target: "高层员工", price: "5,000元", unit: "人/年" },
+                    { name: "EAP深度干预服务", target: "核心员工", price: "800元", unit: "人/年" },
+                    { name: "定制驻场医务室服务", target: "基层员工", price: "500元", unit: "人/年" }
+                  ],
                   features: [
                     "包含高管专属版的所有服务",
                     "心理压力大定向EAP深度干预",
@@ -2376,7 +2421,7 @@ function AiChatWindow({
           }
         ]);
         setIsTyping(false);
-      }, 1500);
+      }, 2400);
       return;
     } else if (text.startsWith("[已提交基本信息]")) {
       const newUserMsg: Message = {
@@ -2420,24 +2465,6 @@ function AiChatWindow({
           )
         );
         
-        setMessages((prev) => [
-          ...prev,
-          {
-            id: Date.now().toString() + "_inq",
-            sender: "bot",
-            type: "inquiry_card",
-            content: "询问卡片",
-            timestamp: new Date(),
-            data: {
-              question: "针对高管的【专属医疗网络与绿通服务】，您倾向于哪种服务配置？",
-              options: [
-                "A. 标准重疾绿通（含挂号、住院协调）",
-                "B. 高管尊享绿通（含全程陪诊、国内顶尖专家会诊）",
-                "C. 跨境医疗直通车（含海外专家二诊）"
-              ]
-            }
-          }
-        ]);
       }, 1500);
 
       setTimeout(() => {
@@ -2479,8 +2506,14 @@ function AiChatWindow({
             data: {
               packages: [
                 {
+                  id: "pkg1",
                   name: "基础健康保障版",
                   price: "年度总预算估算：550万元",
+                  products: [
+                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
+                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
+                    { name: "企康基础健康档案系统", target: "基层员工", price: "100元", unit: "人/年" }
+                  ],
                   features: [
                     "覆盖全员的基础健康档案建立",
                     "7×24小时在线全科医生问诊",
@@ -2489,8 +2522,14 @@ function AiChatWindow({
                   ]
                 },
                 {
+                  id: "pkg2",
                   name: "全场景黑金尊享版（推荐）",
                   price: "年度总预算估算：780万元",
+                  products: [
+                    { name: "高管专属就医绿通及陪诊", target: "高层员工", price: "3,500元", unit: "人/年" },
+                    { name: "MDT多学科顶尖专家会诊", target: "核心员工", price: "2,000元", unit: "人/年" },
+                    { name: "驻场医务室基础运营", target: "基层员工", price: "200元", unit: "人/年" }
+                  ],
                   features: [
                     "包含基础版的所有服务",
                     "高管尊享线下全程陪诊与绿通",
@@ -2563,21 +2602,6 @@ function AiChatWindow({
               budget: "600-800 万元",
               requirement: "员工补充医疗保障、健康管理中台及高管健康绿通服务"
             }
-          },
-          {
-            id: Date.now().toString() + "_inq",
-            sender: "bot",
-            type: "inquiry_card",
-            content: "询问卡片",
-            timestamp: new Date(),
-            data: {
-              question: "针对高管的【专属医疗网络与绿通服务】，您倾向于哪种服务配置？",
-              options: [
-                "A. 标准重疾绿通（含挂号、住院协调）",
-                "B. 高管尊享绿通（含全程陪诊、国内顶尖专家会诊）",
-                "C. 跨境医疗直通车（含海外专家二诊）"
-              ]
-            }
           }
         ]);
       }, 1500);
@@ -2641,8 +2665,14 @@ function AiChatWindow({
             data: {
               packages: [
                 {
+                  id: "pkg1",
                   name: "基础健康保障版",
                   price: "年度总预算估算：550万元",
+                  products: [
+                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
+                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
+                    { name: "企康基础健康档案系统", target: "基层员工", price: "100元", unit: "人/年" }
+                  ],
                   features: [
                     "覆盖全员的基础健康档案建立",
                     "7×24小时在线全科医生问诊",
@@ -2651,8 +2681,14 @@ function AiChatWindow({
                   ]
                 },
                 {
+                  id: "pkg2",
                   name: "全场景黑金尊享版（推荐）",
                   price: "年度总预算估算：780万元",
+                  products: [
+                    { name: "高管专属就医绿通及陪诊", target: "高层员工", price: "3,500元", unit: "人/年" },
+                    { name: "MDT多学科顶尖专家会诊", target: "核心员工", price: "2,000元", unit: "人/年" },
+                    { name: "驻场医务室基础运营", target: "基层员工", price: "200元", unit: "人/年" }
+                  ],
                   features: [
                     "包含基础版的所有服务",
                     "高管尊享线下全程陪诊与绿通",
@@ -4240,20 +4276,13 @@ function AiChatWindow({
             data: {
               packages: [
                 {
-                  id: "p1",
-                  name: "基础健康保障版",
-                  price: "年度总预算估算：55万元",
-                  features: [
-                    "覆盖全员的基础健康档案建立",
-                    "7×24小时在线全科医生问诊",
-                    "三甲医院重疾绿通协调服务",
-                    "基础心理健康测评与干预"
-                  ]
-                },
-                {
-                  id: "p2",
-                  name: "标准全面升级版",
-                  price: "年度总预算估算：80万元",
+                  id: "pkg1",
+                  name: "总价20.9万 · 预算内优选方案",
+                  products: [
+                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
+                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
+                    { name: "平安健康优选套餐", target: "基层员工", price: "600元", unit: "人/年" }
+                  ],
                   features: [
                     "包含基础版的所有服务",
                     "员工年度深度体检套餐",
@@ -4262,15 +4291,17 @@ function AiChatWindow({
                   ]
                 },
                 {
-                  id: "p3",
-                  name: "全场景黑金尊享版",
-                  price: "年度总预算估算：120万元",
+                  id: "pkg2",
+                  name: "总价21.5万 · 品质升级方案",
+                  products: [
+                    { name: "细胞焕活（好医优享版）", target: "高层员工", price: "6,200元", unit: "人/年" },
+                    { name: "平安健康悦享套餐", target: "核心员工", price: "1,770元", unit: "人/年" },
+                    { name: "平安健康优选套餐", target: "基层员工", price: "600元", unit: "人/年" }
+                  ],
                   features: [
-                    "包含标准版的所有服务",
-                    "高管尊享线下全程陪诊与绿通",
-                    "MDT多学科顶尖专家会诊支持",
-                    "定制化驻场企业医务室运营",
-                    "全员EAP心理援助计划深度干预"
+                    "更全面的重疾与慢病管理",
+                    "专属健康管家全程跟进",
+                    "三甲医院顶尖专家门诊预约"
                   ]
                 }
               ]
@@ -4298,10 +4329,50 @@ function AiChatWindow({
       
       const reasoningMsgId = Date.now().toString() + "_reasoning";
       const reasoningMsg: Message = {
-        id: reasoningMsgId, sender: "bot", type: "reasoning", content: "正在结合补充信息为您推荐更精准的套餐...", timestamp: new Date()
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在结合补充信息为您推荐更精准的套餐...",
+        timestamp: new Date(),
+        data: {
+          title: "执行过程",
+          steps: [
+            { text: "思考过程", status: "loading" },
+            { text: "使用 Skill：标准产品推荐", status: "pending" },
+            { text: "生成套餐选项", status: "pending" }
+          ]
+        }
       };
       setMessages(prev => [...prev, reasoningMsg]);
       setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) => prev.map(m => m.id === reasoningMsgId ? {
+          ...m,
+          data: {
+            ...m.data,
+            steps: [
+              { text: "思考过程", status: "done", details: "正在分析补充信息内容并提取关键要素" },
+              { text: "使用 Skill：标准产品推荐", status: "loading" },
+              { text: "生成套餐选项", status: "pending" }
+            ]
+          }
+        } : m));
+      }, 800);
+
+      setTimeout(() => {
+        setMessages((prev) => prev.map(m => m.id === reasoningMsgId ? {
+          ...m,
+          data: {
+            ...m.data,
+            steps: [
+              { text: "思考过程", status: "done", details: "正在分析补充信息内容并提取关键要素" },
+              { text: "使用 Skill：标准产品推荐", status: "done" },
+              { text: "生成套餐选项", status: "done" }
+            ]
+          }
+        } : m));
+      }, 1600);
 
       setTimeout(() => {
         setMessages((prev) => [
@@ -4318,6 +4389,11 @@ function AiChatWindow({
                   id: "p1_refined",
                   name: "高管尊享精准版",
                   price: "年度总预算估算：85万元",
+                  products: [
+                    { name: "高管专属就医绿通", target: "高层员工", price: "2,000元", unit: "人/年" },
+                    { name: "职业病康复特训", target: "核心员工", price: "1,500元", unit: "人/年" },
+                    { name: "在线全科医生问诊", target: "基层员工", price: "200元", unit: "人/年" }
+                  ],
                   features: [
                      "定向颈椎/腰椎等职业病康复特训",
                      "高管专属绿色就医通道保障",
@@ -4328,6 +4404,11 @@ function AiChatWindow({
                   id: "p2_refined",
                   name: "全场景黑金尊享加强版",
                   price: "年度总预算估算：150万元",
+                  products: [
+                    { name: "顶尖专家会诊", target: "高层员工", price: "5,000元", unit: "人/年" },
+                    { name: "EAP深度干预服务", target: "核心员工", price: "800元", unit: "人/年" },
+                    { name: "定制驻场医务室服务", target: "基层员工", price: "500元", unit: "人/年" }
+                  ],
                   features: [
                     "包含高管专属版的所有服务",
                     "心理压力大定向EAP深度干预",
@@ -4340,7 +4421,7 @@ function AiChatWindow({
           }
         ]);
         setIsTyping(false);
-      }, 1500);
+      }, 2400);
       return;
     } else if (text.startsWith("[已提交基本信息]")) {
       const newUserMsg: Message = {
@@ -4384,24 +4465,6 @@ function AiChatWindow({
           )
         );
         
-        setMessages((prev) => [
-          ...prev,
-          {
-            id: Date.now().toString() + "_inq",
-            sender: "bot",
-            type: "inquiry_card",
-            content: "询问卡片",
-            timestamp: new Date(),
-            data: {
-              question: "针对高管的【专属医疗网络与绿通服务】，您倾向于哪种服务配置？",
-              options: [
-                "A. 标准重疾绿通（含挂号、住院协调）",
-                "B. 高管尊享绿通（含全程陪诊、国内顶尖专家会诊）",
-                "C. 跨境医疗直通车（含海外专家二诊）"
-              ]
-            }
-          }
-        ]);
       }, 1500);
 
       setTimeout(() => {
@@ -4443,8 +4506,14 @@ function AiChatWindow({
             data: {
               packages: [
                 {
+                  id: "pkg1",
                   name: "基础健康保障版",
                   price: "年度总预算估算：550万元",
+                  products: [
+                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
+                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
+                    { name: "企康基础健康档案系统", target: "基层员工", price: "100元", unit: "人/年" }
+                  ],
                   features: [
                     "覆盖全员的基础健康档案建立",
                     "7×24小时在线全科医生问诊",
@@ -4453,8 +4522,14 @@ function AiChatWindow({
                   ]
                 },
                 {
+                  id: "pkg2",
                   name: "全场景黑金尊享版（推荐）",
                   price: "年度总预算估算：780万元",
+                  products: [
+                    { name: "高管专属就医绿通及陪诊", target: "高层员工", price: "3,500元", unit: "人/年" },
+                    { name: "MDT多学科顶尖专家会诊", target: "核心员工", price: "2,000元", unit: "人/年" },
+                    { name: "驻场医务室基础运营", target: "基层员工", price: "200元", unit: "人/年" }
+                  ],
                   features: [
                     "包含基础版的所有服务",
                     "高管尊享线下全程陪诊与绿通",
@@ -4527,21 +4602,6 @@ function AiChatWindow({
               budget: "600-800 万元",
               requirement: "员工补充医疗保障、健康管理中台及高管健康绿通服务"
             }
-          },
-          {
-            id: Date.now().toString() + "_inq",
-            sender: "bot",
-            type: "inquiry_card",
-            content: "询问卡片",
-            timestamp: new Date(),
-            data: {
-              question: "针对高管的【专属医疗网络与绿通服务】，您倾向于哪种服务配置？",
-              options: [
-                "A. 标准重疾绿通（含挂号、住院协调）",
-                "B. 高管尊享绿通（含全程陪诊、国内顶尖专家会诊）",
-                "C. 跨境医疗直通车（含海外专家二诊）"
-              ]
-            }
           }
         ]);
       }, 1500);
@@ -4605,8 +4665,14 @@ function AiChatWindow({
             data: {
               packages: [
                 {
+                  id: "pkg1",
                   name: "基础健康保障版",
                   price: "年度总预算估算：550万元",
+                  products: [
+                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
+                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
+                    { name: "企康基础健康档案系统", target: "基层员工", price: "100元", unit: "人/年" }
+                  ],
                   features: [
                     "覆盖全员的基础健康档案建立",
                     "7×24小时在线全科医生问诊",
@@ -4615,8 +4681,14 @@ function AiChatWindow({
                   ]
                 },
                 {
+                  id: "pkg2",
                   name: "全场景黑金尊享版（推荐）",
                   price: "年度总预算估算：780万元",
+                  products: [
+                    { name: "高管专属就医绿通及陪诊", target: "高层员工", price: "3,500元", unit: "人/年" },
+                    { name: "MDT多学科顶尖专家会诊", target: "核心员工", price: "2,000元", unit: "人/年" },
+                    { name: "驻场医务室基础运营", target: "基层员工", price: "200元", unit: "人/年" }
+                  ],
                   features: [
                     "包含基础版的所有服务",
                     "高管尊享线下全程陪诊与绿通",

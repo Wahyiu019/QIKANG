@@ -2511,23 +2511,6 @@ export const MessageBubble: React.FC<{
         {isBot && message.type === "basic_info_card_form" && (
           <BasicInfoFormCard onSend={onAction} data={message.data} />
         )}
-        {isBot && message.type === "inquiry_card" && (
-          <div className="mt-2 w-full max-w-2xl bg-blue-50 border border-blue-200 rounded-xl p-5 shadow-sm font-sans">
-            <h3 className="font-bold text-lg text-blue-900 border-b border-blue-200 pb-2 mb-3">询问卡片</h3>
-            <div className="text-sm text-blue-800 space-y-2 mb-4">
-              <p>{message.data?.question || "请补充相关信息："}</p>
-            </div>
-            {message.data?.options && (
-              <div className="space-y-2">
-                {message.data.options.map((opt: string, i: number) => (
-                  <button key={i} className="block w-full text-left px-4 py-2 text-sm text-blue-700 bg-white border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors">
-                    {opt}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
         {isBot && message.type === "supplementary_info_card" && (
           <div className="mt-2 w-full max-w-2xl bg-green-50 border border-green-200 rounded-xl p-5 shadow-sm font-sans">
             <h3 className="font-bold text-lg text-green-900 border-b border-green-200 pb-2 mb-3">补充信息卡片</h3>
@@ -8564,14 +8547,16 @@ export function QualPerfMatchCard() {
 
 function BasicInfoFormCard({ onSend, data }: { onSend?: (text: string) => void, data?: any }) {
   const [formData, setFormData] = React.useState({
-    industry: "制造行业",
-    employeeCount: "未知（请补充）",
-    region: "云南省",
+    customerName: data?.customerName || "中国烟草总公司湖南省公司",
+    budget: "21万",
+    industry: "烟草",
+    employeeCount: "202人（省级公司本部）",
+    region: "湖南省长沙市天心区",
   });
   
   React.useEffect(() => {
     if (data?.customerName === "云天化") {
-      setFormData({ industry: "化工行业", employeeCount: "13000+ 人", region: "云南省昆明市" });
+      setFormData({ customerName: "云天化", budget: "30万", industry: "化工行业", employeeCount: "13000+ 人", region: "云南省昆明市" });
     }
   }, [data]);
 
@@ -8582,39 +8567,60 @@ function BasicInfoFormCard({ onSend, data }: { onSend?: (text: string) => void, 
   const handleSubmit = () => {
     setSubmitted(true);
     if (onSend) {
-      onSend(`[用户确认] 客户基础信息确认无误`);
+      onSend(`[已提交基本信息] 客户基础信息确认无误`);
     }
   };
 
   return (
-    <div className="mt-2 w-full max-w-2xl bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-      <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-100">
-        <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center">
-          <Bot className="w-4 h-4 text-orange-600" />
-        </div>
-        <h3 className="font-bold text-lg text-gray-900 border-l-4 border-orange-500 pl-2">客户基本信息匹配结果</h3>
+    <div className="mt-2 w-full max-w-2xl">
+      <div className="flex items-center justify-center gap-2 mb-4">
+        <FileText className="w-5 h-5 text-gray-700" />
+        <h3 className="font-bold text-lg text-gray-900">企业信息搜索结果</h3>
       </div>
       
-      <div className="space-y-4">
-        <p className="text-sm text-gray-500 mb-2">{submitted ? "此信息已确认，如需修改请重新提交" : "已为您匹配以下信息，请确认或修改："}</p>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">行业</label>
-          <input type="text" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-orange-500 focus:border-orange-500 sm:text-sm text-gray-900" disabled={submitted} value={formData.industry} onChange={(e) => setFormData({...formData, industry: e.target.value})} />
+      <div className="bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden">
+        <div className="p-6 space-y-4">
+          <div className="flex items-center pb-4 border-b border-gray-100">
+            <div className="w-24 text-gray-400 text-sm flex items-center gap-2">
+              <Building2 className="w-4 h-4" />
+              客户名称
+            </div>
+            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-sm p-0" disabled={submitted} value={formData.customerName} onChange={(e) => setFormData({...formData, customerName: e.target.value})} />
+          </div>
+          <div className="flex items-center pb-4 border-b border-gray-100">
+            <div className="w-24 text-gray-400 text-sm flex items-center gap-2">
+              <DollarSign className="w-4 h-4 text-yellow-500" />
+              预算
+            </div>
+            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-sm p-0" disabled={submitted} value={formData.budget} onChange={(e) => setFormData({...formData, budget: e.target.value})} />
+          </div>
+          <div className="flex items-center pb-4 border-b border-gray-100">
+            <div className="w-24 text-gray-400 text-sm">展示行业</div>
+            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-sm p-0" disabled={submitted} value={formData.industry} onChange={(e) => setFormData({...formData, industry: e.target.value})} />
+          </div>
+          <div className="flex items-center pb-4 border-b border-gray-100">
+            <div className="w-24 text-gray-400 text-sm">人员规模</div>
+            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-sm p-0" disabled={submitted} value={formData.employeeCount} onChange={(e) => setFormData({...formData, employeeCount: e.target.value})} />
+          </div>
+          <div className="flex items-center">
+            <div className="w-24 text-gray-400 text-sm">地域信息</div>
+            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-sm p-0" disabled={submitted} value={formData.region} onChange={(e) => setFormData({...formData, region: e.target.value})} />
+          </div>
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">人员规模</label>
-          <input type="text" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-orange-500 focus:border-orange-500 sm:text-sm text-gray-900" disabled={submitted} placeholder="如：约 8000 人" value={formData.employeeCount} onChange={(e) => setFormData({...formData, employeeCount: e.target.value})} />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">地域</label>
-          <input type="text" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-orange-500 focus:border-orange-500 sm:text-sm text-gray-900" disabled={submitted} value={formData.region} onChange={(e) => setFormData({...formData, region: e.target.value})} />
-        </div>
-        <div className="pt-2 text-right">
+
+        <div className="bg-[#fff7f0] p-4 flex flex-col items-center justify-center">
+          <p className="text-[13px] text-gray-400 mb-4">{submitted ? "此信息已确认" : "以上信息来自联网搜索，请确认或修改后点击下方按钮"}</p>
           <button
             onClick={handleSubmit}
             disabled={!isComplete || submitted}
-            className={`px-6 py-2 rounded-md shadow uppercase tracking-wide text-sm font-bold transition-colors ${submitted ? 'bg-gray-400 text-white cursor-not-allowed' : isComplete ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}>
-            {submitted ? "已确认无误" : isComplete ? "信息确认无误" : "补充信息并提交"}
+            className={`w-full py-3 rounded-md text-sm transition-colors flex items-center justify-center gap-2 ${submitted ? 'bg-gray-300 text-white cursor-not-allowed' : isComplete ? 'bg-[#f8b284] hover:bg-[#f39c6b] text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}>
+            {submitted ? (
+               <>已确认</>
+            ) : isComplete ? (
+               <><div className="bg-green-400 rounded-sm p-0.5 flex items-center justify-center"><Check className="w-3 h-3 text-white" strokeWidth={3} /></div> 确认，进入下一步</>
+            ) : (
+               "补充信息并提交"
+            )}
           </button>
         </div>
       </div>
@@ -8633,56 +8639,122 @@ function PackageOptionCard({ data, onSend }: { data?: any, onSend?: (text: strin
 
   const handleConfirm = () => {
     setSubmitted(true);
-    if(onSend) {
-       onSend(`[已选择套餐] 已确认勾选 ${selectedIds.length} 个标品套餐`);
+    if(onSend) onSend("[已选择套餐] 已选择相关套餐，生成后续方案");
+  };
+
+  const defaultPackages = [
+    {
+      id: "pkg1",
+      name: "总价20.9万 · 预算内优选方案",
+      products: [
+        { name: "平安健康优选套餐2", price: "600元", unit: "人/年" },
+        { name: "企康基础版服务费", price: "300元", unit: "人/年" }
+      ],
+      features: [
+        "包含基础版的所有服务",
+        "员工年度深度体检套餐",
+        "特定慢病管理与购药折扣",
+        "核心骨干绿色就医通道保障"
+      ]
+    },
+    {
+      id: "pkg2",
+      name: "总价21.5万 · 品质升级方案",
+      products: [
+        { name: "细胞焕活（好医优享版）", price: "6,200元", unit: "人" },
+        { name: "平安健康悦享套餐2", price: "1,770元", unit: "人/年" },
+        { name: "平安健康优选套餐2", price: "600元", unit: "人/年" }
+      ],
+      features: [
+        "更全面的重疾与慢病管理",
+        "专属健康管家全程跟进",
+        "三甲医院顶尖专家门诊预约"
+      ]
     }
-  }
+  ];
+
+  const packages = data?.packages || defaultPackages;
 
   return (
-    <div className="mt-2 w-full max-w-3xl bg-white border border-gray-200 rounded-xl p-5 shadow-sm font-sans mx-auto">
-      <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
-        <Layers className="w-5 h-5 text-orange-500" />
+    <div className="mt-2 w-full max-w-4xl bg-white border border-gray-100 shadow-sm rounded-xl overflow-hidden">
+      <div className="flex items-center gap-2 mb-2 p-6 pb-0">
+        <Layers className="w-6 h-6 text-orange-500" />
         <h3 className="font-bold text-xl text-gray-900">推荐标品套餐选项</h3>
       </div>
-      <>
-        <p className="text-sm text-gray-600 mb-4">{submitted ? "您已选择以下标品套餐组：" : "为您匹配了以下标准产品组合，您可以任意勾选需要的方案作为营销素材："}</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-          {data?.packages?.map((pkg: any) => {
+      
+      <div className="p-6 pt-2">
+        <div className="h-px bg-gray-100 w-full mb-4 mt-2"></div>
+        <p className="text-[13px] text-gray-500 mb-4">{submitted ? "您已选择以下标品套餐组：" : "为您匹配了以下标准产品组合，您可以任意勾选需要的方案作为营销素材："}</p>
+        <div className="grid grid-cols-1 gap-4 mb-6">
+          {packages.map((pkg: any) => {
             const isSelected = selectedIds.includes(pkg.id);
             return (
               <div 
                 key={pkg.id} 
                 onClick={() => toggleSelect(pkg.id)}
-                className={`relative border rounded-lg p-4 transition-all duration-200 ${submitted ? (isSelected ? 'border-orange-300 bg-orange-50 opacity-80' : 'border-gray-200 bg-gray-50 opacity-50') : 'cursor-pointer'} ${isSelected && !submitted ? 'border-orange-500 bg-orange-50 ring-1 ring-orange-500 shadow-md transform -translate-y-1' : ''} ${!isSelected && !submitted ? 'border-gray-200 bg-gray-50 hover:border-orange-300 hover:shadow-sm' : ''}`}
+                className={`relative border rounded-lg p-5 transition-all duration-200 cursor-pointer flex flex-col gap-4 ${isSelected ? 'border-orange-500 bg-orange-50/20 shadow-sm' : 'border-gray-200 hover:border-orange-300'}`}
               >
-                <div className="absolute top-3 right-3">
-                  <div className={`w-5 h-5 rounded flex items-center justify-center ${isSelected ? (submitted ? 'bg-orange-400' : 'bg-orange-500') : 'bg-white border border-gray-300'}`}>
-                    {isSelected && <Check className="w-3.5 h-3.5 text-white" />}
+                <div className="flex justify-between items-center">
+                  <h4 className="font-bold text-[17px] text-gray-800">{pkg.name}</h4>
+                  <div className={`w-5 h-5 rounded-sm flex items-center justify-center border transition-colors ${isSelected ? 'bg-orange-500 border-orange-500 text-white' : 'bg-gray-100 border-gray-300'}`}>
+                    {isSelected && <Check className="w-3.5 h-3.5" strokeWidth={3} />}
                   </div>
                 </div>
-                <h4 className={`font-bold text-base mb-2 pr-6 ${isSelected ? 'text-orange-900' : 'text-gray-800'}`}>{pkg.name}</h4>
-                <div className="text-xs text-orange-600 font-bold mb-3 px-2 py-1 bg-orange-100/50 rounded inline-block">{pkg.price}</div>
-                <ul className="text-xs text-gray-600 space-y-1.5 list-none">
-                  {pkg.features.map((f: string, j: number) => (
-                    <li key={j} className="flex items-start">
-                      <span className={`mr-1.5 ${isSelected ? 'text-orange-500' : 'text-gray-400'}`}>•</span> <span className="leading-tight">{f}</span>
-                    </li>
-                  ))}
-                </ul>
+
+                {pkg.products && pkg.products.length > 0 && (
+                  <div className="bg-white rounded-lg border border-gray-100 overflow-hidden shadow-sm">
+                    <table className="w-full text-sm text-left">
+                      <thead className="bg-gray-50/80 text-gray-500 text-[13px]">
+                        <tr>
+                          <th className="px-4 py-2.5 font-medium border-b border-gray-100">产品名称</th>
+                          <th className="px-4 py-2.5 font-medium border-b border-gray-100 w-24">适用人群</th>
+                          <th className="px-4 py-2.5 font-medium border-b border-gray-100 w-24">单价</th>
+                          <th className="px-4 py-2.5 font-medium border-b border-gray-100 w-24">计价方式</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-50">
+                        {pkg.products.map((prod: any, idx: number) => (
+                          <tr key={idx} className="hover:bg-gray-50/50">
+                            <td className="px-4 py-3 text-gray-800 font-medium">{prod.name}</td>
+                            <td className="px-4 py-3 text-blue-600 text-xs font-medium">
+                              <span className="bg-blue-50 px-2 py-1 rounded">{prod.target || '全员'}</span>
+                            </td>
+                            <td className="px-4 py-3 text-gray-600 font-mono text-[13px]">{prod.price}</td>
+                            <td className="px-4 py-3 text-gray-500 text-xs">{prod.unit}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                {pkg.features && pkg.features.length > 0 && (
+                  <div className="mt-1">
+                    <h5 className="text-[13px] font-bold text-gray-400 mb-3 tracking-wide">核心产品权益</h5>
+                    <ul className="text-[14.5px] text-gray-700 space-y-2 list-none grid grid-cols-1 sm:grid-cols-2 gap-x-4">
+                      {pkg.features.map((f: string, j: number) => (
+                        <li key={j} className="flex items-start">
+                          <span className="mr-2 text-orange-500 text-lg leading-none mt-0.5">•</span> 
+                          <span className="leading-snug">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             )
           })}
         </div>
-        <div className="flex justify-end pb-2 pt-2 border-t border-gray-50">
+        <div className="flex justify-center">
           <button
             onClick={handleConfirm}
             disabled={selectedIds.length === 0 || submitted}
-            className={`px-6 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-colors shadow-sm ${submitted ? 'bg-gray-400 text-white cursor-not-allowed' : selectedIds.length > 0 ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
+            className={`w-full max-w-sm py-3 rounded text-sm transition-colors flex items-center justify-center gap-2 ${submitted ? 'bg-gray-300 text-white cursor-not-allowed' : selectedIds.length > 0 ? 'bg-[#f8b284] hover:bg-[#f39c6b] text-white' : 'bg-[#f8b284] opacity-70 text-white cursor-not-allowed'}`}
           >
-            {submitted ? `已确认选择 (${selectedIds.length})` : `确认选择 (${selectedIds.length})`}
+            {submitted ? `已确认选择` : `确认选择`}
           </button>
         </div>
-      </>
+      </div>
     </div>
   )
 }
@@ -8690,11 +8762,11 @@ function PackageOptionCard({ data, onSend }: { data?: any, onSend?: (text: strin
 function SupplementaryInfoFormCard({ onSend, data }: { onSend?: (text: string) => void, data?: any }) {
   const [formData, setFormData] = React.useState({
     painPoints: [] as string[],
-    orgStructure: `高层员工${data?.highLevelCount ?? 'XX'}人，核心员工${data?.coreCount ?? 'XX'}人，基层员工${data?.baseCount ?? 'XX'}人`,
-    personnelStructure: `离退休人员占比${data?.retireeRatio ?? 'XX'}；在职人员占比${data?.activeRatio ?? 'XX'}，平均年龄${data?.avgAge ?? 'XX'}岁，占最高比例年龄段${data?.maxAgeGroup ?? 'XX'}岁`,
-    genderStructure: `男性${data?.maleCount ?? 'XX'}人，女性${data?.femaleCount ?? 'XX'}人`,
-    jobStructure: `内勤${data?.indoorCount ?? 'XX'}人，外勤${data?.outdoorCount ?? 'XX'}人`,
-    notes: "",
+    orgStructure: "省级公司本部，含办公室、财务、销售、烟叶、专卖、信息中心等职能部门",
+    personnelStructure: "省级公司管理层+各部门员工",
+    genderStructure: "男女比例约6:4",
+    jobStructure: "管理类、技术类、销售类、行政类",
+    notes: "烟草行业属于特殊体制内行业，员工福利偏好稳定全面",
   });
   const [submitted, setSubmitted] = React.useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
@@ -8731,36 +8803,34 @@ function SupplementaryInfoFormCard({ onSend, data }: { onSend?: (text: string) =
   const painPointOptions = ["常见心血管疾病", "颈椎/腰椎等职业病", "心理压力大/焦虑", "癌症发病率偏高"];
 
   return (
-    <div className="mt-2 w-full max-w-3xl bg-white border border-orange-200 rounded-xl p-6 shadow-sm overflow-hidden">
-      <div className="flex items-center gap-3 mb-4 pb-3 border-b border-orange-100">
-        <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center">
-          <FileText className="w-4 h-4 text-orange-600" />
-        </div>
-        <div>
-           <h3 className="font-bold text-lg text-gray-900">补充信息卡片</h3>
-           <p className="text-xs text-gray-500">为了给您推荐更精准、更符合客户需求的套餐选项，可选择补充以下信息</p>
-        </div>
+    <div className="mt-8 w-full max-w-3xl bg-white border border-gray-100 rounded-xl p-8 shadow-sm relative">
+      <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-white border border-gray-100 shadow-sm rounded-full flex items-center justify-center text-gray-500 hover:text-gray-700 cursor-pointer transition-colors z-10">
+        <ChevronLeft className="w-4 h-4 rotate-90" />
       </div>
 
-      <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+      <div className="flex items-center justify-center gap-2 mb-8">
+        <h3 className="font-bold text-xl text-gray-900">补充信息</h3>
+      </div>
+
+      <div className="space-y-6">
          {/* 既往健康痛点 */}
          <div>
-            <h4 className="flex items-center text-sm font-bold text-gray-800 mb-3 border-l-4 border-orange-500 pl-2">既往健康痛点</h4>
+            <h4 className="text-[13px] text-gray-400 mb-2">既往健康痛点</h4>
             <div className="relative" ref={dropdownRef}>
               <div 
-                className={`w-full border rounded-md py-2 px-3 text-sm flex items-center justify-between transition-colors ${submitted ? 'bg-gray-50 border-gray-200 text-gray-500 cursor-not-allowed' : 'bg-white border-gray-300 text-gray-900 cursor-pointer hover:border-orange-400 focus-within:ring-1 focus-within:ring-orange-500 focus-within:border-orange-500'}`}
+                className={`w-full border-none bg-transparent py-2 text-[15px] flex items-center justify-between transition-colors ${submitted ? 'text-gray-500 cursor-not-allowed' : 'text-gray-900 cursor-pointer'}`}
                 onClick={() => !submitted && setIsDropdownOpen(!isDropdownOpen)}
               >
                 <div className="flex flex-wrap gap-1">
                   {formData.painPoints.length === 0 ? (
-                    <span className="text-gray-400">请选择（可多选），如未明确可暂不选</span>
+                    <span className="text-gray-900">请选择</span>
                   ) : (
                     formData.painPoints.map(p => (
-                      <span key={p} className="inline-flex items-center bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs">
+                      <span key={p} className="inline-flex items-center bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
                         {p}
                         {!submitted && (
                           <span 
-                            className="ml-1 cursor-pointer hover:bg-orange-200 rounded-full p-0.5 flex items-center justify-center"
+                            className="ml-1 cursor-pointer hover:bg-gray-200 rounded-full p-0.5 flex items-center justify-center"
                             onClick={(e) => { e.stopPropagation(); togglePainPoint(p); }}
                           >
                             <X className="w-3 h-3" />
@@ -8770,7 +8840,6 @@ function SupplementaryInfoFormCard({ onSend, data }: { onSend?: (text: string) =
                     ))
                   )}
                 </div>
-                <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
               </div>
               
               <AnimatePresence>
@@ -8785,7 +8854,7 @@ function SupplementaryInfoFormCard({ onSend, data }: { onSend?: (text: string) =
                       {painPointOptions.map(option => (
                         <label 
                           key={option} 
-                          className={`flex items-center px-4 py-2.5 cursor-pointer transition-colors hover:bg-orange-50 ${formData.painPoints.includes(option) ? 'bg-orange-50/50' : ''}`}
+                          className={`flex items-center px-4 py-2.5 cursor-pointer transition-colors hover:bg-gray-50 ${formData.painPoints.includes(option) ? 'bg-gray-50/50' : ''}`}
                           onClick={(e) => e.stopPropagation()}
                         >
                           <input 
@@ -8802,51 +8871,54 @@ function SupplementaryInfoFormCard({ onSend, data }: { onSend?: (text: string) =
                 )}
               </AnimatePresence>
             </div>
+            <div className="h-px bg-gray-100 w-full mt-1"></div>
          </div>
 
          {/* 组织结构 */}
          <div>
-            <h4 className="flex items-center text-sm font-bold text-gray-800 mb-3 border-l-4 border-orange-500 pl-2">组织结构</h4>
-            <textarea className="w-full border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-orange-500 min-h-[60px]" disabled={submitted}
+            <h4 className="text-[13px] text-gray-400 mb-2">组织结构</h4>
+            <textarea className="w-full border-none bg-transparent py-2 text-[15px] focus:ring-0 min-h-[40px] p-0 resize-none text-gray-900" disabled={submitted}
                       value={formData.orgStructure} onChange={e=>setFormData({...formData, orgStructure:e.target.value})}></textarea>
+            <div className="h-px bg-gray-100 w-full mt-1"></div>
          </div>
 
          {/* 人员结构 */}
          <div>
-            <h4 className="flex items-center text-sm font-bold text-gray-800 mb-3 border-l-4 border-orange-500 pl-2">人员结构</h4>
-            <textarea className="w-full border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-orange-500 min-h-[60px]" disabled={submitted}
+            <h4 className="text-[13px] text-gray-400 mb-2">人员结构</h4>
+            <textarea className="w-full border-none bg-transparent py-2 text-[15px] focus:ring-0 min-h-[40px] p-0 resize-none text-gray-900" disabled={submitted}
                       value={formData.personnelStructure} onChange={e=>setFormData({...formData, personnelStructure:e.target.value})}></textarea>
+            <div className="h-px bg-gray-100 w-full mt-1"></div>
          </div>
 
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* 性别结构 */}
-            <div>
-               <h4 className="flex items-center text-sm font-bold text-gray-800 mb-3 border-l-4 border-orange-500 pl-2">性别结构</h4>
-               <textarea className="w-full border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-orange-500 min-h-[60px]" disabled={submitted}
-                         value={formData.genderStructure} onChange={e=>setFormData({...formData, genderStructure:e.target.value})}></textarea>
-            </div>
+         {/* 性别结构 */}
+         <div>
+            <h4 className="text-[13px] text-gray-400 mb-2">性别结构</h4>
+            <textarea className="w-full border-none bg-transparent py-2 text-[15px] focus:ring-0 min-h-[40px] p-0 resize-none text-gray-900" disabled={submitted}
+                      value={formData.genderStructure} onChange={e=>setFormData({...formData, genderStructure:e.target.value})}></textarea>
+            <div className="h-px bg-gray-100 w-full mt-1"></div>
+         </div>
 
-            {/* 工种结构 */}
-            <div>
-               <h4 className="flex items-center text-sm font-bold text-gray-800 mb-3 border-l-4 border-orange-500 pl-2">工种结构</h4>
-               <textarea className="w-full border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-orange-500 min-h-[60px]" disabled={submitted}
-                         value={formData.jobStructure} onChange={e=>setFormData({...formData, jobStructure:e.target.value})}></textarea>
-            </div>
+         {/* 工种结构 */}
+         <div>
+            <h4 className="text-[13px] text-gray-400 mb-2">工种结构</h4>
+            <textarea className="w-full border-none bg-transparent py-2 text-[15px] focus:ring-0 min-h-[40px] p-0 resize-none text-gray-900" disabled={submitted}
+                      value={formData.jobStructure} onChange={e=>setFormData({...formData, jobStructure:e.target.value})}></textarea>
+            <div className="h-px bg-gray-100 w-full mt-1"></div>
          </div>
 
          {/* 补充说明 */}
          <div>
-            <h4 className="flex items-center text-sm font-bold text-gray-800 mb-3 border-l-4 border-orange-500 pl-2">补充说明</h4>
-            <textarea className="w-full border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-orange-500 min-h-[80px]" disabled={submitted}
+            <h4 className="text-[13px] text-gray-400 mb-2">补充说明</h4>
+            <textarea className="w-full border-none bg-transparent py-2 text-[15px] focus:ring-0 min-h-[60px] p-0 resize-none text-gray-900" disabled={submitted}
                       value={formData.notes} onChange={e=>setFormData({...formData, notes:e.target.value})} placeholder="其他需要补充的信息..."></textarea>
+            <div className="h-px bg-gray-100 w-full mt-1"></div>
          </div>
       </div>
 
-      <div className="pt-4 flex items-center justify-end gap-3 border-t border-gray-100 mt-5">
-         <button className={`px-5 py-2 rounded-md font-medium text-sm transition-colors ${submitted ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`} onClick={handleIgnore} disabled={submitted}>忽略</button>
-         <button className={`px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-colors ${submitted ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-orange-500 text-white hover:bg-orange-600'}`} onClick={handleSubmit} disabled={submitted}>{`${submitted ? "已提交信息" : "提交"}`}</button>
+      <div className="pt-8 flex items-center justify-end gap-3">
+         <button className={`px-8 py-2.5 rounded bg-white border border-gray-200 font-medium text-sm transition-colors ${submitted ? 'text-gray-400 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-50'}`} onClick={handleIgnore} disabled={submitted}>忽略</button>
+         <button className={`px-8 py-2.5 rounded text-sm transition-colors ${submitted ? 'bg-gray-300 text-white cursor-not-allowed' : 'bg-[#f8b284] text-white hover:bg-[#f39c6b]'}`} onClick={handleSubmit} disabled={submitted}>提交信息</button>
       </div>
-
     </div>
   )
 }
