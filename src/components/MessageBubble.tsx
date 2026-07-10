@@ -5617,21 +5617,21 @@ function ReasoningProcess({
   const getIcon = (text: string, status: string) => {
     const isDone = status === "done" || status === "complete";
     if (isDone) {
-      return <CheckCircle2 size={15} className="text-emerald-500 mt-0.5 mr-2 flex-shrink-0" />;
+      return <CheckCircle2 size={15} className="text-emerald-500 mt-0.5 ml-3 flex-shrink-0" />;
     }
     if (status === "loading") {
-      return <Loader2 size={15} className="text-blue-500 animate-spin mt-0.5 mr-2 flex-shrink-0" />;
+      return <Loader2 size={15} className="text-blue-500 animate-spin mt-0.5 ml-3 flex-shrink-0" />;
     }
-    return <CheckCircle2 size={15} className="text-gray-300 mt-0.5 mr-2 flex-shrink-0" />;
+    return <CheckCircle2 size={15} className="text-gray-200 mt-0.5 ml-3 flex-shrink-0" />;
   };
 
   const getNodeIcon = (text: string) => {
-    if (text.includes("思考") || text.includes("分析") || text.includes("理解") || text.includes("识别") || text.includes("评估") || text.includes("梳理") || text.includes("提炼") || text.includes("确认") || text.includes("判断")) return <Brain size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
-    if (text.includes("搜索") || text.includes("检索")) return <Search size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
-    if (text.includes("文件") || text.includes("提取")) return <FileText size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
-    if (text.includes("命令")) return <Terminal size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
-    if (text.includes("Skill") || text.includes("技能") || text.includes("调用")) return <Wrench size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
-    return <Box size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
+    if (text.includes("思考") || text.includes("分析") || text.includes("理解") || text.includes("识别") || text.includes("评估") || text.includes("梳理") || text.includes("提炼") || text.includes("确认") || text.includes("判断")) return <Brain size={15} className="mr-2 text-gray-500 flex-shrink-0" />;
+    if (text.includes("搜索") || text.includes("检索")) return <Search size={15} className="mr-2 text-gray-500 flex-shrink-0" />;
+    if (text.includes("文件") || text.includes("提取")) return <FileText size={15} className="mr-2 text-gray-500 flex-shrink-0" />;
+    if (text.includes("命令")) return <Terminal size={15} className="mr-2 text-gray-500 flex-shrink-0" />;
+    if (text.includes("Skill") || text.includes("技能") || text.includes("调用")) return <Wrench size={15} className="mr-2 text-gray-500 flex-shrink-0" />;
+    return <Box size={15} className="mr-2 text-gray-500 flex-shrink-0" />;
   };
 
   const getSummaryText = () => {
@@ -5640,19 +5640,35 @@ function ReasoningProcess({
     return `已完成 ${count} 个步骤`;
   };
 
+  const renderText = (text: string) => {
+    if (text.includes(" | ")) {
+      const parts = text.split(" | ");
+      return (
+        <>
+          <span className="font-medium text-gray-700">{parts[0]}</span>
+          <span className="text-gray-300 mx-1.5">|</span>
+          <span className="text-gray-500">{parts.slice(1).join(" | ")}</span>
+        </>
+      );
+    }
+    return text;
+  };
+
   const renderStep = (step: any, idx: number) => (
     <motion.div
       initial={{ opacity: 0, y: 5 }}
       animate={{ opacity: 1, y: 0 }}
       key={step.text + idx}
-      className="flex items-start text-[13px] py-1"
+      className="flex items-start text-[14px] py-1.5"
     >
-      {getNodeIcon(step.text)}
+      <div className="mt-0.5">
+        {getNodeIcon(step.text)}
+      </div>
       <span className={`flex-1 ${step.status === "loading" ? "text-gray-500" : "text-gray-700"}`}>
         <TypewriterText
           text={step.text}
           timestamp={timestamp}
-          render={(c: string) => <>{c}</>}
+          render={(c: string) => <>{renderText(c)}</>}
         />
       </span>
       {getIcon(step.text, step.status)}
@@ -5664,22 +5680,31 @@ function ReasoningProcess({
   const recentSteps = displayHistory ? activeSteps.slice(-3) : activeSteps;
 
   return (
-    <div className="download-exclude bg-[#fcfcfc] border border-gray-200 rounded-xl p-3 shadow-sm w-full max-w-2xl mt-2 mb-4 font-sans text-sm">
+    <div className="download-exclude w-full max-w-3xl mt-1 mb-3 font-sans">
       <div 
-        className="flex items-center justify-between cursor-pointer text-gray-600 hover:text-gray-900 transition-colors"
+        className="flex items-center cursor-pointer text-gray-700 hover:text-gray-900 transition-colors py-1 w-max"
         onClick={() => setExpanded(!expanded)}
       >
-        <div className="flex items-center font-medium">
+        <div className="flex items-center text-[14px] font-medium">
           <Sparkles size={16} className="mr-2 text-orange-500" />
           {expanded ? "收起过程" : "查看过程"}
-        </div>
-        <div className="flex items-center text-xs text-gray-400">
-          {!expanded && <span className="mr-2">{getSummaryText()}</span>}
-          {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          {expanded ? <ChevronUp size={16} className="ml-1 text-gray-400" /> : <ChevronDown size={16} className="ml-1 text-gray-400" />}
         </div>
       </div>
       
       <AnimatePresence>
+        {!expanded && (
+          <motion.div
+             initial={{ height: 0, opacity: 0 }} 
+             animate={{ height: "auto", opacity: 1 }} 
+             exit={{ height: 0, opacity: 0 }}
+             className="overflow-hidden"
+          >
+             <div className="text-[13px] text-gray-500 mt-1 ml-6 cursor-pointer" onClick={() => setExpanded(true)}>
+               {getSummaryText()}
+             </div>
+          </motion.div>
+        )}
         {expanded && (
           <motion.div 
             initial={{ height: 0, opacity: 0 }} 
@@ -5687,7 +5712,7 @@ function ReasoningProcess({
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <div className="space-y-1 mt-4 pt-3 border-t border-gray-100">
+            <div className="space-y-1 mt-2 bg-gray-50/50 rounded-lg p-3">
               {displayHistory && historySteps.length > 0 && (
                 <div className="mb-2">
                   <div 
