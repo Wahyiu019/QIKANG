@@ -5609,7 +5609,7 @@ function ReasoningProcess({
   const isRunning = activeSteps.some((s) => s.status === "loading");
   
   useEffect(() => {
-    if (!isRunning && activeSteps.length >= 3) {
+    if (!isRunning && activeSteps.length > 3) {
       setExpanded(false);
     }
   }, [isRunning, activeSteps.length]);
