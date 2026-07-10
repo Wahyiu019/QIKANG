@@ -1,7 +1,7 @@
 import { ProjectManagementCard } from './ProjectManagementCard';
 import React, { useState, useRef, useEffect } from "react";
 import { Message } from "../types";
-import { Bot, Check, User, CheckCircle2, CheckCircle, ChevronLeft, ChevronRight, ChevronDown, Target, Building2, MapPin, DollarSign, Loader2, Users, FileText, Presentation, Mic, Download, FileCheck, Calendar, BellRing, MessageSquare, X, Search, TrendingUp, Briefcase, Award, Layers, Cpu, ShieldCheck, PieChart, BarChart3, History, HelpCircle, FileBarChart, Handshake, HeartPulse, LineChart, Lightbulb, Map, UserCircle, MessageCircle, AlertCircle, Diamond, Compass, ListChecks, ShieldAlert, FileSearch, XCircle, Paperclip, AlertTriangle, Info, Circle } from "lucide-react";
+import { Bot, Check, User, CheckCircle2, CheckCircle, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Brain, Globe, Book, Save, Terminal, Wrench, Sparkles, Box, Target, Building2, MapPin, DollarSign, Loader2, Users, FileText, Presentation, Mic, Download, FileCheck, Calendar, BellRing, MessageSquare, X, Search, TrendingUp, Briefcase, Award, Layers, Cpu, ShieldCheck, PieChart, BarChart3, History, HelpCircle, FileBarChart, Handshake, HeartPulse, LineChart, Lightbulb, Map, UserCircle, MessageCircle, AlertCircle, Diamond, Compass, ListChecks, ShieldAlert, FileSearch, XCircle, Paperclip, AlertTriangle, Info, Circle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export function HistoryCooperationReportCard({
@@ -5602,47 +5602,112 @@ function ReasoningProcess({
   title?: string;
   timestamp?: any;
 }) {
+  const [expanded, setExpanded] = useState(true);
+  const [historyExpanded, setHistoryExpanded] = useState(false);
+
+  const activeSteps = steps?.filter((s) => s.status !== "pending") || [];
+  const isRunning = activeSteps.some((s) => s.status === "loading");
+  
+  useEffect(() => {
+    if (!isRunning && activeSteps.length >= 3) {
+      setExpanded(false);
+    }
+  }, [isRunning, activeSteps.length]);
+
+  const getIcon = (text: string, status: string) => {
+    const isDone = status === "done" || status === "complete";
+    if (isDone) {
+      return <CheckCircle2 size={15} className="text-emerald-500 mt-0.5 mr-2 flex-shrink-0" />;
+    }
+    if (status === "loading") {
+      return <Loader2 size={15} className="text-blue-500 animate-spin mt-0.5 mr-2 flex-shrink-0" />;
+    }
+    return <CheckCircle2 size={15} className="text-gray-300 mt-0.5 mr-2 flex-shrink-0" />;
+  };
+
+  const getNodeIcon = (text: string) => {
+    if (text.includes("思考") || text.includes("分析") || text.includes("理解") || text.includes("识别") || text.includes("评估") || text.includes("梳理") || text.includes("提炼") || text.includes("确认") || text.includes("判断")) return <Brain size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
+    if (text.includes("搜索") || text.includes("检索")) return <Search size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
+    if (text.includes("文件") || text.includes("提取")) return <FileText size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
+    if (text.includes("命令")) return <Terminal size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
+    if (text.includes("Skill") || text.includes("技能") || text.includes("调用")) return <Wrench size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
+    return <Box size={14} className="mr-2 text-gray-500 flex-shrink-0" />;
+  };
+
+  const getSummaryText = () => {
+    if (isRunning) return "过程执行中...";
+    const count = activeSteps.length;
+    return `已完成 ${count} 个步骤`;
+  };
+
+  const renderStep = (step: any, idx: number) => (
+    <motion.div
+      initial={{ opacity: 0, y: 5 }}
+      animate={{ opacity: 1, y: 0 }}
+      key={step.text + idx}
+      className="flex items-start text-[13px] py-1"
+    >
+      {getNodeIcon(step.text)}
+      <span className={`flex-1 ${step.status === "loading" ? "text-gray-500" : "text-gray-700"}`}>
+        <TypewriterText
+          text={step.text}
+          timestamp={timestamp}
+          render={(c: string) => <>{c}</>}
+        />
+      </span>
+      {getIcon(step.text, step.status)}
+    </motion.div>
+  );
+
+  const displayHistory = isRunning && activeSteps.length > 3 && !historyExpanded;
+  const historySteps = displayHistory ? activeSteps.slice(0, activeSteps.length - 3) : [];
+  const recentSteps = displayHistory ? activeSteps.slice(-3) : activeSteps;
+
   return (
-    <div className="download-exclude bg-white border border-gray-200 rounded-2xl rounded-tl-none p-4 shadow-sm w-full max-w-md mt-2">
-      <div className="flex items-center text-orange-600 font-bold text-sm mb-3">
-        <Bot size={16} className="mr-2" />
-        {title || "企康助手思考与执行中..."}
+    <div className="download-exclude bg-[#fcfcfc] border border-gray-200 rounded-xl p-3 shadow-sm w-full max-w-2xl mt-2 mb-4 font-sans text-sm">
+      <div 
+        className="flex items-center justify-between cursor-pointer text-gray-600 hover:text-gray-900 transition-colors"
+        onClick={() => setExpanded(!expanded)}
+      >
+        <div className="flex items-center font-medium">
+          <Sparkles size={16} className="mr-2 text-orange-500" />
+          {expanded ? "收起过程" : "查看过程"}
+        </div>
+        <div className="flex items-center text-xs text-gray-400">
+          {!expanded && <span className="mr-2">{getSummaryText()}</span>}
+          {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+        </div>
       </div>
-      <div className="space-y-3">
-        {steps
-          ?.filter((s) => s.status !== "pending")
-          .map((step, idx) => (
-            <motion.div
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              key={step.text}
-              className="flex items-start text-sm"
-            >
-              {step.status === "loading" ? (
-                <Loader2
-                  size={14}
-                  className="text-orange-500 animate-spin mt-0.5 mr-2 flex-shrink-0"
-                />
-              ) : (
-                <CheckCircle2
-                  size={14}
-                  className="text-yellow-500 mt-0.5 mr-2 flex-shrink-0"
-                />
+      
+      <AnimatePresence>
+        {expanded && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }} 
+            animate={{ height: "auto", opacity: 1 }} 
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="space-y-1 mt-4 pt-3 border-t border-gray-100">
+              {displayHistory && historySteps.length > 0 && (
+                <div className="mb-2">
+                  <div 
+                    className="flex items-center text-xs text-gray-400 cursor-pointer hover:text-gray-600 py-1"
+                    onClick={() => setHistoryExpanded(true)}
+                  >
+                    <div className="h-px bg-gray-200 flex-1 mr-3" />
+                    已折叠 {historySteps.length} 个历史节点
+                    <div className="h-px bg-gray-200 flex-1 ml-3" />
+                  </div>
+                </div>
               )}
-              <span
-                className={
-                  step.status === "loading" ? "text-gray-500" : "text-gray-800"
-                }
-              >
-                <TypewriterText
-                  text={step.text}
-                  timestamp={timestamp}
-                  render={(c: string) => <>{c}</>}
-                />
-              </span>
-            </motion.div>
-          ))}
-      </div>
+              
+              {!displayHistory && historySteps.length > 0 && historySteps.map(renderStep)}
+              
+              {recentSteps.map(renderStep)}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
