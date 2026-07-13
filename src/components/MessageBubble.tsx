@@ -1,7 +1,7 @@
 import { ProjectManagementCard } from './ProjectManagementCard';
 import React, { useState, useRef, useEffect } from "react";
 import { Message } from "../types";
-import { Bot, Check, User, CheckCircle2, CheckCircle, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Brain, Globe, Book, Save, Terminal, Wrench, Sparkles, Box, Target, Building2, MapPin, DollarSign, Loader2, Users, FileText, Presentation, Mic, Download, FileCheck, Calendar, BellRing, MessageSquare, X, Search, TrendingUp, Briefcase, Award, Layers, Cpu, ShieldCheck, PieChart, BarChart3, History, HelpCircle, FileBarChart, Handshake, HeartPulse, LineChart, Lightbulb, Map, UserCircle, MessageCircle, AlertCircle, Diamond, Compass, ListChecks, ShieldAlert, FileSearch, XCircle, Paperclip, AlertTriangle, Info, Circle } from "lucide-react";
+import { Bot, Check, User, CheckCircle2, CheckCircle, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Brain, Globe, Book, Save, Terminal, Wrench, Sparkles, Box, Target, Building2, MapPin, DollarSign, Loader2, Users, FileText, Presentation, Mic, Download, FileCheck, Calendar, BellRing, MessageSquare, X, Search, TrendingUp, Briefcase, Award, Layers, ThumbsUp, Cpu, ShieldCheck, PieChart, BarChart3, History, HelpCircle, FileBarChart, Handshake, HeartPulse, LineChart, Lightbulb, Map, UserCircle, MessageCircle, AlertCircle, Diamond, Compass, ListChecks, ShieldAlert, FileSearch, XCircle, Paperclip, AlertTriangle, Info, Circle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export function HistoryCooperationReportCard({
@@ -2528,6 +2528,9 @@ export const MessageBubble: React.FC<{
         )}
         {isBot && message.type === "supplementary_info_form_card" && (
           <SupplementaryInfoFormCard data={message.data} onSend={onAction} />
+        )}
+        {isBot && message.type === "ppt_card" && (
+          <PPTCard data={message.data} onSend={onAction} />
         )}
         {isBot && message.type === "package_option_card" && (
           <PackageOptionCard data={message.data} onSend={onAction} />
@@ -8637,133 +8640,142 @@ export function QualPerfMatchCard() {
 
 function BasicInfoFormCard({ onSend, data }: { onSend?: (text: string) => void, data?: any }) {
   const [formData, setFormData] = React.useState({
-    customerName: data?.customerName || "中国烟草总公司湖南省公司",
-    budget: "21万",
-    industry: "烟草",
-    employeeCount: "202人（省级公司本部）",
-    region: "湖南省长沙市天心区",
+    channel: "银行",
+    customerName: data?.customerName || "明道云",
+    industry: "软件/互联网",
+    healthPainPoints: "员工亚健康问题严重，高管缺乏就医绿通，整体缺乏系统性健康管理方案",
+    budget: data?.budget || "18W",
   });
   
   React.useEffect(() => {
-    if (data?.customerName === "云天化") {
-      setFormData({ customerName: "云天化", budget: "30万", industry: "化工行业", employeeCount: "13000+ 人", region: "云南省昆明市" });
+    if (data?.customerName) {
+      setFormData(prev => ({ ...prev, customerName: data.customerName, budget: data.budget || prev.budget }));
     }
   }, [data]);
 
   const [submitted, setSubmitted] = React.useState(false);
 
-  const isComplete = formData.industry && formData.employeeCount && !formData.employeeCount.includes("未知") && formData.region;
-
   const handleSubmit = () => {
     setSubmitted(true);
     if (onSend) {
-      onSend(`[已提交基本信息] 客户基础信息确认无误`);
+      onSend(`[确认基本信息]`);
     }
   };
 
   return (
-    <div className="mt-2 w-full max-w-2xl">
-      <div className="flex items-center justify-center gap-2 mb-4">
-        <FileText className="w-5 h-5 text-gray-700" />
-        <h3 className="font-bold text-lg text-gray-900">企业信息搜索结果</h3>
+    <div className="mt-2 w-full max-w-2xl bg-white border border-orange-200 rounded-xl shadow-lg overflow-hidden relative">
+      {/* Decorative gradient blur in background */}
+      <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-gradient-to-br from-orange-400/20 to-rose-400/20 rounded-full blur-2xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-48 h-48 bg-gradient-to-tr from-amber-400/20 to-orange-300/20 rounded-full blur-2xl pointer-events-none"></div>
+      
+      <div className="bg-gradient-to-r from-orange-600 to-orange-500 p-3 flex items-center justify-between shadow-sm relative z-10">
+        <div className="flex items-center space-x-2 text-white">
+          <div className="bg-white/20 p-1.5 rounded-lg backdrop-blur-sm">
+            <Building2 size={16} className="text-white" />
+          </div>
+          <h3 className="font-bold text-sm tracking-wide">企业信息搜索结果</h3>
+        </div>
+        <div className="px-2 py-0.5 bg-white/20 rounded text-xs text-white/90 backdrop-blur-sm flex items-center">
+          <Sparkles size={12} className="mr-1" />
+          AI 自动匹配
+        </div>
       </div>
       
-      <div className="bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden">
-        <div className="p-6 space-y-4">
-          <div className="flex items-center pb-4 border-b border-gray-100">
-            <div className="w-24 text-gray-400 text-sm flex items-center gap-2">
-              <Building2 className="w-4 h-4" />
-              客户名称
-            </div>
-            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-sm p-0" disabled={submitted} value={formData.customerName} onChange={(e) => setFormData({...formData, customerName: e.target.value})} />
+      <div className="p-4 space-y-3 bg-gradient-to-b from-white/90 to-orange-50/50 backdrop-blur-sm relative z-10">
+        <div className="grid grid-cols-2 gap-3">
+          <div className="bg-white rounded-lg border border-orange-100/50 p-2.5 shadow-sm flex items-center hover:border-orange-200 transition-colors">
+            <div className="w-16 text-gray-500 font-medium text-xs flex items-center"><MapPin size={12} className="mr-1"/> 所属渠道</div>
+            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-xs p-0 font-semibold" disabled={submitted} value={formData.channel} onChange={(e) => setFormData({...formData, channel: e.target.value})} />
           </div>
-          <div className="flex items-center pb-4 border-b border-gray-100">
-            <div className="w-24 text-gray-400 text-sm flex items-center gap-2">
-              <DollarSign className="w-4 h-4 text-yellow-500" />
-              预算
-            </div>
-            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-sm p-0" disabled={submitted} value={formData.budget} onChange={(e) => setFormData({...formData, budget: e.target.value})} />
-          </div>
-          <div className="flex items-center pb-4 border-b border-gray-100">
-            <div className="w-24 text-gray-400 text-sm">展示行业</div>
-            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-sm p-0" disabled={submitted} value={formData.industry} onChange={(e) => setFormData({...formData, industry: e.target.value})} />
-          </div>
-          <div className="flex items-center pb-4 border-b border-gray-100">
-            <div className="w-24 text-gray-400 text-sm">人员规模</div>
-            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-sm p-0" disabled={submitted} value={formData.employeeCount} onChange={(e) => setFormData({...formData, employeeCount: e.target.value})} />
-          </div>
-          <div className="flex items-center">
-            <div className="w-24 text-gray-400 text-sm">地域信息</div>
-            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-sm p-0" disabled={submitted} value={formData.region} onChange={(e) => setFormData({...formData, region: e.target.value})} />
+          
+          <div className="bg-white rounded-lg border border-orange-100/50 p-2.5 shadow-sm flex items-center hover:border-orange-200 transition-colors">
+             <div className="w-16 text-gray-500 font-medium text-xs flex items-center"><Briefcase size={12} className="mr-1"/> 行业</div>
+             <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-xs p-0 font-semibold" disabled={submitted} value={formData.industry} onChange={(e) => setFormData({...formData, industry: e.target.value})} />
           </div>
         </div>
 
-        <div className="bg-[#fff7f0] p-4 flex flex-col items-center justify-center">
-          <p className="text-[13px] text-gray-400 mb-4">{submitted ? "此信息已确认" : "以上信息来自联网搜索，请确认或修改后点击下方按钮"}</p>
-          <button
-            onClick={handleSubmit}
-            disabled={!isComplete || submitted}
-            className={`w-full py-3 rounded-md text-sm transition-colors flex items-center justify-center gap-2 ${submitted ? 'bg-gray-300 text-white cursor-not-allowed' : isComplete ? 'bg-[#f8b284] hover:bg-[#f39c6b] text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}>
-            {submitted ? (
-               <>已确认</>
-            ) : isComplete ? (
-               <><div className="bg-green-400 rounded-sm p-0.5 flex items-center justify-center"><Check className="w-3 h-3 text-white" strokeWidth={3} /></div> 确认，进入下一步</>
-            ) : (
-               "补充信息并提交"
-            )}
-          </button>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="bg-white rounded-lg border border-orange-100/50 p-2.5 shadow-sm flex items-center hover:border-orange-200 transition-colors">
+            <div className="w-16 text-gray-500 font-medium text-xs flex items-center"><Users size={12} className="mr-1"/> 客户名称</div>
+            <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-xs p-0 font-semibold" disabled={submitted} value={formData.customerName} onChange={(e) => setFormData({...formData, customerName: e.target.value})} />
+          </div>
+          
+          <div className="bg-orange-50 rounded-lg border border-orange-200 p-2.5 shadow-sm flex items-center relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-br from-orange-300 to-orange-500 rounded-bl-full opacity-20"></div>
+             <div className="w-16 text-orange-600 font-bold text-xs flex items-center"><DollarSign size={12} className="mr-0.5"/> 预算</div>
+             <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-orange-700 text-xs p-0 font-bold" disabled={submitted} value={formData.budget} onChange={(e) => setFormData({...formData, budget: e.target.value})} />
+          </div>
         </div>
+        
+        <div className="bg-white rounded-lg border border-orange-100/50 p-3 shadow-sm hover:border-orange-200 transition-colors">
+          <div className="text-gray-500 font-medium text-xs mb-1.5 flex items-center"><HeartPulse size={12} className="mr-1"/> 健康痛点</div>
+          <textarea className="w-full border-none bg-gray-50 rounded p-2 focus:ring-1 focus:ring-orange-200 text-gray-800 text-xs resize-none font-medium leading-relaxed" disabled={submitted} value={formData.healthPainPoints} rows={2} onChange={(e) => setFormData({...formData, healthPainPoints: e.target.value})} />
+        </div>
+
+        {!submitted && (
+          <div className="pt-2 flex justify-center">
+            <button
+              onClick={handleSubmit}
+              className="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm rounded-lg font-bold shadow-md hover:shadow-lg hover:from-orange-600 hover:to-orange-700 transition-all transform hover:-translate-y-0.5 flex items-center"
+            >
+              <Check size={16} className="mr-1.5" /> 确认
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
 function PackageOptionCard({ data, onSend }: { data?: any, onSend?: (text: string) => void }) {
-  const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
+  const [selectedId, setSelectedId] = React.useState<string | null>(null); // Default to recommended
   const [submitted, setSubmitted] = React.useState(false);
-
-  const toggleSelect = (id: string) => {
-    if(submitted) return;
-    setSelectedIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
-  };
-
-  const handleConfirm = () => {
-    setSubmitted(true);
-    if(onSend) onSend("[已选择套餐] 已选择相关套餐，生成后续方案");
-  };
 
   const defaultPackages = [
     {
       id: "pkg1",
-      name: "总价20.9万 · 预算内优选方案",
+      name: "基础健康保障版",
       products: [
-        { name: "平安健康优选套餐2", price: "600元", unit: "人/年" },
-        { name: "企康基础版服务费", price: "300元", unit: "人/年" }
+        { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
+        { name: "核心骨干绿色就医", target: "核心员工", price: "1,000元", unit: "人/年" },
+        { name: "入职体检套餐（基础）", target: "基层员工", price: "150元", unit: "人/年" }
       ],
-      features: [
-        "包含基础版的所有服务",
-        "员工年度深度体检套餐",
-        "特定慢病管理与购药折扣",
-        "核心骨干绿色就医通道保障"
-      ]
+      sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
     },
     {
       id: "pkg2",
-      name: "总价21.5万 · 品质升级方案",
+      name: "全场景黑金尊享版",
+      isRecommended: true,
       products: [
-        { name: "细胞焕活（好医优享版）", price: "6,200元", unit: "人" },
-        { name: "平安健康悦享套餐2", price: "1,770元", unit: "人/年" },
-        { name: "平安健康优选套餐2", price: "600元", unit: "人/年" }
+        { name: "高端私立医院VIP体检", target: "高层员工", price: "6,000元", unit: "人/年" },
+        { name: "三甲医院专家特需门诊", target: "核心员工", price: "2,000元", unit: "人/年" },
+        { name: "家属共享健康档案及问诊", target: "基层员工", price: "200元", unit: "户/年" }
       ],
-      features: [
-        "更全面的重疾与慢病管理",
-        "专属健康管家全程跟进",
-        "三甲医院顶尖专家门诊预约"
-      ]
+      sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
+    },
+    {
+      id: "pkg3",
+      name: "高管特权定制版",
+      products: [
+        { name: "海外重疾就医协助及随诊", target: "高层员工", price: "25,000元", unit: "人/年" },
+        { name: "专属私人健康管家（7x24）", target: "核心员工", price: "12,000元", unit: "人/年" },
+        { name: "家族基因筛查及抗衰方案", target: "基层员工", price: "8,800元", unit: "人/次" }
+      ],
+      sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
     }
   ];
 
-  const packages = data?.packages || defaultPackages;
+  const packages = data?.packages && data.packages.length > 0 ? data.packages : defaultPackages;
+
+  const handleGenerate = () => {
+    setSubmitted(true);
+    if(onSend) onSend("[生成方案] 已选择套餐，请生成PPT");
+  };
+
+  const handleRecommendAgain = () => {
+    setSubmitted(true);
+    if(onSend) onSend("[重新推荐]");
+  };
 
   return (
     <div className="mt-2 w-full max-w-4xl bg-white border border-gray-100 shadow-sm rounded-xl overflow-hidden">
@@ -8774,43 +8786,50 @@ function PackageOptionCard({ data, onSend }: { data?: any, onSend?: (text: strin
       
       <div className="p-6 pt-2">
         <div className="h-px bg-gray-100 w-full mb-4 mt-2"></div>
-        <p className="text-[13px] text-gray-500 mb-4">{submitted ? "您已选择以下标品套餐组：" : "为您匹配了以下标准产品组合，您可以任意勾选需要的方案作为营销素材："}</p>
+        <p className="text-[13px] text-gray-500 mb-4">{submitted ? "您已完成套餐选择：" : "为您匹配了以下标准产品组合，请选择其中之一："}</p>
         <div className="grid grid-cols-1 gap-4 mb-6">
           {packages.map((pkg: any) => {
-            const isSelected = selectedIds.includes(pkg.id);
+            const isSelected = selectedId === pkg.id;
             return (
               <div 
                 key={pkg.id} 
-                onClick={() => toggleSelect(pkg.id)}
-                className={`relative border rounded-lg p-5 transition-all duration-200 cursor-pointer flex flex-col gap-4 ${isSelected ? 'border-orange-500 bg-orange-50/20 shadow-sm' : 'border-gray-200 hover:border-orange-300'}`}
+                onClick={() => { if(!submitted) setSelectedId(pkg.id) }}
+                className={`relative border rounded-lg transition-all duration-200 cursor-pointer flex flex-col ${isSelected ? 'border-orange-500 shadow-sm' : 'border-gray-200 hover:border-orange-300'}`}
               >
-                <div className="flex justify-between items-center">
-                  <h4 className="font-bold text-[17px] text-gray-800">{pkg.name}</h4>
-                  <div className={`w-5 h-5 rounded-sm flex items-center justify-center border transition-colors ${isSelected ? 'bg-orange-500 border-orange-500 text-white' : 'bg-gray-100 border-gray-300'}`}>
+                {pkg.isRecommended && (
+                  <div className="absolute top-0 left-0 -mt-3 ml-4">
+                    <div className="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded shadow-sm flex items-center">
+                      <ThumbsUp className="w-3 h-3 mr-1" />
+                      推荐
+                    </div>
+                  </div>
+                )}
+                
+                <div className={`flex justify-between items-center p-4 ${pkg.isRecommended ? 'bg-orange-50/50' : 'bg-gray-50/50'} border-b border-gray-100 rounded-t-lg`}>
+                  <h4 className={`font-bold text-[17px] ${pkg.isRecommended ? 'text-orange-800' : 'text-gray-800'}`}>{pkg.name}</h4>
+                  <div className={`w-5 h-5 rounded flex items-center justify-center border transition-colors ${isSelected ? 'bg-orange-500 border-orange-500 text-white' : 'bg-white border-gray-300'}`}>
                     {isSelected && <Check className="w-3.5 h-3.5" strokeWidth={3} />}
                   </div>
                 </div>
 
                 {pkg.products && pkg.products.length > 0 && (
-                  <div className="bg-white rounded-lg border border-gray-100 overflow-hidden shadow-sm">
+                  <div className="bg-white">
                     <table className="w-full text-sm text-left">
-                      <thead className="bg-gray-50/80 text-gray-500 text-[13px]">
+                      <thead className="bg-gray-50/50 text-orange-600/80 text-[13px]">
                         <tr>
-                          <th className="px-4 py-2.5 font-medium border-b border-gray-100">产品名称</th>
-                          <th className="px-4 py-2.5 font-medium border-b border-gray-100 w-24">适用人群</th>
-                          <th className="px-4 py-2.5 font-medium border-b border-gray-100 w-24">单价</th>
-                          <th className="px-4 py-2.5 font-medium border-b border-gray-100 w-24">计价方式</th>
+                          <th className="px-5 py-3 font-bold border-b border-gray-100">产品名称</th>
+                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-28">适用人群</th>
+                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-28">单价</th>
+                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-28">计价方式</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-50">
                         {pkg.products.map((prod: any, idx: number) => (
-                          <tr key={idx} className="hover:bg-gray-50/50">
-                            <td className="px-4 py-3 text-gray-800 font-medium">{prod.name}</td>
-                            <td className="px-4 py-3 text-blue-600 text-xs font-medium">
-                              <span className="bg-blue-50 px-2 py-1 rounded">{prod.target || '全员'}</span>
-                            </td>
-                            <td className="px-4 py-3 text-gray-600 font-mono text-[13px]">{prod.price}</td>
-                            <td className="px-4 py-3 text-gray-500 text-xs">{prod.unit}</td>
+                          <tr key={idx} className="hover:bg-gray-50/30">
+                            <td className="px-5 py-3 text-gray-700 font-medium">{prod.name}</td>
+                            <td className="px-5 py-3 text-gray-600 text-[13px]">{prod.target}</td>
+                            <td className="px-5 py-3 text-gray-800 font-mono text-[13px]">{prod.price}</td>
+                            <td className="px-5 py-3 text-gray-500 text-[13px]">{prod.unit}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -8818,37 +8837,40 @@ function PackageOptionCard({ data, onSend }: { data?: any, onSend?: (text: strin
                   </div>
                 )}
 
-                {pkg.features && pkg.features.length > 0 && (
-                  <div className="mt-1">
-                    <h5 className="text-[13px] font-bold text-gray-400 mb-3 tracking-wide">核心产品权益</h5>
-                    <ul className="text-[14.5px] text-gray-700 space-y-2 list-none grid grid-cols-1 sm:grid-cols-2 gap-x-4">
-                      {pkg.features.map((f: string, j: number) => (
-                        <li key={j} className="flex items-start">
-                          <span className="mr-2 text-orange-500 text-lg leading-none mt-0.5">•</span> 
-                          <span className="leading-snug">{f}</span>
-                        </li>
-                      ))}
-                    </ul>
+                {pkg.sellingPoint && (
+                  <div className="px-5 py-4 bg-orange-50/50 border-t border-gray-100 rounded-b-lg">
+                    <div className="flex items-start">
+                      <div className="bg-orange-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded mr-2 mt-0.5 whitespace-nowrap">一句话卖点</div>
+                      <p className="text-[13px] text-gray-700 leading-snug font-medium">
+                        {pkg.sellingPoint}
+                      </p>
+                    </div>
                   </div>
                 )}
               </div>
             )
           })}
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
           <button
-            onClick={handleConfirm}
-            disabled={selectedIds.length === 0 || submitted}
-            className={`w-full max-w-sm py-3 rounded text-sm transition-colors flex items-center justify-center gap-2 ${submitted ? 'bg-gray-300 text-white cursor-not-allowed' : selectedIds.length > 0 ? 'bg-[#f8b284] hover:bg-[#f39c6b] text-white' : 'bg-[#f8b284] opacity-70 text-white cursor-not-allowed'}`}
+            onClick={handleGenerate}
+            disabled={!selectedId || submitted}
+            className={`flex-1 max-w-[200px] py-3 rounded text-sm transition-colors flex items-center justify-center gap-2 ${submitted ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : selectedId ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'bg-orange-300 text-white cursor-not-allowed'}`}
           >
-            {submitted ? `已确认选择` : `确认选择`}
+            生成方案
+          </button>
+          <button
+            onClick={handleRecommendAgain}
+            disabled={submitted}
+            className={`flex-1 max-w-[200px] py-3 rounded text-sm transition-colors flex items-center justify-center gap-2 ${submitted ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'}`}
+          >
+            重新推荐
           </button>
         </div>
       </div>
     </div>
   )
 }
-
 function SupplementaryInfoFormCard({ onSend, data }: { onSend?: (text: string) => void, data?: any }) {
   const [formData, setFormData] = React.useState({
     painPoints: [] as string[],
@@ -9011,4 +9033,170 @@ function SupplementaryInfoFormCard({ onSend, data }: { onSend?: (text: string) =
       </div>
     </div>
   )
+}
+
+function PPTCard({ data, onSend }: { data?: any, onSend?: (text: string) => void }) {
+  const [activeSlide, setActiveSlide] = React.useState(0);
+  const slides = data?.slides || [];
+
+  return (
+    <div className="w-full max-w-5xl bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm mt-2">
+      <div className="bg-[#D34125] px-4 py-2.5 flex justify-between items-center">
+        <div className="flex items-center text-white font-bold text-sm">
+          <Presentation size={18} className="mr-2" />
+          {data?.title || "明道云标品营销方案PPT"} - PowerPoint
+        </div>
+        <div className="flex items-center space-x-2 text-white/90">
+            <button className="flex items-center text-xs bg-black/10 hover:bg-black/20 px-3 py-1.5 rounded transition-colors"><Download size={14} className="mr-1"/> 导出为PPTX</button>
+        </div>
+      </div>
+      
+      {/* PPT Toolbar Mock */}
+      <div className="bg-[#F3F2F1] border-b border-gray-300 px-4 py-2 flex items-center space-x-4 text-xs text-gray-700 font-medium">
+        <span className="hover:bg-gray-200 px-2 py-1 rounded cursor-pointer">文件</span>
+        <span className="hover:bg-gray-200 px-2 py-1 rounded cursor-pointer bg-white shadow-sm border border-gray-200">开始</span>
+        <span className="hover:bg-gray-200 px-2 py-1 rounded cursor-pointer">插入</span>
+        <span className="hover:bg-gray-200 px-2 py-1 rounded cursor-pointer">设计</span>
+        <span className="hover:bg-gray-200 px-2 py-1 rounded cursor-pointer">切换</span>
+        <span className="hover:bg-gray-200 px-2 py-1 rounded cursor-pointer">动画</span>
+      </div>
+
+      <div className="flex h-[450px] bg-gray-100">
+        {/* Thumbnails Sidebar */}
+        <div className="w-48 bg-white border-r border-gray-200 overflow-y-auto p-2 space-y-2">
+          {slides.map((slide: any, i: number) => (
+            <div 
+              key={i} 
+              onClick={() => setActiveSlide(i)}
+              className={`flex items-start p-1 rounded cursor-pointer ${activeSlide === i ? 'bg-orange-100/50' : 'hover:bg-gray-50'}`}
+            >
+              <div className="w-4 text-right text-[10px] text-gray-500 font-medium pt-1 pr-1">{i + 1}</div>
+              <div className={`flex-1 aspect-video bg-white border shadow-sm rounded flex flex-col overflow-hidden ${activeSlide === i ? 'border-orange-500 ring-1 ring-orange-500' : 'border-gray-200'}`}>
+                <div className="h-4 bg-gray-50 border-b border-gray-100 flex items-center px-2">
+                  <div className="text-[6px] font-bold text-gray-800 truncate w-full">{slide.title}</div>
+                </div>
+                <div className="flex-1 p-1">
+                   <div className="space-y-0.5">
+                     {slide.bullets?.map((_: any, j: number) => (
+                       <div key={j} className="flex items-center">
+                         <div className="w-0.5 h-0.5 rounded-full bg-gray-400 mr-0.5"></div>
+                         <div className="h-0.5 bg-gray-200 w-full rounded"></div>
+                       </div>
+                     ))}
+                   </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* Main Slide View */}
+        <div className="flex-1 flex items-center justify-center p-6 bg-[#E1E1E1] overflow-hidden">
+          {slides[activeSlide] && (
+            <div className="w-full max-w-3xl aspect-video bg-white shadow-lg flex flex-col relative overflow-hidden transform scale-95 origin-center">
+              {/* Slide Background Decoration */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-orange-50 rounded-bl-full -z-0 opacity-50"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-orange-100 rounded-tr-full -z-0 opacity-50"></div>
+              
+              <div className="relative z-10 px-12 py-10 border-b-2 border-orange-500">
+                <h2 className="text-3xl font-bold text-gray-900 tracking-tight">{slides[activeSlide].title}</h2>
+              </div>
+              
+              <div className="relative z-10 flex-1 px-14 py-10 flex flex-col justify-center">
+                {slides[activeSlide].title?.includes("打造健康组织") ? (
+                   <div className="grid grid-cols-3 gap-6 w-full h-full pt-4">
+                     <div className="bg-white/80 border border-orange-100 p-5 rounded-xl shadow-sm flex flex-col relative overflow-hidden group hover:shadow-md transition-shadow">
+                        <div className="absolute -right-4 -top-4 w-16 h-16 bg-orange-50 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500"></div>
+                        <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4 relative z-10">
+                           <TrendingUp size={24} />
+                        </div>
+                        <h4 className="font-bold text-lg text-gray-800 mb-2 relative z-10">行业亚健康挑战</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed relative z-10">
+                          {slides[activeSlide].bullets?.[0] || "互联网高强度工作环境下，颈椎病、失眠等亚健康问题频发，严重影响团队整体战斗力。"}
+                        </p>
+                     </div>
+                     <div className="bg-white/80 border border-orange-100 p-5 rounded-xl shadow-sm flex flex-col relative overflow-hidden group hover:shadow-md transition-shadow">
+                        <div className="absolute -right-4 -top-4 w-16 h-16 bg-orange-50 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500"></div>
+                        <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4 relative z-10">
+                           <HeartPulse size={24} />
+                        </div>
+                        <h4 className="font-bold text-lg text-gray-800 mb-2 relative z-10">身心健康核心诉求</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed relative z-10">
+                          {slides[activeSlide].bullets?.[1] || "高管与骨干不仅需要基础医疗保障，更期望获得定制化、私密性强的高端健康管理服务。"}
+                        </p>
+                     </div>
+                     <div className="bg-white/80 border border-orange-100 p-5 rounded-xl shadow-sm flex flex-col relative overflow-hidden group hover:shadow-md transition-shadow">
+                        <div className="absolute -right-4 -top-4 w-16 h-16 bg-orange-50 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500"></div>
+                        <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4 relative z-10">
+                           <ShieldCheck size={24} />
+                        </div>
+                        <h4 className="font-bold text-lg text-gray-800 mb-2 relative z-10">系统性方案必要性</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed relative z-10">
+                          {slides[activeSlide].bullets?.[2] || "亟需构建涵盖“预防-问诊-治疗-康复”的全周期健康管理闭环，提升员工安全感与归属感。"}
+                        </p>
+                     </div>
+                     
+                     <div className="col-span-3 mt-4 bg-orange-500 text-white rounded-lg p-4 flex items-center justify-between shadow-sm">
+                       <div>
+                         <h4 className="font-bold text-lg mb-1">企康综合解决方案</h4>
+                         <p className="text-orange-100 text-sm">提供智能化、分层定制的数字化健康管理服务，构建企业级健康福利平台。</p>
+                       </div>
+                       <div className="flex space-x-4">
+                         <div className="text-center px-4 border-r border-orange-400">
+                           <div className="text-2xl font-bold">100+</div>
+                           <div className="text-xs text-orange-200 mt-1">覆盖城市</div>
+                         </div>
+                         <div className="text-center px-4 border-r border-orange-400">
+                           <div className="text-2xl font-bold">3000+</div>
+                           <div className="text-xs text-orange-200 mt-1">合作医院</div>
+                         </div>
+                         <div className="text-center px-4">
+                           <div className="text-2xl font-bold">7x24</div>
+                           <div className="text-xs text-orange-200 mt-1">全天候响应</div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                ) : (
+                  <ul className="space-y-6">
+                    {slides[activeSlide].bullets?.map((b: string, j: number) => (
+                      <li key={j} className="flex items-start group">
+                        <div className="w-2.5 h-2.5 rounded-sm bg-orange-500 mt-2 mr-4 flex-shrink-0 shadow-sm"></div>
+                        <span className="text-xl text-gray-700 leading-relaxed font-medium">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              
+              {/* Footer */}
+              <div className="absolute bottom-4 left-10 right-10 flex justify-between text-xs text-gray-400 font-medium z-10">
+                <span>平安企康 x 明道云</span>
+                <span>{activeSlide + 1}</span>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      
+      {/* Status Bar */}
+      <div className="bg-[#F3F2F1] border-t border-gray-300 px-4 py-1.5 flex justify-between items-center text-[11px] text-gray-600">
+        <div>幻灯片 {activeSlide + 1} / {slides.length}</div>
+        <div className="flex items-center space-x-3">
+            <span>备注</span>
+            <span>批注</span>
+            <div className="flex items-center space-x-1">
+                <span className="w-3 h-3 border border-gray-400 block"></span>
+                <span className="w-3 h-3 border border-gray-400 grid grid-cols-2 gap-0.5 p-0.5"><div className="bg-gray-400"></div><div className="bg-gray-400"></div><div className="bg-gray-400"></div><div className="bg-gray-400"></div></span>
+                <span className="w-3 h-3 border border-gray-400 flex items-end justify-center"><div className="w-2 h-1.5 bg-gray-400"></div></span>
+            </div>
+            <div className="flex items-center space-x-2 ml-4">
+                <span className="w-4 h-0.5 bg-gray-400 block"></span>
+                <span className="text-xs">68%</span>
+                <span className="w-4 h-0.5 flex items-center justify-center relative"><div className="absolute w-full h-px bg-gray-400"></div><div className="absolute w-1 h-2 bg-gray-600"></div></span>
+            </div>
+        </div>
+      </div>
+    </div>
+  );
 }

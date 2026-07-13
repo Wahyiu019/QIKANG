@@ -43,8 +43,7 @@ const SCENARIOS = [
   { label: "📑 招投标", prompt: "投标" },
   { label: "🛡️ 合规检查", prompt: "请帮我完成标书合规性检查" },
   { label: "📡 盯动态", prompt: "动态" },
-  { label: "❓ 答疑", prompt: "客户提问：黑金计划的理赔时效是多久？" },
-];
+  { label: "❓ 答疑", prompt: "客户提问：黑金计划的理赔时效是多久？" }];
 
 const commercialContent = `
   <div class="font-sans text-gray-800">
@@ -425,8 +424,7 @@ function AiChatWindow({
           name: "运营管理专家",
           img: "https://api.dicebear.com/9.x/avataaars/svg?seed=Operation&backgroundColor=64748b&eyes=happy&mouth=smile&accessories=prescription01&clothing=shirtVNeck",
           desc: "提供全流程、精细化的业务审核服务",
-        },
-      ].find((e) => e.name === selectedExpertName);
+        }].find((e) => e.name === selectedExpertName);
       if (found) {
         setCurrentExpert(found);
         setExpandedExpert(found.name);
@@ -473,6 +471,8 @@ function AiChatWindow({
   const [awaitingMaterialAudit, setAwaitingMaterialAudit] = useState(false);
   const [awaitingSurveyClient, setAwaitingSurveyClient] = useState(false);
   const [awaitingStProductInfo, setAwaitingStProductInfo] = useState(false);
+  const [awaitingNewPkg, setAwaitingNewPkg] = useState(false);
+  const [pkgRetryCount, setPkgRetryCount] = useState(1);
   const [selectedMaterial, setSelectedMaterial] = useState<any>(null);
   const [showSkillMenu, setShowSkillMenu] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -495,7 +495,7 @@ function AiChatWindow({
       title: "拜访材料生成",
       prompt: "我要去拜访云南烟草，帮我准备拜访材料",
     },
-    { title: "标准产品推荐", prompt: `我要给【XXX客户名称】写一个标品营销方案，预算大概是【XXX预算（范围）】` },
+    { title: "标准产品推荐", prompt: `我是平安银行的企康销售经理，要给明道云写一个标品营销方案，预算大概是18W` },
     { title: "明星方案匹配", prompt: "#明星方案匹配#" },
     { title: "案例亮点提炼", prompt: "#案例亮点提炼#" },
     { title: "竞品多维对标", prompt: "#竞品多维对标#" },
@@ -513,8 +513,7 @@ function AiChatWindow({
       prompt: "请帮我审核以下报销材料。",
     },
     { title: "报销材料审核", prompt: "确认执行报销审核。" },
-    { title: "复核校验", prompt: "请帮我复核所有报销申请，确认是否存在异常。" },
-  ];
+    { title: "复核校验", prompt: "请帮我复核所有报销申请，确认是否存在异常。" }];
 
   const handleExpertClick = (expert: { name: string; img: string }) => {
     setCurrentExpert({ name: expert.name, img: expert.img });
@@ -640,8 +639,7 @@ function AiChatWindow({
                 data: {
                   steps: [
                     { text: "执行标书审核...", status: "done" },
-                    { text: "审核通过结果通知...", status: "loading" },
-                  ],
+                    { text: "审核通过结果通知...", status: "loading" }],
                 },
               }
             : m,
@@ -659,8 +657,7 @@ function AiChatWindow({
                   steps: [
                     { text: "执行标书审核...", status: "done" },
                     { text: "审核通过结果通知...", status: "done" },
-                    { text: "自动发起用印审批流程...", status: "loading" },
-                  ],
+                    { text: "自动发起用印审批流程...", status: "loading" }],
                 },
               }
             : m,
@@ -678,8 +675,7 @@ function AiChatWindow({
                   steps: [
                     { text: "执行标书审核...", status: "done" },
                     { text: "审核通过结果通知...", status: "done" },
-                    { text: "自动发起用印审批流程...", status: "done" },
-                  ],
+                    { text: "自动发起用印审批流程...", status: "done" }],
                 },
               }
             : m,
@@ -699,14 +695,12 @@ function AiChatWindow({
           details: [
             "资质文件：齐全且在有效期内",
             "报价范围：符合公司指导价标准",
-            "法务条款：无异常风险条款",
-          ],
+            "法务条款：无异常风险条款"],
           sealProcess: [
             { step: "发起申请", status: "done", time: "10:00" },
             { step: "部门主管审批", status: "done", time: "10:15" },
             { step: "法务合规审批", status: "done", time: "10:30" },
-            { step: "印章管理员盖章", status: "done", time: "11:00" },
-          ],
+            { step: "印章管理员盖章", status: "done", time: "11:00" }],
         },
       };
       setMessages((prev) => [...prev, complianceMsg]);
@@ -1243,8 +1237,7 @@ function AiChatWindow({
         '企康切入角度：用"数字化健康管理"而非"保险"语言切入（张总技术背景，对数字化方案更敏感）',
         "提供话术三段：破冰（云南烟草AI战略+员工健康数字化）、痛点共鸣（7.2万人分散管理难）、方案切入（平安云南烟草数字化方案合作）",
         "检查：我是否有遗漏项",
-        "根据5分钟的时间长度要求组织内容",
-      ];
+        "根据5分钟的时间长度要求组织内容"];
       const reasoningMsg = {
         id: reasoningMsgId,
         sender: "bot",
@@ -1341,8 +1334,7 @@ function AiChatWindow({
               text: "从知识库中快速检索历史案例...",
               status: "loading",
             },
-            { id: "2", text: "提炼历史案例卖点和亮点...", status: "pending" },
-          ],
+            { id: "2", text: "提炼历史案例卖点和亮点...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -1417,8 +1409,7 @@ function AiChatWindow({
         "分层放主推产品。 我把主推产品按必要性分三层——全员刚需的放所有版本、特定人群刚需的放中高版本、增值的只放旗舰版，这样主推产品自然成为差异化核心，不生硬。",
         "用合规额度反推价格。 我先算工资总额列支的合规天花板，再参考同行业案例的人均水平，倒推出三档价格区间，确保推荐方案在合规安全线内且有说服力。",
         "按受众分层设计话术。 我不写一套通用话术，而是每个角色给一个切中核心关切的版本——高管关注趋势、HR关注省事、财务关注合规、决策人关注安全感。",
-        "按规范交付：生成方式、上传流程、链接格式全部按已有规范执行，不自创。",
-      ];
+        "按规范交付：生成方式、上传流程、链接格式全部按已有规范执行，不自创。"];
       const reasoningMsg = {
         id: reasoningMsgId,
         sender: "bot",
@@ -1514,8 +1505,7 @@ function AiChatWindow({
             { id: "2", text: "扫描对手的“技术盲区”与痛点", status: "pending" },
             { id: "3", text: "匹配云南烟草企康的核心技术壁垒", status: "pending" },
             { id: "4", text: "推演技术标“控标”策略", status: "pending" },
-            { id: "5", text: "生成标书标准化输出框架", status: "pending" },
-          ],
+            { id: "5", text: "生成标书标准化输出框架", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -1581,8 +1571,7 @@ function AiChatWindow({
           steps: [
             { id: "1", text: "分析 6+1 服务方案...", status: "loading" },
             { id: "2", text: "提炼差异化优势...", status: "pending" },
-            { id: "3", text: "分析销售打法...", status: "pending" },
-          ],
+            { id: "3", text: "分析销售打法...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -1705,8 +1694,7 @@ function AiChatWindow({
         '产品能力匹配：从补充医疗、委托基金管理、体检服务、慢病管理、就医协助等产品中筛选适配方案。',
         '方案组合设计：结合客户特点与预算情况，形成可落地的产品组合及服务模式。',
         '价值体系提炼：从政策合规、员工关怀、健康企业建设、ESG价值及企业文化建设等维度提炼方案价值。',
-        '拜访策略生成：输出标杆案例、产品推荐、价值亮点及沟通重点，形成首次拜访材料。',
-      ];
+        '拜访策略生成：输出标杆案例、产品推荐、价值亮点及沟通重点，形成首次拜访材料。'];
       const reasoningMsg = {
         id: reasoningMsgId,
         sender: "bot",
@@ -1803,8 +1791,7 @@ function AiChatWindow({
             type: "text",
             content: "请您点击输入框上部的附件上传按钮，上传投标书初稿。",
             timestamp: new Date(),
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 1200);
       return;
@@ -1831,8 +1818,7 @@ function AiChatWindow({
             type: "text",
             content: "请您点击输入框上部的附件上传按钮，上传招标书。",
             timestamp: new Date(),
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 1200);
       return;
@@ -1867,8 +1853,7 @@ function AiChatWindow({
           "通过知识库查询补充医疗条款和理赔流程",
           "按投标函、资质、技术方案、商务、报价、服务承诺的结构生成 标书，且必须含完整目录",
           "逐条自检：格式是否合规？必填项是否覆盖？有无废标条款触碰",
-          "开始输出标书初稿",
-        ];
+          "开始输出标书初稿"];
         reasoningMsg = {
           id: reasoningMsgId,
           sender: "bot",
@@ -1888,8 +1873,7 @@ function AiChatWindow({
         allTexts = [
           "提取标书目录与结构...",
           "匹配高质量标书素材...",
-          "组装文档并排版...",
-        ];
+          "组装文档并排版..."];
         reasoningMsg = {
           id: reasoningMsgId,
           sender: "bot",
@@ -1940,8 +1924,7 @@ function AiChatWindow({
                 "正在为您生成《云南省烟草公司2024-2027年补充医疗保险服务项目（二次）投标书（初稿）》docx",
               timestamp: new Date(),
               data: {},
-            },
-          ]);
+            }]);
           setIsTyping(false);
         } else {
           setMessages((prev) =>
@@ -1997,8 +1980,7 @@ function AiChatWindow({
             type: "text",
             content: "请点击下方“附件”按钮，上传需要质检的标书文件。",
             timestamp: new Date(),
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 1000);
       return;
@@ -2018,8 +2000,7 @@ function AiChatWindow({
         "对标招标要求找缺失。 我要分析标书不是自说自话，要站在评审专家视角看。",
         'PPT定位分析。理解述标PPT不是标书的缩写版，而是"10分钟内让评审记住你"的武器。所以结构按"理解你→服务你→凭什么是我→我怎么做"四段式，每段只讲评审最关心的点，不堆砌。',
         "演讲稿节奏设计。10分钟的述标，我要分配时间——服务方案给4分钟（占40%），因为这是评分权重最大的部分；核心优势2分钟（差异化得分点）；理解和承诺各1-2分钟（框架和收尾）。每段话只传递一个核心记忆点。",
-        '演讲稿话术策略。 每个优势点我都要"说人话"：不说"属地化服务网络覆盖"，说"不是飞过来的服务，是住在这里的服务"；不说"全国通赔体系"，说"人在哪里，保障就在哪里"。',
-      ];
+        '演讲稿话术策略。 每个优势点我都要"说人话"：不说"属地化服务网络覆盖"，说"不是飞过来的服务，是住在这里的服务"；不说"全国通赔体系"，说"人在哪里，保障就在哪里"。'];
       const reasoningMsgId = Date.now().toString();
       const reasoningMsg: Message = {
         id: reasoningMsgId,
@@ -2070,8 +2051,7 @@ function AiChatWindow({
                 "正在为您生成《云南省烟草公司2024-2027年补充医疗保险服务项目（二次）述标PPT》、《云南省烟草公司2024-2027年补充医疗保险服务项目（二次）述标PPT逐字稿》docx",
               timestamp: new Date(),
               data: {},
-            },
-          ]);
+            }]);
           setIsTyping(false);
         } else {
           setMessages((prev) =>
@@ -2117,8 +2097,7 @@ function AiChatWindow({
           steps: [
             { id: "1", text: "核查内容完整性...", status: "loading" },
             { id: "2", text: "检查格式与排版...", status: "pending" },
-            { id: "3", text: "检索敏感风险项...", status: "pending" },
-          ],
+            { id: "3", text: "检索敏感风险项...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -2191,16 +2170,15 @@ function AiChatWindow({
             content: "企康项目投递标书质检结果",
             timestamp: new Date(),
             data: {},
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 4500);
       return;
     }
 
     if (text.includes("写一个标品营销方案") || text.includes("我要给")) {
-      const matchName = text.match(/我要给【?(.*?)】?写/);
-      const matchBudget = text.match(/预算大概是【?(.*?)】?/);
+      const matchName = text.match(/要给【?(.*?)】?写/);
+      const matchBudget = text.match(/预算大概是【?([^】]+?)】?$/);
       let customerNameStr = "未知客户";
       if (matchName && matchName[1] && !matchName[1].includes("XXX")) customerNameStr = matchName[1];
       else if (text.includes("云天化")) customerNameStr = "云天化";
@@ -2223,10 +2201,45 @@ function AiChatWindow({
         type: "reasoning",
         content: "正在搜索客户基本信息...",
         timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "调用内部CRM获取客户画像...", status: "complete" },
+            { id: "2", text: "分析所属行业及健康痛点...", status: "loading" },
+            { id: "3", text: "生成企业信息结果...", status: "pending" }],
+        },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
       setIsTyping(true);
+
       setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any, i: number) =>
+                      i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+      }, 1000);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any) => ({ ...s, status: "complete" })),
+                  },
+                } : m
+          )
+        );
+        
         setMessages((prev) => [
           ...prev,
           {
@@ -2239,10 +2252,9 @@ function AiChatWindow({
               customerName: customerNameStr,
               budget: budgetStr
             }
-          },
-        ]);
+          }]);
         setIsTyping(false);
-      }, 1000);
+      }, 2000);
       return;
     } else if (text.startsWith("[用户确认]")) {
       const newUserMsg: Message = {
@@ -2277,32 +2289,34 @@ function AiChatWindow({
               packages: [
                 {
                   id: "pkg1",
-                  name: "总价20.9万 · 预算内优选方案",
+                  name: "基础健康保障版",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
-                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
-                    { name: "平安健康优选套餐", target: "基层员工", price: "600元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
                   ],
-                  features: [
-                    "包含基础版的所有服务",
-                    "员工年度深度体检套餐",
-                    "特定慢病管理与购药折扣",
-                    "核心骨干绿色就医通道保障"
-                  ]
+                  sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
                 {
                   id: "pkg2",
-                  name: "总价21.5万 · 品质升级方案",
+                  name: "全场景黑金尊享版",
+                  isRecommended: true,
                   products: [
-                    { name: "细胞焕活（好医优享版）", target: "高层员工", price: "6,200元", unit: "人/年" },
-                    { name: "平安健康悦享套餐", target: "核心员工", price: "1,770元", unit: "人/年" },
-                    { name: "平安健康优选套餐", target: "基层员工", price: "600元", unit: "人/年" }
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
                   ],
-                  features: [
-                    "更全面的重疾与慢病管理",
-                    "专属健康管家全程跟进",
-                    "三甲医院顶尖专家门诊预约"
-                  ]
+                  sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
+                },
+                {
+                  id: "pkg3",
+                  name: "高管特权定制版",
+                  products: [
+                    { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
+                    { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                  ],
+                  sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
               ]
             }
@@ -2386,35 +2400,35 @@ function AiChatWindow({
             data: {
               packages: [
                 {
-                  id: "p1_refined",
-                  name: "高管尊享精准版",
-                  price: "年度总预算估算：85万元",
+                  id: "pkg1",
+                  name: "基础健康保障版",
                   products: [
-                    { name: "高管专属就医绿通", target: "高层员工", price: "2,000元", unit: "人/年" },
-                    { name: "职业病康复特训", target: "核心员工", price: "1,500元", unit: "人/年" },
-                    { name: "在线全科医生问诊", target: "基层员工", price: "200元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
                   ],
-                  features: [
-                     "定向颈椎/腰椎等职业病康复特训",
-                     "高管专属绿色就医通道保障",
-                     "7×24小时在线全科医生问诊"
-                  ]
+                  sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
                 {
-                  id: "p2_refined",
-                  name: "全场景黑金尊享加强版",
-                  price: "年度总预算估算：150万元",
+                  id: "pkg2",
+                  name: "全场景黑金尊享版",
+                  isRecommended: true,
                   products: [
-                    { name: "顶尖专家会诊", target: "高层员工", price: "5,000元", unit: "人/年" },
-                    { name: "EAP深度干预服务", target: "核心员工", price: "800元", unit: "人/年" },
-                    { name: "定制驻场医务室服务", target: "基层员工", price: "500元", unit: "人/年" }
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
                   ],
-                  features: [
-                    "包含高管专属版的所有服务",
-                    "心理压力大定向EAP深度干预",
-                    "MDT多学科顶尖专家会诊支持",
-                    "定制化驻场企业医务室全程运营"
-                  ]
+                  sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
+                },
+                {
+                  id: "pkg3",
+                  name: "高管特权定制版",
+                  products: [
+                    { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
+                    { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                  ],
+                  sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
               ]
             }
@@ -2423,28 +2437,88 @@ function AiChatWindow({
         setIsTyping(false);
       }, 2400);
       return;
-    } else if (text.startsWith("[已提交基本信息]")) {
-      const newUserMsg: Message = {
-        id: Date.now().toString() + "_user",
-        sender: "user",
-        type: "text",
-        content: text,
-        timestamp: new Date(),
-      };
+    } else if (text === "是" && messages.length > 0 && messages[messages.length - 1].content.includes("是否需要修改")) {
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
       setMessages((prev) => [...prev, newUserMsg]);
+      
       const reasoningMsgId = Date.now().toString();
       const reasoningMsg: Message = {
         id: reasoningMsgId,
         sender: "bot",
         type: "reasoning",
-        content: "正在匹配标准套餐选项...",
+        content: "正在重新生成营销方案PPT内容...",
         timestamp: new Date(),
         data: {
           steps: [
-            { id: "1", text: "提取基本信息...", status: "complete" },
-            { id: "2", text: "生成询问与补充信息...", status: "loading" },
-            { id: "3", text: "匹配标准套餐选项...", status: "pending" },
-          ],
+            { id: "1", text: "重新分析修改需求...", status: "complete" },
+            { id: "2", text: "调整PPT...", status: "loading" },
+            { id: "3", text: "生成新PPT内容...", status: "pending" }],
+        },
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) => prev.map((m) => m.id === reasoningMsgId ? {
+          ...m,
+          data: { ...m.data, steps: m.data.steps.map((s: any, i: number) => i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s) },
+        } : m));
+      }, 1500);
+
+      setTimeout(() => {
+        setMessages((prev) => prev.map((m) => m.id === reasoningMsgId ? {
+          ...m,
+          data: { ...m.data, steps: m.data.steps.map((s: any) => ({ ...s, status: "complete" })) },
+        } : m));
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_ppt_new",
+            sender: "bot",
+            type: "ppt_card",
+            content: "新营销方案PPT",
+            timestamp: new Date(),
+            data: {
+              title: "明道云标品营销方案PPT（优化版）",
+              overview: "已根据您的要求，对营销方案PPT内容进行了优化和调整：",
+              slides: [
+                {
+                  title: "企康助力明道云打造健康组织（优化版）",
+                  bullets: ["深度剖析：互联网行业高强度工作下的健康隐患", "精准洞察：高管与核心骨干的身心健康诉求", "解决之道：系统性健康管理方案的必要性与紧迫性"]
+                },
+                {
+                  title: "明道云专属企康保障方案（进阶版）",
+                  bullets: ["方案总览：18W预算下的高性价比组合", "高管尊享绿通服务（全面解决就医痛点）", "全员健康档案建立（构建数字化管理平台）"]
+                },
+                {
+                  title: "平安银行生态赋能（合作共赢）",
+                  bullets: ["双强联手：平安健康+平安银行的品牌背书", "便捷就医：丰富的线上问诊与线下三甲网络资源", "管家服务：专职健康管家保障方案完美落地"]
+                }
+              ]
+            }
+          }]);
+        setIsTyping(false);
+      }, 3000);
+      return;
+    } else if (text === "否" && messages.length > 0 && messages[messages.length - 1].content.includes("是否需要修改")) {
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
+      setMessages((prev) => [...prev, newUserMsg]);
+      setMessages((prev) => [...prev, { id: Date.now().toString() + "_ok", sender: "bot", type: "text", content: "好的，已为您保存当前PPT内容，您可以直接使用或导出。", timestamp: new Date() }]);
+      return;
+    } else if (text.startsWith("[生成方案]")) {
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在生成营销方案PPT内容...",
+        timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "提取已选套餐内容...", status: "complete" },
+            { id: "2", text: "调用行业标品PPT模板...", status: "loading" },
+            { id: "3", text: "生成定制化PPT内容...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -2464,8 +2538,7 @@ function AiChatWindow({
                 } : m
           )
         );
-        
-      }, 1500);
+      }, 1000);
 
       setTimeout(() => {
         setMessages((prev) =>
@@ -2483,67 +2556,210 @@ function AiChatWindow({
         setMessages((prev) => [
           ...prev,
           {
-            id: Date.now().toString() + "_sup",
+            id: Date.now().toString() + "_ppt",
             sender: "bot",
-            type: "supplementary_info_card",
-            content: "已捕获并记录您的补充需求：",
+            type: "ppt_card",
+            content: "营销方案PPT",
             timestamp: new Date(),
             data: {
-              text: "系统已自动记录需求细节并完善产品匹配模型。",
-              supplementary: [
-                "已选择：高管尊享绿通服务",
-                "附加要求：需确保当地三甲医院100%覆盖",
-                "附加要求：心理EAP服务需覆盖全体一线员工"
-              ]
-            }
-          },
-          {
-            id: Date.now().toString() + "_pkg",
-            sender: "bot",
-            type: "package_option_card",
-            content: "套餐选项",
-            timestamp: new Date(),
-            data: {
-              packages: [
+              title: "明道云标品营销方案PPT",
+              overview: "根据明道云所处软件/互联网行业特性及18W预算，结合您选择的推荐套餐，我们为您生成了以下健康保障营销方案PPT内容，您可以直接预览各页内容：",
+              slides: [
                 {
-                  id: "pkg1",
-                  name: "基础健康保障版",
-                  price: "年度总预算估算：550万元",
-                  products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
-                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
-                    { name: "企康基础健康档案系统", target: "基层员工", price: "100元", unit: "人/年" }
-                  ],
-                  features: [
-                    "覆盖全员的基础健康档案建立",
-                    "7×24小时在线全科医生问诊",
-                    "三甲医院重疾绿通协调服务",
-                    "基础心理健康测评与干预"
-                  ]
+                  title: "企康助力明道云打造健康组织",
+                  bullets: ["互联网行业面临的亚健康挑战", "高管与核心骨干的身心健康诉求", "系统性健康管理方案的必要性"]
                 },
                 {
-                  id: "pkg2",
-                  name: "全场景黑金尊享版（推荐）",
-                  price: "年度总预算估算：780万元",
-                  products: [
-                    { name: "高管专属就医绿通及陪诊", target: "高层员工", price: "3,500元", unit: "人/年" },
-                    { name: "MDT多学科顶尖专家会诊", target: "核心员工", price: "2,000元", unit: "人/年" },
-                    { name: "驻场医务室基础运营", target: "基层员工", price: "200元", unit: "人/年" }
-                  ],
-                  features: [
-                    "包含基础版的所有服务",
-                    "高管尊享线下全程陪诊与绿通",
-                    "MDT多学科顶尖专家会诊支持",
-                    "定制化驻场企业医务室运营",
-                    "全员EAP心理援助计划深度干预"
-                  ]
+                  title: "明道云专属企康保障方案",
+                  bullets: ["方案总览：18W预算下的最优解", "高管尊享绿通服务（解决就医痛点）", "全员健康档案建立（系统性管理起点）"]
+                },
+                {
+                  title: "平安银行生态赋能",
+                  bullets: ["平安健康+平安银行的品牌背书", "便捷的线上问诊与线下三甲网络", "专职健康管家服务保障落地"]
                 }
               ]
             }
           }
         ]);
         setIsTyping(false);
-      }, 3000);
+      }, 2500);
+      return;
+    } else if (text === "[重新推荐]") {
+      setIsTyping(true);
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_ask_more",
+            sender: "bot",
+            type: "text",
+            content: "请问您对套餐有哪些进一步的需求或调整建议？",
+            timestamp: new Date()
+          }
+        ]);
+        setAwaitingNewPkg(true);
+        setIsTyping(false);
+      }, 500);
+      return;
+    } else if (text.startsWith("[确认基本信息]")) {
+      // DO NOT add user message to hide it
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在匹配推荐套餐...",
+        timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "分析基本信息与痛点...", status: "complete" },
+            { id: "2", text: "匹配标品套餐选项...", status: "loading" },
+            { id: "3", text: "生成套餐卡片...", status: "pending" }],
+        },
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any, i: number) =>
+                      i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+      }, 1000);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any) => ({ ...s, status: "complete" })),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_pkg",
+            sender: "bot",
+            type: "package_option_card",
+            content: "推荐标品套餐选项",
+            timestamp: new Date(),
+            data: {}
+          }
+        ]);
+        setIsTyping(false);
+      }, 2000);
+      return;
+    } else if (awaitingNewPkg && text) {
+      setAwaitingNewPkg(false); setPkgRetryCount(prev => prev + 1);
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const reasoningMsgId = Date.now().toString() + "_reasoning";
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在根据新需求调整套餐...",
+        timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "分析新的套餐需求...", status: "complete" },
+            { id: "2", text: "重新匹配标品套餐...", status: "loading" },
+            { id: "3", text: "生成新套餐卡片...", status: "pending" }],
+        },
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any, i: number) =>
+                      i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+      }, 1000);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any) => ({ ...s, status: "complete" })),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_pkg_new",
+            sender: "bot",
+            type: "package_option_card",
+            content: "推荐标品套餐选项",
+            timestamp: new Date(),
+            data: {
+              packages: [
+                {
+                  id: "pkg1",
+                  name: "基础健康保障版",
+                  products: [
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
+                  ],
+                  sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
+                },
+                {
+                  id: "pkg2",
+                  name: "全场景黑金尊享版",
+                  isRecommended: true,
+                  products: [
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
+                  ],
+                  sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
+                },
+                {
+                  id: "pkg3",
+                  name: "高管特权定制版",
+                  products: [
+                    { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
+                    { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                  ],
+                  sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
+                }
+              ]
+            }
+          }
+        ]);
+        setIsTyping(false);
+      }, 2000);
       return;
     } else if (awaitingStProductInfo && text.startsWith("[附件]")) {
       setAwaitingStProductInfo(false);
@@ -2566,8 +2782,7 @@ function AiChatWindow({
           steps: [
             { id: "1", text: "提取基本信息...", status: "loading" },
             { id: "2", text: "生成询问与补充信息...", status: "pending" },
-            { id: "3", text: "匹配标准套餐选项...", status: "pending" },
-          ],
+            { id: "3", text: "匹配标准套餐选项...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -2667,35 +2882,33 @@ function AiChatWindow({
                 {
                   id: "pkg1",
                   name: "基础健康保障版",
-                  price: "年度总预算估算：550万元",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
-                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
-                    { name: "企康基础健康档案系统", target: "基层员工", price: "100元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
                   ],
-                  features: [
-                    "覆盖全员的基础健康档案建立",
-                    "7×24小时在线全科医生问诊",
-                    "三甲医院重疾绿通协调服务",
-                    "基础心理健康测评与干预"
-                  ]
+                  sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
                 {
                   id: "pkg2",
-                  name: "全场景黑金尊享版（推荐）",
-                  price: "年度总预算估算：780万元",
+                  name: "全场景黑金尊享版",
+                  isRecommended: true,
                   products: [
-                    { name: "高管专属就医绿通及陪诊", target: "高层员工", price: "3,500元", unit: "人/年" },
-                    { name: "MDT多学科顶尖专家会诊", target: "核心员工", price: "2,000元", unit: "人/年" },
-                    { name: "驻场医务室基础运营", target: "基层员工", price: "200元", unit: "人/年" }
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
                   ],
-                  features: [
-                    "包含基础版的所有服务",
-                    "高管尊享线下全程陪诊与绿通",
-                    "MDT多学科顶尖专家会诊支持",
-                    "定制化驻场企业医务室运营",
-                    "全员EAP心理援助计划深度干预"
-                  ]
+                  sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
+                },
+                {
+                  id: "pkg3",
+                  name: "高管特权定制版",
+                  products: [
+                    { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
+                    { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                  ],
+                  sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
               ]
             }
@@ -2735,8 +2948,7 @@ function AiChatWindow({
             type: "text",
             content: "请点击下方“附件”按钮，上传待审查的材料文件。",
             timestamp: new Date(),
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 1000);
       return;
@@ -2761,8 +2973,7 @@ function AiChatWindow({
           steps: [
             { id: "1", text: "提取资质文件信息...", status: "loading" },
             { id: "2", text: "验证合同与发票要件...", status: "pending" },
-            { id: "3", text: "评估整体合规性...", status: "pending" },
-          ],
+            { id: "3", text: "评估整体合规性...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -2835,8 +3046,7 @@ function AiChatWindow({
             content: "企康项目材料智能审查结论",
             timestamp: new Date(),
             data: {},
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 4500);
       return;
@@ -3128,8 +3338,7 @@ function AiChatWindow({
               id: "3",
               text: "梳理体检需求要点及废标风险...",
               status: "pending",
-            },
-          ],
+            }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -3465,8 +3674,7 @@ function AiChatWindow({
               id: "3",
               text: "梳理自保模式转委托模式合规要求与推进路径...",
               status: "pending",
-            },
-          ],
+            }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -3693,8 +3901,7 @@ function AiChatWindow({
                   data: {
                     steps: [
                       { text: "执行标书审核...", status: "done" },
-                      { text: "审核通过结果通知...", status: "loading" },
-                    ],
+                      { text: "审核通过结果通知...", status: "loading" }],
                   },
                 }
               : m,
@@ -3712,8 +3919,7 @@ function AiChatWindow({
                     steps: [
                       { text: "执行标书审核...", status: "done" },
                       { text: "审核通过结果通知...", status: "done" },
-                      { text: "自动发起用印审批流程...", status: "loading" },
-                    ],
+                      { text: "自动发起用印审批流程...", status: "loading" }],
                   },
                 }
               : m,
@@ -3731,8 +3937,7 @@ function AiChatWindow({
                     steps: [
                       { text: "执行标书审核...", status: "done" },
                       { text: "审核通过结果通知...", status: "done" },
-                      { text: "自动发起用印审批流程...", status: "done" },
-                    ],
+                      { text: "自动发起用印审批流程...", status: "done" }],
                   },
                 }
               : m,
@@ -3752,14 +3957,12 @@ function AiChatWindow({
             details: [
               "资质文件：齐全且在有效期内",
               "报价范围：符合公司指导价标准",
-              "法务条款：无异常风险条款",
-            ],
+              "法务条款：无异常风险条款"],
             sealProcess: [
               { step: "发起申请", status: "done", time: "10:00" },
               { step: "部门主管审批", status: "done", time: "10:15" },
               { step: "法务合规审批", status: "done", time: "10:30" },
-              { step: "印章管理员盖章", status: "done", time: "11:00" },
-            ],
+              { step: "印章管理员盖章", status: "done", time: "11:00" }],
           },
         };
         setMessages((prev) => [...prev, complianceMsg]);
@@ -3777,8 +3980,7 @@ function AiChatWindow({
           type: "text",
           content: "您这次拜访的对象是谁？是什么角色？",
           timestamp: new Date(),
-        },
-      ]);
+        }]);
       return;
     } else if (
       text.includes(
@@ -3803,8 +4005,7 @@ function AiChatWindow({
             type: "text",
             content: "请您点击输入框上部的附件上传按钮，上传投标书初稿。",
             timestamp: new Date(),
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 1200);
       return;
@@ -3831,8 +4032,7 @@ function AiChatWindow({
             type: "text",
             content: "请您点击输入框上部的附件上传按钮，上传招标书。",
             timestamp: new Date(),
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 1200);
       return;
@@ -3867,8 +4067,7 @@ function AiChatWindow({
           "通过知识库查询补充医疗条款和理赔流程",
           "按投标函、资质、技术方案、商务、报价、服务承诺的结构生成 标书，且必须含完整目录",
           "逐条自检：格式是否合规？必填项是否覆盖？有无废标条款触碰",
-          "开始输出标书初稿",
-        ];
+          "开始输出标书初稿"];
         reasoningMsg = {
           id: reasoningMsgId,
           sender: "bot",
@@ -3888,8 +4087,7 @@ function AiChatWindow({
         allTexts = [
           "提取标书目录与结构...",
           "匹配高质量标书素材...",
-          "组装文档并排版...",
-        ];
+          "组装文档并排版..."];
         reasoningMsg = {
           id: reasoningMsgId,
           sender: "bot",
@@ -3940,8 +4138,7 @@ function AiChatWindow({
                 "正在为您生成《云南省烟草公司2024-2027年补充医疗保险服务项目（二次）投标书（初稿）》docx",
               timestamp: new Date(),
               data: {},
-            },
-          ]);
+            }]);
           setIsTyping(false);
         } else {
           setMessages((prev) =>
@@ -3997,8 +4194,7 @@ function AiChatWindow({
             type: "text",
             content: "请点击下方“附件”按钮，上传需要质检的标书文件。",
             timestamp: new Date(),
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 1000);
       return;
@@ -4018,8 +4214,7 @@ function AiChatWindow({
         "对标招标要求找缺失。 我要分析标书不是自说自话，要站在评审专家视角看。",
         'PPT定位分析。理解述标PPT不是标书的缩写版，而是"10分钟内让评审记住你"的武器。所以结构按"理解你→服务你→凭什么是我→我怎么做"四段式，每段只讲评审最关心的点，不堆砌。',
         "演讲稿节奏设计。10分钟的述标，我要分配时间——服务方案给4分钟（占40%），因为这是评分权重最大的部分；核心优势2分钟（差异化得分点）；理解和承诺各1-2分钟（框架和收尾）。每段话只传递一个核心记忆点。",
-        '演讲稿话术策略。 每个优势点我都要"说人话"：不说"属地化服务网络覆盖"，说"不是飞过来的服务，是住在这里的服务"；不说"全国通赔体系"，说"人在哪里，保障就在哪里"。',
-      ];
+        '演讲稿话术策略。 每个优势点我都要"说人话"：不说"属地化服务网络覆盖"，说"不是飞过来的服务，是住在这里的服务"；不说"全国通赔体系"，说"人在哪里，保障就在哪里"。'];
       const reasoningMsgId = Date.now().toString();
       const reasoningMsg: Message = {
         id: reasoningMsgId,
@@ -4070,8 +4265,7 @@ function AiChatWindow({
                 "正在为您生成《云南省烟草公司2024-2027年补充医疗保险服务项目（二次）述标PPT》、《云南省烟草公司2024-2027年补充医疗保险服务项目（二次）述标PPT逐字稿》docx",
               timestamp: new Date(),
               data: {},
-            },
-          ]);
+            }]);
           setIsTyping(false);
         } else {
           setMessages((prev) =>
@@ -4117,8 +4311,7 @@ function AiChatWindow({
           steps: [
             { id: "1", text: "核查内容完整性...", status: "loading" },
             { id: "2", text: "检查格式与排版...", status: "pending" },
-            { id: "3", text: "检索敏感风险项...", status: "pending" },
-          ],
+            { id: "3", text: "检索敏感风险项...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -4191,16 +4384,15 @@ function AiChatWindow({
             content: "企康项目投递标书质检结果",
             timestamp: new Date(),
             data: {},
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 4500);
       return;
     }
 
     if (text.includes("写一个标品营销方案") || text.includes("我要给")) {
-      const matchName = text.match(/我要给【?(.*?)】?写/);
-      const matchBudget = text.match(/预算大概是【?(.*?)】?/);
+      const matchName = text.match(/要给【?(.*?)】?写/);
+      const matchBudget = text.match(/预算大概是【?([^】]+?)】?$/);
       let customerNameStr = "未知客户";
       if (matchName && matchName[1] && !matchName[1].includes("XXX")) customerNameStr = matchName[1];
       else if (text.includes("云天化")) customerNameStr = "云天化";
@@ -4223,10 +4415,45 @@ function AiChatWindow({
         type: "reasoning",
         content: "正在搜索客户基本信息...",
         timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "调用内部CRM获取客户画像...", status: "complete" },
+            { id: "2", text: "分析所属行业及健康痛点...", status: "loading" },
+            { id: "3", text: "生成企业信息结果...", status: "pending" }],
+        },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
       setIsTyping(true);
+
       setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any, i: number) =>
+                      i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+      }, 1000);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any) => ({ ...s, status: "complete" })),
+                  },
+                } : m
+          )
+        );
+        
         setMessages((prev) => [
           ...prev,
           {
@@ -4239,10 +4466,9 @@ function AiChatWindow({
               customerName: customerNameStr,
               budget: budgetStr
             }
-          },
-        ]);
+          }]);
         setIsTyping(false);
-      }, 1000);
+      }, 2000);
       return;
     } else if (text.startsWith("[用户确认]")) {
       const newUserMsg: Message = {
@@ -4277,32 +4503,34 @@ function AiChatWindow({
               packages: [
                 {
                   id: "pkg1",
-                  name: "总价20.9万 · 预算内优选方案",
+                  name: "基础健康保障版",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
-                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
-                    { name: "平安健康优选套餐", target: "基层员工", price: "600元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
                   ],
-                  features: [
-                    "包含基础版的所有服务",
-                    "员工年度深度体检套餐",
-                    "特定慢病管理与购药折扣",
-                    "核心骨干绿色就医通道保障"
-                  ]
+                  sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
                 {
                   id: "pkg2",
-                  name: "总价21.5万 · 品质升级方案",
+                  name: "全场景黑金尊享版",
+                  isRecommended: true,
                   products: [
-                    { name: "细胞焕活（好医优享版）", target: "高层员工", price: "6,200元", unit: "人/年" },
-                    { name: "平安健康悦享套餐", target: "核心员工", price: "1,770元", unit: "人/年" },
-                    { name: "平安健康优选套餐", target: "基层员工", price: "600元", unit: "人/年" }
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
                   ],
-                  features: [
-                    "更全面的重疾与慢病管理",
-                    "专属健康管家全程跟进",
-                    "三甲医院顶尖专家门诊预约"
-                  ]
+                  sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
+                },
+                {
+                  id: "pkg3",
+                  name: "高管特权定制版",
+                  products: [
+                    { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
+                    { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                  ],
+                  sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
               ]
             }
@@ -4386,35 +4614,35 @@ function AiChatWindow({
             data: {
               packages: [
                 {
-                  id: "p1_refined",
-                  name: "高管尊享精准版",
-                  price: "年度总预算估算：85万元",
+                  id: "pkg1",
+                  name: "基础健康保障版",
                   products: [
-                    { name: "高管专属就医绿通", target: "高层员工", price: "2,000元", unit: "人/年" },
-                    { name: "职业病康复特训", target: "核心员工", price: "1,500元", unit: "人/年" },
-                    { name: "在线全科医生问诊", target: "基层员工", price: "200元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
                   ],
-                  features: [
-                     "定向颈椎/腰椎等职业病康复特训",
-                     "高管专属绿色就医通道保障",
-                     "7×24小时在线全科医生问诊"
-                  ]
+                  sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
                 {
-                  id: "p2_refined",
-                  name: "全场景黑金尊享加强版",
-                  price: "年度总预算估算：150万元",
+                  id: "pkg2",
+                  name: "全场景黑金尊享版",
+                  isRecommended: true,
                   products: [
-                    { name: "顶尖专家会诊", target: "高层员工", price: "5,000元", unit: "人/年" },
-                    { name: "EAP深度干预服务", target: "核心员工", price: "800元", unit: "人/年" },
-                    { name: "定制驻场医务室服务", target: "基层员工", price: "500元", unit: "人/年" }
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
                   ],
-                  features: [
-                    "包含高管专属版的所有服务",
-                    "心理压力大定向EAP深度干预",
-                    "MDT多学科顶尖专家会诊支持",
-                    "定制化驻场企业医务室全程运营"
-                  ]
+                  sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
+                },
+                {
+                  id: "pkg3",
+                  name: "高管特权定制版",
+                  products: [
+                    { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
+                    { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                  ],
+                  sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
               ]
             }
@@ -4423,28 +4651,96 @@ function AiChatWindow({
         setIsTyping(false);
       }, 2400);
       return;
-    } else if (text.startsWith("[已提交基本信息]")) {
-      const newUserMsg: Message = {
-        id: Date.now().toString() + "_user",
-        sender: "user",
-        type: "text",
-        content: text,
-        timestamp: new Date(),
-      };
+    } else if (text === "是" && messages.length > 0 && messages[messages.length - 1].content.includes("是否需要修改")) {
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
       setMessages((prev) => [...prev, newUserMsg]);
+      
       const reasoningMsgId = Date.now().toString();
       const reasoningMsg: Message = {
         id: reasoningMsgId,
         sender: "bot",
         type: "reasoning",
-        content: "正在匹配标准套餐选项...",
+        content: "正在重新生成营销方案PPT内容...",
         timestamp: new Date(),
         data: {
           steps: [
-            { id: "1", text: "提取基本信息...", status: "complete" },
-            { id: "2", text: "生成询问与补充信息...", status: "loading" },
-            { id: "3", text: "匹配标准套餐选项...", status: "pending" },
-          ],
+            { id: "1", text: "重新分析修改需求...", status: "complete" },
+            { id: "2", text: "调整PPT...", status: "loading" },
+            { id: "3", text: "生成新PPT内容...", status: "pending" }],
+        },
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) => prev.map((m) => m.id === reasoningMsgId ? {
+          ...m,
+          data: { ...m.data, steps: m.data.steps.map((s: any, i: number) => i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s) },
+        } : m));
+      }, 1500);
+
+      setTimeout(() => {
+        setMessages((prev) => prev.map((m) => m.id === reasoningMsgId ? {
+          ...m,
+          data: { ...m.data, steps: m.data.steps.map((s: any) => ({ ...s, status: "complete" })) },
+        } : m));
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_ppt_new",
+            sender: "bot",
+            type: "ppt_card",
+            content: "新营销方案PPT",
+            timestamp: new Date(),
+            data: {
+              title: "明道云标品营销方案PPT（优化版）",
+              overview: "已根据您的要求，对营销方案PPT内容进行了优化和调整：",
+              slides: [
+                {
+                  title: "企康助力明道云打造健康组织（优化版）",
+                  bullets: ["深度剖析：互联网行业高强度工作下的健康隐患", "精准洞察：高管与核心骨干的身心健康诉求", "解决之道：系统性健康管理方案的必要性与紧迫性"]
+                },
+                {
+                  title: "明道云专属企康保障方案（进阶版）",
+                  bullets: ["方案总览：18W预算下的高性价比组合", "高管尊享绿通服务（全面解决就医痛点）", "全员健康档案建立（构建数字化管理平台）"]
+                },
+                {
+                  title: "平安银行生态赋能（合作共赢）",
+                  bullets: ["双强联手：平安健康+平安银行的品牌背书", "便捷就医：丰富的线上问诊与线下三甲网络资源", "管家服务：专职健康管家保障方案完美落地"]
+                }
+              ]
+            }
+          },
+          {
+            id: Date.now().toString() + "_ask_ppt_modify_new",
+            sender: "bot",
+            type: "text",
+            content: "PPT内容已生成完毕。是否需要修改？（输入“是”或“否”）",
+            timestamp: new Date(),
+          }
+        ]);
+        setIsTyping(false);
+      }, 3000);
+      return;
+    } else if (text === "否" && messages.length > 0 && messages[messages.length - 1].content.includes("是否需要修改")) {
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
+      setMessages((prev) => [...prev, newUserMsg]);
+      setMessages((prev) => [...prev, { id: Date.now().toString() + "_ok", sender: "bot", type: "text", content: "好的，已为您保存当前PPT内容，您可以直接使用或导出。", timestamp: new Date() }]);
+      return;
+    } else if (text.startsWith("[生成方案]")) {
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在生成营销方案PPT内容...",
+        timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "提取已选套餐内容...", status: "complete" },
+            { id: "2", text: "调用行业标品PPT模板...", status: "loading" },
+            { id: "3", text: "生成定制化PPT内容...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -4464,8 +4760,7 @@ function AiChatWindow({
                 } : m
           )
         );
-        
-      }, 1500);
+      }, 1000);
 
       setTimeout(() => {
         setMessages((prev) =>
@@ -4483,67 +4778,210 @@ function AiChatWindow({
         setMessages((prev) => [
           ...prev,
           {
-            id: Date.now().toString() + "_sup",
+            id: Date.now().toString() + "_ppt",
             sender: "bot",
-            type: "supplementary_info_card",
-            content: "已捕获并记录您的补充需求：",
+            type: "ppt_card",
+            content: "营销方案PPT",
             timestamp: new Date(),
             data: {
-              text: "系统已自动记录需求细节并完善产品匹配模型。",
-              supplementary: [
-                "已选择：高管尊享绿通服务",
-                "附加要求：需确保当地三甲医院100%覆盖",
-                "附加要求：心理EAP服务需覆盖全体一线员工"
-              ]
-            }
-          },
-          {
-            id: Date.now().toString() + "_pkg",
-            sender: "bot",
-            type: "package_option_card",
-            content: "套餐选项",
-            timestamp: new Date(),
-            data: {
-              packages: [
+              title: "明道云标品营销方案PPT",
+              overview: "根据明道云所处软件/互联网行业特性及18W预算，结合您选择的推荐套餐，我们为您生成了以下健康保障营销方案PPT内容，您可以直接预览各页内容：",
+              slides: [
                 {
-                  id: "pkg1",
-                  name: "基础健康保障版",
-                  price: "年度总预算估算：550万元",
-                  products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
-                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
-                    { name: "企康基础健康档案系统", target: "基层员工", price: "100元", unit: "人/年" }
-                  ],
-                  features: [
-                    "覆盖全员的基础健康档案建立",
-                    "7×24小时在线全科医生问诊",
-                    "三甲医院重疾绿通协调服务",
-                    "基础心理健康测评与干预"
-                  ]
+                  title: "企康助力明道云打造健康组织",
+                  bullets: ["互联网行业面临的亚健康挑战", "高管与核心骨干的身心健康诉求", "系统性健康管理方案的必要性"]
                 },
                 {
-                  id: "pkg2",
-                  name: "全场景黑金尊享版（推荐）",
-                  price: "年度总预算估算：780万元",
-                  products: [
-                    { name: "高管专属就医绿通及陪诊", target: "高层员工", price: "3,500元", unit: "人/年" },
-                    { name: "MDT多学科顶尖专家会诊", target: "核心员工", price: "2,000元", unit: "人/年" },
-                    { name: "驻场医务室基础运营", target: "基层员工", price: "200元", unit: "人/年" }
-                  ],
-                  features: [
-                    "包含基础版的所有服务",
-                    "高管尊享线下全程陪诊与绿通",
-                    "MDT多学科顶尖专家会诊支持",
-                    "定制化驻场企业医务室运营",
-                    "全员EAP心理援助计划深度干预"
-                  ]
+                  title: "明道云专属企康保障方案",
+                  bullets: ["方案总览：18W预算下的最优解", "高管尊享绿通服务（解决就医痛点）", "全员健康档案建立（系统性管理起点）"]
+                },
+                {
+                  title: "平安银行生态赋能",
+                  bullets: ["平安健康+平安银行的品牌背书", "便捷的线上问诊与线下三甲网络", "专职健康管家服务保障落地"]
                 }
               ]
             }
           }
         ]);
         setIsTyping(false);
-      }, 3000);
+      }, 2500);
+      return;
+    } else if (text === "[重新推荐]") {
+      setIsTyping(true);
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_ask_more",
+            sender: "bot",
+            type: "text",
+            content: "请问您对套餐有哪些进一步的需求或调整建议？",
+            timestamp: new Date()
+          }
+        ]);
+        setAwaitingNewPkg(true);
+        setIsTyping(false);
+      }, 500);
+      return;
+    } else if (text.startsWith("[确认基本信息]")) {
+      // DO NOT add user message to hide it
+      const reasoningMsgId = Date.now().toString();
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在匹配推荐套餐...",
+        timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "分析基本信息与痛点...", status: "complete" },
+            { id: "2", text: "匹配标品套餐选项...", status: "loading" },
+            { id: "3", text: "生成套餐卡片...", status: "pending" }],
+        },
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any, i: number) =>
+                      i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+      }, 1000);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any) => ({ ...s, status: "complete" })),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_pkg",
+            sender: "bot",
+            type: "package_option_card",
+            content: "推荐标品套餐选项",
+            timestamp: new Date(),
+            data: {}
+          }
+        ]);
+        setIsTyping(false);
+      }, 2000);
+      return;
+    } else if (awaitingNewPkg && text) {
+      setAwaitingNewPkg(false); setPkgRetryCount(prev => prev + 1);
+      const newUserMsg: Message = { id: Date.now().toString() + "_user", sender: "user", type: "text", content: text, timestamp: new Date() };
+      setMessages((prev) => [...prev, newUserMsg]);
+      const reasoningMsgId = Date.now().toString() + "_reasoning";
+      const reasoningMsg: Message = {
+        id: reasoningMsgId,
+        sender: "bot",
+        type: "reasoning",
+        content: "正在根据新需求调整套餐...",
+        timestamp: new Date(),
+        data: {
+          steps: [
+            { id: "1", text: "分析新的套餐需求...", status: "complete" },
+            { id: "2", text: "重新匹配标品套餐...", status: "loading" },
+            { id: "3", text: "生成新套餐卡片...", status: "pending" }],
+        },
+      };
+      setMessages((prev) => [...prev, reasoningMsg]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any, i: number) =>
+                      i === 1 ? { ...s, status: "complete" } : i === 2 ? { ...s, status: "loading" } : s
+                    ),
+                  },
+                } : m
+          )
+        );
+      }, 1000);
+
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === reasoningMsgId ? {
+                  ...m,
+                  data: {
+                    ...m.data,
+                    steps: m.data.steps.map((s: any) => ({ ...s, status: "complete" })),
+                  },
+                } : m
+          )
+        );
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_pkg_new",
+            sender: "bot",
+            type: "package_option_card",
+            content: "推荐标品套餐选项",
+            timestamp: new Date(),
+            data: {
+              packages: [
+                {
+                  id: "pkg1",
+                  name: "基础健康保障版",
+                  products: [
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
+                  ],
+                  sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
+                },
+                {
+                  id: "pkg2",
+                  name: "全场景黑金尊享版",
+                  isRecommended: true,
+                  products: [
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
+                  ],
+                  sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
+                },
+                {
+                  id: "pkg3",
+                  name: "高管特权定制版",
+                  products: [
+                    { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
+                    { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                  ],
+                  sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
+                }
+              ]
+            }
+          }
+        ]);
+        setIsTyping(false);
+      }, 2000);
       return;
     } else if (awaitingStProductInfo && text.startsWith("[附件]")) {
       setAwaitingStProductInfo(false);
@@ -4566,8 +5004,7 @@ function AiChatWindow({
           steps: [
             { id: "1", text: "提取基本信息...", status: "loading" },
             { id: "2", text: "生成询问与补充信息...", status: "pending" },
-            { id: "3", text: "匹配标准套餐选项...", status: "pending" },
-          ],
+            { id: "3", text: "匹配标准套餐选项...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -4667,35 +5104,33 @@ function AiChatWindow({
                 {
                   id: "pkg1",
                   name: "基础健康保障版",
-                  price: "年度总预算估算：550万元",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
-                    { name: "核心骨干绿色就医通道", target: "核心员工", price: "1,200元", unit: "人/年" },
-                    { name: "企康基础健康档案系统", target: "基层员工", price: "100元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
                   ],
-                  features: [
-                    "覆盖全员的基础健康档案建立",
-                    "7×24小时在线全科医生问诊",
-                    "三甲医院重疾绿通协调服务",
-                    "基础心理健康测评与干预"
-                  ]
+                  sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
                 {
                   id: "pkg2",
-                  name: "全场景黑金尊享版（推荐）",
-                  price: "年度总预算估算：780万元",
+                  name: "全场景黑金尊享版",
+                  isRecommended: true,
                   products: [
-                    { name: "高管专属就医绿通及陪诊", target: "高层员工", price: "3,500元", unit: "人/年" },
-                    { name: "MDT多学科顶尖专家会诊", target: "核心员工", price: "2,000元", unit: "人/年" },
-                    { name: "驻场医务室基础运营", target: "基层员工", price: "200元", unit: "人/年" }
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
                   ],
-                  features: [
-                    "包含基础版的所有服务",
-                    "高管尊享线下全程陪诊与绿通",
-                    "MDT多学科顶尖专家会诊支持",
-                    "定制化驻场企业医务室运营",
-                    "全员EAP心理援助计划深度干预"
-                  ]
+                  sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
+                },
+                {
+                  id: "pkg3",
+                  name: "高管特权定制版",
+                  products: [
+                    { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
+                    { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                  ],
+                  sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
               ]
             }
@@ -4735,8 +5170,7 @@ function AiChatWindow({
             type: "text",
             content: "请点击下方“附件”按钮，上传待审查的材料文件。",
             timestamp: new Date(),
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 1000);
       return;
@@ -4761,8 +5195,7 @@ function AiChatWindow({
           steps: [
             { id: "1", text: "提取资质文件信息...", status: "loading" },
             { id: "2", text: "验证合同与发票要件...", status: "pending" },
-            { id: "3", text: "评估整体合规性...", status: "pending" },
-          ],
+            { id: "3", text: "评估整体合规性...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -4835,8 +5268,7 @@ function AiChatWindow({
             content: "企康项目材料智能审查结论",
             timestamp: new Date(),
             data: {},
-          },
-        ]);
+          }]);
         setIsTyping(false);
       }, 4500);
       return;
@@ -4873,8 +5305,7 @@ function AiChatWindow({
       setMessages((prev) => [
         ...prev.filter((m) => m.type !== "meeting_in_progress"),
         newUserMsg,
-        reasoningMsg,
-      ]);
+        reasoningMsg]);
       setIsTyping(false);
 
       setTimeout(() => {
@@ -4890,8 +5321,7 @@ function AiChatWindow({
                         text: "正在【同步至CRM系统】并生成纪要卡片...",
                         status: "done",
                       },
-                      { text: "会议纪要同步完成。", status: "done" },
-                    ],
+                      { text: "会议纪要同步完成。", status: "done" }],
                   },
                 }
               : m,
@@ -4914,13 +5344,11 @@ function AiChatWindow({
               ? [
                   "李总高度认可全球化战略下核心高管的健康保障刚需，提出要构建涵盖海内外的“医疗生命线”。",
                   "对于企康提出的“1+X定制体检与MDT多科会诊”，特别赞赏其北医体系的专业背书。",
-                  "要求不仅解决就医通道问题，更为庞大的研发工程师队伍引入体系化的减重与心理压力疏导（EAP）。",
-                ]
+                  "要求不仅解决就医通道问题，更为庞大的研发工程师队伍引入体系化的减重与心理压力疏导（EAP）。"]
               : [
                   "认可健康保障计划覆盖范围",
                   "关注理赔流程便捷性",
-                  "需提供理赔操作指南",
-                ],
+                  "需提供理赔操作指南"],
             tactics: isCEO
               ? `【客户维系建议】：
 1. 产品触达：在日常沟通中，结合客户需求与场景，适度推荐公司的重点/金牌产品信息，提升客户认知与兴趣；
@@ -4941,8 +5369,7 @@ function AiChatWindow({
                     task: "形成云南烟草全球化外派员工紧急救援方案指引",
                     assignee: "梁华耀",
                     deadline: "2026-05-12",
-                  },
-                ]
+                  }]
               : [
                   {
                     task: "准备理赔操作指南",
@@ -4958,14 +5385,12 @@ function AiChatWindow({
                     task: "跟进下次会议邀约",
                     assignee: "李经理",
                     deadline: "2025-05-13",
-                  },
-                ],
+                  }],
             cloudDocs: [
               {
                 name: "云南烟草集团 - 首次客户拜访会议纪要 - 20260424",
                 url: "#",
-              },
-            ],
+              }],
             syncStatus: "已同步至 CRM",
             todoStatus: "待办已发送",
           },
@@ -5084,8 +5509,7 @@ function AiChatWindow({
                       { text: "💰 步骤3：商机价值评估", status: "loading" },
                       { text: "⏳ 步骤4：投入与周期评估", status: "loading" },
                       { text: "🤝 步骤5：合作基础分析", status: "loading" },
-                      { text: "📊 优先级判断结论", status: "loading" },
-                    ],
+                      { text: "📊 优先级判断结论", status: "loading" }],
                   },
                 }
               : m,
@@ -5111,8 +5535,7 @@ function AiChatWindow({
                       {
                         text: "分析完成，为您推荐以下高优商机。",
                         status: "done",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -5138,15 +5561,13 @@ function AiChatWindow({
                   { label: "地域", value: "北京", match: true },
                   { label: "行业", value: "IT科技", match: true },
                   { label: "预算", value: "¥600万", match: true },
-                  { label: "任务缺口匹配", value: "全员体检", match: true },
-                ],
+                  { label: "任务缺口匹配", value: "全员体检", match: true }],
                 tags: [
                   "大型战略客户",
                   "高匹配度",
                   "高价值潜力",
                   "中长周期",
-                  "多区域合作机会",
-                ],
+                  "多区域合作机会"],
                 onSelect: () => {
                   if (onChatChange) onChatChange("maotai");
                 },
@@ -5162,15 +5583,13 @@ function AiChatWindow({
                   { label: "地域", value: "北京", match: true },
                   { label: "行业", value: "互联网", match: true },
                   { label: "预算", value: "¥260万", match: true },
-                  { label: "任务缺口匹配", value: "心理援助", match: true },
-                ],
+                  { label: "任务缺口匹配", value: "心理援助", match: true }],
                 tags: [
                   "互联网行业巨头",
                   "员工心理关怀强需",
                   "大型科技集团",
                   "中周期稳步推进",
-                  "深度属地协同",
-                ],
+                  "深度属地协同"],
               },
               {
                 id: 3,
@@ -5183,15 +5602,13 @@ function AiChatWindow({
                   { label: "地域", value: "北京", match: true },
                   { label: "行业", value: "高科技制造", match: true },
                   { label: "预算", value: "¥850万", match: true },
-                  { label: "任务缺口匹配", value: "全员体检", match: true },
-                ],
+                  { label: "任务缺口匹配", value: "全员体检", match: true }],
                 tags: [
                   "高科技制造头部",
                   "数字化能力匹配",
                   "大型总部客户",
                   "长周期精细化",
-                  "全国联动潜力",
-                ],
+                  "全国联动潜力"],
               },
               {
                 id: 4,
@@ -5204,15 +5621,13 @@ function AiChatWindow({
                   { label: "地域", value: "北京", match: true },
                   { label: "行业", value: "出行服务", match: true },
                   { label: "预算", value: "¥1200万", match: true },
-                  { label: "任务缺口匹配", value: "灵活就业保障", match: true },
-                ],
+                  { label: "任务缺口匹配", value: "灵活就业保障", match: true }],
                 tags: [
                   "灵活就业新生态",
                   "定制化保障高配",
                   "全域型大客户",
                   "中短周期协同",
-                  "深度渗透潜力",
-                ],
+                  "深度渗透潜力"],
               },
               {
                 id: 5,
@@ -5225,17 +5640,14 @@ function AiChatWindow({
                   { label: "地域", value: "北京", match: true },
                   { label: "行业", value: "云计算", match: true },
                   { label: "预算", value: "¥400万", match: true },
-                  { label: "任务缺口匹配", value: "高端补充医疗", match: true },
-                ],
+                  { label: "任务缺口匹配", value: "高端补充医疗", match: true }],
                 tags: [
                   "高管福利定制标杆",
                   "补充医疗强刚需",
                   "大型高端客户",
                   "短周期快速见效",
-                  "重点区域深耕",
-                ],
-              },
-            ],
+                  "重点区域深耕"],
+              }],
           },
         };
         setMessages((prev) => [...prev, leadCardMsg]);
@@ -5270,8 +5682,7 @@ function AiChatWindow({
                       {
                         text: "自动调用领取商机完成后台数据打标...",
                         status: "loading",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -5295,8 +5706,7 @@ function AiChatWindow({
                       {
                         text: "认领成功，已进入您的跟进列表。",
                         status: "done",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -5327,8 +5737,7 @@ function AiChatWindow({
                 label: "CRM标签",
                 value:
                   "大型战略客户-高匹配度-高价值潜力-中长周期-多区域合作机会",
-              },
-            ],
+              }],
             nextStep: "建议下一步：调用“情报侦察兵”查看客户深度档案。",
             actionButton: {
               label: "跳转群聊",
@@ -5457,8 +5866,7 @@ function AiChatWindow({
         data: {
           steps: [
             { text: "调用“关键决策人分析技能”...", status: "done" },
-            { text: "提取多维高管履历信息...", status: "loading" },
-          ],
+            { text: "提取多维高管履历信息...", status: "loading" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -5477,8 +5885,7 @@ function AiChatWindow({
                         status: "done",
                       },
                       { text: "提取多维高管履历信息...", status: "done" },
-                      { text: "生成决策链图谱分析...", status: "loading" },
-                    ],
+                      { text: "生成决策链图谱分析...", status: "loading" }],
                   },
                 }
               : m,
@@ -5499,8 +5906,7 @@ function AiChatWindow({
                         status: "done",
                       },
                       { text: "提取多维高管履历信息...", status: "done" },
-                      { text: "生成决策链图谱分析...", status: "done" },
-                    ],
+                      { text: "生成决策链图谱分析...", status: "done" }],
                   },
                 }
               : m,
@@ -5554,8 +5960,7 @@ function AiChatWindow({
                       {
                         text: "聚合多类外部信息工具，提取背景数据...",
                         status: "loading",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -5579,8 +5984,7 @@ function AiChatWindow({
                       {
                         text: "按企康客户档案标准维度输出结构化报告...",
                         status: "loading",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -5605,8 +6009,7 @@ function AiChatWindow({
                         text: "按企康客户档案标准维度输出结构化报告...",
                         status: "done",
                       },
-                      { text: "报告生成完成。", status: "done" },
-                    ],
+                      { text: "报告生成完成。", status: "done" }],
                   },
                 }
               : m,
@@ -5629,8 +6032,7 @@ function AiChatWindow({
               { label: "注册资本", value: "25000 万港币" },
               { label: "成立日期", value: "1992-12-24" },
               { label: "企业类型", value: "外商投资企业" },
-              { label: "人员规模", value: "70000+人(全球)" },
-            ],
+              { label: "人员规模", value: "70000+人(全球)" }],
             executives: [
               {
                 name: "张总",
@@ -5641,8 +6043,7 @@ function AiChatWindow({
                 name: "刘军",
                 title: "执行副总裁",
                 background: "云南烟草中国区总裁，负责中国区业务及“日出东方”战略。",
-              },
-            ],
+              }],
             details: [
               {
                 label: "行业与竞争格局",
@@ -5693,11 +6094,9 @@ function AiChatWindow({
                 label: "结论与建议",
                 value:
                   "云南烟草（北京）对员工健康福利提升有刚性预算且诉求明确。建议以“定制化、数字化员工健康管理中台”为切入点，打通体检、医疗、保险闭环，优先主推“高管及研发骨干专属检后管理+绿通”。",
-              },
-            ],
+              }],
             ownership: [
-              { name: "云南烟草集团（Tobacco Group）", percentage: 100 },
-            ],
+              { name: "云南烟草集团（Tobacco Group）", percentage: 100 }],
           },
         };
         setMessages((prev) => [...prev, reportMsg]);
@@ -5736,8 +6135,7 @@ function AiChatWindow({
                       {
                         text: "生成历史合作与产品覆盖深度分析报告",
                         status: "loading",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -5757,8 +6155,7 @@ function AiChatWindow({
                       {
                         text: "生成历史合作与产品覆盖深度分析报告",
                         status: "done",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -5797,8 +6194,7 @@ function AiChatWindow({
             {
               text: "遵循企康策略制定标准，触发市场分析...",
               status: "loading",
-            },
-          ],
+            }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -5819,8 +6215,7 @@ function AiChatWindow({
                       {
                         text: "分步调用客户画像、产品能力库、竞品对比...",
                         status: "loading",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -5847,8 +6242,7 @@ function AiChatWindow({
                       {
                         text: "生成符合规范的策略建议报告...",
                         status: "loading",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -5873,8 +6267,7 @@ function AiChatWindow({
                         status: "done",
                       },
                       { text: "生成符合规范的策略建议报告...", status: "done" },
-                      { text: "策略方案生成完成。", status: "done" },
-                    ],
+                      { text: "策略方案生成完成。", status: "done" }],
                   },
                 }
               : m,
@@ -5899,8 +6292,7 @@ function AiChatWindow({
             industryTrends: [
               "AI重塑工作模式",
               "核心人才留存压力大",
-              "注重ESG和ESG评级",
-            ],
+              "注重ESG和ESG评级"],
             competitors: [
               {
                 name: "爱康集团",
@@ -5911,13 +6303,11 @@ function AiChatWindow({
                 name: "通用技术国中康健",
                 advantage: "央国企/医院体系健康管理平台",
                 threat: "医疗权威性, 政企关系资源",
-              },
-            ],
+              }],
             painPoints: [
               "全球供应链节点复杂，成本控制压力大",
               "多元业务线协同效率有待提升",
-              "高管团队频受亚健康困扰，风险加剧",
-            ],
+              "高管团队频受亚健康困扰，风险加剧"],
             adaptabilityScore: 92,
             products: [
               {
@@ -5950,13 +6340,11 @@ function AiChatWindow({
                 matchScore: 90,
                 pitch: `【痛点切入】“IT行业高强度带来的长远问题是失眠、焦虑和超重。单纯的身体检查无法解决这些痛点。”
 【方案价值】“我们引入了『国家体重管理行动』匹配的会员制减重服务，提供1V1真人解答和司美格鲁肽减肥包，联动智能穿戴设备进行数据追踪；同时配有专业的心理咨询服务模块。”`,
-              },
-            ],
+              }],
             actions: [
               "第一步：联系HR及福利采购团队对接初步需求",
               "第二步：准备平安企康产品定制化演示Demo",
-              "第三步：跟进反馈，邀请参与高管健康研讨沙龙",
-            ],
+              "第三步：跟进反馈，邀请参与高管健康研讨沙龙"],
           },
         };
         setMessages((prev) => [...prev, strategyMsg]);
@@ -5999,8 +6387,7 @@ function AiChatWindow({
             {
               text: "生成【内部】云南烟草集团 - 招投标交流群...",
               status: "loading",
-            },
-          ],
+            }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -6018,8 +6405,7 @@ function AiChatWindow({
                         text: "生成【内部】云南烟草集团 - 招投标交流群...",
                         status: "done",
                       },
-                      { text: "邀请相关负责人进入群聊...", status: "loading" },
-                    ],
+                      { text: "邀请相关负责人进入群聊...", status: "loading" }],
                   },
                 }
               : m,
@@ -6039,8 +6425,7 @@ function AiChatWindow({
                         text: "生成【内部】云南烟草集团 - 招投标交流群...",
                         status: "done",
                       },
-                      { text: "邀请相关负责人进入群聊...", status: "done" },
-                    ],
+                      { text: "邀请相关负责人进入群聊...", status: "done" }],
                   },
                 }
               : m,
@@ -6081,8 +6466,7 @@ function AiChatWindow({
             {
               text: "依照企康营销筹备标准，调用筹备讨论助理自动建群...",
               status: "loading",
-            },
-          ],
+            }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -6104,8 +6488,7 @@ function AiChatWindow({
                         text: "正在拉取相关负责人：肖姣 (产品经理)、梁镇宁、梁华耀...",
                         status: "done",
                       },
-                      { text: "筹备组已创建完成。", status: "done" },
-                    ],
+                      { text: "筹备组已创建完成。", status: "done" }],
                   },
                 }
               : m,
@@ -6136,8 +6519,7 @@ function AiChatWindow({
                 name: "梁华耀",
                 role: "服务团队",
                 avatar: "https://picsum.photos/seed/lhy/100/100",
-              },
-            ],
+              }],
             status: "已创建",
             actionButton: {
               label: "进入群聊",
@@ -6183,8 +6565,7 @@ function AiChatWindow({
             {
               text: "调用平安纪要大师，开启会议语音转写...",
               status: "loading",
-            },
-          ],
+            }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -6276,8 +6657,7 @@ function AiChatWindow({
                   data: {
                     steps: [
                       { text: "执行标书审核...", status: "done" },
-                      { text: "审核通过结果通知...", status: "loading" },
-                    ],
+                      { text: "审核通过结果通知...", status: "loading" }],
                   },
                 }
               : m,
@@ -6295,8 +6675,7 @@ function AiChatWindow({
                     steps: [
                       { text: "执行标书审核...", status: "done" },
                       { text: "审核通过结果通知...", status: "done" },
-                      { text: "自动发起用印审批流程...", status: "loading" },
-                    ],
+                      { text: "自动发起用印审批流程...", status: "loading" }],
                   },
                 }
               : m,
@@ -6314,8 +6693,7 @@ function AiChatWindow({
                     steps: [
                       { text: "执行标书审核...", status: "done" },
                       { text: "审核通过结果通知...", status: "done" },
-                      { text: "自动发起用印审批流程...", status: "done" },
-                    ],
+                      { text: "自动发起用印审批流程...", status: "done" }],
                   },
                 }
               : m,
@@ -6335,14 +6713,12 @@ function AiChatWindow({
             details: [
               "资质文件：齐全且在有效期内",
               "报价范围：符合公司指导价标准",
-              "法务条款：无异常风险条款",
-            ],
+              "法务条款：无异常风险条款"],
             sealProcess: [
               { step: "发起申请", status: "done", time: "10:00" },
               { step: "部门主管审批", status: "done", time: "10:15" },
               { step: "法务合规审批", status: "done", time: "10:30" },
-              { step: "印章管理员盖章", status: "done", time: "11:00" },
-            ],
+              { step: "印章管理员盖章", status: "done", time: "11:00" }],
           },
         };
         setMessages((prev) => [...prev, complianceMsg]);
@@ -6369,8 +6745,7 @@ function AiChatWindow({
             {
               text: "开启主动服务模式，监测外部新闻舆情...",
               status: "loading",
-            },
-          ],
+            }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -6391,8 +6766,7 @@ function AiChatWindow({
                       {
                         text: "生成标准化动态情报与互动话术...",
                         status: "loading",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -6416,8 +6790,7 @@ function AiChatWindow({
                         text: "生成标准化动态情报与互动话术...",
                         status: "done",
                       },
-                      { text: "监控助手已就绪。", status: "done" },
-                    ],
+                      { text: "监控助手已就绪。", status: "done" }],
                   },
                 }
               : m,
@@ -6438,8 +6811,7 @@ function AiChatWindow({
                 answer: `【黑金计划理赔时效说明】
 1. 标准理赔：资料齐全后2个工作日内完成审核；
 2. 闪赔服务：支持线上申请，最快2小时到账。`,
-              },
-            ],
+              }],
             news: [
               {
                 title: "云南烟草集团加大医疗健康投资",
@@ -6450,8 +6822,7 @@ function AiChatWindow({
                 title: "云南烟草高管团队调整",
                 date: "2026-03-20",
                 source: "财经网",
-              },
-            ],
+              }],
             internalSync: "健康保障计划已通过初审，下周三输出最终报价。",
             pushTargets: ["客户经理", "跟进群"],
             suggestedAction: {
@@ -6770,7 +7141,7 @@ function AiChatWindow({
               prompts: {
                 拜访材料生成:
                   "我要去拜访云南烟草，帮我准备拜访材料",
-                标准产品推荐: `我要给【XXX客户名称】写一个标品营销方案，预算大概是【XXX预算（范围）】`,
+                标准产品推荐: `我是平安银行的企康销售经理，要给明道云写一个标品营销方案，预算大概是18W`,
                 明星方案匹配: "#明星方案匹配#",
                 案例亮点提炼: "#案例亮点提炼#",
                 竞品多维对标: "#竞品多维对标#",
@@ -6826,8 +7197,7 @@ function AiChatWindow({
                 报销材料审核: "确认执行报销审核。",
                 复核校验: "请帮我复核所有报销申请，确认是否存在异常。",
               },
-            },
-          ].map((expert, idx) => {
+            }].map((expert, idx) => {
             const isCurrent = currentExpert?.name === expert.name;
             const isExpanded = expandedExpert === expert.name;
 
@@ -7006,6 +7376,8 @@ function GroupChatWindow({
     useState(false);
   const [awaitingSurveyClient, setAwaitingSurveyClient] = useState(false);
   const [awaitingStProductInfo, setAwaitingStProductInfo] = useState(false);
+  const [awaitingNewPkg, setAwaitingNewPkg] = useState(false);
+  const [pkgRetryCount, setPkgRetryCount] = useState(1);
   const [awaitingBidDocGeneration, setAwaitingBidDocGeneration] =
     useState(false);
   const [awaitingBidDocInspection, setAwaitingBidDocInspection] =
@@ -7033,7 +7405,7 @@ function GroupChatWindow({
       title: "拜访材料生成",
       prompt: "我要去拜访云南烟草，帮我准备拜访材料",
     },
-    { title: "标准产品推荐", prompt: `我要给【XXX客户名称】写一个标品营销方案，预算大概是【XXX预算（范围）】` },
+    { title: "标准产品推荐", prompt: `我是平安银行的企康销售经理，要给明道云写一个标品营销方案，预算大概是18W` },
     { title: "明星方案匹配", prompt: "#明星方案匹配#" },
     { title: "案例亮点提炼", prompt: "#案例亮点提炼#" },
     { title: "竞品多维对标", prompt: "#竞品多维对标#" },
@@ -7051,8 +7423,7 @@ function GroupChatWindow({
       prompt: "请帮我审核以下报销材料。",
     },
     { title: "报销材料审核", prompt: "确认执行报销审核。" },
-    { title: "复核校验", prompt: "请帮我复核所有报销申请，确认是否存在异常。" },
-  ];
+    { title: "复核校验", prompt: "请帮我复核所有报销申请，确认是否存在异常。" }];
 
   const handleSkillClickLocal = (skill: { title: string; prompt: string }) => {
     setShowSkillMenu(false);
@@ -7310,8 +7681,7 @@ function GroupChatWindow({
         steps: [
           { text: "执行标书审核...", status: "done" },
           { text: "审核通过结果通知...", status: "done" },
-          { text: "自动发起用印审批流程...", status: "done" },
-        ],
+          { text: "自动发起用印审批流程...", status: "done" }],
       },
     });
     addMsg({
@@ -7325,14 +7695,12 @@ function GroupChatWindow({
         details: [
           "资质文件：齐全且在有效期内",
           "报价范围：符合公司指导价标准",
-          "法务条款：无异常风险条款",
-        ],
+          "法务条款：无异常风险条款"],
         sealProcess: [
           { step: "发起申请", status: "done", time: "10:00" },
           { step: "部门主管审批", status: "done", time: "10:15" },
           { step: "法务合规审批", status: "done", time: "10:30" },
-          { step: "印章管理员盖章", status: "done", time: "11:00" },
-        ],
+          { step: "印章管理员盖章", status: "done", time: "11:00" }],
       },
     });
     addMsg({
@@ -7790,8 +8158,7 @@ function GroupChatWindow({
               text: "从知识库中快速检索历史案例...",
               status: "loading",
             },
-            { id: "2", text: "提炼历史案例卖点和亮点...", status: "pending" },
-          ],
+            { id: "2", text: "提炼历史案例卖点和亮点...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -7864,8 +8231,7 @@ function GroupChatWindow({
           steps: [
             { id: "1", text: "分析 6+1 服务方案...", status: "loading" },
             { id: "2", text: "提炼差异化优势...", status: "pending" },
-            { id: "3", text: "分析销售打法...", status: "pending" },
-          ],
+            { id: "3", text: "分析销售打法...", status: "pending" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -7985,8 +8351,7 @@ function GroupChatWindow({
         '产品能力匹配：从补充医疗、委托基金管理、体检服务、慢病管理、就医协助等产品中筛选适配方案。',
         '方案组合设计：结合客户特点与预算情况，形成可落地的产品组合及服务模式。',
         '价值体系提炼：从政策合规、员工关怀、健康企业建设、ESG价值及企业文化建设等维度提炼方案价值。',
-        '拜访策略生成：输出标杆案例、产品推荐、价值亮点及沟通重点，形成首次拜访材料。',
-      ];
+        '拜访策略生成：输出标杆案例、产品推荐、价值亮点及沟通重点，形成首次拜访材料。'];
       const reasoningMsg = {
         id: reasoningMsgId,
         sender: "bot",
@@ -8344,8 +8709,7 @@ function GroupChatWindow({
               id: "3",
               text: "梳理体检需求要点及废标风险...",
               status: "pending",
-            },
-          ],
+            }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -8679,8 +9043,7 @@ function GroupChatWindow({
               id: "3",
               text: "梳理自保模式转委托模式合规要求与推进路径...",
               status: "pending",
-            },
-          ],
+            }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -8878,8 +9241,7 @@ function GroupChatWindow({
                 date: "2026-04-14",
                 owner: "李经理",
                 status: "pending",
-              },
-            ],
+              }],
             documents: [],
             nextStep: "请各位负责人按时提交相关材料。",
           },
@@ -8942,15 +9304,13 @@ function GroupChatWindow({
                 { label: "地域", value: "贵州", match: true },
                 { label: "行业", value: "白酒快消", match: true },
                 { label: "预算", value: "¥500万+", match: true },
-                { label: "任务缺口匹配", value: "黑金套餐", match: true },
-              ],
+                { label: "任务缺口匹配", value: "黑金套餐", match: true }],
               tags: [
                 "大型战略账户",
                 "高潜力价值",
                 "黑金套餐高配",
                 "中长周期规划",
-                "全域联动机会",
-              ],
+                "全域联动机会"],
             },
             {
               id: "2",
@@ -8964,15 +9324,13 @@ function GroupChatWindow({
                 { label: "地域", value: "四川", match: false },
                 { label: "行业", value: "白酒快消", match: true },
                 { label: "预算", value: "¥300万+", match: true },
-                { label: "任务缺口匹配", value: "供应链升级", match: true },
-              ],
+                { label: "任务缺口匹配", value: "供应链升级", match: true }],
               tags: [
                 "核心存量客户",
                 "金融业务强匹配",
                 "高价值金融协同",
                 "短周期落地",
-                "深度供应链切入",
-              ],
+                "深度供应链切入"],
             },
             {
               id: "3",
@@ -8986,15 +9344,13 @@ function GroupChatWindow({
                 { label: "地域", value: "江苏", match: true },
                 { label: "行业", value: "白酒快消", match: true },
                 { label: "预算", value: "¥200万+", match: true },
-                { label: "任务缺口匹配", value: "智慧园区", match: true },
-              ],
+                { label: "任务缺口匹配", value: "智慧园区", match: true }],
               tags: [
                 "智慧园区标杆",
                 "数字化需求明确",
                 "中型特色客户",
                 "中短周期推进",
-                "标准化复制潜力",
-              ],
+                "标准化复制潜力"],
             },
             {
               id: "4",
@@ -9008,15 +9364,13 @@ function GroupChatWindow({
                 { label: "地域", value: "四川", match: false },
                 { label: "行业", value: "白酒快消", match: true },
                 { label: "预算", value: "¥800万+", match: true },
-                { label: "任务缺口匹配", value: "经销商融资", match: true },
-              ],
+                { label: "任务缺口匹配", value: "经销商融资", match: true }],
               tags: [
                 "全国布局大客户",
                 "供应链金融强需",
                 "高复杂度方案",
                 "长周期精细化",
-                "多区域联合推进",
-              ],
+                "多区域联合推进"],
             },
             {
               id: "5",
@@ -9030,17 +9384,14 @@ function GroupChatWindow({
                 { label: "地域", value: "山西", match: false },
                 { label: "行业", value: "白酒快消", match: true },
                 { label: "预算", value: "¥150万+", match: true },
-                { label: "任务缺口匹配", value: "员工福利", match: true },
-              ],
+                { label: "任务缺口匹配", value: "员工福利", match: true }],
               tags: [
                 "企业健康管理",
                 "员工福利刚需",
                 "业务匹配度高",
                 "中短周期见效",
-                "属地运营深耕",
-              ],
-            },
-          ],
+                "属地运营深耕"],
+            }],
         },
       };
       setTimeout(() => {
@@ -9070,8 +9421,7 @@ function GroupChatWindow({
             {
               label: "CRM标签",
               value: "大型战略客户-高匹配度-高价值潜力-中长周期-多区域合作机会",
-            },
-          ],
+            }],
           nextStep: "点击右侧「看档案」调研完整背景信息。",
         },
       };
@@ -9101,8 +9451,7 @@ function GroupChatWindow({
         timestamp: new Date(),
         data: {
           steps: [
-            { text: `正确命中【${skillName}】技能...`, status: "loading" },
-          ],
+            { text: `正确命中【${skillName}】技能...`, status: "loading" }],
         },
       };
       setMessages((prev) => [...prev, reasoningMsg]);
@@ -9123,8 +9472,7 @@ function GroupChatWindow({
                       {
                         text: "正在调取云南烟草集团全量工商信息...",
                         status: "loading",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -9151,8 +9499,7 @@ function GroupChatWindow({
                       {
                         text: "正在通过企康大数据分析其健康产业布局...",
                         status: "loading",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -9187,8 +9534,7 @@ function GroupChatWindow({
                       {
                         text: `【${skillName}】已为您生成云南烟草集团全面背景报告。`,
                         status: "done",
-                      },
-                    ],
+                      }],
                   },
                 }
               : m,
@@ -9224,12 +9570,10 @@ function GroupChatWindow({
                 metrics: [
                   { label: "注册资本", value: "25000 万港币" },
                   { label: "员工规模", value: "7.0 万+" },
-                  { label: "行业地位", value: "PC No.1" },
-                ],
+                  { label: "行业地位", value: "PC No.1" }],
                 executives: [
                   { name: "张总", title: "董事长兼CEO", role: "决策者" },
-                  { name: "刘军", title: "执行副总裁", role: "执行者" },
-                ],
+                  { name: "刘军", title: "执行副总裁", role: "执行者" }],
                 details: [
                   {
                     label: "行业与竞争格局",
@@ -9265,8 +9609,7 @@ function GroupChatWindow({
                     label: "未来机会与增长点",
                     value:
                       "随着“健康中国2030”战略推进，企业对员工健康的重视度达到新高度；数字化福利平台需求爆发。",
-                  },
-                ],
+                  }],
               },
             }),
           };
