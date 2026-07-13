@@ -6937,7 +6937,7 @@ function AiChatWindow({
         </div>
 
         {/* Input Area */}
-        <div className="bg-white border-t border-gray-200 p-4 flex-shrink-0 relative z-10">
+        <div className="bg-white border-t border-gray-200 p-2 flex-shrink-0 relative z-10">
           <div className="flex items-center space-x-4 mb-2">
             <input
               type="file"
@@ -7053,7 +7053,7 @@ function AiChatWindow({
                 }
               }}
               placeholder="输入指令，如：“我可以领取的商机” 或点击上方快捷指令"
-              className="w-full h-16 bg-transparent resize-none outline-none text-sm text-gray-800"
+              className="w-full h-8 bg-transparent resize-none outline-none text-sm text-gray-800"
             />
             <button
               onClick={() => {
