@@ -8723,9 +8723,35 @@ function BasicInfoFormCard({ onSend, data }: { onSend?: (text: string) => void, 
   );
 }
 
+
+function SupplementaryInfoFormCard({ onSend, data }: { onSend?: (text: string) => void, data?: any }) {
+  return <div className="mt-2 p-4 bg-white border border-gray-200 rounded-xl shadow-sm text-center text-gray-500">
+    补充信息卡片已加载
+  </div>;
+}
+
 function PackageOptionCard({ data, onSend }: { data?: any, onSend?: (text: string) => void }) {
-  const [selectedId, setSelectedId] = React.useState<string | null>(null); // Default to recommended
+  const [selectedId, setSelectedId] = React.useState<string | null>(null);
   const [submitted, setSubmitted] = React.useState(false);
+  const [expandedFeatures, setExpandedFeatures] = React.useState<Record<string, boolean>>({});
+
+  const toggleFeatures = (pkgId: string, idx: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const key = `${pkgId}-${idx}`;
+    setExpandedFeatures(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const featureDetailsMap: Record<string, string> = {
+    "高管年度深度体检": "平安家医图文问诊*不限次\n门诊预约协助服务*1次\n专人1V1陪诊服务*1次\n名医视频问诊*1次\n健康护航大礼包*1次\n购药优惠券*12次\n福安好物专区*不限次",
+    "核心骨干绿色就医": "门诊预约协助 (T+4): 31省321市\n普通陪诊: 29省234市\n全国住院安排协助: 31省322市",
+    "入职体检套餐（基础）": "专科医生图文问诊5次\n幽门螺旋杆菌检测1份\n肺结节居家检测服务1份",
+    "高端私立医院VIP体检": "家庭医生图文问诊-副高及以上(年度会员)\n家庭医生音视频咨询30分钟\n专科医生实时音视频咨询2次\n名医三方音视频咨询1年无限次\n名医门诊预约协助3次\n名医住院安排协助1次\n健康定制好礼1次\n健康送到家, 每季度一次\n专属小秘书7*12线上服务",
+    "三甲医院专家特需门诊": "名医门诊/住院安排: 30省90+市\n家庭医生音视频咨询(主治级)*30分钟\n门诊预约协助(T+7)*2次\n检查安排协助(六城)*1次\n住院专属护工服务(普通护工)*3次\n全国住院安排协助*1次\n基础照护上门服务*3次\n普通陪诊人员上门接送(双程)*1次",
+    "家属共享健康档案及问诊": "门诊预约协助 (T+7)*2次\n普通陪诊*1次\n家庭医生图文问诊-主治及以下 (年度会员)\n企业健康室 (升级版)\n全额抵扣券-小药箱\n心理健康测评 不限次\n心理图文咨询 2次\n心理电话咨询 1次",
+    "海外重疾就医协助及随诊": "家庭医生图文问诊-主治及以下(年度会员)\n企业健康室 (基础版)\n门诊预约协助(T+4)*3次\n普通陪诊*3次\n智享洁牙服务*1次\n药品券(满100减50)*6张\n就医服务等待期30天",
+    "专属私人健康管家（7x24）": "门诊预约协助(T+4): 31省321市\n普通陪诊: 29省234市\n智享洁牙: 31省300+市\n心理健康测评 不限次\n心理图文咨询 2次\n心理电话咨询 1次\n保健医生+心理图文咨询*20次\n心理电话咨询(外部)*3次",
+    "家族基因筛查及抗衰方案": "AED急救技能培训*8小时\nAED专题讲座*2小时\n平安家医图文问诊*不限次\n门诊预约协助服务*1次\n住院协助服务*1次\n名医视频问诊*3次\n专人1V1陪诊服务*3次"
+  };
 
   const defaultPackages = [
     {
@@ -8761,7 +8787,16 @@ function PackageOptionCard({ data, onSend }: { data?: any, onSend?: (text: strin
     }
   ];
 
-  const packages = data?.packages && data.packages.length > 0 ? data.packages : defaultPackages;
+  let packages = data?.packages && data.packages.length > 0 ? data.packages : defaultPackages;
+  
+  // Inject features detail
+  packages = packages.map((pkg: any) => ({
+    ...pkg,
+    products: pkg.products?.map((prod: any) => ({
+      ...prod,
+      featuresDetail: prod.featuresDetail || featureDetailsMap[prod.name]
+    }))
+  }));
 
   const handleGenerate = () => {
     setSubmitted(true);
@@ -8793,7 +8828,7 @@ function PackageOptionCard({ data, onSend }: { data?: any, onSend?: (text: strin
                 className={`relative border rounded-lg transition-all duration-200 cursor-pointer flex flex-col ${isSelected ? 'border-orange-500 shadow-sm' : 'border-gray-200 hover:border-orange-300'}`}
               >
                 {pkg.isRecommended && (
-                  <div className="absolute top-0 left-0 -mt-3 ml-4">
+                  <div className="absolute top-0 left-0 -mt-3 ml-4 z-10">
                     <div className="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded shadow-sm flex items-center">
                       <ThumbsUp className="w-3 h-3 mr-1" />
                       推荐
@@ -8813,21 +8848,48 @@ function PackageOptionCard({ data, onSend }: { data?: any, onSend?: (text: strin
                     <table className="w-full text-sm text-left">
                       <thead className="bg-gray-50/50 text-orange-600/80 text-[13px]">
                         <tr>
-                          <th className="px-5 py-3 font-bold border-b border-gray-100">产品名称</th>
-                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-28">适用人群</th>
-                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-28">单价</th>
-                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-28">计价方式</th>
+                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-1/4">产品名称</th>
+                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-1/6">适用人群</th>
+                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-1/6">单价</th>
+                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-1/6">计价方式</th>
+                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-1/6">权益</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-50">
-                        {pkg.products.map((prod: any, idx: number) => (
-                          <tr key={idx} className="hover:bg-gray-50/30">
-                            <td className="px-5 py-3 text-gray-700 font-medium">{prod.name}</td>
-                            <td className="px-5 py-3 text-gray-600 text-[13px]">{prod.target}</td>
-                            <td className="px-5 py-3 text-gray-800 font-mono text-[13px]">{prod.price}</td>
-                            <td className="px-5 py-3 text-gray-500 text-[13px]">{prod.unit}</td>
-                          </tr>
-                        ))}
+                        {pkg.products.map((prod: any, idx: number) => {
+                          const key = `${pkg.id}-${idx}`;
+                          const isExpanded = expandedFeatures[key];
+                          return (
+                            <React.Fragment key={idx}>
+                              <tr className="hover:bg-gray-50/30">
+                                <td className="px-5 py-3 text-gray-700 font-medium">{prod.name}</td>
+                                <td className="px-5 py-3 text-gray-600 text-[13px] whitespace-nowrap">{prod.target}</td>
+                                <td className="px-5 py-3 text-gray-800 font-mono text-[13px] whitespace-nowrap">{prod.price}</td>
+                                <td className="px-5 py-3 text-gray-500 text-[13px] whitespace-nowrap">{prod.unit}</td>
+                                <td className="px-5 py-3">
+                                  {prod.featuresDetail && (
+                                    <button 
+                                      onClick={(e) => toggleFeatures(pkg.id, idx, e)}
+                                      className="text-orange-500 hover:text-orange-600 flex items-center text-[13px]"
+                                    >
+                                      {isExpanded ? "收起" : "展开"}
+                                      {isExpanded ? <ChevronUp className="w-3 h-3 ml-1" /> : <ChevronDown className="w-3 h-3 ml-1" />}
+                                    </button>
+                                  )}
+                                </td>
+                              </tr>
+                              {isExpanded && prod.featuresDetail && (
+                                <tr className="bg-orange-50/30">
+                                  <td colSpan={5} className="px-5 py-3">
+                                    <div className="text-gray-600 text-[12px] leading-relaxed whitespace-pre-wrap pl-3 border-l-2 border-orange-300 ml-2 py-1">
+                                      {prod.featuresDetail}
+                                    </div>
+                                  </td>
+                                </tr>
+                              )}
+                            </React.Fragment>
+                          );
+                        })}
                       </tbody>
                     </table>
                   </div>
@@ -8844,193 +8906,32 @@ function PackageOptionCard({ data, onSend }: { data?: any, onSend?: (text: strin
                   </div>
                 )}
               </div>
-            )
+            );
           })}
         </div>
-        <div className="flex justify-center gap-4">
-          <button
-            onClick={handleGenerate}
-            disabled={!selectedId || submitted}
-            className={`flex-1 max-w-[200px] py-3 rounded text-sm transition-colors flex items-center justify-center gap-2 ${submitted ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : selectedId ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'bg-orange-300 text-white cursor-not-allowed'}`}
-          >
-            生成方案
-          </button>
-          <button
-            onClick={handleRecommendAgain}
-            disabled={submitted}
-            className={`flex-1 max-w-[200px] py-3 rounded text-sm transition-colors flex items-center justify-center gap-2 ${submitted ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'}`}
-          >
-            重新推荐
-          </button>
-        </div>
+        
+        {!submitted && (
+          <div className="flex space-x-4 mt-6">
+            <button
+              disabled={!selectedId}
+              onClick={handleGenerate}
+              className={`flex-1 py-3 px-4 rounded-xl font-bold flex items-center justify-center transition-all duration-200 shadow-sm ${selectedId ? 'bg-orange-500 text-white hover:bg-orange-600 hover:shadow-md' : 'bg-gray-100 text-gray-400 cursor-not-allowed'}`}
+            >
+              <Presentation className="w-5 h-5 mr-2" />
+              生成标品方案PPT
+            </button>
+            <button
+              onClick={handleRecommendAgain}
+              className="px-6 py-3 bg-white border-2 border-gray-200 text-gray-600 rounded-xl font-bold hover:bg-gray-50 transition-all duration-200 flex items-center shadow-sm"
+            >
+              不满意，换一换
+            </button>
+          </div>
+        )}
       </div>
     </div>
-  )
+  );
 }
-function SupplementaryInfoFormCard({ onSend, data }: { onSend?: (text: string) => void, data?: any }) {
-  const [formData, setFormData] = React.useState({
-    painPoints: [] as string[],
-    orgStructure: "省级公司本部，含办公室、财务、销售、烟叶、专卖、信息中心等职能部门",
-    personnelStructure: "省级公司管理层+各部门员工",
-    genderStructure: "男女比例约6:4",
-    jobStructure: "管理类、技术类、销售类、行政类",
-    notes: "烟草行业属于特殊体制内行业，员工福利偏好稳定全面",
-  });
-  const [submitted, setSubmitted] = React.useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  const dropdownRef = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleIgnore = () => {
-    setSubmitted(true);
-    if(onSend) onSend("[忽略补充信息] 直接生成标品营销方案大纲和PPT");
-  };
-
-  const handleSubmit = () => {
-    setSubmitted(true);
-    if(onSend) onSend("[已提交补充信息] 根据补充信息重新推荐标品套餐");
-  }
-
-  const togglePainPoint = (val: string) => {
-    if (submitted) return;
-    setFormData(prev => ({
-      ...prev,
-      painPoints: prev.painPoints.includes(val) ? prev.painPoints.filter(p => p !== val) : [...prev.painPoints, val]
-    }));
-  };
-
-  const painPointOptions = ["常见心血管疾病", "颈椎/腰椎等职业病", "心理压力大/焦虑", "癌症发病率偏高"];
-
-  return (
-    <div className="mt-8 w-full max-w-3xl bg-white border border-gray-100 rounded-xl p-8 shadow-sm relative">
-      <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-white border border-gray-100 shadow-sm rounded-full flex items-center justify-center text-gray-500 hover:text-gray-700 cursor-pointer transition-colors z-10">
-        <ChevronLeft className="w-4 h-4 rotate-90" />
-      </div>
-
-      <div className="flex items-center justify-center gap-2 mb-8">
-        <h3 className="font-bold text-xl text-gray-900">补充信息</h3>
-      </div>
-
-      <div className="space-y-6">
-         {/* 既往健康痛点 */}
-         <div>
-            <h4 className="text-[13px] text-gray-400 mb-2">既往健康痛点</h4>
-            <div className="relative" ref={dropdownRef}>
-              <div 
-                className={`w-full border-none bg-transparent py-2 text-[15px] flex items-center justify-between transition-colors ${submitted ? 'text-gray-500 cursor-not-allowed' : 'text-gray-900 cursor-pointer'}`}
-                onClick={() => !submitted && setIsDropdownOpen(!isDropdownOpen)}
-              >
-                <div className="flex flex-wrap gap-1">
-                  {formData.painPoints.length === 0 ? (
-                    <span className="text-gray-900">请选择</span>
-                  ) : (
-                    formData.painPoints.map(p => (
-                      <span key={p} className="inline-flex items-center bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
-                        {p}
-                        {!submitted && (
-                          <span 
-                            className="ml-1 cursor-pointer hover:bg-gray-200 rounded-full p-0.5 flex items-center justify-center"
-                            onClick={(e) => { e.stopPropagation(); togglePainPoint(p); }}
-                          >
-                            <X className="w-3 h-3" />
-                          </span>
-                        )}
-                      </span>
-                    ))
-                  )}
-                </div>
-              </div>
-              
-              <AnimatePresence>
-                {isDropdownOpen && !submitted && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -5 }}
-                    className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg overflow-hidden"
-                  >
-                    <div className="max-h-60 overflow-y-auto py-1">
-                      {painPointOptions.map(option => (
-                        <label 
-                          key={option} 
-                          className={`flex items-center px-4 py-2.5 cursor-pointer transition-colors hover:bg-gray-50 ${formData.painPoints.includes(option) ? 'bg-gray-50/50' : ''}`}
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <input 
-                            type="checkbox" 
-                            className="rounded text-orange-500 focus:ring-orange-500 w-4 h-4 border-gray-300 mr-3" 
-                            checked={formData.painPoints.includes(option)} 
-                            onChange={() => togglePainPoint(option)} 
-                          />
-                          <span className="text-sm text-gray-700">{option}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-            <div className="h-px bg-gray-100 w-full mt-1"></div>
-         </div>
-
-         {/* 组织结构 */}
-         <div>
-            <h4 className="text-[13px] text-gray-400 mb-2">组织结构</h4>
-            <textarea className="w-full border-none bg-transparent py-2 text-[15px] focus:ring-0 min-h-[40px] p-0 resize-none text-gray-900" disabled={submitted}
-                      value={formData.orgStructure} onChange={e=>setFormData({...formData, orgStructure:e.target.value})}></textarea>
-            <div className="h-px bg-gray-100 w-full mt-1"></div>
-         </div>
-
-         {/* 人员结构 */}
-         <div>
-            <h4 className="text-[13px] text-gray-400 mb-2">人员结构</h4>
-            <textarea className="w-full border-none bg-transparent py-2 text-[15px] focus:ring-0 min-h-[40px] p-0 resize-none text-gray-900" disabled={submitted}
-                      value={formData.personnelStructure} onChange={e=>setFormData({...formData, personnelStructure:e.target.value})}></textarea>
-            <div className="h-px bg-gray-100 w-full mt-1"></div>
-         </div>
-
-         {/* 性别结构 */}
-         <div>
-            <h4 className="text-[13px] text-gray-400 mb-2">性别结构</h4>
-            <textarea className="w-full border-none bg-transparent py-2 text-[15px] focus:ring-0 min-h-[40px] p-0 resize-none text-gray-900" disabled={submitted}
-                      value={formData.genderStructure} onChange={e=>setFormData({...formData, genderStructure:e.target.value})}></textarea>
-            <div className="h-px bg-gray-100 w-full mt-1"></div>
-         </div>
-
-         {/* 工种结构 */}
-         <div>
-            <h4 className="text-[13px] text-gray-400 mb-2">工种结构</h4>
-            <textarea className="w-full border-none bg-transparent py-2 text-[15px] focus:ring-0 min-h-[40px] p-0 resize-none text-gray-900" disabled={submitted}
-                      value={formData.jobStructure} onChange={e=>setFormData({...formData, jobStructure:e.target.value})}></textarea>
-            <div className="h-px bg-gray-100 w-full mt-1"></div>
-         </div>
-
-         {/* 补充说明 */}
-         <div>
-            <h4 className="text-[13px] text-gray-400 mb-2">补充说明</h4>
-            <textarea className="w-full border-none bg-transparent py-2 text-[15px] focus:ring-0 min-h-[60px] p-0 resize-none text-gray-900" disabled={submitted}
-                      value={formData.notes} onChange={e=>setFormData({...formData, notes:e.target.value})} placeholder="其他需要补充的信息..."></textarea>
-            <div className="h-px bg-gray-100 w-full mt-1"></div>
-         </div>
-      </div>
-
-      <div className="pt-8 flex items-center justify-end gap-3">
-         <button className={`px-8 py-2.5 rounded bg-white border border-gray-200 font-medium text-sm transition-colors ${submitted ? 'text-gray-400 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-50'}`} onClick={handleIgnore} disabled={submitted}>忽略</button>
-         <button className={`px-8 py-2.5 rounded text-sm transition-colors ${submitted ? 'bg-gray-300 text-white cursor-not-allowed' : 'bg-[#f8b284] text-white hover:bg-[#f39c6b]'}`} onClick={handleSubmit} disabled={submitted}>提交信息</button>
-      </div>
-    </div>
-  )
-}
-
 function PPTCard({ data, onSend }: { data?: any, onSend?: (text: string) => void }) {
   const [activeSlide, setActiveSlide] = React.useState(0);
   const slides = data?.slides || [];
@@ -9166,9 +9067,20 @@ function PPTCard({ data, onSend }: { data?: any, onSend?: (text: string) => void
               </div>
               
               {/* Footer */}
-              <div className="absolute bottom-4 left-10 right-10 flex justify-between text-xs text-gray-400 font-medium z-10">
-                <span>平安企康 x 明道云</span>
-                <span>{activeSlide + 1}</span>
+              <div className="absolute bottom-0 left-0 right-0 px-10 pb-4 flex justify-between items-end z-10">
+                <div className="text-xs text-gray-400 font-medium pb-1">
+                  <span>{activeSlide + 1}</span>
+                </div>
+                {/* 企康助力明道云打造健康组织 */}
+                <div className="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200/60 rounded-xl px-4 py-2.5 flex items-center shadow-sm backdrop-blur-sm">
+                  <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center mr-3 shadow-md border border-orange-400/50">
+                    <HeartPulse size={18} className="text-white drop-shadow-sm" />
+                  </div>
+                  <div className="flex flex-col">
+                    <div className="text-[10px] text-orange-600 font-bold tracking-widest uppercase mb-0.5 opacity-80">PingAn Health</div>
+                    <div className="text-[13px] text-gray-800 font-extrabold tracking-wide">企康助力明道云打造健康组织</div>
+                  </div>
+                </div>
               </div>
             </div>
           )}

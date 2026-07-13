@@ -2291,9 +2291,9 @@ function AiChatWindow({
                   id: "pkg1",
                   name: "基础健康保障版",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
-                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年", featuresDetail: "平安家医图文问诊*不限次\n门诊预约协助服务*1次\n专人1V1陪诊服务*1次\n名医视频问诊*1次\n健康护航大礼包*1次\n购药优惠券*12次\n福安好物专区*不限次" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年", featuresDetail: "门诊预约协助 (T+4): 31省321市\n普通陪诊: 29省234市\n全国住院安排协助: 31省322市" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年", featuresDetail: "专科医生图文问诊5次\n幽门螺旋杆菌检测1份\n肺结节居家检测服务1份" }
                   ],
                   sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
@@ -2302,9 +2302,9 @@ function AiChatWindow({
                   name: "全场景黑金尊享版",
                   isRecommended: true,
                   products: [
-                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年", featuresDetail: "家庭医生图文问诊-副高及以上(年度会员)\n家庭医生音视频咨询30分钟\n专科医生实时音视频咨询2次\n名医三方音视频咨询1年无限次\n名医门诊预约协助3次\n名医住院安排协助1次\n健康定制好礼1次\n健康送到家, 每季度一次\n专属小秘书7*12线上服务" },
                     { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年", featuresDetail: "门诊预约协助 (T+7)*2次\n普通陪诊*1次\n家庭医生图文问诊-主治及以下 (年度会员)\n企业健康室 (升级版)\n全额抵扣券-小药箱\n心理健康测评 不限次\n心理图文咨询 2次\n心理电话咨询 1次" }
                   ],
                   sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
                 },
@@ -2314,7 +2314,7 @@ function AiChatWindow({
                   products: [
                     { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
                     { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次", featuresDetail: "AED急救技能培训*8小时\nAED专题讲座*2小时\n平安家医图文问诊*不限次\n门诊预约协助服务*1次\n住院协助服务*1次\n名医视频问诊*3次\n专人1V1陪诊服务*3次" }
                   ],
                   sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
@@ -2403,9 +2403,9 @@ function AiChatWindow({
                   id: "pkg1",
                   name: "基础健康保障版",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
-                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年", featuresDetail: "平安家医图文问诊*不限次\n门诊预约协助服务*1次\n专人1V1陪诊服务*1次\n名医视频问诊*1次\n健康护航大礼包*1次\n购药优惠券*12次\n福安好物专区*不限次" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年", featuresDetail: "门诊预约协助 (T+4): 31省321市\n普通陪诊: 29省234市\n全国住院安排协助: 31省322市" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年", featuresDetail: "专科医生图文问诊5次\n幽门螺旋杆菌检测1份\n肺结节居家检测服务1份" }
                   ],
                   sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
@@ -2414,9 +2414,9 @@ function AiChatWindow({
                   name: "全场景黑金尊享版",
                   isRecommended: true,
                   products: [
-                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年", featuresDetail: "家庭医生图文问诊-副高及以上(年度会员)\n家庭医生音视频咨询30分钟\n专科医生实时音视频咨询2次\n名医三方音视频咨询1年无限次\n名医门诊预约协助3次\n名医住院安排协助1次\n健康定制好礼1次\n健康送到家, 每季度一次\n专属小秘书7*12线上服务" },
                     { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年", featuresDetail: "门诊预约协助 (T+7)*2次\n普通陪诊*1次\n家庭医生图文问诊-主治及以下 (年度会员)\n企业健康室 (升级版)\n全额抵扣券-小药箱\n心理健康测评 不限次\n心理图文咨询 2次\n心理电话咨询 1次" }
                   ],
                   sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
                 },
@@ -2426,7 +2426,7 @@ function AiChatWindow({
                   products: [
                     { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
                     { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次", featuresDetail: "AED急救技能培训*8小时\nAED专题讲座*2小时\n平安家医图文问诊*不限次\n门诊预约协助服务*1次\n住院协助服务*1次\n名医视频问诊*3次\n专人1V1陪诊服务*3次" }
                   ],
                   sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
@@ -2727,9 +2727,9 @@ function AiChatWindow({
                   id: "pkg1",
                   name: "基础健康保障版",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
-                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年", featuresDetail: "平安家医图文问诊*不限次\n门诊预约协助服务*1次\n专人1V1陪诊服务*1次\n名医视频问诊*1次\n健康护航大礼包*1次\n购药优惠券*12次\n福安好物专区*不限次" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年", featuresDetail: "门诊预约协助 (T+4): 31省321市\n普通陪诊: 29省234市\n全国住院安排协助: 31省322市" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年", featuresDetail: "专科医生图文问诊5次\n幽门螺旋杆菌检测1份\n肺结节居家检测服务1份" }
                   ],
                   sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
@@ -2738,9 +2738,9 @@ function AiChatWindow({
                   name: "全场景黑金尊享版",
                   isRecommended: true,
                   products: [
-                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年", featuresDetail: "家庭医生图文问诊-副高及以上(年度会员)\n家庭医生音视频咨询30分钟\n专科医生实时音视频咨询2次\n名医三方音视频咨询1年无限次\n名医门诊预约协助3次\n名医住院安排协助1次\n健康定制好礼1次\n健康送到家, 每季度一次\n专属小秘书7*12线上服务" },
                     { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年", featuresDetail: "门诊预约协助 (T+7)*2次\n普通陪诊*1次\n家庭医生图文问诊-主治及以下 (年度会员)\n企业健康室 (升级版)\n全额抵扣券-小药箱\n心理健康测评 不限次\n心理图文咨询 2次\n心理电话咨询 1次" }
                   ],
                   sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
                 },
@@ -2750,7 +2750,7 @@ function AiChatWindow({
                   products: [
                     { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
                     { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次", featuresDetail: "AED急救技能培训*8小时\nAED专题讲座*2小时\n平安家医图文问诊*不限次\n门诊预约协助服务*1次\n住院协助服务*1次\n名医视频问诊*3次\n专人1V1陪诊服务*3次" }
                   ],
                   sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
@@ -2883,9 +2883,9 @@ function AiChatWindow({
                   id: "pkg1",
                   name: "基础健康保障版",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
-                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年", featuresDetail: "平安家医图文问诊*不限次\n门诊预约协助服务*1次\n专人1V1陪诊服务*1次\n名医视频问诊*1次\n健康护航大礼包*1次\n购药优惠券*12次\n福安好物专区*不限次" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年", featuresDetail: "门诊预约协助 (T+4): 31省321市\n普通陪诊: 29省234市\n全国住院安排协助: 31省322市" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年", featuresDetail: "专科医生图文问诊5次\n幽门螺旋杆菌检测1份\n肺结节居家检测服务1份" }
                   ],
                   sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
@@ -2894,9 +2894,9 @@ function AiChatWindow({
                   name: "全场景黑金尊享版",
                   isRecommended: true,
                   products: [
-                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年", featuresDetail: "家庭医生图文问诊-副高及以上(年度会员)\n家庭医生音视频咨询30分钟\n专科医生实时音视频咨询2次\n名医三方音视频咨询1年无限次\n名医门诊预约协助3次\n名医住院安排协助1次\n健康定制好礼1次\n健康送到家, 每季度一次\n专属小秘书7*12线上服务" },
                     { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年", featuresDetail: "门诊预约协助 (T+7)*2次\n普通陪诊*1次\n家庭医生图文问诊-主治及以下 (年度会员)\n企业健康室 (升级版)\n全额抵扣券-小药箱\n心理健康测评 不限次\n心理图文咨询 2次\n心理电话咨询 1次" }
                   ],
                   sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
                 },
@@ -2906,7 +2906,7 @@ function AiChatWindow({
                   products: [
                     { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
                     { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次", featuresDetail: "AED急救技能培训*8小时\nAED专题讲座*2小时\n平安家医图文问诊*不限次\n门诊预约协助服务*1次\n住院协助服务*1次\n名医视频问诊*3次\n专人1V1陪诊服务*3次" }
                   ],
                   sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
@@ -4505,9 +4505,9 @@ function AiChatWindow({
                   id: "pkg1",
                   name: "基础健康保障版",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
-                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年", featuresDetail: "平安家医图文问诊*不限次\n门诊预约协助服务*1次\n专人1V1陪诊服务*1次\n名医视频问诊*1次\n健康护航大礼包*1次\n购药优惠券*12次\n福安好物专区*不限次" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年", featuresDetail: "门诊预约协助 (T+4): 31省321市\n普通陪诊: 29省234市\n全国住院安排协助: 31省322市" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年", featuresDetail: "专科医生图文问诊5次\n幽门螺旋杆菌检测1份\n肺结节居家检测服务1份" }
                   ],
                   sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
@@ -4516,9 +4516,9 @@ function AiChatWindow({
                   name: "全场景黑金尊享版",
                   isRecommended: true,
                   products: [
-                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年", featuresDetail: "家庭医生图文问诊-副高及以上(年度会员)\n家庭医生音视频咨询30分钟\n专科医生实时音视频咨询2次\n名医三方音视频咨询1年无限次\n名医门诊预约协助3次\n名医住院安排协助1次\n健康定制好礼1次\n健康送到家, 每季度一次\n专属小秘书7*12线上服务" },
                     { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年", featuresDetail: "门诊预约协助 (T+7)*2次\n普通陪诊*1次\n家庭医生图文问诊-主治及以下 (年度会员)\n企业健康室 (升级版)\n全额抵扣券-小药箱\n心理健康测评 不限次\n心理图文咨询 2次\n心理电话咨询 1次" }
                   ],
                   sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
                 },
@@ -4528,7 +4528,7 @@ function AiChatWindow({
                   products: [
                     { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
                     { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次", featuresDetail: "AED急救技能培训*8小时\nAED专题讲座*2小时\n平安家医图文问诊*不限次\n门诊预约协助服务*1次\n住院协助服务*1次\n名医视频问诊*3次\n专人1V1陪诊服务*3次" }
                   ],
                   sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
@@ -4617,9 +4617,9 @@ function AiChatWindow({
                   id: "pkg1",
                   name: "基础健康保障版",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
-                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年", featuresDetail: "平安家医图文问诊*不限次\n门诊预约协助服务*1次\n专人1V1陪诊服务*1次\n名医视频问诊*1次\n健康护航大礼包*1次\n购药优惠券*12次\n福安好物专区*不限次" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年", featuresDetail: "门诊预约协助 (T+4): 31省321市\n普通陪诊: 29省234市\n全国住院安排协助: 31省322市" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年", featuresDetail: "专科医生图文问诊5次\n幽门螺旋杆菌检测1份\n肺结节居家检测服务1份" }
                   ],
                   sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
@@ -4628,9 +4628,9 @@ function AiChatWindow({
                   name: "全场景黑金尊享版",
                   isRecommended: true,
                   products: [
-                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年", featuresDetail: "家庭医生图文问诊-副高及以上(年度会员)\n家庭医生音视频咨询30分钟\n专科医生实时音视频咨询2次\n名医三方音视频咨询1年无限次\n名医门诊预约协助3次\n名医住院安排协助1次\n健康定制好礼1次\n健康送到家, 每季度一次\n专属小秘书7*12线上服务" },
                     { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年", featuresDetail: "门诊预约协助 (T+7)*2次\n普通陪诊*1次\n家庭医生图文问诊-主治及以下 (年度会员)\n企业健康室 (升级版)\n全额抵扣券-小药箱\n心理健康测评 不限次\n心理图文咨询 2次\n心理电话咨询 1次" }
                   ],
                   sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
                 },
@@ -4640,7 +4640,7 @@ function AiChatWindow({
                   products: [
                     { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
                     { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次", featuresDetail: "AED急救技能培训*8小时\nAED专题讲座*2小时\n平安家医图文问诊*不限次\n门诊预约协助服务*1次\n住院协助服务*1次\n名医视频问诊*3次\n专人1V1陪诊服务*3次" }
                   ],
                   sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
@@ -4949,9 +4949,9 @@ function AiChatWindow({
                   id: "pkg1",
                   name: "基础健康保障版",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
-                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年", featuresDetail: "平安家医图文问诊*不限次\n门诊预约协助服务*1次\n专人1V1陪诊服务*1次\n名医视频问诊*1次\n健康护航大礼包*1次\n购药优惠券*12次\n福安好物专区*不限次" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年", featuresDetail: "门诊预约协助 (T+4): 31省321市\n普通陪诊: 29省234市\n全国住院安排协助: 31省322市" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年", featuresDetail: "专科医生图文问诊5次\n幽门螺旋杆菌检测1份\n肺结节居家检测服务1份" }
                   ],
                   sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
@@ -4960,9 +4960,9 @@ function AiChatWindow({
                   name: "全场景黑金尊享版",
                   isRecommended: true,
                   products: [
-                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年", featuresDetail: "家庭医生图文问诊-副高及以上(年度会员)\n家庭医生音视频咨询30分钟\n专科医生实时音视频咨询2次\n名医三方音视频咨询1年无限次\n名医门诊预约协助3次\n名医住院安排协助1次\n健康定制好礼1次\n健康送到家, 每季度一次\n专属小秘书7*12线上服务" },
                     { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年", featuresDetail: "门诊预约协助 (T+7)*2次\n普通陪诊*1次\n家庭医生图文问诊-主治及以下 (年度会员)\n企业健康室 (升级版)\n全额抵扣券-小药箱\n心理健康测评 不限次\n心理图文咨询 2次\n心理电话咨询 1次" }
                   ],
                   sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
                 },
@@ -4972,7 +4972,7 @@ function AiChatWindow({
                   products: [
                     { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
                     { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次", featuresDetail: "AED急救技能培训*8小时\nAED专题讲座*2小时\n平安家医图文问诊*不限次\n门诊预约协助服务*1次\n住院协助服务*1次\n名医视频问诊*3次\n专人1V1陪诊服务*3次" }
                   ],
                   sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
@@ -5105,9 +5105,9 @@ function AiChatWindow({
                   id: "pkg1",
                   name: "基础健康保障版",
                   products: [
-                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年" },
-                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年" }
+                    { name: "高管年度深度体检", target: "高层员工", price: (3000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年", featuresDetail: "平安家医图文问诊*不限次\n门诊预约协助服务*1次\n专人1V1陪诊服务*1次\n名医视频问诊*1次\n健康护航大礼包*1次\n购药优惠券*12次\n福安好物专区*不限次" },
+                    { name: "核心骨干绿色就医", target: "核心员工", price: (1000 + pkgRetryCount * 100).toLocaleString() + "元", unit: "人/年", featuresDetail: "门诊预约协助 (T+4): 31省321市\n普通陪诊: 29省234市\n全国住院安排协助: 31省322市" },
+                    { name: "入职体检套餐（基础）", target: "基层员工", price: (150 + pkgRetryCount * 20).toLocaleString() + "元", unit: "人/年", featuresDetail: "专科医生图文问诊5次\n幽门螺旋杆菌检测1份\n肺结节居家检测服务1份" }
                   ],
                   sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
                 },
@@ -5116,9 +5116,9 @@ function AiChatWindow({
                   name: "全场景黑金尊享版",
                   isRecommended: true,
                   products: [
-                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年" },
+                    { name: "高端私立医院VIP体检", target: "高层员工", price: (6000 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/年", featuresDetail: "家庭医生图文问诊-副高及以上(年度会员)\n家庭医生音视频咨询30分钟\n专科医生实时音视频咨询2次\n名医三方音视频咨询1年无限次\n名医门诊预约协助3次\n名医住院安排协助1次\n健康定制好礼1次\n健康送到家, 每季度一次\n专属小秘书7*12线上服务" },
                     { name: "三甲医院专家特需门诊", target: "核心员工", price: (2000 + pkgRetryCount * 200).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年" }
+                    { name: "家属共享健康档案及问诊", target: "基层员工", price: (200 + pkgRetryCount * 50).toLocaleString() + "元", unit: "户/年", featuresDetail: "门诊预约协助 (T+7)*2次\n普通陪诊*1次\n家庭医生图文问诊-主治及以下 (年度会员)\n企业健康室 (升级版)\n全额抵扣券-小药箱\n心理健康测评 不限次\n心理图文咨询 2次\n心理电话咨询 1次" }
                   ],
                   sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
                 },
@@ -5128,7 +5128,7 @@ function AiChatWindow({
                   products: [
                     { name: "海外重疾就医协助及随诊", target: "高层员工", price: (25000 + pkgRetryCount * 1000).toLocaleString() + "元", unit: "人/年" },
                     { name: "专属私人健康管家（7x24）", target: "核心员工", price: (12000 + pkgRetryCount * 800).toLocaleString() + "元", unit: "人/年" },
-                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次" }
+                    { name: "家族基因筛查及抗衰方案", target: "基层员工", price: (8800 + pkgRetryCount * 500).toLocaleString() + "元", unit: "人/次", featuresDetail: "AED急救技能培训*8小时\nAED专题讲座*2小时\n平安家医图文问诊*不限次\n门诊预约协助服务*1次\n住院协助服务*1次\n名医视频问诊*3次\n专人1V1陪诊服务*3次" }
                   ],
                   sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
                 }
