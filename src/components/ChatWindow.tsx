@@ -2204,7 +2204,7 @@ function AiChatWindow({
         data: {
           steps: [
             { id: "1", text: "调用内部CRM获取客户画像...", status: "complete" },
-            { id: "2", text: "分析所属行业及健康痛点...", status: "loading" },
+            { id: "2", text: "分析所属行业", status: "loading" },
             { id: "3", text: "生成企业信息结果...", status: "pending" }],
         },
       };
@@ -4418,7 +4418,7 @@ function AiChatWindow({
         data: {
           steps: [
             { id: "1", text: "调用内部CRM获取客户画像...", status: "complete" },
-            { id: "2", text: "分析所属行业及健康痛点...", status: "loading" },
+            { id: "2", text: "分析所属行业", status: "loading" },
             { id: "3", text: "生成企业信息结果...", status: "pending" }],
         },
       };
