@@ -8683,7 +8683,7 @@ function BasicInfoFormCard({ onSend, data }: { onSend?: (text: string) => void, 
       <div className="p-4 space-y-3 bg-gradient-to-b from-white/90 to-orange-50/50 backdrop-blur-sm relative z-10">
         <div className="grid grid-cols-2 gap-3">
           <div className="bg-white rounded-lg border border-orange-100/50 p-2.5 shadow-sm flex items-center hover:border-orange-200 transition-colors">
-            <div className="w-16 text-gray-500 font-medium text-xs flex items-center"><MapPin size={12} className="mr-1"/> 所属渠道</div>
+            <div className="w-16 text-gray-500 font-medium text-xs flex items-center"><MapPin size={12} className="mr-1"/> 销售渠道</div>
             <input type="text" className="flex-1 border-none bg-transparent focus:ring-0 text-gray-900 text-xs p-0 font-semibold" disabled={submitted} value={formData.channel} onChange={(e) => setFormData({...formData, channel: e.target.value})} />
           </div>
           
