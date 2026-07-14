@@ -36,38 +36,37 @@ const newPackageCardStr = `function PackageOptionCard({ data, onSend }: { data?:
       id: "pkg1",
       name: "基础健康保障版",
       products: [
-        { name: "高管年度深度体检", target: "高层员工", price: "3,000元", unit: "人/年" },
-        { name: "核心骨干绿色就医", target: "核心员工", price: "1,000元", unit: "人/年" },
-        { name: "入职体检套餐（基础）", target: "基层员工", price: "150元", unit: "人/年" }
+        { name: "高管年度深度体检", target: "高层员工", price: "3000元", unit: "人/年" },
+        { name: "核心骨干绿色就医", target: "核心员工", price: "1000元", unit: "人/年" },
+        { name: "入职体检套餐（基础）", target: "基层员工", price: "100元", unit: "人/年" }
       ],
-      sellingPoint: "覆盖各层级基础健康需求，低成本实现企业健康福利从无到有。"
+      sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案"
     },
     {
       id: "pkg2",
       name: "全场景黑金尊享版",
       isRecommended: true,
       products: [
-        { name: "高端私立医院VIP体检", target: "高层员工", price: "6,000元", unit: "人/年" },
-        { name: "三甲医院专家特需门诊", target: "核心员工", price: "2,000元", unit: "人/年" },
+        { name: "高端私立医院VIP体检", target: "高层员工", price: "6000元", unit: "人/年" },
+        { name: "三甲医院专家特需门诊", target: "核心员工", price: "2000元", unit: "人/年" },
         { name: "家属共享健康档案及问诊", target: "基层员工", price: "200元", unit: "户/年" }
       ],
-      sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案。"
+      sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案"
     },
     {
       id: "pkg3",
       name: "高管特权定制版",
       products: [
-        { name: "海外重疾就医协助及随诊", target: "高层员工", price: "25,000元", unit: "人/年" },
-        { name: "专属私人健康管家（7x24）", target: "核心员工", price: "12,000元", unit: "人/年" },
-        { name: "家族基因筛查及抗衰方案", target: "基层员工", price: "8,800元", unit: "人/次" }
+        { name: "海外重疾就医协助及随诊", target: "高层员工", price: "25000元", unit: "人/年" },
+        { name: "专属私人健康管家（7x24）", target: "核心员工", price: "12000元", unit: "人/年" },
+        { name: "家族基因筛查及抗衰方案", target: "基层员工", price: "8800元", unit: "人/次" }
       ],
-      sellingPoint: "顶配医疗资源，彰显高管尊贵身份，提供全天候一对一顶级私密健康管理服务。"
+      sellingPoint: "分层定制，精准满足不同层级员工及家属健康痛点，性价比最高的主力推荐方案"
     }
   ];
 
   let packages = data?.packages && data.packages.length > 0 ? data.packages : defaultPackages;
   
-  // Inject features detail
   packages = packages.map((pkg: any) => ({
     ...pkg,
     products: pkg.products?.map((prod: any) => ({
@@ -86,127 +85,124 @@ const newPackageCardStr = `function PackageOptionCard({ data, onSend }: { data?:
     if(onSend) onSend("[重新推荐]");
   };
 
+  const getIcon = (id: string, recommended: boolean) => {
+    if (recommended) return <Crown className="w-5 h-5 text-orange-500 mr-2" strokeWidth={2} />;
+    if (id === "pkg1") return <ShieldCheck className="w-5 h-5 text-orange-400 mr-2" strokeWidth={2} />;
+    if (id === "pkg3") return <FileEdit className="w-5 h-5 text-orange-400 mr-2" strokeWidth={2} />;
+    return <Layers className="w-5 h-5 text-orange-400 mr-2" strokeWidth={2} />;
+  };
+
   return (
-    <div className="mt-2 w-full max-w-4xl bg-white border border-gray-100 shadow-sm rounded-xl overflow-hidden">
-      <div className="flex items-center gap-2 mb-2 p-6 pb-0">
-        <Layers className="w-6 h-6 text-orange-500" />
-        <h3 className="font-bold text-xl text-gray-900">推荐标品套餐选项</h3>
-      </div>
-      
-      <div className="p-6 pt-2">
-        <div className="h-px bg-gray-100 w-full mb-4 mt-2"></div>
-        <p className="text-[13px] text-gray-500 mb-4">{submitted ? "您已完成套餐选择：" : "为您匹配了以下标准产品组合，请选择其中之一："}</p>
-        <div className="grid grid-cols-1 gap-4 mb-6">
-          {packages.map((pkg: any) => {
-            const isSelected = selectedId === pkg.id;
-            return (
-              <div 
-                key={pkg.id} 
-                onClick={() => { if(!submitted) setSelectedId(pkg.id) }}
-                className={\`relative border rounded-lg transition-all duration-200 cursor-pointer flex flex-col \${isSelected ? 'border-orange-500 shadow-sm' : 'border-gray-200 hover:border-orange-300'}\`}
-              >
-                {pkg.isRecommended && (
-                  <div className="absolute top-0 left-0 -mt-3 ml-4 z-10">
-                    <div className="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded shadow-sm flex items-center">
-                      <ThumbsUp className="w-3 h-3 mr-1" />
-                      推荐
-                    </div>
-                  </div>
-                )}
-                
-                <div className={\`flex justify-between items-center p-4 \${pkg.isRecommended ? 'bg-orange-50/50' : 'bg-gray-50/50'} border-b border-gray-100 rounded-t-lg\`}>
-                  <h4 className={\`font-bold text-[17px] \${pkg.isRecommended ? 'text-orange-800' : 'text-gray-800'}\`}>{pkg.name}</h4>
-                  <div className={\`w-5 h-5 rounded flex items-center justify-center border transition-colors \${isSelected ? 'bg-orange-500 border-orange-500 text-white' : 'bg-white border-gray-300'}\`}>
-                    {isSelected && <Check className="w-3.5 h-3.5" strokeWidth={3} />}
+    <div className="mt-2 w-full max-w-4xl bg-[#FAFAFA] p-4 rounded-xl">
+      <div className="flex flex-col gap-4">
+        {packages.map((pkg: any) => {
+          const isSelected = selectedId === pkg.id;
+          return (
+            <div 
+              key={pkg.id} 
+              onClick={() => { if(!submitted) setSelectedId(pkg.id) }}
+              className={\`relative bg-white rounded-lg border-2 \${isSelected ? 'border-orange-400 shadow-sm' : 'border-transparent hover:border-orange-200'} transition-all duration-200 cursor-pointer overflow-hidden\`}
+            >
+              {pkg.isRecommended && (
+                <div className="absolute top-0 left-0">
+                  <div className="bg-[#E68A3D] text-white text-[10px] font-bold px-2 py-0.5 rounded-br-lg z-10 flex items-center shadow-sm">
+                    推荐
                   </div>
                 </div>
-
-                {pkg.products && pkg.products.length > 0 && (
-                  <div className="bg-white">
-                    <table className="w-full text-sm text-left">
-                      <thead className="bg-gray-50/50 text-orange-600/80 text-[13px]">
-                        <tr>
-                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-1/4">产品名称</th>
-                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-1/6">适用人群</th>
-                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-1/6">单价</th>
-                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-1/6">计价方式</th>
-                          <th className="px-5 py-3 font-bold border-b border-gray-100 w-1/6">权益</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-gray-50">
-                        {pkg.products.map((prod: any, idx: number) => {
-                          const key = \`\${pkg.id}-\${idx}\`;
-                          const isExpanded = expandedFeatures[key];
-                          return (
-                            <React.Fragment key={idx}>
-                              <tr className="hover:bg-gray-50/30">
-                                <td className="px-5 py-3 text-gray-700 font-medium">{prod.name}</td>
-                                <td className="px-5 py-3 text-gray-600 text-[13px] whitespace-nowrap">{prod.target}</td>
-                                <td className="px-5 py-3 text-gray-800 font-mono text-[13px] whitespace-nowrap">{prod.price}</td>
-                                <td className="px-5 py-3 text-gray-500 text-[13px] whitespace-nowrap">{prod.unit}</td>
-                                <td className="px-5 py-3">
-                                  {prod.featuresDetail && (
-                                    <button 
-                                      onClick={(e) => toggleFeatures(pkg.id, idx, e)}
-                                      className="text-orange-500 hover:text-orange-600 flex items-center text-[13px]"
-                                    >
-                                      {isExpanded ? "收起" : "展开"}
-                                      {isExpanded ? <ChevronUp className="w-3 h-3 ml-1" /> : <ChevronDown className="w-3 h-3 ml-1" />}
-                                    </button>
-                                  )}
-                                </td>
-                              </tr>
-                              {isExpanded && prod.featuresDetail && (
-                                <tr className="bg-orange-50/30">
-                                  <td colSpan={5} className="px-5 py-3">
-                                    <div className="text-gray-600 text-[12px] leading-relaxed whitespace-pre-wrap pl-3 border-l-2 border-orange-300 ml-2 py-1">
-                                      {prod.featuresDetail}
-                                    </div>
-                                  </td>
-                                </tr>
-                              )}
-                            </React.Fragment>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
-
-                {pkg.sellingPoint && (
-                  <div className="px-5 py-4 bg-orange-50/50 border-t border-gray-100 rounded-b-lg">
-                    <div className="flex items-start">
-                      <div className="bg-orange-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded mr-2 mt-0.5 whitespace-nowrap">一句话卖点</div>
-                      <p className="text-[13px] text-gray-700 leading-snug font-medium">
-                        {pkg.sellingPoint}
-                      </p>
-                    </div>
-                  </div>
-                )}
+              )}
+              
+              <div className="flex justify-between items-center px-6 pt-5 pb-3">
+                <div className="flex items-center">
+                  {getIcon(pkg.id, pkg.isRecommended)}
+                  <h4 className="font-bold text-[16px] text-gray-800">{pkg.name}</h4>
+                </div>
+                <div className={\`w-4 h-4 rounded-sm border \${isSelected ? 'bg-orange-500 border-orange-500' : 'border-gray-300'} flex items-center justify-center transition-colors\`}>
+                  {isSelected && <Check className="w-3 h-3 text-white" strokeWidth={4} />}
+                </div>
               </div>
-            );
-          })}
-        </div>
-        
-        {!submitted && (
-          <div className="flex space-x-4 mt-6">
-            <button
-              disabled={!selectedId}
-              onClick={handleGenerate}
-              className={\`flex-1 py-3 px-4 rounded-xl font-bold flex items-center justify-center transition-all duration-200 shadow-sm \${selectedId ? 'bg-orange-500 text-white hover:bg-orange-600 hover:shadow-md' : 'bg-gray-100 text-gray-400 cursor-not-allowed'}\`}
-            >
-              <Presentation className="w-5 h-5 mr-2" />
-              生成PPT标品方案
-            </button>
-            <button
-              onClick={handleRecommendAgain}
-              className="px-6 py-3 bg-white border-2 border-gray-200 text-gray-600 rounded-xl font-bold hover:bg-gray-50 transition-all duration-200 flex items-center shadow-sm"
-            >
-              不满意，换一换
-            </button>
-          </div>
-        )}
+
+              <div className="px-6 pb-2">
+                <table className="w-full text-left text-[13px]">
+                  <thead>
+                    <tr className="text-gray-500 border-b border-gray-100">
+                      <th className="py-2 font-medium w-[25%] text-left">产品名称</th>
+                      <th className="py-2 font-medium w-[20%] text-center">适用人群</th>
+                      <th className="py-2 font-medium w-[15%] text-center">单价</th>
+                      <th className="py-2 font-medium w-[15%] text-center">计价方式</th>
+                      <th className="py-2 font-medium w-[25%] text-center">权益</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {pkg.products.map((prod: any, idx: number) => {
+                      const key = \`\${pkg.id}-\${idx}\`;
+                      const isExpanded = expandedFeatures[key];
+                      return (
+                        <React.Fragment key={idx}>
+                          <tr className="text-gray-700 hover:bg-gray-50/50">
+                            <td className="py-3 text-left">{prod.name}</td>
+                            <td className="py-3 text-center text-gray-600">{prod.target}</td>
+                            <td className="py-3 text-center">{prod.price}</td>
+                            <td className="py-3 text-center text-gray-500">{prod.unit}</td>
+                            <td className="py-3 text-center">
+                              {prod.featuresDetail && (
+                                <button 
+                                  onClick={(e) => toggleFeatures(pkg.id, idx, e)}
+                                  className="text-orange-400 hover:text-orange-500 flex items-center justify-center w-full transition-colors"
+                                >
+                                  {isExpanded ? "收起" : "展开"}
+                                  {isExpanded ? <ChevronUp className="w-3 h-3 ml-1" /> : <ChevronDown className="w-3 h-3 ml-1" />}
+                                </button>
+                              )}
+                            </td>
+                          </tr>
+                          {isExpanded && prod.featuresDetail && (
+                            <tr className="bg-orange-50/30">
+                              <td colSpan={5} className="py-3 px-4">
+                                <div className="text-gray-600 text-[12px] leading-relaxed whitespace-pre-wrap pl-3 border-l-2 border-orange-300 ml-2 py-1">
+                                  {prod.featuresDetail}
+                                </div>
+                              </td>
+                            </tr>
+                          )}
+                        </React.Fragment>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+
+              {pkg.sellingPoint && (
+                <div className="px-6 pb-5 pt-1">
+                  <div className="bg-[#FFF6ED] rounded px-3 py-2 flex items-start">
+                    <span className="bg-[#E68A3D] text-white text-[11px] px-2.5 py-0.5 rounded-full mr-2 whitespace-nowrap shadow-sm">一句话卖点</span>
+                    <span className="text-[#8c6b5d] text-[12px] leading-tight flex items-center pt-0.5">
+                      <span className="mr-1.5 opacity-60 font-bold">•</span> {pkg.sellingPoint}
+                    </span>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
+      
+      {!submitted && (
+        <div className="flex items-center mt-5 px-2">
+          <button
+            onClick={handleRecommendAgain}
+            className="text-gray-500 text-[14px] font-medium whitespace-nowrap hover:text-gray-700 underline underline-offset-4 decoration-gray-300 transition-colors"
+          >
+            不满意，换一换
+          </button>
+          <button
+            disabled={!selectedId}
+            onClick={handleGenerate}
+            className={\`flex-1 ml-6 py-3.5 rounded-lg font-bold text-[15px] transition-all duration-200 shadow-sm \${selectedId ? 'bg-[#E68A3D] text-white hover:bg-[#D97D33] hover:shadow-md' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}\`}
+          >
+            生成标品方案PPT
+          </button>
+        </div>
+      )}
     </div>
   );
 }

@@ -7053,7 +7053,7 @@ function AiChatWindow({
                 }
               }}
               placeholder="输入指令，如：“我可以领取的商机” 或点击上方快捷指令"
-              className="w-full h-8 bg-transparent resize-none outline-none text-sm text-gray-800"
+              className="w-full h-12 bg-transparent resize-none outline-none text-sm text-gray-800"
             />
             <button
               onClick={() => {
